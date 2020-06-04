@@ -273,7 +273,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
             final VRTARScene arScene = (VRTARScene) node;
 
             WritableMap event = Arguments.createMap();
-            event.putMap("pointCloud", ARUtils.mapFromARPointCloud(arPointCloud));
+            event.putMap("pointCloud", (ReadableMap)ARUtils.mapFromARPointCloud(arPointCloud));
 
             arScene.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                     arScene.getId(),

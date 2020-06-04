@@ -207,7 +207,7 @@ public class NodeModule extends ReactContextBaseJavaModule {
                 boundingBoxMap.putDouble("maxY", box.maxY);
                 boundingBoxMap.putDouble("minZ", box.minZ);
                 boundingBoxMap.putDouble("maxZ", box.maxZ);
-                returnMap.putMap("boundingBox", boundingBoxMap);
+                returnMap.putMap("boundingBox", (ReadableMap)boundingBoxMap);
                 promise.resolve(returnMap);
             }
         });

@@ -70,7 +70,7 @@ public class ARUtils {
         transformMap.putArray("scale", ARUtils.arrayFromFloatArray(result.getScale().toArray()));
         // rotation values come as radians, we need to convert to degrees
         transformMap.putArray("rotation", ARUtils.arrayFromRotationArray(result.getRotation().toArray()));
-        returnMap.putMap("transform", transformMap);
+        returnMap.putMap("transform", (ReadableMap)transformMap);
         return returnMap;
     }
 

@@ -1,3 +1,5 @@
+**/org.eclipse.buildship.core.prefs
+
 # Gradle
 /android/app/build/
 /android/app/gradle/
@@ -19,6 +21,7 @@ test/android/app/.idea
 test/android/.gradle
 test/android/local.properties
 .idea
+.project
 
 #iOS
 ios/Pods/Pods.xcodeproj/xcuserdata/

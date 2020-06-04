@@ -55,7 +55,7 @@ public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
         mIsAnchored = true;
         handleAppearanceChange();
         WritableMap returnMap = Arguments.createMap();
-        returnMap.putMap("anchorFoundMap", ARUtils.mapFromARAnchor(arAnchor));
+        returnMap.putMap("anchorFoundMap", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
                 ViroEvents.ON_ANCHOR_FOUND,
@@ -65,7 +65,7 @@ public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
     @Override
     public void onAnchorUpdated(ARAnchor arAnchor) {
         WritableMap returnMap = Arguments.createMap();
-        returnMap.putMap("anchorUpdatedMap", ARUtils.mapFromARAnchor(arAnchor));
+        returnMap.putMap("anchorUpdatedMap", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
                 ViroEvents.ON_ANCHOR_UPDATED,

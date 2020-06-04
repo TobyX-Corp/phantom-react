@@ -187,7 +187,7 @@ public class VRTARScene extends VRTScene implements ARScene.Listener {
         lightInfoMap.putString(AMBIENT_COLOR_KEY, lightColor);
 
         WritableMap event = Arguments.createMap();
-        event.putMap(AMBIENT_LIGHT_INFO_KEY, lightInfoMap);
+        event.putMap(AMBIENT_LIGHT_INFO_KEY, (ReadableMap)lightInfoMap);
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
@@ -198,7 +198,7 @@ public class VRTARScene extends VRTScene implements ARScene.Listener {
     @Override
     public void onAnchorFound(ARAnchor arAnchor, ARNode node) {
         WritableMap returnMap = Arguments.createMap();
-        returnMap.putMap("anchor", ARUtils.mapFromARAnchor(arAnchor));
+        returnMap.putMap("anchor", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             getId(),
@@ -209,7 +209,7 @@ public class VRTARScene extends VRTScene implements ARScene.Listener {
     @Override
     public void onAnchorUpdated(ARAnchor arAnchor, ARNode node) {
         WritableMap returnMap = Arguments.createMap();
-        returnMap.putMap("anchor", ARUtils.mapFromARAnchor(arAnchor));
+        returnMap.putMap("anchor", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             getId(),
@@ -220,7 +220,7 @@ public class VRTARScene extends VRTScene implements ARScene.Listener {
     @Override
     public void onAnchorRemoved(ARAnchor arAnchor, ARNode node) {
         WritableMap returnMap = Arguments.createMap();
-        returnMap.putMap("anchor", ARUtils.mapFromARAnchor(arAnchor));
+        returnMap.putMap("anchor", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             getId(),
