@@ -120,12 +120,17 @@ echo "Updating App's build.gradle"
 
 # Updating SDK versions
 TARGET_FILEPATH=android/app/build.gradle
-LINE_TO_ADD=("        minSdkVersion 23"
-"        buildConfigField \"String\", 'VR_PLATFORM', '\"GVR\"'")
+LINE_TO_ADD="        minSdkVersion 23"
 SEARCH_PATTERN="minSdkVersion"
 LINE_TO_REPLACE=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 vsed "s/$LINE_TO_REPLACE/$LINE_TO_ADD/g" $TARGET_FILEPATH
+
+LINE_TO_ADD="        buildConfigField \"String\", 'VR_PLATFORM', '\"GVR\"'"
+SEARCH_PATTERN="minSdkVersion"
+LINE_TO_APPEND_AFTER=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
+
+vsed "s/$LINE_TO_APPEND_AFTER/&"$'\\\n'"$LINE_TO_ADD/" $TARGET_FILEPATH
 
 LINE_TO_ADD="        targetSdkVersion 28"
 SEARCH_PATTERN="targetSdkVersion"
