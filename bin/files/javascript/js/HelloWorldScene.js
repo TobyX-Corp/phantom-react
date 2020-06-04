@@ -8,7 +8,7 @@ import {
   ViroScene,
   ViroText,
   Viro360Image,
-} from 'react-viro';
+} from 'phantom-react';
 
 export default class HelloWorldScene extends Component {
 

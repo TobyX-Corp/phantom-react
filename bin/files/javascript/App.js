@@ -20,7 +20,7 @@ import {
 import {
   ViroVRSceneNavigator,
   ViroARSceneNavigator
-} from 'react-viro';
+} from 'phantom-react';
 
 /*
  TODO: Insert your API key below
