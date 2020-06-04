@@ -11,8 +11,8 @@
     "preset": "react-native"
   },
   "peerDependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.9"
+    "react": "16.11.0",
+    "react-native": "0.62.2"
   },
   "files": [
     "components",
