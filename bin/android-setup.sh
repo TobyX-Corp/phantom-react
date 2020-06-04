@@ -33,9 +33,9 @@ vsed() {
 
 echo 'Editing MainApplication.java'
 
-LINE_TO_ADD="          new ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf(BuildConfig.VR_PLATFORM))"
+LINE_TO_ADD="          packages.add(new ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf(BuildConfig.VR_PLATFORM)));"
 TARGET_FILEPATH=$(find android -name MainApplication.java)
-SEARCH_PATTERN='new MainReactPackage'
+SEARCH_PATTERN='getPackages();'
 LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 # Adding a line
@@ -43,10 +43,10 @@ LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 # "s/$LINE_TO_EDIT/&," <- & means the same thing w/ an added comma
 # $'\\\n' <- evaluates to a newline character
 # "$LINE_TO_ADD/" <- substitute a variable & finish sed pattern format
-vsed "s/$LINE_TO_EDIT/&,"$'\\\n'"$LINE_TO_ADD/" $TARGET_FILEPATH
+vsed "s/$LINE_TO_EDIT/&"$'\\\n'"$LINE_TO_ADD/" $TARGET_FILEPATH
 
 LINE_TO_ADD="import com.viromedia.bridge.ReactViroPackage;"
-SEARCH_PATTERN='import com.facebook.react.shell.MainReactPackage;'
+SEARCH_PATTERN='import java.util.List;'
 LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 # Adding another line
@@ -59,11 +59,12 @@ echo "Updating settings.gradle"
 # Adding some lines to the end of the file
 TARGET_FILEPATH=$(find android -name settings.gradle)
 cat << EOF >> $TARGET_FILEPATH
+
 include ':react_viro', ':arcore_client', ':gvr_common', ':viro_renderer'
-project(':arcore_client').projectDir = new File('../node_modules/react-viro/android/arcore_client')
-project(':gvr_common').projectDir = new File('../node_modules/react-viro/android/gvr_common')
-project(':viro_renderer').projectDir = new File('../node_modules/react-viro/android/viro_renderer')
-project(':react_viro').projectDir = new File('../node_modules/react-viro/android/react_viro')
+project(':arcore_client').projectDir = new File('../node_modules/phantom-react/android/arcore_client')
+project(':gvr_common').projectDir = new File('../node_modules/phantom-react/android/gvr_common')
+project(':viro_renderer').projectDir = new File('../node_modules/phantom-react/android/viro_renderer')
+project(':react_viro').projectDir = new File('../node_modules/phantom-react/android/react_viro')
 EOF
 
 
@@ -75,10 +76,10 @@ TARGET_FILEPATH=android/build.gradle
 LINE_NUMBER=$(grep -n "$SEARCH_PATTERN" "$TARGET_FILEPATH" | cut -d ':' -f 1)
 
 # delete 6 lines
-vsed -e "$(($LINE_NUMBER)),$(($LINE_NUMBER+6))d" $TARGET_FILEPATH
+vsed -e "$(($LINE_NUMBER)),$(($LINE_NUMBER+5))d" $TARGET_FILEPATH
 
 # Replacing the classpath line
-LINE_TO_ADD="        classpath 'com.android.tools.build:gradle:3.3.0'"
+LINE_TO_ADD="        classpath 'com.android.tools.build:gradle:3.5.2'"
 SEARCH_PATTERN=classpath
 LINE_TO_REPLACE=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
@@ -119,7 +120,8 @@ echo "Updating App's build.gradle"
 
 # Updating SDK versions
 TARGET_FILEPATH=android/app/build.gradle
-LINE_TO_ADD="        minSdkVersion 23"
+LINE_TO_ADD=("        minSdkVersion 23"
+"        buildConfigField \"String\", 'VR_PLATFORM', '\"GVR\"'")
 SEARCH_PATTERN="minSdkVersion"
 LINE_TO_REPLACE=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
@@ -168,17 +170,17 @@ vsed -e "$(($LINE_NUMBER+1)),$(($LINE_NUMBER+3))d" $TARGET_FILEPATH
 LINES_TO_ADD=("    implementation fileTree(dir: 'libs', include: ['*.jar'])"
 "    implementation 'com.android.support:appcompat-v7:28.0.0'"
 "    implementation 'com.facebook.react:react-native:+'"
-"    implementation project(':arcore_client') \/\/ remove this if AR not required"
+"    implementation project(':arcore_client')"
 "    implementation project(':gvr_common')"
 "    implementation project(path: ':viro_renderer')"
 "    implementation project(path: ':react_viro')"
-"    implementation 'com.google.android.exoplayer:exoplayer:2.7.1'"
-"    implementation 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-7'"
-"    implementation 'com.amazonaws:aws-android-sdk-core:2.7.7'"
-"    implementation 'com.amazonaws:aws-android-sdk-ddb:2.7.7'"
-"    implementation 'com.amazonaws:aws-android-sdk-ddb-mapper:2.7.7'"
-"    implementation 'com.amazonaws:aws-android-sdk-cognito:2.7.7'"
-"    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.7.7'")
+"    implementation 'com.google.android.exoplayer:exoplayer:2.9.5'"
+"    implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'"
+"    implementation 'com.amazonaws:aws-android-sdk-core:2.16.1'"
+"    implementation 'com.amazonaws:aws-android-sdk-ddb:2.16.1'"
+"    implementation 'com.amazonaws:aws-android-sdk-ddb-mapper:2.16.1'"
+"    implementation 'com.amazonaws:aws-android-sdk-cognito:2.16.1'"
+"    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.16.1'")
 LINE_TO_APPEND_AFTER=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 INDEX=$((${#LINES_TO_ADD[@]}-1))
@@ -189,30 +191,30 @@ do
 done
 
 # Adding buildTypes by inserting it before a line
-SEARCH_PATTERN="buildTypes {"
-LINES_TO_PREPEND=("    productFlavors {"
-"        ar {"
-"            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ar'"
-"            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"' \\/\\/default to GVR"
-"        }"
-"        gvr {"
-"            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-gvr'"
-"            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"'"
-"        }"
-"        ovr {"
-"            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ovr'"
-"            applicationIdSuffix '.ovr'"
-"            buildConfigField 'String', 'VR_PLATFORM', '\"OVR_MOBILE\"'"
-"        }"
-"    }")
-LINE_TO_PREPEND_TO=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
+# SEARCH_PATTERN="buildTypes {"
+# LINES_TO_PREPEND=("    productFlavors {"
+# "        ar {"
+# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ar'"
+# "            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"' \\/\\/default to GVR"
+# "        }"
+# "        gvr {"
+# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-gvr'"
+# "            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"'"
+# "        }"
+# "        ovr {"
+# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ovr'"
+# "            applicationIdSuffix '.ovr'"
+# "            buildConfigField 'String', 'VR_PLATFORM', '\"OVR_MOBILE\"'"
+# "        }"
+# "    }")
+# LINE_TO_PREPEND_TO=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
-INDEX=0
-while [ $INDEX -lt $((${#LINES_TO_PREPEND[@]})) ];
-do
-  vsed "s/$LINE_TO_PREPEND_TO/${LINES_TO_PREPEND[$INDEX]}"$'\\\n'"&/" $TARGET_FILEPATH
-  INDEX=$(($INDEX+1))
-done
+# INDEX=0
+# while [ $INDEX -lt $((${#LINES_TO_PREPEND[@]})) ];
+# do
+#   vsed "s/$LINE_TO_PREPEND_TO/${LINES_TO_PREPEND[$INDEX]}"$'\\\n'"&/" $TARGET_FILEPATH
+#   INDEX=$(($INDEX+1))
+# done
 
 
 
@@ -262,7 +264,7 @@ vsed "s/$LINE_TO_REPLACE/$LINE_TO_ADD/g" $TARGET_FILEPATH
 
 echo "Copying over OVR's additional manifest"
 
-cp -r node_modules/react-viro/bin/files/android .
+cp -r node_modules/phantom-react/bin/files/android .
 
 
 
@@ -280,3 +282,4 @@ TARGET_FILEPATH=$(find android -name strings.xml)
 
 # deleting 2nd line in file
 vsed '2d' $TARGET_FILEPATH
+
