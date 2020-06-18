@@ -120,17 +120,12 @@ echo "Updating App's build.gradle"
 
 # Updating SDK versions
 TARGET_FILEPATH=android/app/build.gradle
-LINE_TO_ADD="        minSdkVersion 23"
+LINE_TO_ADD=("        minSdkVersion 23"
+"        buildConfigField \"String\", 'VR_PLATFORM', '\"GVR\"'")
 SEARCH_PATTERN="minSdkVersion"
 LINE_TO_REPLACE=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 vsed "s/$LINE_TO_REPLACE/$LINE_TO_ADD/g" $TARGET_FILEPATH
-
-LINE_TO_ADD="        buildConfigField \"String\", 'VR_PLATFORM', '\"GVR\"'"
-SEARCH_PATTERN="minSdkVersion"
-LINE_TO_APPEND_AFTER=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
-
-vsed "s/$LINE_TO_APPEND_AFTER/&"$'\\\n'"$LINE_TO_ADD/" $TARGET_FILEPATH
 
 LINE_TO_ADD="        targetSdkVersion 28"
 SEARCH_PATTERN="targetSdkVersion"
@@ -180,12 +175,7 @@ LINES_TO_ADD=("    implementation fileTree(dir: 'libs', include: ['*.jar'])"
 "    implementation project(path: ':viro_renderer')"
 "    implementation project(path: ':react_viro')"
 "    implementation 'com.google.android.exoplayer:exoplayer:2.9.5'"
-"    implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'"
-"    implementation 'com.amazonaws:aws-android-sdk-core:2.16.1'"
-"    implementation 'com.amazonaws:aws-android-sdk-ddb:2.16.1'"
-"    implementation 'com.amazonaws:aws-android-sdk-ddb-mapper:2.16.1'"
-"    implementation 'com.amazonaws:aws-android-sdk-cognito:2.16.1'"
-"    implementation 'com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.16.1'")
+"    implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'")
 LINE_TO_APPEND_AFTER=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
 INDEX=$((${#LINES_TO_ADD[@]}-1))
