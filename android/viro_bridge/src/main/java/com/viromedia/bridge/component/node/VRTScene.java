@@ -226,7 +226,7 @@ public class VRTScene extends VRTNode implements Scene.VisibilityListener {
         event.putString("headset", mHeadset);
         event.putString("controller", mController);
         WritableMap eventContainer = Arguments.createMap();
-        eventContainer.putMap("platformInfoViro", event);
+        eventContainer.putMap("platformInfoViro", (ReadableMap)event);
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
                 ViroEvents.ON_PLATFORM_UPDATE,

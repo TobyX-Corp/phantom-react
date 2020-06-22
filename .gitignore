@@ -1,3 +1,7 @@
+# VSCode
+**/org.eclipse.buildship.core.prefs
+.project
+
 # Gradle
 /android/app/build/
 /android/app/gradle/
