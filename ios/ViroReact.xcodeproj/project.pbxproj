@@ -318,9 +318,6 @@
 		13F63033205762CB00A74EFC /* VRT3DSceneNavigatorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13F63032205762CB00A74EFC /* VRT3DSceneNavigatorManager.mm */; };
 		13F630362057644D00A74EFC /* VRT3DSceneNavigator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13F630352057644D00A74EFC /* VRT3DSceneNavigator.mm */; };
 		236CE15FB691A995D2DE91A1 /* libPods-ViroReact_static_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F958EFD22BC49F2EF3DBAF /* libPods-ViroReact_static_lib.a */; };
-		6E1E0AAF24AFAC550007730A /* ViroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1E0AA624AFAC540007730A /* ViroKit.framework */; };
-		6E1E0AB424AFAC550007730A /* ViroKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E0AB324AFAC550007730A /* ViroKitTests.m */; };
-		6E1E0AB624AFAC550007730A /* ViroKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E1E0AA824AFAC540007730A /* ViroKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B08617F151E92AD2CC5B5C6 /* libPods-ViroReact_release_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E371BA5881A4F905FA5A241 /* libPods-ViroReact_release_tests.a */; };
 		8A04D4E02023EDDF00FD5F68 /* VRTARTrackingTargetsModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D4DF2023EDDF00FD5F68 /* VRTARTrackingTargetsModule.mm */; };
 		8A04D5182024F6B200FD5F68 /* VRTARImageMarkerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8A04D5172024F6B200FD5F68 /* VRTARImageMarkerManager.mm */; };
@@ -544,13 +541,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 73C4B0CA254A092A0B27877FCAAD1D04;
 			remoteInfo = "Pods-ViroReact_static_lib";
-		};
-		6E1E0AB024AFAC550007730A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8BE0D44C1DFA0D050032AB99 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6E1E0AA524AFAC540007730A;
-			remoteInfo = ViroKit;
 		};
 		8BDD9DA21E09F39B00A42870 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -822,12 +812,6 @@
 		20F958EFD22BC49F2EF3DBAF /* libPods-ViroReact_static_lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViroReact_static_lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24F1137CD82BA3E4D836FBA1 /* Pods-ViroReact_static_lib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_static_lib.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_static_lib/Pods-ViroReact_static_lib.release.xcconfig"; sourceTree = "<group>"; };
 		26E68AF050CB842CF2264F09 /* Pods-ViroReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact/Pods-ViroReact.debug.xcconfig"; sourceTree = "<group>"; };
-		6E1E0AA624AFAC540007730A /* ViroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E1E0AA824AFAC540007730A /* ViroKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViroKit.h; sourceTree = "<group>"; };
-		6E1E0AA924AFAC540007730A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E1E0AAE24AFAC550007730A /* ViroKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViroKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E1E0AB324AFAC550007730A /* ViroKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViroKitTests.m; sourceTree = "<group>"; };
-		6E1E0AB524AFAC550007730A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7927738EE26175BE7394889B /* libPods-ViroReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ViroReact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8737B88293C9F8DE1C4F5FB9 /* Pods-ViroReact_release_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_release_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_release_tests/Pods-ViroReact_release_tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A04D4DE2023EDDF00FD5F68 /* VRTARTrackingTargetsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VRTARTrackingTargetsModule.h; path = ViroReact/AR/Modules/VRTARTrackingTargetsModule.h; sourceTree = "<group>"; };
@@ -1076,21 +1060,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E1E0AA324AFAC540007730A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E1E0AAB24AFAC550007730A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E1E0AAF24AFAC550007730A /* ViroKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BE0D4511DFA0D050032AB99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1113,24 +1082,6 @@
 				20F958EFD22BC49F2EF3DBAF /* libPods-ViroReact_static_lib.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6E1E0AA724AFAC540007730A /* ViroKit */ = {
-			isa = PBXGroup;
-			children = (
-				6E1E0AA824AFAC540007730A /* ViroKit.h */,
-				6E1E0AA924AFAC540007730A /* Info.plist */,
-			);
-			path = ViroKit;
-			sourceTree = "<group>";
-		};
-		6E1E0AB224AFAC550007730A /* ViroKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				6E1E0AB324AFAC550007730A /* ViroKitTests.m */,
-				6E1E0AB524AFAC550007730A /* Info.plist */,
-			);
-			path = ViroKitTests;
 			sourceTree = "<group>";
 		};
 		8A77437C1EEF5EB30004C17A /* AR */ = {
@@ -1238,8 +1189,6 @@
 				8A77437C1EEF5EB30004C17A /* AR */,
 				8BDD9F591E53A70000A42870 /* ViroReactFramework */,
 				8BDD9F651E53A70000A42870 /* ViroReactFrameworkTests */,
-				6E1E0AA724AFAC540007730A /* ViroKit */,
-				6E1E0AB224AFAC550007730A /* ViroKitTests */,
 				1C367D5FBEE346F359CECCBA /* Frameworks */,
 				8BE0D4B71DFA3D820032AB99 /* Modules */,
 				D237462BE0F14310B5EAE72D /* Pods */,
@@ -1328,8 +1277,6 @@
 				8BE0D4541DFA0D050032AB99 /* libViroReact.a */,
 				131E1ECD20B89A560075D8E0 /* libViroReact_release_tests.a */,
 				1385B29C20CA091C00C3B6CE /* libViroReact_static_lib.a */,
-				6E1E0AA624AFAC540007730A /* ViroKit.framework */,
-				6E1E0AAE24AFAC550007730A /* ViroKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1493,17 +1440,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		6E1E0AA124AFAC540007730A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E1E0AB624AFAC550007730A /* ViroKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		131E1DFA20B89A560075D8E0 /* ViroReact_release_tests */ = {
 			isa = PBXNativeTarget;
@@ -1545,42 +1481,6 @@
 			productReference = 1385B29C20CA091C00C3B6CE /* libViroReact_static_lib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		6E1E0AA524AFAC540007730A /* ViroKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E1E0ABB24AFAC550007730A /* Build configuration list for PBXNativeTarget "ViroKit" */;
-			buildPhases = (
-				6E1E0AA124AFAC540007730A /* Headers */,
-				6E1E0AA224AFAC540007730A /* Sources */,
-				6E1E0AA324AFAC540007730A /* Frameworks */,
-				6E1E0AA424AFAC540007730A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ViroKit;
-			productName = ViroKit;
-			productReference = 6E1E0AA624AFAC540007730A /* ViroKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6E1E0AAD24AFAC550007730A /* ViroKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6E1E0ABC24AFAC550007730A /* Build configuration list for PBXNativeTarget "ViroKitTests" */;
-			buildPhases = (
-				6E1E0AAA24AFAC550007730A /* Sources */,
-				6E1E0AAB24AFAC550007730A /* Frameworks */,
-				6E1E0AAC24AFAC550007730A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6E1E0AB124AFAC550007730A /* PBXTargetDependency */,
-			);
-			name = ViroKitTests;
-			productName = ViroKitTests;
-			productReference = 6E1E0AAE24AFAC550007730A /* ViroKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		8BE0D4531DFA0D050032AB99 /* ViroReact */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BE0D45D1DFA0D050032AB99 /* Build configuration list for PBXNativeTarget "ViroReact" */;
@@ -1612,14 +1512,6 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Viro Media";
 				TargetAttributes = {
-					6E1E0AA524AFAC540007730A = {
-						CreatedOnToolsVersion = 11.5;
-						ProvisioningStyle = Automatic;
-					};
-					6E1E0AAD24AFAC550007730A = {
-						CreatedOnToolsVersion = 11.5;
-						ProvisioningStyle = Automatic;
-					};
 					8BE0D4531DFA0D050032AB99 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -1647,8 +1539,6 @@
 				8BE0D4531DFA0D050032AB99 /* ViroReact */,
 				131E1DFA20B89A560075D8E0 /* ViroReact_release_tests */,
 				1385B1CA20CA091C00C3B6CE /* ViroReact_static_lib */,
-				6E1E0AA524AFAC540007730A /* ViroKit */,
-				6E1E0AAD24AFAC550007730A /* ViroKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1676,23 +1566,6 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
-
-/* Begin PBXResourcesBuildPhase section */
-		6E1E0AA424AFAC540007730A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E1E0AAC24AFAC550007730A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		131E1DFB20B89A560075D8E0 /* [CP] Check Pods Manifest.lock */ = {
@@ -2053,21 +1926,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E1E0AA224AFAC540007730A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6E1E0AAA24AFAC550007730A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6E1E0AB424AFAC550007730A /* ViroKitTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BE0D4501DFA0D050032AB99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2189,14 +2047,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		6E1E0AB124AFAC550007730A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6E1E0AA524AFAC540007730A /* ViroKit */;
-			targetProxy = 6E1E0AB024AFAC550007730A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
 		131E1ECB20B89A560075D8E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2285,146 +2135,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SYMROOT = build/static_lib;
-			};
-			name = Release;
-		};
-		6E1E0AB724AFAC550007730A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ViroKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.ViroKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6E1E0AB824AFAC550007730A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ViroKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.ViroKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6E1E0AB924AFAC550007730A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ViroKitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.ViroKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		6E1E0ABA24AFAC550007730A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ViroKitTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.ViroKitTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -2574,24 +2284,6 @@
 			buildConfigurations = (
 				1385B29A20CA091C00C3B6CE /* Debug */,
 				1385B29B20CA091C00C3B6CE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E1E0ABB24AFAC550007730A /* Build configuration list for PBXNativeTarget "ViroKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E1E0AB724AFAC550007730A /* Debug */,
-				6E1E0AB824AFAC550007730A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6E1E0ABC24AFAC550007730A /* Build configuration list for PBXNativeTarget "ViroKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6E1E0AB924AFAC550007730A /* Debug */,
-				6E1E0ABA24AFAC550007730A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
