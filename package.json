@@ -26,6 +26,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "react-native": "0.62.2"
     "prop-types": "^15.5.10"
   }
 }
