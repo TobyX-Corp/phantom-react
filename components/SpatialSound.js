@@ -104,7 +104,7 @@ var SpatialSound = createReactClass({
 
 });
 
-var VRTSound = require('./ViroSound').VRTSound;
+var VRTSound = require('./Sound').VRTSound;
 
 var VRTSpatialSound = requireNativeComponent(
   'VRTSpatialSound', SpatialSound, {
