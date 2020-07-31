@@ -43,7 +43,6 @@
 
 @implementation VRTVRSceneNavigator {
   id <VROView> _vroView;
-  VROViewControllerGVR *_gvrController;
 }
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
@@ -79,16 +78,12 @@
     config.enableShadows = _shadowsEnabled;
     config.enableMultisampling = _multisamplingEnabled;
     
-    _gvrController = [[VROViewControllerGVR alloc] initWithConfig:config];
-    _gvrController.forceLandscape = _vrModeEnabled;
-    _vroView = (id<VROView>) _gvrController.view;
     
     // Load materials; must be done each time we have a new context (e.g. after
     // the EGL context is created by the VROViewGVR
     VRTMaterialManager *materialManager = [self.bridge materialManager];
     [materialManager reloadMaterials];
-    VROViewGVR *viewCardboard = (VROViewGVR *) _gvrController.view;
-    [viewCardboard setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
+    VROViewGVR *viewCardboard = (VROViewGVR *)
     _vroView.renderDelegate = self;
     
     [self setFrame:[UIScreen mainScreen].bounds];
@@ -141,8 +136,6 @@
 
 - (void)recenterTracking {
   [self initVRView];
-  VROViewGVR *cardboardView = _vroView;
-  [cardboardView recenterTracking];
 }
 
 - (UIView *)rootVROView {
@@ -163,10 +156,6 @@
   [sceneView setView:_vroView];
   [self.currentViews insertObject:sceneView atIndex:atIndex];
   
-  if (self.currentSceneIndex == atIndex) {
-    [self setSceneView:sceneView];
-    [(VROViewGVR *)_vroView setPaused:NO];
-  }
   [super insertReactSubview:subview atIndex:atIndex];
 }
 
