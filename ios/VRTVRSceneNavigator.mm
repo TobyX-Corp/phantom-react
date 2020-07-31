@@ -83,7 +83,6 @@
     // the EGL context is created by the VROViewGVR
     VRTMaterialManager *materialManager = [self.bridge materialManager];
     [materialManager reloadMaterials];
-    VROViewGVR *viewCardboard = (VROViewGVR *)
     _vroView.renderDelegate = self;
     
     [self setFrame:[UIScreen mainScreen].bounds];
