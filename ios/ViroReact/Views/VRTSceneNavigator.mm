@@ -113,6 +113,9 @@
     [sceneView setView:_vroView];
     [self.currentViews insertObject:sceneView atIndex:atIndex];
     
+    if (self.currentSceneIndex == atIndex) {
+        [self setSceneView:sceneView];
+    }
     [super insertReactSubview:subview atIndex:atIndex];
 }
 
