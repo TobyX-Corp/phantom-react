@@ -24,6 +24,7 @@ package com.viromedia.bridge.utility;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.ReadableMap;
 import com.viro.core.ARAnchor;
 import com.viro.core.ARHitTestResult;
 import com.viro.core.ARImageAnchor;
