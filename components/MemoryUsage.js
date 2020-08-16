@@ -8,7 +8,7 @@ export default class MemoryUsage extends Component {
     constructor() {
       super();
       this.state = {
-        memoryUage: 0
+        memoryUsage: 0
       };
     }
     componentDidMount() {
@@ -16,11 +16,11 @@ export default class MemoryUsage extends Component {
       const used = DeviceInfo.getUsedMemory();
       const usage = used / total * 100
   
-      this.setState({memoryUage : usage});
+      this.setState({memoryUsage : usage});
     }
     render() {
       return (
-        <Text style={styles.text}>Memory Usage: {memoryUage}% </Text>
+        <Text style={styles.text}>Memory Usage: {this.state.memoryUsage}% </Text>
       );
     }
   }
