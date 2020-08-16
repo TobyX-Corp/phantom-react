@@ -39,8 +39,8 @@ FOUNDATION_EXPORT const unsigned char ViroKitVersionString[];
 #import <ViroKit/VROSceneController.h>
 #import <ViroKit/VROView.h>
 #import <ViroKit/VROViewMetal.h>
-#import <ViroKit/VROViewControllerGVR.h>
-#import <ViroKit/VROViewGVR.h>
+// #import <ViroKit/VROViewControllerGVR.h>
+// #import <ViroKit/VROViewGVR.h>
 #import <ViroKit/VROViewScene.h>
 #import <ViroKit/VRORendererConfiguration.h>
 #import <ViroKit/VRORenderDelegate.h>
@@ -135,9 +135,9 @@ FOUNDATION_EXPORT const unsigned char ViroKitVersionString[];
 #import <ViroKit/VROAudioPlayer.h>
 #import <ViroKit/VROAudioPlayeriOS.h>
 #import <ViroKit/VROSound.h>
-#import <ViroKit/VROSoundGVR.h>
+// #import <ViroKit/VROSoundGVR.h>
 #import <ViroKit/VROSoundData.h>
-#import <ViroKit/VROSoundDataGVR.h>
+// #import <ViroKit/VROSoundDataGVR.h>
 #import <ViroKit/VROSoundDataDelegate.h>
 #import <ViroKit/VROSoundDelegate.h>
 #import <ViroKit/VROSoundDelegateiOS.h>
