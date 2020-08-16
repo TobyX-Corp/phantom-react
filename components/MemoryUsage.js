@@ -20,7 +20,7 @@ export default class MemoryUsage extends Component {
     }
     render() {
       return (
-        <Text style={styles.text}>Memory Usage: {usage}% </Text>
+        <Text style={styles.text}>Memory Usage: {memoryUage}% </Text>
       );
     }
   }
