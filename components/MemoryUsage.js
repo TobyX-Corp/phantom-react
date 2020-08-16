@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { getMaxMemory, getTotalMemory, getUsedMemory } from 'react-native-device-info';
-import { MemoryUsage } from '..';
 
 export default class MemoryUsage extends Component {
 
