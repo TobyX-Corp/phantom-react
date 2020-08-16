@@ -5,35 +5,38 @@ import { getMaxMemory, getTotalMemory, getUsedMemory } from 'react-native-device
 
 export default class MemoryUsage extends Component {
 
-    constructor() {
-      super();
-      this.state = {
-        memoryUsage: 0,
-        memoryTotal: 0,
-        memoryUsed: 0,
-      };
-    }
-    componentDidMount() {
-      const total = DeviceInfo.getTotalMemory();
-      const used = DeviceInfo.getUsedMemory();
-      const usage = used / total * 100
-  
-      this.setState({memoryUsage : usage, memoryTotal : total, memoryUsed : used});
-    }
-    render() {
-      return (
-        <View style={styles.MainContainer}>
-          <Text style={styles.text}>Total Memory: {this.state.memoryUsage}% </Text>
-          <Text style={styles.text}>Used Memory: {this.state.memoryUsage}% </Text>
-          <Text style={styles.text}>Memory Usage: {this.state.memoryUsage}% </Text>
-        </View>
-      );
-    }
+  constructor(props) {
+    super(props);
+    DeviceInfo.getTotalMemory().then(totalMemory => {
+      this.setState({totalMemory: totalMemory});
+    }).catch(error => {
+      console.log(error);
+    });
+    DeviceInfo.getUsedMemory().then(usedMemory => {
+	this.setState({usedMemory: usedMemory});
+    }).catch(error => {
+      console.log(error);
+    });  
   }
+  componentDidMount() {
+    const usage = used / total * 100
+
+    this.setState({memoryUsage : usage});
+  }
+  render() {
+    return (
+      <View style={styles.MainContainer}>
+        <Text style={styles.text}>Total Memory: {this.state.memoryUsage}% </Text>
+        <Text style={styles.text}>Used Memory: {this.state.memoryUsage}% </Text>
+        <Text style={styles.text}>Memory Usage: {this.state.memoryUsage}% </Text>
+      </View>
+    );
+  }
+}
    
   const styles = StyleSheet.create({
     text: {
-      fontSize: 8,
+      fontSize: 12,
       color: '#606070',
       padding: 10,
     },
