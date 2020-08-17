@@ -13,7 +13,7 @@ export default class MemoryUsage extends Component {
       console.log(error);
     });
     DeviceInfo.getUsedMemory().then(usedMemory => {
-	this.setState({usedMemory: usedMemory});
+	    this.setState({usedMemory: usedMemory});
     }).catch(error => {
       console.log(error);
     });  
@@ -26,8 +26,8 @@ export default class MemoryUsage extends Component {
   render() {
     return (
       <View style={styles.MainContainer}>
-        <Text style={styles.text}>Total Memory: {this.state.memoryUsage}% </Text>
-        <Text style={styles.text}>Used Memory: {this.state.memoryUsage}% </Text>
+        <Text style={styles.text}>Total Memory: {this.state.totalMemory}% </Text>
+        <Text style={styles.text}>Used Memory: {this.state.usedMemory}% </Text>
         <Text style={styles.text}>Memory Usage: {this.state.memoryUsage}% </Text>
       </View>
     );
