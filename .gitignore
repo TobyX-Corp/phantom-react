@@ -64,7 +64,7 @@ yarn.lock
 .DS_Store
 local.properties
 build/
-react-viro*.tgz
+phantom-react*.tgz
 
 
 # Fastlane
