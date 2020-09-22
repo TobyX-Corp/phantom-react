@@ -54,11 +54,6 @@ class Materials {
             }
 
             var source = resolveAssetSource(materialDict[materialProperty]);
-
-            console.log("*****************************materialDict: "+materialDict);
-            console.log("*****************************materialProperty: "+materialProperty);
-            console.log("*****************************source: "+source);
-            console.log("*****************************assetType: "+assetType);
             
             source["type"] = assetType;
             resultMaterial[materialProperty] = source;
