@@ -1,20 +1,20 @@
 ![Logo](/docs/_images/logo-full-transparent.png)
 
-Phantom React is a platform for developers to rapidly build augmented reality (AR) and virtual reality (VR) experiences. Developers write in React Native, and phantom runs their code natively across all mobile VR (including Google Daydream, Samsung Gear VR, and Google Cardboard for iOS and Android) and AR (iOS ARKit and Android ARCore) platforms.Developed based on Viro-React, Phantom-React solved compatibility issues with latest versions of React-Native and Apple store policy.
+Phantom React is a platform for developers to rapidly build augmented reality (AR) and virtual reality (VR) experiences. Developers write in React Native, and phantom runs their code natively across all mobile VR (including Google Daydream, Samsung Gear VR, and Google Cardboard for iOS and Android) and AR (iOS ARKit and Android ARCore) platforms. Developed based on Viro-React, Phantom-React solved compatibility issues with latest versions of React-Native and Apple store policy.
 
 **_Warning: Due to removal of UIWebView, VR functions are currently unusable. Expect them to be implemented in the future._**
 
 **_Note: The improvement of ViroCore -- Phantom Core, is coming soon!_**
 
-This project contains the full source code for phantom React, and various sample phantom projects.
+This project contains the full source code for Phantom-React, and various sample phantom projects.
 
 The platform is free to use with no limits on distribution.
 
-To report bugs/issues with phantom platform, please file new issues on this repository.
+To report bugs/issues with phantom platform, please file new issues under this repository.
 
 ## Instructions for running sample projects using Testbed app:
 
-1. Follow directions in documenation to setup dependencies for trying these sample projects with the phantom Media App.
+1. Follow directions in documenation to setup dependencies for trying these sample projects with the Phantom Media App.
 2. Clone the repo into your workspace with git: `git clone https://github.com/TobyX-Corp/phantom-react.git`.
 3. Go into the code-samples directory.
 4. Run `npm install` from the root of this project.
