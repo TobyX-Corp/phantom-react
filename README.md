@@ -1,4 +1,5 @@
-[image](https://github.com/TobyX-Corp/phantom-react/tree/master/docs/_images/logo-full-transparent.png)
+![Logo](/docs/_images/logo-full-transparent.png)
+
 Phantom React is a platform for developers to rapidly build augmented reality (AR) and virtual reality (VR) experiences. Developers write in React Native, and phantom runs their code natively across all mobile VR (including Google Daydream, Samsung Gear VR, and Google Cardboard for iOS and Android) and AR (iOS ARKit and Android ARCore) platforms.Developed based on Viro-React, Phantom-React solved compatibility issues with latest versions of React-Native and Apple store policy.
 
 **_Warning: Due to removal of UIWebView, VR functions are currently unusable. Expect them to be implemented in the future._**
