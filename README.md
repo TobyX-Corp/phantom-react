@@ -71,26 +71,26 @@ You can also try the latest mainline build containing bleeding edge features and
 4. Verify you see new files created in `ios/dist` folder.
 5. Install pods in `ios/` folder:
    ```
-   cd ios
-   pod install
+   $ cd ios
+   $ pod install
    ```
 6. Open the `.xcworkspace` file in Xcode. (Make sure you open the .xcworkpace file, and **not*** the .xcodeproj file!)
 7. Select Product->Scheme. If you don't see a `React` scheme, hit `Manage Schemes...`. In the dialog box, add `React` scheme.
 8. Go through build configuration (Debug vs Release) for schemes `React` and `PhantomReact` and ensure they are all either Release or Debug, depending on what you are trying to build.
 9. That's it! Now build React scheme for `Generic iOS Device`, followed by phantomReact scheme for the same target.
 Note:
-    ```
-    If in your own app project setup, you prefer to include Phantom-React as a static library 
-    rather than relying on `use_frameworks!` - build scheme `PhantomReact_static_lib` 
-    instead of `PhantomReact` as mentioned above in step #9. 
-    ```
-10. You should see a new file `libphantomReact.a` at `ios/dist/lib/libphantomReact.a`.
+        ```
+        If in your own app project setup, you prefer to include Phantom-React as a static library 
+        rather than relying on `use_frameworks!` - build scheme `PhantomReact_static_lib` 
+        instead of `PhantomReact` as mentioned above in step #9. 
+        ```
+10. You should see a new file `libPhantomReact.a` at `ios/dist/lib/libPhantomReact.a`.
 11. To run Phantom-React tests, run the following commands:
     ```
-    cd test
-    npm install
-    cd ios/PhantomExample
-    pod install
+    $ cd test
+    $ npm install
+    $ cd ios/PhantomExample
+    $ pod install
     ```
     Navigate to `test/ios/PhantomExample/` folder. Open the `.xcworkspace` file and run the `PhantomExample` scheme on your plugged in iOS device.
 
