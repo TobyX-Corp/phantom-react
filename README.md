@@ -1,8 +1,8 @@
 ![Logo](/docs/_images/logo-full-transparent.png)
 
-Phantom React is a platform for developers to rapidly build augmented reality (AR) and virtual reality (VR) experiences. Developers write in React Native, and phantom runs their code natively across all mobile VR (including Google Daydream, Samsung Gear VR, and Google Cardboard for iOS and Android) and AR (iOS ARKit and Android ARCore) platforms. Developed based on Viro-React, Phantom-React solved compatibility issues with latest versions of React-Native and Apple store policy.
+Phantom React is a platform for developers to rapidly build augmented reality (AR) and virtual reality (VR) experiences. Developers write in React Native, and phantom runs their code natively across all mobile VR (including Google Daydream, Samsung Gear VR, and Google Cardboard) and AR (iOS ARKit and Android ARCore) platforms. Developed based on Viro-React, Phantom-React solved compatibility issues with latest versions of React-Native and Apple store policy.
 
-**_Warning: Due to removal of UIWebView, VR functions are currently unusable. Expect them to be implemented in the future._**
+**_Warning: Due to removal of UIWebView, VR functions for iOS are currently unusable. Expect them to be implemented in the future._**
 
 **_Note: The improvement of ViroCore -- Phantom Core, is coming soon!_**
 
@@ -67,40 +67,35 @@ You can also try the latest mainline build containing bleeding edge features and
 
 1. Follow directions on our documentation to setup dependencies.
 2. Clone the repo into your workspace with git: `git clone https://github.com/TobyX-Corp/phantom-react.git`.
-3. Build our iOS renderer using build instructions outlined in our phantomcore repo.
+3. Build our iOS renderer using build instructions outlined in our phantom-core repo.
 4. Verify you see new files created in `ios/dist` folder.
 5. Install pods in `ios/` folder:
    ```
    cd ios
    pod install
    ```
-6. Install node_modules in test folder:
-   ```
-   cd test
-   npm install
-   ```
-7. Install pods in the `phantomExample` folder:
-   ```
-   cd test/ios/phantomExample
-   pod install
-   ```
-8. Open `phantomExample.xcworkspace` in Xcode. (Make sure you open the .xcworkpace file, and **not*** the .xcodeproj file!)
-9. Select Product->Scheme. If you don't see a `React` scheme, hit `Manage Schemes...`. In the dialog box, add `React` scheme.
-10. Go through build configuration (Debug vs Release) for schemes `React`, `phantomReact` and `phantomExample` and ensure they are all either Release or Debug, depending on what you are trying to build.
-11. That's it! Now build React scheme for `Generic iOS Device`, followed by phantomReact scheme for the same target.
+6. Open the `.xcworkspace` file in Xcode. (Make sure you open the .xcworkpace file, and **not*** the .xcodeproj file!)
+7. Select Product->Scheme. If you don't see a `React` scheme, hit `Manage Schemes...`. In the dialog box, add `React` scheme.
+8. Go through build configuration (Debug vs Release) for schemes `React` and `PhantomReact` and ensure they are all either Release or Debug, depending on what you are trying to build.
+9. That's it! Now build React scheme for `Generic iOS Device`, followed by phantomReact scheme for the same target.
 Note:
     ```
-    11.a If you want the ability to run on Simulator, 
-         change target to any of the `iOS Simulator` targets instead of `Generic iOS Device`. 
-    11.b If in your own app project setup, you prefer to include phantom React as a static library 
-         rather than relying on `use_frameworks!` - build scheme `phantomReact_static_lib` 
-         instead of `phantomReact` as mentioned above in step #11. 
+    If in your own app project setup, you prefer to include Phantom-React as a static library 
+    rather than relying on `use_frameworks!` - build scheme `PhantomReact_static_lib` 
+    instead of `PhantomReact` as mentioned above in step #9. 
     ```
-12. You should see a new file `libphantomReact.a` at `ios/dist/lib/libphantomReact.a`.
-13. To run phantom React tests, run `phantomExample` scheme on your plugged in iOS device.
+10. You should see a new file `libphantomReact.a` at `ios/dist/lib/libphantomReact.a`.
+11. To run Phantom-React tests, run the following commands:
+    ```
+    cd test
+    npm install
+    cd ios/PhantomExample
+    pod install
+    ```
+    Navigate to `test/ios/PhantomExample/` folder. Open the `.xcworkspace` file and run the `PhantomExample` scheme on your plugged in iOS device.
 
 ### Building Android phantom React:
-1. Under the phantom directory, run `./prepareRelease.sh`.
+1. Under the phantom directory, run `./prepareRelase.sh`.
 2. Your android bridge should now be built under release.
 3. You should see a new file created at android/react_phantom/react_phantom-release.aar
 4. To build android release tests:
