@@ -10,7 +10,7 @@ This project contains the full source code for Phantom-React, and various sample
 
 The platform is free to use with no limits on distribution.:clap:
 
-### :star2::star2::star2: Take a look at [Phantom-React](https://tobyx-corp.github.io/phantom-react)'s official documentation page for detail technical support! :star2::star2::star2:
+### :star2::star2::star2: Take a look at [Phantom-React](https://tobyx-corp.github.io/phantom-react)'s official documentation page for detailed technical support! :star2::star2::star2:
 
 _To report bugs/issues regarding the Phantom platform, please file new issues under this repository._
 <br/><br/>
