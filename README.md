@@ -8,12 +8,12 @@ Developed based on [**Viro-React**](https://github.com/viromedia/viro) (click fo
 
 This project contains the full source code for Phantom-React, and various sample Phantom projects.
 
-The platform is free to use with no limits on distribution.
+The platform is free to use with no limits on distribution.:clap:
 
-### For detailed technical support, take a look at [Phantom-React](https://tobyx-corp.github.io/phantom-react)'s official documentation page!
+### :star2::star2::star2: Take a look at [Phantom-React](https://tobyx-corp.github.io/phantom-react)'s official documentation page for detail technical support! :star2::star2::star2:
 
 _To report bugs/issues regarding the Phantom platform, please file new issues under this repository._
-
+<br/><br/>
 ## Instructions for running sample projects using Testbed app:
 1. Follow directions in documenation to setup dependencies for trying these sample projects with the Phantom Media App.
 2. Clone the repo into your workspace with git: `git clone https://github.com/TobyX-Corp/phantom-react.git`.
