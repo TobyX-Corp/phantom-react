@@ -1,6 +1,6 @@
 ![Logo](/docs/_images/logo-full-transparent.png)
 
-Developed based on [**Viro-React**](https://github.com/viromedia/viro) (click for more information on Viro-React's GitHub page), Phantom-React is a platform for developers to rapidly build **augmented reality (AR)** and **virtual reality (VR)** experiences. Developers write in React Native, and Phantom-React runs their code natively across all mobile AR (iOS ARKit and Android ARCore) platforms and Android VR (including Google Daydream, Samsung Gear VR, and Google Cardboard) platform. Phantom-React has resolved previously existing issues in Viro-React due to compatibility with the latest versions of both _React-Native_ and _Apple App Store policy_.
+Developed based on [**Viro-React**](https://github.com/viromedia/viro) (click for more information on Viro-React's GitHub page), Phantom-React is a platform for developers to rapidly build **augmented reality (AR)** and **virtual reality (VR)** experiences. Developers write in React Native, and Phantom-React runs their code natively across all mobile AR (iOS ARKit and Android ARCore) platforms and Android VR (including Google Daydream, Samsung Gear VR, and Google Cardboard) platform. Phantom-React has resolved previously existing issues in Viro-React due to compatibility with the latest versions of both _React-Native (V0.62.2)_ and _Apple App Store policy_.
 
 **_Warning: Due to removal of UIWebView, VR functions for iOS are currently unusable. Expect them to be implemented in the future._**
 
@@ -10,7 +10,9 @@ This project contains the full source code for Phantom-React, and various sample
 
 The platform is free to use with no limits on distribution.
 
-To report bugs/issues with phantom platform, please file new issues under this repository.
+### _For technical support, take a look at [Phantom-React](https://tobyx-corp.github.io/phantom-react)'s official documentation page!_
+
+_To report bugs/issues regarding the Phantom platform, please file new issues under this repository._
 
 ## Instructions for running sample projects using Testbed app:
 1. Follow directions in documenation to setup dependencies for trying these sample projects with the Phantom Media App.
