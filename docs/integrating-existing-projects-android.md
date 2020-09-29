@@ -2,26 +2,26 @@
 
 !> Android Simulator NOT supported
 
-!> ViroReact doesn't currently support the Android Simulator
+!> PhantomReact doesn't currently support the Android Simulator
 
 ## Integrating with a standard Android application
-Because we built Viro with the intention that it operates like any other React Native module, you should first follow steps listed at React Native's Integration with Existing Apps guide.
+Because we built Phantom with the intention that it operates like any other React Native module, you should first follow steps listed at React Native's Integration with Existing Apps guide.
 
-Once you follow those instructions, come back and follow the instructions in the next section below to add Viro to your project.
+Once you follow those instructions, come back and follow the instructions in the next section below to add Phantom to your project.
 
-?> Each release of Viro is documented here with the React Native version that it was tested with. While other versions were not tested, they may still work with Viro, but the React Native version listed in Releases is the recommended version of React Native to use.
+?> Each release of Phantom is documented here with the React Native version that it was tested with. While other versions were not tested, they may still work with Phantom, but the React Native version listed in Releases is the recommended version of React Native to use.
 
-## Integrating React Viro for Android
-After following React Native's "Integration with Existing Apps" guide above, you should now have an Android project that works with React Native. The following guide will pick up where that guide left off and show you how to add Viro to your project.
+## Integrating React Phantom for Android
+After following React Native's "Integration with Existing Apps" guide above, you should now have an Android project that works with React Native. The following guide will pick up where that guide left off and show you how to add Phantom to your project.
 
-## Installing the latest react-viro package
+## Installing the latest phantom-react package
 From the command line:
 
 1. Navigate to the root of your project
 
-2. Run the following to install the Viro module and add it to your package.json manifest:
+2. Run the following to install the Phantom module and add it to your package.json manifest:
 ```Shell
-npm install -S -E react-viro
+npm install -S -E phantom-react
 ```
 
 ## Updating your Application file
@@ -30,13 +30,13 @@ npm install -S -E react-viro
 2. Add the following import to the top of the application file:
 
 ```Java
-import com.viromedia.bridge.ReactViroPackage;
+import com.phantom.bridge.PhantomReactPackage;
 ```
 
-3. In getPackages() add a comma after new MainReactPackage(), and add the ReactViroPackage to the next line:
+3. In getPackages() add a comma after new MainReactPackage(), and add the PhantomReactPackage to the next line:
 
 ```Java
-new ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf(BuildConfig.VR_PLATFORM))
+new PhantomReactPackage(PhantomReactPackage.Platform.valueOf(BuildConfig.VR_PLATFORM))
 ```
 
 ?> We also support OVR if you want to build for GearVR.
@@ -51,11 +51,11 @@ new ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf(BuildConfig.VR_PLATFO
 3. Open settings.gradle and add the following lines:
 
 ```Groovy
-include ':react_viro', ':arcore_client', ':gvr_common', ':viro_renderer'
-project(':arcore_client').projectDir = new File('../node_modules/react-viro/android/arcore_client')
-project(':gvr_common').projectDir = new File('../node_modules/react-viro/android/gvr_common')
-project(':viro_renderer').projectDir = new File('../node_modules/react-viro/android/viro_renderer')
-project(':react_viro').projectDir = new File('../node_modules/react-viro/android/react_viro')
+include ':phantom_react', ':arcore_client', ':gvr_common', ':phantom_renderer'
+project(':arcore_client').projectDir = new File('../node_modules/phantom-react/android/arcore_client')
+project(':gvr_common').projectDir = new File('../node_modules/phantom-react/android/gvr_common')
+project(':phantom_renderer').projectDir = new File('../node_modules/phantom-react/android/phantom_renderer')
+project(':phantom_react').projectDir = new File('../node_modules/phantom-react/android/phantom_react')
 ```
 Note: If you don't want/need to use AR, then you can leave out the arcore_client config.
 
@@ -84,8 +84,8 @@ targetSdkVersion 28
 ```Groovy
 implementation project(':gvr_common')
     implementation project(':arcore_client')
-    implementation project(path: ':react_viro')
-    implementation project(path: ':viro_renderer')
+    implementation project(path: ':phantom_react')
+    implementation project(path: ':phantom_renderer')
     implementation 'com.google.android.exoplayer:exoplayer:2.7.1'
     implementation 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-7'
     implementation 'com.amazonaws:aws-android-sdk-core:2.7.7'
@@ -140,10 +140,10 @@ Note: If you want to restrict your app to ARCore-only devices, set the android:v
 
 ?> Because of existing issues with AR Core, please ensure that you have disabled instant run in Android Studio before building your application!
 
-## Adding Viro to React-Native
+## Adding Phantom to React-Native
 Now that you've set up your project, copy over the index.*.js and App.js files from the project you created in the Quick Start (Mac/Linux) and copy over the js/ directory.
 
-These files can also be found in the <your_project>/node_modules/react-viro/bin/files/javascript directory. You may need to update the string APP_NAME_HERE in the index.*.js files with your project name.
+These files can also be found in the <your_project>/node_modules/phantom-react/bin/files/javascript directory. You may need to update the string APP_NAME_HERE in the index.*.js files with your project name.
 
 ?> AR only
 

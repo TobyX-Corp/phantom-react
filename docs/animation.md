@@ -1,10 +1,10 @@
 # Animation
 Animating content in your scenes
 
-Animations provide useful feedback to users and add "life" to an application. Viro enables powerful and simple animations on all components.
+Animations provide useful feedback to users and add "life" to an application. Phantom enables powerful and simple animations on all components.
 
 ## Overview
-Animations work by registering animations with ViroAnimations.registerAnimations(), then invoking the animation by using the animation prop of the component being animated.
+Animations work by registering animations with Animations.registerAnimations(), then invoking the animation by using the animation prop of the component being animated.
 
 ## Registering Animations
 Before an animation can be used, it must created and registered. Animations are specified by the following properties:
@@ -19,7 +19,7 @@ Before an animation can be used, it must created and registered. Animations are 
 In the following example, we register an animation that sets the scale of the component to which it is applied to[1.0, 0.6, 1.0], and sets the opacity of said component to 1.0. The animation bounces toward its final value, and lasts for five seconds.
 
 ```JavaScript
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     animateImage:{properties:{scaleX:1.0, scaleY:0.6, scaleZ:1.0, 
                               opacity: 1.0},
                   easing:"Bounce", 
@@ -42,15 +42,15 @@ The animation object prop has the following structure:
 |interruptible	|PropTypes.bool Set to true if this animation can be interrupted. This means if the animation is changed while it is playing, rather than waiting until the current animation finishes, the animation will be interrupted immediately.|
 
 ```JavaScript
-<ViroImage source={require('./res/myimage.jpg')} 
+<Image source={require('./res/myimage.jpg')} 
            position={[0, -1, -2]} 
            scale={[0.1, 0.1, 0.1]}
            animation={{name:'animateImage', run:true}} 
 />
 ```
-In the example above, we apply the animateImage animation (which we registered in the section above) to the <ViroImage>. The <ViroImage> initially has a scale of [0.1, 0.1, 0.1]. animateImage will animate this scale to [1.0, 0.6, 1.0] over 5 seconds.
+In the example above, we apply the animateImage animation (which we registered in the section above) to the <Image>. The <Image> initially has a scale of [0.1, 0.1, 0.1]. animateImage will animate this scale to [1.0, 0.6, 1.0] over 5 seconds.
 
-The animation will run immediately after the <ViroImage> is added to the scene because run is set to true. If run were set to false, you could trigger the animation at any time by setting it to true. After a button press, for example.
+The animation will run immediately after the <Image> is added to the scene because run is set to true. If run were set to false, you could trigger the animation at any time by setting it to true. After a button press, for example.
 
 Note that you can apply a single animation to multiple components.
 
@@ -61,24 +61,24 @@ The full code for this animation is below.
 
 import React, { Component } from 'react';
 import {
-  ViroScene,
-  ViroImage,
-  ViroAnimations,
-} from 'react-viro';
+  Scene,
+  Image,
+  Animations,
+} from 'phantom-react';
 
 var AnimationTest = createReactClass({
   render: function() {
-    <ViroScene>
-        <ViroImage source={require('./res/myimage.jpg')}
+    <Scene>
+        <Image source={require('./res/myimage.jpg')}
                          position={[0, -1, -2]}         
                            scale={[.1, .1, .1]} 
                    animation={{name:'animateImage', 
                               run:true}}  />
-    </ViroScene>
+    </Scene>
   }
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   animateImage:{properties:{scaleX:1, scaleY:.6, scaleZ:1, opacity: 1},  
         easing:"Bounce", duration: 5000},
 });
@@ -89,18 +89,18 @@ Animations can be looped, and the target properties for an animation can be set 
 ```JavaScript
 var AnimationTest = createReactClass({
   render: function() {
-    <ViroScene>
-        <ViroImage source={require('./res/myimage.jpg')}
+    <Scene>
+        <Image source={require('./res/myimage.jpg')}
                     position={[0, -1, -2]}      
                     scale={[.1, .1, .1]}
                   animation={{name:'loopRotate',
                              run:true,
                              loop:true}} />
-    </ViroScene>
+    </Scene>
   }
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   loopRotate:{properties:{rotateY:"+=45"}, duration:1000},
 });
 ```
@@ -110,7 +110,7 @@ The example above rotates an image around the y axis in an infinite loop. The ro
 Suppose you have a series of animations that you wish to run in sequence. For example, you have an animation that moves a component horizontally called moveRight, and an animation that rotates a component called rotate, and you would like to run these one after the other. You can do the following:
 
 ```JavaScript
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   moveRight:{properties:{positionX:"+=0.3"}, duration: 10000},
   rotate:{properties:{rotateZ:"+=45"}, duration:1000},
   rotateAndMovePicture:[
@@ -123,7 +123,7 @@ In the example above, we define an animation chain called rotateAndMovePicture. 
 If you want animations to run in parallel instead of in sequence, simply define an animation as multiple animation chains, as demonstrated in the following snippet. rotateAndMovePicture, when applied, will start both chains at the same time: the component will move right and rotate concurrently.
 
 ```JavaScript
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   moveRight:{properties:{positionX:"+=0.3"}, duration: 10000},
   rotate:{properties:{rotateZ:"+=45"}, duration:1000},
   rotateAndMovePicture:[
@@ -135,7 +135,7 @@ ViroAnimations.registerAnimations({
 Finally, you can also run animation chains, each with multiple sequential steps, concurrently in parallel with one another. The following example makes our component move right, then move back to its original position; while this is happening, the component will also rotate.
 
 ```JavaScript
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     moveRight:{properties:{positionX:"+=0.3"}, duration: 10000},
     moveLeft:{properties:{positionX:"-=0.3", rotateZ:"+=45"}, duration: 10000},
     rotate:{properties:{rotateZ:"+=45"}, duration:1000},
@@ -159,15 +159,15 @@ var InterruptAnimation = createReactClass({
   },
 
   render: function() {
-    <ViroScene>
-        <ViroBox position={[0, -1, -2]}         
+    <Scene>
+        <Box position={[0, -1, -2]}         
                  scale={[0.1, 0.1, 0.1]}
                  onClick={this._switchAnimation}
                  animation={{name:this.state.currentAnim, 
                              run:true, 
                              interruptible: true}}
         />
-    </ViroScene>
+    </Scene>
   },
   
   _switchAnimation() {
@@ -183,7 +183,7 @@ var InterruptAnimation = createReactClass({
    },                                            
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     moveRight:{properties:{positionX:"+=0.3"}, duration: 10000},
     moveLeft:{properties:{positionX:"-=0.3", rotateZ:"+=45"}, duration: 10000},
     rotate:{properties:{rotateZ:"+=45"}, duration:1000},
@@ -192,7 +192,7 @@ ViroAnimations.registerAnimations({
     ]
 });
 ```
-The above sample will render a ViroBox moving from left to right. When clicked, it will start rotating; and when clicked again it will resume moving left to right.
+The above sample will render a Box moving from left to right. When clicked, it will start rotating; and when clicked again it will resume moving left to right.
 
 ## Animation callbacks
 Animation callbacks can be used to perform an action when an animation starts, or after an animation completes. For example, to respond to the end of an animation, add the desired function to the onFinish property of the animation property. Let's look at an example:
@@ -200,15 +200,15 @@ Animation callbacks can be used to perform an action when an animation starts, o
 ```JavaScript
 var AnimationOnFinishTest = createReactClass({
   render: function() {
-    <ViroScene>
-        <ViroImage source={require('./res/myimage.jpg')}
+    <Scene>
+        <Image source={require('./res/myimage.jpg')}
                      position={[0, -1, -2]}         
                      scale={[0.1, 0.1, 0.1]}
                      animation={{name:'animateImage', 
                                 run:true, 
                                 onFinish:{this._onAnimationFinished}}}
         />
-    </ViroScene>
+    </Scene>
   },
   
  _onAnimationFinished(){
@@ -216,7 +216,7 @@ var AnimationOnFinishTest = createReactClass({
   },
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     animateImage:{properties:{scaleX:1, scaleY:.6, scaleZ:1, opacity: 1},
                   easing:"Bounce", duration: 5000},
 });
@@ -224,26 +224,26 @@ ViroAnimations.registerAnimations({
 The function is invoked after the animation has ended. If the animation is looping, the function is invoked at the end of every loop.
 
 ## Animating Materials
-In addition to position, rotation, and scale, the material used by any Viro object can also be animated from one to another. In the example below, we animate a ViroQuad from red to blue.
+In addition to position, rotation, and scale, the material used by any Phantom object can also be animated from one to another. In the example below, we animate a Quad from red to blue.
 
 ```JavaScript
 var AnimationTest = createReactClass({
   render: function() {
     return (
-      <ViroScene >
-          <ViroQuad materials={["redColor"]} 
+      <Scene >
+          <Quad materials={["redColor"]} 
                        position={[0, -.5, -1]}
                        animation={{name:'animateColor', 
                                   run:{true}, 
                                   loop:{false},
                                   delay:3000}}} 
            />
-      </ViroScene>
+      </Scene>
     );
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   redColor: {
     diffuseColor: "#FF0000"
   },
@@ -252,11 +252,11 @@ ViroMaterials.createMaterials({
   },
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     animateColor:{properties:{material:"blueColor"}, duration:3000},
 });
 ```
 Because material animations can move from one material to any other material, you can use this feature to animate between textures, lighting models, and more.
 
 ## Skeletal Animation
-Skeletal animation is a technique for animating complex geometries; for example, to make a humanoid character walk. These animations are typically authored in 3D graphics software, and exported as FBX files. Viro has full support for these animations. For more information, please see the 3D Objects guide.
+Skeletal animation is a technique for animating complex geometries; for example, to make a humanoid character walk. These animations are typically authored in 3D graphics software, and exported as FBX files. Phantom has full support for these animations. For more information, please see the 3D Objects guide.

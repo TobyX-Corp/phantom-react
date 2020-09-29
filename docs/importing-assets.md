@@ -1,19 +1,19 @@
 # Assets
 Loading resources into your scenes
 
-Assets are text or binary resources that are needed for your app. These include images, textures, sounds, videos, and more. For the vast majority of components, including <ViroImage>, <ViroSound>, <ViroVideo>, and more, the asset to be used is specified via the source attribute.
+Assets are text or binary resources that are needed for your app. These include images, textures, sounds, videos, and more. For the vast majority of components, including <Image>, <Sound>, <Video>, and more, the asset to be used is specified via the source attribute.
 
 The source asset accepts both local and remote resources. To use a local resource, use the require function as shown:
 
 ```JavaScript
-<Viro360Image source={require('./res/360_park.jpg')} />
+<Image360 source={require('./res/360_park.jpg')} />
 ```
 In debug builds, local resources are pulled from your running package server. In release builds, local resources are bundled with your application.
 
 To use a remote resource, simply set the source URI, as in the following example:
 
 ```JavaScript
-<Viro360Image source={{uri:"https://www.mywebsite.com/360_park.jpg"}} />
+<Image360 source={{uri:"https://www.mywebsite.com/360_park.jpg"}} />
 ```
 
 ?> Asset naming guidelines
@@ -31,11 +31,11 @@ Video formats: 'm4v', 'mov', 'mp4', 'mpeg', 'mpg', 'webm'
 
 Audio formats: 'aac', 'aiff', 'caf', 'm4a', 'mp3', 'wav'
 
-In addition, Viro adds support for 3D object assets:
+In addition, Phantom adds support for 3D object assets:
 
-3D Object formats: obj, mtl, vrx (Viro Custom 3d model format), gltf, glb, bin, arobject
+3D Object formats: obj, mtl, vrx (Phantom Custom 3d model format), gltf, glb, bin, arobject
 
-?> Viro adds support for these formats only for projects created through the react-viro-cli script. For projects not created with this script, these formats must be added manually, as per the next section.
+?> Phantom adds support for these formats only for projects created through the phantom-react-cli script. For projects not created with this script, these formats must be added manually, as per the next section.
 
 ## Adding Asset Types
 

@@ -1,13 +1,13 @@
 # Particle Effects
 
-Viro's particle system enables developers to create and configure quad emitters for building complex and intricate particle effects. Some examples are smoke, rain, confetti, and fireworks. This development guide will go through several examples of effects that can be created.
+Phantom's particle system enables developers to create and configure quad emitters for building complex and intricate particle effects. Some examples are smoke, rain, confetti, and fireworks. This development guide will go through several examples of effects that can be created.
 
-ViroParticleEmitters are particle factories that create, contain and recycle a pool of particles. Groups of particle emitters can be used in conjunction with one another to create a composite effect. For example, a campfire may include a flame emitter, a smoke emitter, and an ember or sparks emitter. In the near-future Viro will also provide several pre-built emitter templates.
+ParticleEmitters are particle factories that create, contain and recycle a pool of particles. Groups of particle emitters can be used in conjunction with one another to create a composite effect. For example, a campfire may include a flame emitter, a smoke emitter, and an ember or sparks emitter. In the near-future Phantom will also provide several pre-built emitter templates.
 
 Below is a code snippet of a basic ParticleEmitter, one that creates a simple 'Fountain' like effect.
 
 ```JavaScript
-<ViroParticleEmitter
+<ParticleEmitter
   position={[0, 4.5, 0]}
   duration={2000}
   run={true}
@@ -28,7 +28,7 @@ As shown above, there are three steps to creating a particle effect:
 You can see a more comprehensive code sample here.
 
 ## Basic Emitter Properties
-There are two key configurations within the ViroParticleEmitter that you can use to control the aggregate behavior of particles. First, shown below are properties of the emitter itself. These include what image to emit, when to emit, and how long to emit for.
+There are two key configurations within the ParticleEmitter that you can use to control the aggregate behavior of particles. First, shown below are properties of the emitter itself. These include what image to emit, when to emit, and how long to emit for.
 
 |Property|	Description|
 |--|--|
@@ -51,7 +51,7 @@ How long a particle lives for (or how fast a particle dies) is defined by partic
 |Low|	High|	|High|	Particles are produced slowly, and live for a long time. (Possible performance cost)|
 |High|	High|	|High|	Lots of particles, produced quickly, that live for along time. (High performance cost)|
 
-To prevent an unbounded number of particles, the ViroParticleEmitter also provides a maxParticles property.
+To prevent an unbounded number of particles, the ParticleEmitter also provides a maxParticles property.
 
 This number caps the number of live particles per emitter at any point in time. It is important to note that the more particles your scene has, the higher the performance cost. It is recommended to keep maxParticles low when possible.
 
@@ -102,7 +102,7 @@ The first two properties -- velocity and acceleration -- are straightforward: th
 
 A variety of affects can be produced with these two properties. For example, falling, swaying snow can be achieved with a fixed acceleration of -9.81 and a randomized initial horizontal velocity. A similar configuration can be used to make steam particles emanate from a kettle. Note also that these physics properties can be used in conjunction with the animation system. For example, to make a tornado, radiate particles upward in a fountain-like fashion with fixed velocity, then rotate the node clockwise about the Y axis with an animation.
 
-When moving particles, the fixedToEmitter property controls the reference point to use when computing the particle's appearance and movement. When true, Viro uses the emitter's current position; when false, Viro uses each particle's individual spawn location. Under fixedToEmitter = false, particles are not "locked" to the emitter; they can float away. For example, smoke particles from a moving train would continue floating upward from the location they were spawned. Under fixedToEmitter = true, the smoke particles would be "locked" to the train's emitter: they would always move with the train in reference to the emitter's location.
+When moving particles, the fixedToEmitter property controls the reference point to use when computing the particle's appearance and movement. When true, Phantom uses the emitter's current position; when false, Phantom uses each particle's individual spawn location. Under fixedToEmitter = false, particles are not "locked" to the emitter; they can float away. For example, smoke particles from a moving train would continue floating upward from the location they were spawned. Under fixedToEmitter = true, the smoke particles would be "locked" to the train's emitter: they would always move with the train in reference to the emitter's location.
 
 Impulsive forces, to create effects like explosions, are also possible. For example, fireworks require an initial impulse on every particle, each in a different direction from the detonation point. This behavior can be achieved with the explosiveImpulse property in particlePhysics. This property is specified in newton seconds. The detonation position (relative to the particle emitter) may also be specified. The closer particles are to the detonation point, the larger their explosion force.
 

@@ -1,13 +1,13 @@
 # Video
 Adding video to your scenes
 
-Viro supports various components for displaying video. Video can be displayed in 360 degrees, surrounding the user, or on a flat plane, simulating a physical video screen.
+Phantom supports various components for displaying video. Video can be displayed in 360 degrees, surrounding the user, or on a flat plane, simulating a physical video screen.
 
 ## Video Screen
-The <ViroVideo> component can be used to display video on a 2D screen. Like all UI elements, you specify the position in world space. You can also set the width and height of the screen, and set the video via the source attribute, as shown in the example below.
+The <Video> component can be used to display video on a 2D screen. Like all UI elements, you specify the position in world space. You can also set the width and height of the screen, and set the video via the source attribute, as shown in the example below.
 
 ```JavaScript
-<ViroVideo
+<Video
     source={require('./video/myvid.mp4')}
     height={2}
     width={2}
@@ -17,51 +17,51 @@ The <ViroVideo> component can be used to display video on a 2D screen. Like all 
 ```
 Supported video formats are .mov, .mp4, .mpv, and .3gp. The video source may be a remote URL or a local file resource. To invoke with a remote URL, set the source to a URI. For example, {uri:"http://example.org/myvideo.mp4"}. To invoke with a local file resource, use require: require('./myvideo.mp4');.
 
-For a full list of properties, refer to the ViroVideo reference.
+For a full list of properties, refer to the Video reference.
 
 ## 360 Video
-Spherical videos that surround the user can be displayed via the <Viro360Video> component. These videos are displayed as a scene background , behind all other UI elements.
+Spherical videos that surround the user can be displayed via the <Video360> component. These videos are displayed as a scene background , behind all other UI elements.
 
 ```JavaScript
-<Viro360Video
+<Video360
     source={require("./video/myvideo.mp4")}
     onFinish={this._onFinish}
     loop={false} 
 />
 ```
-As with 2D videos, 360 video sources may be remote URLs or local file resources. For a full list of properties, refer to the Viro360Video reference.
+As with 2D videos, 360 video sources may be remote URLs or local file resources. For a full list of properties, refer to the Video360 reference.
 
 ## Alpha Video (Chroma Key Filtering)
-Viro supports rendering partially transparent video over any VR, AR, or 3D scene. For AR scenes in particular, this enables "hologram" type experiences like Will.I.Am on CNN or Princess Leia in Star Wars.
+Phantom supports rendering partially transparent video over any VR, AR, or 3D scene. For AR scenes in particular, this enables "hologram" type experiences like Will.I.Am on CNN or Princess Leia in Star Wars.
 
 Alpha video works via "chroma key filtering". Chroma key filtering removes (makes transparent) all colors from a video that are within an epsilon range of a target color. This technique is useful when rendering "green screen" or "blue screen" videos, as is commonly seen in newscasting and motion pictures. The videos in their raw form look something like the image below.
 
-The code below shows how to enable chroma-key filtering, by setting the chromaKeyFilteringColor property on the <ViroMaterial> being used by the <ViroVideo>.
+The code below shows how to enable chroma-key filtering, by setting the chromaKeyFilteringColor property on the <Material> being used by the <Video>.
 
 ```JavaScript
 render: function() {
   return (
-    <ViroScene>
-       <ViroVideo source={require('./video/myvid.mp4')}
+    <Scene>
+       <Video source={require('./video/myvid.mp4')}
                   height={2} width={2}
                   loop={true}
                   position={[0, 2, -5]}
                   materials={["chromaKeyFilteredVideo"]}
        />
-    </ViroScene>
+    </Scene>
   );
 },
 
 ...
  
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   chromaKeyFilteredVideo : {
     chromaKeyFilteringColor: "#00FF00"
   },
 });
 ```
 ## Manipulating Video
-Both the <ViroVideo> and <Viro360Video> components enable you to:
+Both the <Video> and <Video360> components enable you to:
 
 - Adjust volume via the volume property
 
@@ -93,8 +93,8 @@ var VideoTest = React.createClass({
   },
   
   render: function() {
-    <ViroScene>
-      <Viro360Video
+    <Scene>
+      <Video360
           ref={VIDEO_REF}
           paused={false}
           source={require('./res/test-video.mp4'}
@@ -106,10 +106,10 @@ var VideoTest = React.createClass({
           onError={this._onVideoError} />   
       />
                            
-      <ViroText position={[2, -2, -5])} text="Restart"
+      <Text position={[2, -2, -5])} text="Restart"
                 onClick={this._restartVideo} 
                 transformBehaviors={["billboard"]}/>
-    </ViroScene>
+    </Scene>
   },
   
   _onVideoFinished(){
@@ -126,5 +126,5 @@ var VideoTest = React.createClass({
   },
 });
 ```
-In particular, the example above shows how to respond to the various video callbacks, and provides an example of how to use the seekToTime function. When the <ViroText> component is tapped, _restartVideo() is invoked, which sets the time back to zero.
+In particular, the example above shows how to respond to the various video callbacks, and provides an example of how to use the seekToTime function. When the <Text> component is tapped, _restartVideo() is invoked, which sets the time back to zero.
 

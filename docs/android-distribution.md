@@ -1,6 +1,6 @@
 # Distribution
 
-To distribute your application follow the instructions for each respective platform. If you are distributing with Viro, please follow our Attribution guidelines. Links provided below.
+To distribute your application follow the instructions for each respective platform. If you are distributing with Phantom, please follow our Attribution guidelines. Links provided below.
 
 Android Cardboard Distribution:
 https://developers.google.com/vr/distribute/cardboard/
@@ -56,31 +56,31 @@ Depending on you users and application, you might need to target and build with 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.virosample">
+    package="com.example.phantomsample">
   
     <!-- Required to read the paired viewer's distortion parameters -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     ... other permissions ...
    
     <!-- Perform our override here -->
-    <uses-sdk tools:overrideLibrary="com.viro.renderer"/>
+    <uses-sdk tools:overrideLibrary="com.phantom.renderer"/>
 ```
 Depending on the features that you want to use in your application, there is also a minimum sdk version number to which you can lower the minSdkVersion towards for them to function properly. These features and their corresponding numbers are as shown below:
 
-ViroSceneView features (3D rendering without AR / VR)	API level 18, as restricted by [OpenGL ES 3.0](https://developer.android.com/guide/topics/graphics/opengl.html).
+SceneView features (3D rendering without AR / VR)	API level 18, as restricted by [OpenGL ES 3.0](https://developer.android.com/guide/topics/graphics/opengl.html).
 
-ViroViewARCore features (3D rendering with AR Core)	[API level 24](https://developers.google.com/ar/develop/java/enable-arcore) for an AR Required App.
+ViewARCore features (3D rendering with AR Core)	[API level 24](https://developers.google.com/ar/develop/java/enable-arcore) for an AR Required App.
 
-ViroViewGVR features (3D Rendering with VR)	[API level 19 for cardboard compatibility.](https://developers.google.com/vr/develop/android/get-started) [API level 25 for daydream compatibility.](https://developers.google.com/vr/develop/android/get-started)
+ViewGVR features (3D Rendering with VR)	[API level 19 for cardboard compatibility.](https://developers.google.com/vr/develop/android/get-started) [API level 25 for daydream compatibility.](https://developers.google.com/vr/develop/android/get-started)
 
-You can also target a wider range of Android SDK versions by building a hybrid application made out of mutually exclusive 3D ViroCore and 2D Android layout experiences. These applications delay the creation and use of AR / VR components and only inflates them on an AR / VR capable device. Else, on non-compatible devices, developers can then display their original 2D Android content as per normal. This drastically helps increase the application's audience size and reach.
+You can also target a wider range of Android SDK versions by building a hybrid application made out of mutually exclusive 3D PhantomCore and 2D Android layout experiences. These applications delay the creation and use of AR / VR components and only inflates them on an AR / VR capable device. Else, on non-compatible devices, developers can then display their original 2D Android content as per normal. This drastically helps increase the application's audience size and reach.
 
 ## Additional Android Device Type Support
 An application's audience size, or the number of supported devices are ultimately defined by the Google Play Store. It filters out in-compatible devices, based on defined features in your manifest file. For example, devices without gyroscope sensors will be deemed incompatible if your app defines a gyroscope uses-feature in your manifest. For VR / AR, features like openGL, accelerometer and gyroscopes are required.
 
 However, for hybrid apps with exclusive 2D + optional AR experiences, there are situations where you may not want to use the gyroscope sensor at all - say, for your non-AR experiences on older devices. Currently, your app is ultimately 'blocked' from being downloaded by a larger audience with incompatible device types. For example, the gyroscope uses-feature tag required for AR then effectively blocks a large portion of your customers from downloading your app (those who don't have a gyroscope sensor), even though your app is "AR Optional" and has an exclusive 2D layout experience!
 
-Thus, to get around this problem, we've provided you a list of uses-feature overrides that you can define in your manifest as shown below. These overrides effectively makes required features (like gyroscope / openGL / camera) optional instead. As a result, the Google Play store will then be able to identify a larger selection of compatible devices, where you can then dynamically determine AR/VR/Rendering capability and inflate your Android 2D or Viro Core 3D views as needed.
+Thus, to get around this problem, we've provided you a list of uses-feature overrides that you can define in your manifest as shown below. These overrides effectively makes required features (like gyroscope / openGL / camera) optional instead. As a result, the Google Play store will then be able to identify a larger selection of compatible devices, where you can then dynamically determine AR/VR/Rendering capability and inflate your Android 2D or Phantom Core 3D views as needed.
 
 !> When using Overriding Tags:
 
@@ -96,4 +96,4 @@ Note that you can also pick any set of overrides above that you desire:
 <uses-feature android:name="android.hardware.microphone" android:required="false" tools:replace="required" />
 ```
 
-Here's an example of the total number of supported devices that you can target on the Google Play store with the above overrides on a Viro Core Hello World AR project:
+Here's an example of the total number of supported devices that you can target on the Google Play store with the above overrides on a Phantom Core Hello World AR project:

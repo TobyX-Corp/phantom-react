@@ -2,13 +2,13 @@
 
 This documentation was adapted from React Native's Integration with Existing Apps guide.
 
-The instructions below explain how to integrate ViroReact with your existing iOS Swift based project. We use the following Github project as an example: https://github.com/austinzheng/swift-2048.
+The instructions below explain how to integrate PhantomReact with your existing iOS Swift based project. We use the following Github project as an example: https://github.com/austinzheng/swift-2048.
 
-We'll take this app and modify it by adding a ViroReact AR view to the application. This doc will show you how to:
+We'll take this app and modify it by adding a PhantomReact AR view to the application. This doc will show you how to:
 
-1. Add React Native and ViroReact to your existing Swift application.
-2. Launch ViroReact from your existing Swift Application.
-3. Pass parameters from your native app to Viro.
+1. Add React Native and PhantomReact to your existing Swift application.
+2. Launch PhantomReact from your existing Swift Application.
+3. Pass parameters from your native app to Phantom.
 
 ?> Note the following has been tested with React Native 0.55.1, XCode 9 and Swift Ver. 4
 
@@ -80,9 +80,9 @@ target 'swift-2048' do
   pod 'glog', :podspec => './node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => './node_modules/react-native/third-party-podspecs/Folly.podspec'
   
-  # Viro Dependencies
-  pod 'ViroReact', :path => './node_modules/react-viro/ios/'
-  pod 'ViroKit', :path => './node_modules/react-viro/ios/dist/ViroRenderer/'
+  # Phantom Dependencies
+  pod 'PhantomReact', :path => './node_modules/phantom-react/ios/'
+  pod 'PhantomKit', :path => './node_modules/phantom-react/ios/dist/PhantomRenderer/'
 end
 ```
 ## Editing React Native Podfiles
@@ -116,33 +116,33 @@ import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 
 import {
-  ViroARSceneNavigator,
-} from 'react-viro';
+  ARSceneNavigator,
+} from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 
 var HelloWorldScene = require('./js/TestScene');
 
-var ViroSample = createReactClass({
+var Sample = createReactClass({
   render: function() {
-    // The 'viroAppProps={{...this.props}}' line below is used to pass
-    // the initial properties from this base component to the ViroARSceneNavigator
+    // The 'AppProps={{...this.props}}' line below is used to pass
+    // the initial properties from this base component to the ARSceneNavigator
     // which will allow the scenes to access them.
-    let viroAppProps = {...this.props};
+    let AppProps = {...this.props};
     
     return (
-      <ViroARSceneNavigator
+      <ARSceneNavigator
         initialScene={{
           scene: HelloWorldScene,
         }}
-        viroAppProps={viroAppProps}
+        AppProps={AppProps}
         apiKey={"API_KEY_GOES_HERE"}
       />
     );
   }
 });
 
-AppRegistry.registerComponent('RNHighScores', () => ViroSample);
+AppRegistry.registerComponent('RNHighScores', () => Sample);
 ```
 ## TestScene.js
 The index.js file will load TestScene.js initially. This file will be located under the js/TestScene.js from your project root. This scene will just display the high score text in front us in AR:
@@ -155,9 +155,9 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-} from 'react-viro';
+  ARScene,
+  Text,
+} from 'phantom-react';
   
 var createReactClass = require('create-react-class');
 
@@ -165,11 +165,11 @@ var TestScene = createReactClass({
 
   render: function() {
    
-    var highScore = "High Score: " + this.props.sceneNavigator.viroAppProps.highScore;
+    var highScore = "High Score: " + this.props.sceneNavigator.AppProps.highScore;
     return (
-     <ViroARScene>
-       <ViroText width={2} text={highScore} style={styles.helloWorldTextStyle} position={[0, 0, -4]} />
-     </ViroARScene>
+     <ARScene>
+       <Text width={2} text={highScore} style={styles.helloWorldTextStyle} position={[0, 0, -4]} />
+     </ARScene>
     );
   },
 });
@@ -218,7 +218,7 @@ RCT_EXTERN void RCTSurfaceMinimumSizeAndMaximumSizeFromSizeAndSizeMeasureMode(
 
 2. Find the Info.plist file for the project under Supporting files. In Xcode, add the NSCameraUsageDescription property to the Info.plist. This flag is also known as 'Privacy - Camera Usage Description'. Add 'For AR' as the description or whatever description you think fits.
 ## Adding a React Root Controller
-Now we are finally ready to add our Viro React component to our app!
+Now we are finally ready to add our Phantom React component to our app!
 
 Now open the ViewController.swift file in XCode, and add the following function:
 
@@ -260,7 +260,7 @@ Now to run your app do the following:
 
 2) In XCode, goto your app and run your application. Now compile and run!
 
-When the app launches, tap the high scores text and React Native will launch with a Viro AR View that displays the high score text :)
+When the app launches, tap the high scores text and React Native will launch with a Phantom AR View that displays the high score text :)
 
 ## Building for Production
 When you are ready to build for release, there is one more step needed. You'll need to add a bundle step to build your assets for release. Selected the project target, goto 'Build Phases', add the following Build Phase called 'Bundling for React Native':

@@ -21,20 +21,20 @@ and converts the given polar coordinates into cartesian coordinates based on the
 Furthermore, polar coordinates of [1, 0, 0] give the forward vector [0, 0, -1] and increasing the theta sweeps the vector to the right whereas increasing the phi value sweeps the vector upwards. Refer to the image below.
 
 Example use:
-To take advantage of this utility, simply import ViroUtils in top of your scene and then create an alias to the function like below:
+To take advantage of this utility, simply import Utils in top of your scene and then create an alias to the function like below:
 
 ```JavaScript
 import {
-  ViroUtils,
-} from 'react-viro';
+  Utils,
+} from 'phantom-react';
 ```
 
-let polarToCartesian = ViroUtils.polarToCartesian;
+let polarToCartesian = Utils.polarToCartesian;
 
 Then wherever you use position, simply replace it with the function polarToCartesian:
 
 ```JavaScript
-<Viro3DObject source={require('./res/skeleton.obj')}
+<Object3D source={require('./res/skeleton.obj')}
                           position={polarToCartesian([1, 30, 30])}
                           materials={["skeleton"]} />
 ```

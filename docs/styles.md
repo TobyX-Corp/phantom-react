@@ -2,13 +2,13 @@
 
 ## Layout Styles
 
-Layout styles used within ViroFlexView components. Please refer to https://facebook.github.io/react-native/docs/layout-props for more information.
+Layout styles used within FlexView components. Please refer to https://facebook.github.io/react-native/docs/layout-props for more information.
 
 ?> Border related layout props are currently not supported.
 
 ## Text Styles
 
-The styles below only apply to ViroText. Please see that component for more info on how to define these.
+The styles below only apply to Text. Please see that component for more info on how to define these.
 
 **color**	ColorPropType
 

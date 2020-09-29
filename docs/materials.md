@@ -1,8 +1,8 @@
-# ViroMaterials
+# Materials
 
-Materials are the set of shading attributes that define the appearance of a geometry's surfaces when rendered. Each object in a scene can be assigned one or more materials. All UI elements, and most basic 3D models, utilize only one material. Complex 3D objects, represented by <Viro3DObject>, typically have multiple materials, one for each defined mesh surface in the 3D object.
+Materials are the set of shading attributes that define the appearance of a geometry's surfaces when rendered. Each object in a scene can be assigned one or more materials. All UI elements, and most basic 3D models, utilize only one material. Complex 3D objects, represented by <Object3D>, typically have multiple materials, one for each defined mesh surface in the 3D object.
 
-The final color of each pixel on a surface is determined by both the Material attributes and the parameters of each <ViroLight> in the Scene. For more information refer to the Lighting and Materials Guide.
+The final color of each pixel on a surface is determined by both the Material attributes and the parameters of each <Light> in the Scene. For more information refer to the Lighting and Materials Guide.
 
 ## Methods
 
@@ -12,7 +12,7 @@ Create materials is a static takes a key/value of objects that conform to Materi
 
 Example showing the creation of two materials:
 
-ViroMaterials.createMaterials({ earth: { shininess: 2.0, lightingModel: "Lambert", diffuseTexture: require('./res/earth_texture.jpg'), }, moon: { shininess: 2.0, lightingModel: "Constant", diffuseTexture: require('./res/moon_texture.jpg'), }, });
+Materials.createMaterials({ earth: { shininess: 2.0, lightingModel: "Lambert", diffuseTexture: require('./res/earth_texture.jpg'), }, moon: { shininess: 2.0, lightingModel: "Constant", diffuseTexture: require('./res/moon_texture.jpg'), }, });
 
 **static deleteMaterials(materials)**
 
@@ -147,7 +147,7 @@ Default is 'Linear'.
 
 **mipFilter**	ReactPropTypes.oneOf(['Nearest', 'Linear'])
 
-Mipmapping increases rendering performance when rendering textures at small sizes. When used, Viro will create scaled down versions of the texture, and during rendering will sample the version that's closest to the size of the surface being rendered.
+Mipmapping increases rendering performance when rendering textures at small sizes. When used, Phantom will create scaled down versions of the texture, and during rendering will sample the version that's closest to the size of the surface being rendered.
 
 'Nearest' filtering will return the color from the mip-level closest to the size of the rendered surface.
 
@@ -157,7 +157,7 @@ Mipmapping increases rendering performance when rendering textures at small size
 
 A normal map texture which can be a remote URL or a local file resource. PNG and JPG images accepted.
 
-Normal maps define the orientation of the surface at each point for use in lighting. Viro treats the R, G, and B components of each pixel in the normal map as the X, Y, and Z components of a surface normal vector. Normal maps are often used to simulate rough surfaces or to add details to otherwise smooth surfaces.
+Normal maps define the orientation of the surface at each point for use in lighting. Phantom treats the R, G, and B components of each pixel in the normal map as the X, Y, and Z components of a surface normal vector. Normal maps are often used to simulate rough surfaces or to add details to otherwise smooth surfaces.
 
 To invoke with remote url:
 {uri:"http://example.org/myimage.png"}
@@ -166,7 +166,7 @@ require('./image.png');
 
 **readsFromDepthBuffer**	ReactPropTypes.bool
 
-Viro tracks the depth of each object in the scene with a depth buffer. This way the renderer can determine which surfaces are on top of (occlude) others from the point of view of the user.
+Phantom tracks the depth of each object in the scene with a depth buffer. This way the renderer can determine which surfaces are on top of (occlude) others from the point of view of the user.
 
 True if surfaces using this material should read from the depth buffer. By doing so, the surface first checks if any other surface is closer to the user: if so, the surface will not appear (it is occluded). Defaults to true.
 
@@ -219,7 +219,7 @@ Mirror: Similar to repeat, but the range reverses each time the limit is exceede
 
 **writesToDepthBuffer**	ReactPropTypes.bool
 
-Viro tracks the depth of each object in the scene with a depth buffer. This way the renderer can determine which surfaces are on top of (occlude) others from the point of view of the user.
+Phantom tracks the depth of each object in the scene with a depth buffer. This way the renderer can determine which surfaces are on top of (occlude) others from the point of view of the user.
 
 Set this to true if surfaces using this material should write to the depth buffer. By doing so, any surfaces that read from the depth buffer will only appear if they are at a shallower depth than this material (e.g. if they are closer to the user). Defaults to true.
 

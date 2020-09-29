@@ -1,18 +1,18 @@
 # Scene Navigation
 
-The <Viro*SceneNavigator> handles the transitions between <ViroScene> objects. It enables the 3D equivalent of a navigation stack.
+The <SceneNavigator> handles the transitions between <Scene> objects. It enables the 3D equivalent of a navigation stack.
 
-Viro displays the scene at the top of the stack. To move to a new scene, simply push that scene onto the navigation stack. To return to the previous scene, pop the current scene off the stack. The Scene Navigator itself can always be retrieved for these operations via each Scene's sceneNavigator property.
+Phantom displays the scene at the top of the stack. To move to a new scene, simply push that scene onto the navigation stack. To return to the previous scene, pop the current scene off the stack. The Scene Navigator itself can always be retrieved for these operations via each Scene's sceneNavigator property.
 
-The following is a simple example. Below we have a <ViroVRSceneNavigator> that renders a simple initial scene.
+The following is a simple example. Below we have a <VRSceneNavigator> that renders a simple initial scene.
 
 ```JavaScript
 var FirstScene = require('./FirstScene');
 
-var ViroSceneNav = React.createClass({
+var SceneNav = React.createClass({
   render: function() {
     return (
-      <ViroVRSceneNavigator
+      <VRSceneNavigator
         initialScene={{
           scene: FirstScene,
         }}
@@ -29,11 +29,11 @@ var SecondScene = require('./SecondScene');
 var FirstScene = React.createClass({
   render: function() {
     return (
-      <ViroScene>
-        <ViroImage source={require('./res/image.jpg')} 
+      <Scene>
+        <Image source={require('./res/image.jpg')} 
                    position={[0, 0, -5]} 
                    onClick={this._pushNextScene}/>            
-      </ViroScene>
+      </Scene>
     );
   },
   
@@ -57,7 +57,7 @@ Jump is used to quickly move from scene to scene on the navigation stack. If the
 
 Jumping is useful for applications that frequently switch between a number of scenes. Jumping is also optimized to be faster than doing the same via push and pop.
 
-Note that to jump correctly, each scene requires a scene key. The scene key identifies the scene, enabling Viro to recognize when said scene is already on the stack so we can quickly jump to it.
+Note that to jump correctly, each scene requires a scene key. The scene key identifies the scene, enabling Phantom to recognize when said scene is already on the stack so we can quickly jump to it.
 
 ```JavaScript
 var SecondScene = require('./SecondScene');
@@ -65,11 +65,11 @@ var SecondScene = require('./SecondScene');
 var FirstScene = React.createClass({
   render: function() {
     return (
-      <ViroScene>
-        <ViroImage source={require('./res/image.jpg')} 
+      <Scene>
+        <Image source={require('./res/image.jpg')} 
                    position={[0, 0, -5]} 
                    onClick={this._jumpNextScene}/>            
-      </ViroScene>
+      </Scene>
     );
   },
   
@@ -89,11 +89,11 @@ var SecondScene = require('./SecondScene');
 var FirstScene = React.createClass({
   render: function() {
     return (
-      <ViroScene>
-        <ViroImage source={require('./res/image.jpg')} 
+      <Scene>
+        <Image source={require('./res/image.jpg')} 
                    position={[0, 0, -5]} 
                    onClick={this._replaceNextScene}/>            
-      </ViroScene>
+      </Scene>
     );
   },
   
@@ -105,7 +105,7 @@ var FirstScene = React.createClass({
 module.exports = FirstScene;
 ```
 ## Passing Props from Scene to Scene
-As with most mobile apps, you may also need to pass information through different experiences, or scenes. For example, if a user selects an item from a virtual menu to be then displayed in a newly pushed scene, your application may need to propagate additional information related to the selected item into the new scene. In Viro, there are 3 ways that you can pass information through scenes.
+As with most mobile apps, you may also need to pass information through different experiences, or scenes. For example, if a user selects an item from a virtual menu to be then displayed in a newly pushed scene, your application may need to propagate additional information related to the selected item into the new scene. In Phantom, there are 3 ways that you can pass information through scenes.
 
 Option 1: Using passProps
 
@@ -114,7 +114,7 @@ If you are looking to pass static properties to your next scene, you can use the
 ```JavaScript
 // For your initial scene, you can populate passProps as part of 
 // the initialScene dictionary, using the following syntax:
-<ViroARSceneNavigator 
+<ARSceneNavigator 
           apiKey="API_KEY_HERE"
           initialScene={{
                       scene:InitialARScene, 
@@ -131,25 +131,25 @@ this.props.sceneNavigator.jump("Shop", {
 ```
 Then in our InitialARScene, you should be able to reference your value with this.props.displayObject.
 
-Option 2: Using viroAppProps
+Option 2: Using AppProps
 
-The scene navigator object is actually passed as a prop to each scene that you have. If you are using ViroSceneNavigator the prop is called sceneNavigator. If you are using ViroARSceneNavigator it's called arSceneNavigator. The navigators have a dictionary object called viroAppProps which you can use as global dictionary to store and pass values across your app. This can be used to maintain application state.
+The scene navigator object is actually passed as a prop to each scene that you have. If you are using SceneNavigator the prop is called sceneNavigator. If you are using ARSceneNavigator it's called arSceneNavigator. The navigators have a dictionary object called AppProps which you can use as global dictionary to store and pass values across your app. This can be used to maintain application state.
 
 ```JavaScript
-// For your initial scene, you treat viroAppProps as a 
+// For your initial scene, you treat AppProps as a 
 // global dictionary container with which to pass information.
-<ViroARSceneNavigator 
+<ARSceneNavigator 
           apiKey="API_KEY_HERE"
           initialScene={{scene:InitialARScene}}
-          viroAppProps={{displayObject:false}}
+          AppProps={{displayObject:false}}
         />
 
 // To pass information from the current scene to the next, simply
 // reference the dictionary with the sceneNavigator that is passed
 // to each scene.
-this.props.sceneNavigator.viroAppProps={displayObject:true};
+this.props.sceneNavigator.AppProps={displayObject:true};
 ```
-Then in our InitialARScene, you should be able to check your value with this.props.sceneNavigator.viroAppProps.displayObject.
+Then in our InitialARScene, you should be able to check your value with this.props.sceneNavigator.AppProps.displayObject.
 
 Option 3: Using Redux
 

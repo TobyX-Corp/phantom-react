@@ -1,9 +1,9 @@
 # Troubleshooting
 
-This page documents some of the common scenarios that you might run into while developing on Viro. If you are facing an issue that is not covered here, please open an issue on our github here.
+This page documents some of the common scenarios that you might run into while developing on Phantom. If you are facing an issue that is not covered here, please open an issue on our github here.
 
 ## 1. My screen appears just black.
-If you are using Viro React 2.16 or below then your application could be missing keys. Make sure you include your key emailed to you when you signed up here, in the App.js. Note: Viro React 2.17 and above does NOT use an API key for applications
+If you are using Phantom React 2.16 or below then your application could be missing keys. Make sure you include your key emailed to you when you signed up here, in the App.js. Note: Phantom React 2.17 and above does NOT use an API key for applications
 
 ## 2. My android app shows an old scene, when I restart the app.
 The android platform caches the scene from last run. If you are not seeing updates to the scene on code changes, hit reload using developer menu.
@@ -12,10 +12,10 @@ The android platform caches the scene from last run. If you are not seeing updat
 If your app started crashing repeatedly after changing scenes, you may need to clear the application cache by either clearing data or by uninstalling and installing the app.
 
 ## 4. React Developer menu does not appear on my android app.
-If you are developing on Cardboard and Nougat device, then make sure to set the debug flag in ViroSceneNavigator to true in your App.js or index.js file
+If you are developing on Cardboard and Nougat device, then make sure to set the debug flag in SceneNavigator to true in your App.js or index.js file
 
 ```JavaScript
-<ViroSceneNavigator apiKey="API_KEY_HERE"
+<SceneNavigator apiKey="API_KEY_HERE"
        initialScene={{scene: scene}}
        vrModeEnabled={this.props.vrMode}
        debug={this.props.debug} // set this to true

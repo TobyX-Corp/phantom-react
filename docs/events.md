@@ -1,21 +1,21 @@
 # Input Events
 
-Input events are triggered through controllers like the Daydream Controller or Oculus Gear Touchpad. Viro UI controls respond to input events via event handlers in a bubbled up fashion: events are passed up the view hierarchy until they encounter a component that can handle and potentially swallow the event.
+Input events are triggered through controllers like the Daydream Controller or Oculus Gear Touchpad. Phantom UI controls respond to input events via event handlers in a bubbled up fashion: events are passed up the view hierarchy until they encounter a component that can handle and potentially swallow the event.
 
 There are many kinds of events: onHover, onClick, onClickState, onDrag, onScroll, onSwipe, onFuse, and onTouch. Not all components can respond to all events; please refer to each component's properties in the API reference for specifics. The details of each event type and sample code are described below.
 
-All triggered events originate from a given controller input source. This allows developers to easily identify which input button is being pressed, and from which hand held controller. Each Viro event handler callback provides a unique numeric source identifier that corresponds to an input source on the physical controller. You can view a mapping of input source IDs to Gear, Cardboard and Daydream below.
+All triggered events originate from a given controller input source. This allows developers to easily identify which input button is being pressed, and from which hand held controller. Each Phantom event handler callback provides a unique numeric source identifier that corresponds to an input source on the physical controller. You can view a mapping of input source IDs to Gear, Cardboard and Daydream below.
 
 ## Event Handlers
-These methods are used to register behaviors to take effect when the user interacts with Viro UI Controls.
+These methods are used to register behaviors to take effect when the user interacts with Phantom UI Controls.
 
 **onClick(position, source)**
 
-Viro components fire onClick events when the user taps while focused on a component.
+Phantom components fire onClick events when the user taps while focused on a component.
 
 **onClickState(state, position, source)**
 
-Viro components fire onClickState events for each "click state" the component passes through during a single click: click down, click up, and clicked.
+Phantom components fire onClickState events for each "click state" the component passes through during a single click: click down, click up, and clicked.
 
 State Numeric Value	Description
 
@@ -27,23 +27,23 @@ State Numeric Value	Description
 
 **onHover(isHovering, position, source)**
 
-Viro components fire onHover events when the user focuses on a component with his reticle. In AR this is triggered, if the object is "focused upon" and positioned in the center of the view screen.
+Phantom components fire onHover events when the user focuses on a component with his reticle. In AR this is triggered, if the object is "focused upon" and positioned in the center of the view screen.
 
 **onDrag(position, source)**
 
-Viro components fire onDrag events when they are being dragged by the user; that is, when the user performs a click down on a view, holds that click, and then physically moves the controller (or tilts the headset). The view will automatically drag in VR, and as it does so, the onDrag event callback is continually triggered with the latest 3D location of the object. It is also important to note that onDrag must be assigned to a Viro component to make it draggable.
+Phantom components fire onDrag events when they are being dragged by the user; that is, when the user performs a click down on a view, holds that click, and then physically moves the controller (or tilts the headset). The view will automatically drag in VR, and as it does so, the onDrag event callback is continually triggered with the latest 3D location of the object. It is also important to note that onDrag must be assigned to a Phantom component to make it draggable.
 
 **onFuse(source)**
 
-Viro components fire onFuse events when the user hovers his or her reticle over the component and remain hovered for timeToFuse milliseconds. The timeToFuse parameter is optional and is defaulted to 2000ms.
+Phantom components fire onFuse events when the user hovers his or her reticle over the component and remain hovered for timeToFuse milliseconds. The timeToFuse parameter is optional and is defaulted to 2000ms.
 
 **onScroll(scrollPosition, source)**
 
-Viro components fire onScroll events when they are scrolled on by the user; that is, when the user scrolls on a touch pad while hovering on top of the targeted view. The distance the user has scrolled by is given as a unit ratio of the touch pad from 0.0 to 1.0 for both X and Y coordinates.
+Phantom components fire onScroll events when they are scrolled on by the user; that is, when the user scrolls on a touch pad while hovering on top of the targeted view. The distance the user has scrolled by is given as a unit ratio of the touch pad from 0.0 to 1.0 for both X and Y coordinates.
 
 **onSwipe(swipeState, source)**
 
-Viro components fire onSwipe events when the user swipes in a specific direction on a controller's touch pad, while hovering on top of the targeted view.
+Phantom components fire onSwipe events when the user swipes in a specific direction on a controller's touch pad, while hovering on top of the targeted view.
 
 State Numeric Value	
 
@@ -57,7 +57,7 @@ State Numeric Value
 
 **onTouch(touchState, touchPosition, source)**
 
-Viro components fire onTouch events when the user performs a touch gesture on the touch pad of the physical control.
+Phantom components fire onTouch events when the user performs a touch gesture on the touch pad of the physical control.
 
 State Numeric Value	Description
 
@@ -68,7 +68,7 @@ State Numeric Value	Description
 3	                Touch Up: triggered after the user is no longer in physical contact with the touch pad after a Touch Down action
 
 ## Example Code
-Here is a code snippet where we implement several event callbacks for a <ViroImage> within a scene.
+Here is a code snippet where we implement several event callbacks for a <Image> within a scene.
 
 ```JavaScript
 'use strict';
@@ -76,15 +76,15 @@ Here is a code snippet where we implement several event callbacks for a <ViroIma
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ViroScene,
-  ViroImage,
-} from 'react-viro';
+  Scene,
+  Image,
+} from 'phantom-react';
 
 var OnHoverExample = React.createClass({
   render: function() {
     return (
-      <ViroScene>
-          <ViroImage source={require('./res/myimg.jpg')} 
+      <Scene>
+          <Image source={require('./res/myimg.jpg')} 
                    position={[0, -.5, -2]} scale={[.1, .1, .1]} 
                    onClick={this._onClick}
                    onClickState={this._onClickState}
@@ -94,7 +94,7 @@ var OnHoverExample = React.createClass({
                    onSwipe={this._onSwipe}
                    onTouch={this._onTouch}
                    onFuse={{callback:this._onFuse, timeToFuse:3000}}/>
-      </ViroScene>
+      </Scene>
     );
   }, 
     
@@ -166,24 +166,24 @@ We can also assign the same event handler callback to multiple objects. You can 
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  ViroScene,
-  ViroImage,
-} from 'react-viro';
+  Scene,
+  Image,
+} from 'phantom-react';
 
 var OnHoverExample = React.createClass({
   render: function() {
     return (
-      <ViroScene>
-          <ViroImage source={require('./res/myimg.jpg')} 
+      <Scene>
+          <Image source={require('./res/myimg.jpg')} 
                    position={[0, -.5, -2]} scale={[.1, .1, .1]} 
                    onClick={this._onClick("Image 1")}/>
-        <ViroImage source={require('./res/myimg.jpg')} 
+        <Image source={require('./res/myimg.jpg')} 
                    position={[0, 0, -2]} scale={[.1, .1, .1]} 
                    onClick={this._onClick("Image 2")}/>
-        <ViroImage source={require('./res/myimg.jpg')} 
+        <Image source={require('./res/myimg.jpg')} 
                    position={[0, .5, -2]} scale={[.1, .1, .1]} 
                    onClick={this._onClick("Image 3")}/>           
-      </ViroScene>
+      </Scene>
     );
   }, 
     

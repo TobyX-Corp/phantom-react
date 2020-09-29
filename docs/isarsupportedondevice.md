@@ -18,17 +18,17 @@ Note:
 Per ARCore docs, in the notSupportedCallback we now return a String value between UNSUPPORTED, UNKNOWN or TRANSIENT. If ARCore returned TRANSIENT, the application should check back again soon for an updated state value.
 
 Example Use:
-To take advantage of this utility, simply import ViroUtils on top of your scene and create an alias to the function like below:
+To take advantage of this utility, simply import Utils on top of your scene and create an alias to the function like below:
 
 ```JavaScript
 import {
-  ViroUtils,
-} from 'react-viro';
+  Utils,
+} from 'phantom-react';
 ```
 
-var isARSupportedOnDevice = ViroUtils.isARSupportedOnDevice;
+var isARSupportedOnDevice = Utils.isARSupportedOnDevice;
 
-Then, wherever in your scene you want to show a Viro AR Scene, you can check for AR support. For example, in the following snippet, we make this check in componentWillMount(). This way we know what to render based on compatibility:
+Then, wherever in your scene you want to show a Phantom AR Scene, you can check for AR support. For example, in the following snippet, we make this check in componentWillMount(). This way we know what to render based on compatibility:
 
 ```JavaScript
 componentWillMount() {
