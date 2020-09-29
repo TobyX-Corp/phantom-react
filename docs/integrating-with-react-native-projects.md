@@ -17,8 +17,8 @@ For iOS:
 ```
 "dependencies": {
     "react": "16.3.1",
-    "react-native": "0.55.1",
-    "react-viro": "2.7.3"
+    "react-native": "^0.60.0",
+    "phantom-react": "0.1.3"
   },
 ```
 2. Run npm install to install the Viro React module.

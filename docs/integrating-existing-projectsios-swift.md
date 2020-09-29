@@ -36,8 +36,8 @@ In the root of the project (/iOS-2048/) create a file with the following content
   },
   "dependencies": {
     "react": "16.3.1",
-    "react-native": "0.55.1",
-    "react-viro": "2.7.3"
+    "react-native": "^0.60.0",
+    "phantom-react": "0.1.3"
   }
 }
 ```

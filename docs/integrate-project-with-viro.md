@@ -11,8 +11,6 @@ We'll take this app and modify it by adding a ViroReact VR or AR view to the app
 2. Launch ViroReact from your existing iOS Application.
 3. Pass parameters from your native app to Viro.
 
-Note that the following has been tested with React Native 0.55.1 and Xcode 9
-
 ## Prerequisites
 Complete the first 7 steps of the Set up Xcode with Viro guide to install dependencies.
 
@@ -38,8 +36,8 @@ In the root of the project (/iOS-2048/) create a file with the following content
   },
   "dependencies": {
     "react": "16.0.0-beta.5",
-    "react-native": "0.49.3",
-    "react-viro": "2.3.0"
+    "react-native": "^0.60.0",
+    "phantom-react": "0.1.3"
   }
 }
 ```
