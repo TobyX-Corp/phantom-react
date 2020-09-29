@@ -1,4 +1,4 @@
-![logo](_images/logo-icon-transparent.png = 200x200)
+![logo](_images/logo-icon-transparent.png =200x200)
 
 # Phantom-React
 
