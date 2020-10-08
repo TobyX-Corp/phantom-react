@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -50,8 +50,8 @@ var AnimatedComponent = createReactClass({
     //checkMisnamedProps("AnimatedComponent", this.props);
 
     let nativeProps = Object.assign({}, this.props);
-    nativeProps.onAnimationFinishViro = this._onFinish;
-    nativeProps.onAnimationStartViro = this._onStart;
+    nativeProps.onAnimationFinish = this._onFinish;
+    nativeProps.onAnimationStart = this._onStart;
     nativeProps.ref = component => {this._component = component; };
 
     return (
@@ -63,7 +63,7 @@ var AnimatedComponent = createReactClass({
 
 var VRTAnimatedComponent = requireNativeComponent(
   'VRTAnimatedComponent', AnimatedComponent, {
-    nativeOnly: { onAnimationStartViro:true, onAnimationFinishViro:true }
+    nativeOnly: { onAnimationStart:true, onAnimationFinish:true }
   }
 );
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -93,9 +93,9 @@ var Image360 = createReactClass({
     // Create native props object.
     let nativeProps = Object.assign({}, this.props);
     nativeProps.source = imgsrc;
-    nativeProps.onErrorViro = this._onError;
-    nativeProps.onLoadStartViro = this._onLoadStart;
-    nativeProps.onLoadEndViro = this._onLoadEnd;
+    nativeProps.onError = this._onError;
+    nativeProps.onLoadStart = this._onLoadStart;
+    nativeProps.onLoadEnd = this._onLoadEnd;
     nativeProps.ref = component => {this._component = component; };
 
 
@@ -108,9 +108,9 @@ var Image360 = createReactClass({
 var VRT360Image = requireNativeComponent(
   'VRT360Image', Image360, {
     nativeOnly: {
-      onLoadStartViro: true,
-      onErrorViro: true,
-      onLoadEndViro: true}
+      onLoadStart: true,
+      onError: true,
+      onLoadEnd: true}
   }
 );
 

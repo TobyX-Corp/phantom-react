@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -121,7 +121,7 @@ var FlexView = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -207,7 +207,7 @@ var FlexView = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.viroTag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },
@@ -240,18 +240,18 @@ var FlexView = createReactClass({
 
     let transformDelegate = this.props.onTransformUpdate != undefined ? this._onNativeTransformUpdate : undefined;
     let nativeProps = Object.assign({}, this.props);
-    nativeProps.onNativeTransformDelegateViro = transformDelegate;
+    nativeProps.onNativeTransformDelegate = transformDelegate;
     nativeProps.hasTransformDelegate =this.props.onTransformUpdate != undefined;
     nativeProps.materials = materials;
     nativeProps.transformBehaviors = transformBehaviors;
-    nativeProps.onHoverViro = this._onHover;
-    nativeProps.onClickViro = this._onClickState;
-    nativeProps.onTouchViro = this._onTouch;
-    nativeProps.onScrollViro = this._onScroll;
-    nativeProps.onSwipeViro = this._onSwipe;
-    nativeProps.onDragViro = this._onDrag;
-    nativeProps.onPinchViro = this._onPinch;
-    nativeProps.onRotateViro = this._onRotate;
+    nativeProps.onHover = this._onHover;
+    nativeProps.onClick = this._onClickState;
+    nativeProps.onTouch = this._onTouch;
+    nativeProps.onScroll = this._onScroll;
+    nativeProps.onSwipe = this._onSwipe;
+    nativeProps.onDrag = this._onDrag;
+    nativeProps.onPinch = this._onPinch;
+    nativeProps.onRotate = this._onRotate;
     nativeProps.canHover = this.props.onHover != undefined;
     nativeProps.canClick = this.props.onClick != undefined || this.props.onClickState != undefined;
     nativeProps.canTouch = this.props.onTouch != undefined;
@@ -261,12 +261,12 @@ var FlexView = createReactClass({
     nativeProps.canPinch = this.props.onPinch != undefined;
     nativeProps.canRotate = this.props.onRotate != undefined;
     nativeProps.canFuse = this.props.onFuse != undefined;
-    nativeProps.onFuseViro = this._onFuse;
+    nativeProps.onFuse = this._onFuse;
     nativeProps.timeToFuse = timeToFuse;
-    nativeProps.onAnimationStartViro = this._onAnimationStart;
-    nativeProps.onAnimationFinishViro = this._onAnimationFinish;
+    nativeProps.onAnimationStart = this._onAnimationStart;
+    nativeProps.onAnimationFinish = this._onAnimationFinish;
     nativeProps.canCollide = this.props.onCollision != undefined;
-    nativeProps.onCollisionViro = this._onCollision;
+    nativeProps.onCollision = this._onCollision;
     nativeProps.ref = component => {this._component = component; };
     return (
       <VROFlexView {...nativeProps} />
@@ -286,23 +286,23 @@ var VROFlexView = requireNativeComponent(
             canDrag: true,
             canPinch: true,
             canRotate: true,
-            onHoverViro:true,
-            onClickViro:true,
-            onTouchViro:true,
-            onScrollViro:true,
-            onSwipeViro:true,
-            onDragViro:true,
-            onPinchViro:true,
-            onRotateViro:true,
+            onHover:true,
+            onClick:true,
+            onTouch:true,
+            onScroll:true,
+            onSwipe:true,
+            onDrag:true,
+            onPinch:true,
+            onRotate:true,
             canFuse: true,
-            onFuseViro:true,
+            onFuse:true,
             timeToFuse:true,
             canCollide:true,
-            onCollisionViro:true,
-            onNativeTransformDelegateViro:true,
+            onCollision:true,
+            onNativeTransformDelegate:true,
             hasTransformDelegate:true,
-            onAnimationStartViro:true,
-            onAnimationFinishViro:true
+            onAnimationStart:true,
+            onAnimationFinish:true
           }
   }
 );

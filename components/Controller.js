@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -101,15 +101,15 @@ var Controller = createReactClass({
         canPinch={this.props.onPinch != undefined}
         canRotate={this.props.onRotate != undefined}
         canFuse={this.props.onFuse != undefined}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onDragViro={this._onDrag}
-        onPinchViro={this._onPinch}
-        onRotateViro={this._onRotate}
-        onFuseViro={this._onFuse}
-        onControllerStatusViro={this._onControllerStatus}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onDrag={this._onDrag}
+        onPinch={this._onPinch}
+        onRotate={this._onRotate}
+        onFuse={this._onFuse}
+        onControllerStatus={this._onControllerStatus}
       />
     );
   }
@@ -127,15 +127,15 @@ var VRTController = requireNativeComponent(
               canRotate: true,
               canFuse: true,
               canGetControllerStatus: true,
-              onClickViro:true,
-              onTouchViro:true,
-              onScrollViro:true,
-              onSwipeViro:true,
-              onControllerStatusViro:true,
-              onDragViro:true,
-              onPinchViro:true,
-              onRotateViro:true,
-              onFuseViro:true,
+              onClick:true,
+              onTouch:true,
+              onScroll:true,
+              onSwipe:true,
+              onControllerStatus:true,
+              onDrag:true,
+              onPinch:true,
+              onRotate:true,
+              onFuse:true,
               timeToFuse:true,
             }
       }

@@ -15,12 +15,12 @@
   },
   "files": [
     "components",
-    "android/react_viro",
-    "android/viro_renderer",
+    "android/phantom_react",
+    "android/phantom_renderer",
     "android/gvr_common",
     "android/arcore_client",
     "ios/dist",
-    "ios/ViroReact.podspec",
+    "ios/PhantomReact.podspec",
     "bin",
     "LICENSE"
   ],

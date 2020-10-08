@@ -1,6 +1,6 @@
 
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the

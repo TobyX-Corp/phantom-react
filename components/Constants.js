@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -10,7 +10,7 @@
  */
 
 const Constants = {
-  // Viro recording error constants
+  // Phantom recording error constants
   RECORD_ERROR_NONE : -1,
   RECORD_ERROR_UNKNOWN : 0,
   RECORD_ERROR_NO_PERMISSION : 1,
@@ -19,12 +19,12 @@ const Constants = {
   RECORD_ERROR_ALREADY_RUNNING : 4,
   RECORD_ERROR_ALREADY_STOPPED : 5,
 
-  // Viro AR Tracking constants,
+  // Phantom AR Tracking constants,
   TRACKING_UNAVAILABLE : 1,
   TRACKING_LIMITED : 2,
   TRACKING_NORMAL : 3,
 
-  // Viro AR Tracking reason constants,
+  // Phantom AR Tracking reason constants,
   TRACKING_REASON_NONE : 1,
   TRACKING_REASON_EXCESSIVE_MOTION : 2,
   TRACKING_REASON_INSUFFICIENT_FEATURES : 3,

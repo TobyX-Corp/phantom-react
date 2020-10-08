@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -28,7 +28,7 @@ var mathRandomOffset = 0;
 
 
 /**
- * ##### DEPRECATION WARNING - SceneNavigator may be removed in future releases. Use ViroVRSceneNavigator instead #####
+ * ##### DEPRECATION WARNING - SceneNavigator may be removed in future releases. Use VRSceneNavigator instead #####
  * SceneNavigator is used to transition between multiple scenes.
  */
 var SceneNavigator = createReactClass({
@@ -63,15 +63,15 @@ var SceneNavigator = createReactClass({
      * Called when either the user physically decides to exit vr (hits
      * the "X" buton).
      */
-    onExitViro: PropTypes.func,
+    onExit: PropTypes.func,
   },
 
   sceneNavigator: (undefined: ?Object),
 
   getDefaultProps: function() {
     return {
-      // Make sure viroAppProps aren't null to save us having to always check
-      viroAppProps: {},
+      // Make sure AppProps aren't null to save us having to always check
+      AppProps: {},
       vrModeEnabled: true,
     };
   },
@@ -85,7 +85,7 @@ var SceneNavigator = createReactClass({
       popN: this.popN,
       jump: this.jump,
       replace: this.replace,
-      exitViro: this.exitViro,
+      exit: this.exit,
       recenterTracking: this._recenterTracking,
       project: this._project,
       unproject: this._unproject,
@@ -96,8 +96,8 @@ var SceneNavigator = createReactClass({
    * Called from native when either the user physically decides to exit vr (hits
    * the "X" buton).
    */
-  _onExitViro: function(event: Event) {
-    this.props.onExitViro && this.props.onExitViro();
+  _onExit: function(event: Event) {
+    this.props.onExit && this.props.onExit();
   },
 
   getInitialState: function(): State {
@@ -420,11 +420,11 @@ var SceneNavigator = createReactClass({
     var items = this._renderSceneStackItems();
 
     // update the sceneNavigator with the latest given props on every render
-    this.sceneNavigator.viroAppProps = this.props.viroAppProps;
+    this.sceneNavigator.AppProps = this.props.AppProps;
     // If the user simply passes us the props from the root React component,
     // then we'll have an extra 'rootTag' key which React automatically includes
     // so remove it.
-    delete this.sceneNavigator.viroAppProps.rootTag;
+    delete this.sceneNavigator.AppProps.rootTag;
 
     return (
       <VRTSceneNavigator
@@ -432,8 +432,8 @@ var SceneNavigator = createReactClass({
         {...this.props}
         currentSceneIndex={this.state.currentSceneIndex}
         style={this.props.style, styles.container}
-        hasOnExitViroCallback={this.props.onExitViro != undefined}
-        onExitViro={this._onExitViro}>
+        hasOnExitCallback={this.props.onExit != undefined}
+        onExit={this._onExit}>
         {items}
       </VRTSceneNavigator>
     );
@@ -451,7 +451,7 @@ var styles = StyleSheet.create({
 
 var VRTSceneNavigator = requireNativeComponent(
     'VRTSceneNavigator', SceneNavigator, {
-        nativeOnly: { currentSceneIndex:true, onExitViro:true, hasOnExitViroCallback:true }
+        nativeOnly: { currentSceneIndex:true, onExit:true, hasOnExitCallback:true }
     }
 );
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -168,7 +168,7 @@ var BTN_TYPE_CLICKED = 'clicked';
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -258,11 +258,11 @@ var BTN_TYPE_CLICKED = 'clicked';
             onPinch={this.props.onPinch}
             onRotate={this.props.onRotate}
             onCollision={this.props.onCollision}
-            viroTag={this.props.viroTag}
+            Tag={this.props.Tag}
             onFuse={this.props.onFuse}
             animation={this.props.animation}
-            onAnimationStartViro={this._onAnimationStart}
-            onAnimationFinishViro={this._onAnimationFinish}
+            onAnimationStart={this._onAnimationStart}
+            onAnimationFinish={this._onAnimationFinish}
             ignoreEventHandling={this.props.ignoreEventHandling}
             dragType={this.props.dragType} >
 

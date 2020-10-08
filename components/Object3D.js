@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -147,7 +147,7 @@ var Object3D = createReactClass({
                  target: PropTypes.string,
                  weight: PropTypes.number
     })),
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -223,7 +223,7 @@ var Object3D = createReactClass({
   },
 
   setNativeProps: function(nativeProps) {
-   this._viro3dobj.setNativeProps(nativeProps);
+   this._3dobj.setNativeProps(nativeProps);
   },
 
   applyImpulse: function(force, position) {
@@ -240,7 +240,7 @@ var Object3D = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.viroTag,
+      this.props.onCollision(event.nativeEvent.Tag,
         event.nativeEvent.collidedPoint, event.nativeEvent.collidedNormal);
     }
   },
@@ -320,9 +320,9 @@ var Object3D = createReactClass({
     return (
       <VRT3DObject
         {...this.props}
-        ref={ component => { this._viro3dobj = component; }}
+        ref={ component => { this._3dobj = component; }}
         highAccuracyEvents={highAccuracyEvents}
-        onNativeTransformDelegateViro={transformDelegate}
+        onNativeTransformDelegate={transformDelegate}
         hasTransformDelegate={this.props.onTransformUpdate != undefined}
         physicsBody={newPhysicsBody}
         source={modelsrc}
@@ -338,23 +338,23 @@ var Object3D = createReactClass({
         canFuse={this.props.onFuse != undefined}
         canPinch={this.props.onPinch != undefined}
         canRotate={this.props.onRotate != undefined}
-        onHoverViro={this._onHover}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onDragViro={this._onDrag}
-        onFuseViro={this._onFuse}
-        onPinchViro={this._onPinch}
-        onRotateViro={this._onRotate}
-        onLoadStartViro={this._onLoadStart}
-        onLoadEndViro={this._onLoadEnd}
-        onErrorViro={this._onError}
-        onAnimationStartViro={this._onAnimationStart}
-        onAnimationFinishViro={this._onAnimationFinish}
+        onHover={this._onHover}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onDrag={this._onDrag}
+        onFuse={this._onFuse}
+        onPinch={this._onPinch}
+        onRotate={this._onRotate}
+        onLoadStart={this._onLoadStart}
+        onLoadEnd={this._onLoadEnd}
+        onError={this._onError}
+        onAnimationStart={this._onAnimationStart}
+        onAnimationFinish={this._onAnimationFinish}
         timeToFuse={timeToFuse}
         canCollide={this.props.onCollision != undefined}
-        onCollisionViro={this._onCollision}
+        onCollision={this._onCollision}
       />
     );
   }
@@ -372,25 +372,25 @@ var VRT3DObject = requireNativeComponent(
       canFuse: true,
       canPinch: true,
       canRotate: true,
-      onHoverViro:true,
-      onClickViro:true,
-      onTouchViro:true,
-      onScrollViro:true,
-      onPinchViro:true,
-      onRotateViro:true,
-      onSwipeViro:true,
-      onDragViro:true,
-      onLoadStartViro:true,
-      onLoadEndViro:true,
-      onErrorViro:true,
-      onFuseViro:true,
+      onHover:true,
+      onClick:true,
+      onTouch:true,
+      onScroll:true,
+      onPinch:true,
+      onRotate:true,
+      onSwipe:true,
+      onDrag:true,
+      onLoadStart:true,
+      onLoadEnd:true,
+      onError:true,
+      onFuse:true,
       timeToFuse:true,
       canCollide:true,
-      onCollisionViro:true,
-      onNativeTransformDelegateViro:true,
+      onCollision:true,
+      onNativeTransformDelegate:true,
       hasTransformDelegate:true,
-      onAnimationStartViro:true,
-      onAnimationFinishViro:true,
+      onAnimationStart:true,
+      onAnimationFinish:true,
     }
   }
 );

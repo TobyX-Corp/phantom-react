@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -103,11 +103,11 @@ var MaterialVideo = createReactClass({
 
     let nativeProps = Object.assign({}, this.props);
     //nativeProps.materials = materials;
-    nativeProps.onBufferStartViro = this._onBufferStart;
-    nativeProps.onBufferEndViro = this._onBufferEnd;
-    nativeProps.onFinishViro = this._onFinish;
-    nativeProps.onErrorViro = this._onError;
-    nativeProps.onUpdateTimeViro = this._onUpdateTime;
+    nativeProps.onBufferStart = this._onBufferStart;
+    nativeProps.onBufferEnd = this._onBufferEnd;
+    nativeProps.onFinish = this._onFinish;
+    nativeProps.onError = this._onError;
+    nativeProps.onUpdateTime = this._onUpdateTime;
     nativeProps.ref = component => {this._component = component; };
     return (
       <VRTMaterialVideo {...nativeProps} />
@@ -132,11 +132,11 @@ var MaterialVideo = createReactClass({
 var VRTMaterialVideo = requireNativeComponent(
     'VRTMaterialVideo', MaterialVideo, {
       nativeOnly: {
-          onBufferStartViro: true,
-          onBufferEndViro: true,
-          onUpdateTimeViro: true,
-          onFinishViro: true,
-          onErrorViro:true,
+          onBufferStart: true,
+          onBufferEnd: true,
+          onUpdateTime: true,
+          onFinish: true,
+          onError:true,
       }
     }
 );

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const ReactPhantom = {
+const PhantomReact = {
   // Components
   get SceneNavigator() { return require('./components/SceneNavigator');},
   get Scene() { return require('./components/Scene'); },
@@ -62,4 +62,4 @@ const ReactPhantom = {
   get ARCamera() { return require('./components/AR/ARCamera'); },
 }
 
-module.exports = ReactPhantom;
+module.exports = PhantomReact;

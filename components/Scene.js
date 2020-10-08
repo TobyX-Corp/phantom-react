@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -115,8 +115,8 @@ var Scene = createReactClass({
      * ##### DEPRECATION WARNING - 'vrPlatform' is deprecated in favor of 'platform'! Support
      * for 'vrPlatform' may be removed in the future.
      */
-    event.nativeEvent.platformInfoViro.vrPlatform = event.nativeEvent.platformInfoViro.platform
-    this.props.onPlatformUpdate && this.props.onPlatformUpdate(event.nativeEvent.platformInfoViro);
+    event.nativeEvent.platformInfo.vrPlatform = event.nativeEvent.platformInfo.platform
+    this.props.onPlatformUpdate && this.props.onPlatformUpdate(event.nativeEvent.platformInfo);
   },
 
   _onCameraTransformUpdate: function(event: Event) {
@@ -136,19 +136,19 @@ var Scene = createReactClass({
     this.props.onCameraTransformUpdate && this.props.onCameraTransformUpdate(cameraTransform);
   },
 
-  async findCollisionsWithRayAsync(from, to, closest, viroTag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, viroTag);
+  async findCollisionsWithRayAsync(from, to, closest, Tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, Tag);
   },
 
-  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, viroTag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, viroTag);
+  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, Tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, Tag);
   },
 
   /**
    * ##### DEPRECATION WARNING - this prop may be removed in future releases #####
    */
   async getCameraPositionAsync() {
-    console.warn("[Viro] Scene.getCameraPositionAsync has been DEPRECATED. Please use getCameraOrientationAsync instead.");
+    console.warn("[Phantom] Scene.getCameraPositionAsync has been DEPRECATED. Please use getCameraOrientationAsync instead.");
     var orientation = await NativeModules.VRTCameraModule.getCameraOrientation(findNodeHandle(this));
     position = [orientation[0], orientation[1], orientation[2]];
     return position;
@@ -210,17 +210,17 @@ var Scene = createReactClass({
         canPinch={this.props.onPinch != undefined}
         canRotate={this.props.onRotate != undefined}
         canCameraTransformUpdate={this.props.onCameraTransformUpdate != undefined}
-        onHoverViro={this._onHover}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onFuseViro={this._onFuse}
-        onDragViro={this._onDrag}
-        onRotateViro={this._onRotate}
-        onPinchViro={this._onPinch}
-        onPlatformUpdateViro={this._onPlatformUpdate}
-        onCameraTransformUpdateViro={this._onCameraTransformUpdate}
+        onHover={this._onHover}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onFuse={this._onFuse}
+        onDrag={this._onDrag}
+        onRotate={this._onRotate}
+        onPinch={this._onPinch}
+        onPlatformUpdate={this._onPlatformUpdate}
+        onCameraTransformUpdate={this._onCameraTransformUpdate}
         timeToFuse={timeToFuse}
         />
     );
@@ -247,20 +247,20 @@ var VRTScene = requireNativeComponent(
           canFuse: true,
           canCollide: true,
           canCameraTransformUpdate: true,
-          onHoverViro: true,
-          onClickViro: true,
-          onTouchViro: true,
-          onScrollViro: true,
-          onSwipeViro: true,
-          onDragViro:true,
-          onPinchViro:true,
-          onRotateViro:true,
-          onPlatformUpdateViro: true,
-          onCameraTransformUpdateViro: true,
-          onFuseViro:true,
+          onHover: true,
+          onClick: true,
+          onTouch: true,
+          onScroll: true,
+          onSwipe: true,
+          onDrag:true,
+          onPinch:true,
+          onRotate:true,
+          onPlatformUpdate: true,
+          onCameraTransformUpdate: true,
+          onFuse:true,
           timeToFuse:true,
           physicsBody:true,
-          onCollisionViro:true,
+          onCollision:true,
         }
     }
 );

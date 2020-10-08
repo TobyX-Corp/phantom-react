@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -37,7 +37,7 @@ var ParticleEmitter = createReactClass({
     onTransformUpdate: PropTypes.func,
     renderingOrder: PropTypes.number,
     visible: PropTypes.bool,
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     transformBehaviors: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string),
       PropTypes.string
@@ -202,7 +202,7 @@ var ParticleEmitter = createReactClass({
     // Create native props object.
     let nativeProps = Object.assign({}, this.props);
     nativeProps.position = this.state.propsPositionState;
-    nativeProps.onNativeTransformDelegateViro = transformDelegate;
+    nativeProps.onNativeTransformDelegate = transformDelegate;
     nativeProps.hasTransformDelegate = this.props.onTransformUpdate != undefined;
     nativeProps.image = image;
     nativeProps.transformBehaviors = transformBehaviors;
@@ -292,7 +292,7 @@ var ParticleEmitter = createReactClass({
 var VRTParticleEmitter = requireNativeComponent(
   'VRTParticleEmitter', ParticleEmitter, {
     nativeOnly: {
-      onNativeTransformDelegateViro:true,
+      onNativeTransformDelegate:true,
       hasTransformDelegate:true,
       canHover: true,
       canClick: true,
@@ -304,19 +304,19 @@ var VRTParticleEmitter = requireNativeComponent(
       canRotate: true,
       canFuse: true,
       canCollide: true,
-      onHoverViro: true,
-      onClickViro: true,
-      onTouchViro: true,
-      onScrollViro: true,
-      onSwipeViro: true,
-      onDragViro:true,
-      onPinchViro:true,
-      onRotateViro:true,
-      onPlatformUpdateViro: true,
-      onFuseViro:true,
+      onHover: true,
+      onClick: true,
+      onTouch: true,
+      onScroll: true,
+      onSwipe: true,
+      onDrag:true,
+      onPinch:true,
+      onRotate:true,
+      onPlatformUpdate: true,
+      onFuse:true,
       timeToFuse:true,
       physicsBody:true,
-      onCollisionViro:true,
+      onCollision:true,
       animation:true,
       materials:true,
       dragType:true,

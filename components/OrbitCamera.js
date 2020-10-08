@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -88,24 +88,24 @@ var VRTOrbitCamera = requireNativeComponent(
       canDrag: true,
       canPinch: true,
       canRotate: true,
-      onPinchViro: true,
-      onRotateViro: true,
-      onHoverViro:true,
-      onClickViro:true,
-      onTouchViro:true,
-      onScrollViro:true,
-      onSwipeViro:true,
-      onDragViro:true,
+      onPinch: true,
+      onRotate: true,
+      onHover:true,
+      onClick:true,
+      onTouch:true,
+      onScroll:true,
+      onSwipe:true,
+      onDrag:true,
       transformBehaviors:true,
       canFuse: true,
-      onFuseViro:true,
+      onFuse:true,
       timeToFuse: true,
-      viroTag: true,
+      Tag: true,
       scalePivot: true,
       rotationPivot: true,
       canCollide:true,
-      onCollisionViro:true,
-      onNativeTransformDelegateViro:true,
+      onCollision:true,
+      onNativeTransformDelegate:true,
       hasTransformDelegate:true,
       physicsBody:true,
       dragType: true,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -110,7 +110,7 @@ var AnimatedImage = createReactClass({
         ]),
     /**
      * Callback triggered when we are processing the assets to be
-     * displayed in this ViroImage (either downloading / reading from file).
+     * displayed in this Image (either downloading / reading from file).
      */
     onLoadStart: PropTypes.func,
 
@@ -158,7 +158,7 @@ var AnimatedImage = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
     renderingOrder: PropTypes.number,
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
   _onLoadStart: function(event: Event) {
@@ -257,7 +257,7 @@ var AnimatedImage = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.viroTag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },
@@ -273,7 +273,7 @@ var AnimatedImage = createReactClass({
 
   render: function() {
     checkMisnamedProps("AnimatedImage", this.props);
-    var defaultPlaceholder = require('./Resources/viro_blank.png');
+    var defaultPlaceholder = require('./Resources/phantom_blank.png');
     var imgsrc = resolveAssetSource(this.props.source);
     var placeholderSrc;
 
@@ -307,24 +307,24 @@ var AnimatedImage = createReactClass({
 
     // Create native props object.
     let nativeProps = Object.assign({}, this.props);
-    nativeProps.onNativeTransformDelegateViro = transformDelegate;
+    nativeProps.onNativeTransformDelegate = transformDelegate;
     nativeProps.hasTransformDelegate = this.props.onTransformUpdate != undefined;
     nativeProps.materials = materials;
     nativeProps.source = imgsrc;
     nativeProps.placeholderSource = placeholderSrc;
     nativeProps.transformBehaviors = transformBehaviors;
-    nativeProps.onLoadStartViro = this._onLoadStart;
-    nativeProps.onLoadEndViro = this._onLoadEnd;
-    nativeProps.onErrorViro = this._onError;
+    nativeProps.onLoadStart = this._onLoadStart;
+    nativeProps.onLoadEnd = this._onLoadEnd;
+    nativeProps.onError = this._onError;
     nativeProps.style = [this.props.style];
-    nativeProps.onHoverViro = this._onHover;
-    nativeProps.onClickViro = this._onClickState;
-    nativeProps.onTouchViro = this._onTouch;
-    nativeProps.onScrollViro = this._onScroll;
-    nativeProps.onSwipeViro = this._onSwipe;
-    nativeProps.onDragViro = this._onDrag;
-    nativeProps.onPinchViro = this._onPinch;
-    nativeProps.onRotateViro = this._onRotate;
+    nativeProps.onHover = this._onHover;
+    nativeProps.onClick = this._onClickState;
+    nativeProps.onTouch = this._onTouch;
+    nativeProps.onScroll = this._onScroll;
+    nativeProps.onSwipe = this._onSwipe;
+    nativeProps.onDrag = this._onDrag;
+    nativeProps.onPinch = this._onPinch;
+    nativeProps.onRotate = this._onRotate;
     nativeProps.canHover = this.props.onHover != undefined;
     nativeProps.canClick = this.props.onClick != undefined || this.props.onClickState != undefined;
     nativeProps.canTouch = this.props.onTouch != undefined;
@@ -334,12 +334,12 @@ var AnimatedImage = createReactClass({
     nativeProps.canFuse = this.props.onFuse != undefined;
     nativeProps.canPinch = this.props.onPinch != undefined;
     nativeProps.canRotate = this.props.onRotate != undefined;
-    nativeProps.onFuseViro = this._onFuse;
-    nativeProps.onAnimationStartViro = this._onAnimationStart;
-    nativeProps.onAnimationFinishViro = this._onAnimationFinish;
+    nativeProps.onFuse = this._onFuse;
+    nativeProps.onAnimationStart = this._onAnimationStart;
+    nativeProps.onAnimationFinish = this._onAnimationFinish;
     nativeProps.timeToFuse = timeToFuse;
     nativeProps.canCollide = this.props.onCollision != undefined;
-    nativeProps.onCollisionViro = this._onCollision;
+    nativeProps.onCollision = this._onCollision;
     nativeProps.ref = component => {this._component = component; };
     return (
       <VRTAnimatedImage {...nativeProps}/>
@@ -350,9 +350,9 @@ var AnimatedImage = createReactClass({
 var VRTAnimatedImage = requireNativeComponent(
     'VRTAnimatedImage', AnimatedImage, {
       nativeOnly: {
-        onLoadStartViro: true,
-        onLoadEndViro: true,
-        onErrorViro: true,
+        onLoadStart: true,
+        onLoadEnd: true,
+        onError: true,
         canHover: true,
         canClick: true,
         canTouch: true,
@@ -361,23 +361,23 @@ var VRTAnimatedImage = requireNativeComponent(
         canDrag: true,
         canPinch: true,
         canRotate: true,
-        onHoverViro:true,
-        onClickViro:true,
-        onTouchViro:true,
-        onScrollViro:true,
-        onSwipeViro:true,
-        onDragViro:true,
-        onPinchViro:true,
-        onRotateViro:true,
+        onHover:true,
+        onClick:true,
+        onTouch:true,
+        onScroll:true,
+        onSwipe:true,
+        onDrag:true,
+        onPinch:true,
+        onRotate:true,
         canFuse: true,
-        onFuseViro:true,
+        onFuse:true,
         timeToFuse:true,
         canCollide:true,
-        onCollisionViro:true,
-        onNativeTransformDelegateViro:true,
+        onCollision:true,
+        onNativeTransformDelegate:true,
         hasTransformDelegate:true,
-        onAnimationStartViro:true,
-        onAnimationFinishViro:true
+        onAnimationStart:true,
+        onAnimationFinish:true
       }
     }
 );
