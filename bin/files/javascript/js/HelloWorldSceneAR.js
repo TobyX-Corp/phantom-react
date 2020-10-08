@@ -5,11 +5,11 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-  ViroConstants,
-  ViroBox,
-  ViroMaterials,
+  ARScene,
+  Text,
+  Constants,
+  Box,
+  Materials,
 } from 'phantom-react';
 
 export default class HelloWorldSceneAR extends Component {
@@ -28,19 +28,19 @@ export default class HelloWorldSceneAR extends Component {
 
   render() {
     return (
-        <ViroARScene onTrackingUpdated={this._onInitialized} >
-          <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
-          <ViroBox position={[0, -.5, -1]} scale={[.3, .3, .1]} materials={["grid"]} />
-        </ViroARScene>
+        <ARScene onTrackingUpdated={this._onInitialized} >
+          <Text text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
+          <Box position={[0, -.5, -1]} scale={[.3, .3, .1]} materials={["grid"]} />
+        </ARScene>
     );
   }
 
   _onInitialized(state, reason) {
-    if (state == ViroConstants.TRACKING_NORMAL) {
+    if (state == Constants.TRACKING_NORMAL) {
       this.setState({
         text : "Hello Sherry!"
       });
-    } else if (state == ViroConstants.TRACKING_NONE) {
+    } else if (state == Constants.TRACKING_NONE) {
       // Handle loss of tracking
     }
   }
@@ -56,7 +56,7 @@ var styles = StyleSheet.create({
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   grid: {
     diffuseTexture: require('./res/grid_bg.jpg'),
   },

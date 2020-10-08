@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -18,8 +18,8 @@ import {
 } from 'react-native';
 
 import {
-  ViroVRSceneNavigator,
-  ViroARSceneNavigator
+  VRSceneNavigator,
+  ARSceneNavigator
 } from 'phantom-react';
 
 /*
@@ -41,7 +41,7 @@ var AR_NAVIGATOR_TYPE = "AR";
 // be presented with a choice of AR or VR. By default, we offer the user a choice.
 var defaultNavigatorType = UNSET;
 
-export default class ViroSample extends Component {
+export default class PhantomSample extends Component {
   constructor() {
     super();
 
@@ -53,7 +53,7 @@ export default class ViroSample extends Component {
     this._getARNavigator = this._getARNavigator.bind(this);
     this._getVRNavigator = this._getVRNavigator.bind(this);
     this._getExperienceButtonOnPress = this._getExperienceButtonOnPress.bind(this);
-    this._exitViro = this._exitViro.bind(this);
+    this._exit = this._exit.bind(this);
   }
 
   // Replace this function with the contents of _getVRNavigator() or _getARNavigator()
@@ -96,19 +96,19 @@ export default class ViroSample extends Component {
     );
   }
 
-  // Returns the ViroARSceneNavigator which will start the AR experience
+  // Returns the ARSceneNavigator which will start the AR experience
   _getARNavigator() {
     return (
-      <ViroARSceneNavigator {...this.state.sharedProps}
+      <ARSceneNavigator {...this.state.sharedProps}
         initialScene={{scene: InitialARScene}} />
     );
   }
   
-  // Returns the ViroSceneNavigator which will start the VR experience
+  // Returns the SceneNavigator which will start the VR experience
   _getVRNavigator() {
     return (
-      <ViroVRSceneNavigator {...this.state.sharedProps}
-        initialScene={{scene: InitialVRScene}} onExitViro={this._exitViro}/>
+      <VRSceneNavigator {...this.state.sharedProps}
+        initialScene={{scene: InitialVRScene}} onExit={this._exit}/>
     );
   }
 
@@ -122,8 +122,8 @@ export default class ViroSample extends Component {
     }
   }
 
-  // This function "exits" Viro by setting the navigatorType to UNSET.
-  _exitViro() {
+  // This function "exits" Phantom by setting the navigatorType to UNSET.
+  _exit() {
     this.setState({
       navigatorType : UNSET
     })
@@ -131,7 +131,7 @@ export default class ViroSample extends Component {
 }
 
 var localStyles = StyleSheet.create({
-  viroContainer :{
+  Container :{
     flex : 1,
     backgroundColor: "black",
   },
@@ -185,4 +185,4 @@ var localStyles = StyleSheet.create({
   }
 });
 
-module.exports = ViroSample
+module.exports = PhantomSample

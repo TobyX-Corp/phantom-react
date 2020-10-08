@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Copyright (c) 2017-present, Viro Media, Inc.
+# Copyright (c) 2020-present, TobyX Corp, Inc.
 # All rights reserved.
 
 function box_out()

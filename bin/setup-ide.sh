@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Copyright © 2017 Viro Media. All rights reserved.
+# Copyright © 2020 TobyX Corp. All rights reserved.
 #
 
 SETUP_ANDROID_STUDIO=false
@@ -47,17 +47,17 @@ fi
 # TODO: use a JSON parser and/or prompt the user if it's correct, also maybe accept a name args.
 PROJECT_NAME=$(grep name package.json | cut -d '"' -f 4 | head -1)
 
-if [ ! -d ./node_modules/react-viro ]; then
+if [ ! -d ./node_modules/phantom-react ]; then
   printf "== ERROR ==\n"
-  printf "Unable to find the react-viro module (under node_modules). Have you run npm install?\n"
+  printf "Unable to find the phantom-react module (under node_modules). Have you run npm install?\n"
   exit 1
 fi
 
 if $SETUP_ANDROID_STUDIO; then
-  ./node_modules/react-viro/bin/android-setup.sh $PROJECT_NAME true
+  ./node_modules/phantom-react/bin/android-setup.sh $PROJECT_NAME true
 fi
 
 if $SETUP_XCODE; then
-  ./node_modules/react-viro/bin/ios-setup.sh $PROJECT_NAME true
+  ./node_modules/phantom-react/bin/ios-setup.sh $PROJECT_NAME true
 fi
 

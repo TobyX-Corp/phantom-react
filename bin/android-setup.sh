@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 #
-# Copyright © 2017 Viro Media. All rights reserved.
+# Copyright © 2020 TobyX Corp. All rights reserved.
 #
 
 # NOTE: this script is executed at the root of the new project
 
-VIRO_PROJECT_NAME=$1 # The name of the user's project. The cwd should be already here.
-VIRO_VERBOSE=$2 # True/False whether or not the user ran init w/ --verbose option
+PHANTOM_PROJECT_NAME=$1 # The name of the user's project. The cwd should be already here.
+PHANTOM_VERBOSE=$2 # True/False whether or not the user ran init w/ --verbose option
 
 echo "==== Running Android Setup Script ==="
 
-if [ "$VIRO_VERBOSE" = true ]; then
+if [ "$PHANTOM_VERBOSE" = true ]; then
   echo "Running with verbose logging"
 fi
 
@@ -33,7 +33,7 @@ vsed() {
 
 echo 'Editing MainApplication.java'
 
-LINE_TO_ADD="          packages.add(new ReactViroPackage(ReactViroPackage.ViroPlatform.valueOf(BuildConfig.VR_PLATFORM)));"
+LINE_TO_ADD="          packages.add(new PhantomReactPackage(PhantomReactPackage.PhantomPlatform.valueOf(BuildConfig.VR_PLATFORM)));"
 TARGET_FILEPATH=$(find android -name MainApplication.java)
 SEARCH_PATTERN='getPackages();'
 LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
@@ -45,7 +45,7 @@ LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 # "$LINE_TO_ADD/" <- substitute a variable & finish sed pattern format
 vsed "s/$LINE_TO_EDIT/&"$'\\\n'"$LINE_TO_ADD/" $TARGET_FILEPATH
 
-LINE_TO_ADD="import com.viromedia.bridge.ReactViroPackage;"
+LINE_TO_ADD="import com.tobyx.bridge.PhantomReactPackage;"
 SEARCH_PATTERN='import java.util.List;'
 LINE_TO_EDIT=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
 
@@ -60,11 +60,11 @@ echo "Updating settings.gradle"
 TARGET_FILEPATH=$(find android -name settings.gradle)
 cat << EOF >> $TARGET_FILEPATH
 
-include ':react_viro', ':arcore_client', ':gvr_common', ':viro_renderer'
+include ':phantom_react', ':arcore_client', ':gvr_common', ':phantom_renderer'
 project(':arcore_client').projectDir = new File('../node_modules/phantom-react/android/arcore_client')
 project(':gvr_common').projectDir = new File('../node_modules/phantom-react/android/gvr_common')
-project(':viro_renderer').projectDir = new File('../node_modules/phantom-react/android/viro_renderer')
-project(':react_viro').projectDir = new File('../node_modules/phantom-react/android/react_viro')
+project(':phantom_renderer').projectDir = new File('../node_modules/phantom-react/android/phantom_renderer')
+project(':phantom_react').projectDir = new File('../node_modules/phantom-react/android/phantom_react')
 EOF
 
 
@@ -172,8 +172,8 @@ LINES_TO_ADD=("    implementation fileTree(dir: 'libs', include: ['*.jar'])"
 "    implementation 'com.facebook.react:react-native:+'"
 "    implementation project(':arcore_client')"
 "    implementation project(':gvr_common')"
-"    implementation project(path: ':viro_renderer')"
-"    implementation project(path: ':react_viro')"
+"    implementation project(path: ':phantom_renderer')"
+"    implementation project(path: ':phantom_react')"
 "    implementation 'com.google.android.exoplayer:exoplayer:2.9.5'"
 "    implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'")
 LINE_TO_APPEND_AFTER=$(grep "$SEARCH_PATTERN" "$TARGET_FILEPATH")
@@ -189,15 +189,15 @@ done
 # SEARCH_PATTERN="buildTypes {"
 # LINES_TO_PREPEND=("    productFlavors {"
 # "        ar {"
-# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ar'"
+# "            resValue 'string', 'app_name', '$PHANTOM_PROJECT_NAME-ar'"
 # "            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"' \\/\\/default to GVR"
 # "        }"
 # "        gvr {"
-# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-gvr'"
+# "            resValue 'string', 'app_name', '$PHANTOM_PROJECT_NAME-gvr'"
 # "            buildConfigField 'String', 'VR_PLATFORM', '\"GVR\"'"
 # "        }"
 # "        ovr {"
-# "            resValue 'string', 'app_name', '$VIRO_PROJECT_NAME-ovr'"
+# "            resValue 'string', 'app_name', '$PHANTOM_PROJECT_NAME-ovr'"
 # "            applicationIdSuffix '.ovr'"
 # "            buildConfigField 'String', 'VR_PLATFORM', '\"OVR_MOBILE\"'"
 # "        }"

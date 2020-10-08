@@ -1,6 +1,6 @@
 # Overview
 
-Latest Release is v2.17.0 as of October 16, 2019
+Latest Release is v0.1.3 as of October 1, 2020
 
 See the [Releases](releases.md) tab for more information
 
