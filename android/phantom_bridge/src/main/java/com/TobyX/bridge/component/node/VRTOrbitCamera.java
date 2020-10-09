@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,13 +19,13 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.Camera;
-import com.viro.core.Vector;
-import com.viromedia.bridge.component.node.VRTCamera;
+import com.TobyX.core.Camera;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.component.node.VRTCamera;
 
 public class VRTOrbitCamera extends VRTCamera {
     private float[] mFocalPoint;

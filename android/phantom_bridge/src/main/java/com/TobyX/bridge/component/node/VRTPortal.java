@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,11 +19,11 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
-import com.viro.core.Portal;
-import com.viro.core.Node;
-import com.viromedia.bridge.component.node.control.VRT3DObject;
+import com.TobyX.core.Portal;
+import com.TobyX.core.Node;
+import com.TobyX.bridge.component.node.control.VRT3DObject;
 import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
@@ -37,7 +37,7 @@ public class VRTPortal extends VRTNode {
     @Override
     public void addView(View child, int index) {
         if(!child.getClass().equals(VRT3DObject.class)) {
-            throw new IllegalStateException("VRTPortal can only have a Viro3DObject as a child.");
+            throw new IllegalStateException("VRTPortal can only have a Object3D as a child.");
         }
         super.addView(child, index);
     }

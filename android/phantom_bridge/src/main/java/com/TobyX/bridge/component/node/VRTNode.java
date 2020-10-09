@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import android.content.Context;
 import android.os.Handler;
@@ -41,36 +41,36 @@ import com.facebook.react.uimanager.IllegalViewOperationException;
 import com.facebook.react.uimanager.PixelUtil;
 
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.ARNode;
-import com.viro.core.ARScene;
-import com.viro.core.Geometry;
-import com.viro.core.EventDelegate;
-import com.viro.core.Material;
-import com.viro.core.Node;
-import com.viro.core.VideoTexture;
-import com.viro.core.ViroContext;
-import com.viro.core.internal.ExecutableAnimation;
-import com.viro.core.PhysicsBody;
-import com.viro.core.PhysicsShape;
-import com.viro.core.PhysicsShapeAutoCompound;
-import com.viro.core.PhysicsShapeBox;
-import com.viro.core.PhysicsShapeSphere;
-import com.viro.core.Vector;
-import com.viromedia.bridge.component.VRTAnimatedComponent;
-import com.viromedia.bridge.component.VRTComponent;
-import com.viromedia.bridge.component.VRTLight;
-import com.viromedia.bridge.component.VRTManagedAnimation;
-import com.viromedia.bridge.component.node.control.VRTAnimatedImage;
-import com.viromedia.bridge.component.node.control.VRTImage;
-import com.viromedia.bridge.component.node.control.VRTQuad;
-import com.viromedia.bridge.component.node.control.VRTText;
-import com.viromedia.bridge.component.node.control.VRTVideoSurface;
-import com.viromedia.bridge.module.AnimationManager;
-import com.viromedia.bridge.module.MaterialManager;
-import com.viromedia.bridge.utility.ComponentEventDelegate;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.ARNode;
+import com.TobyX.core.ARScene;
+import com.TobyX.core.Geometry;
+import com.TobyX.core.EventDelegate;
+import com.TobyX.core.Material;
+import com.TobyX.core.Node;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.internal.ExecutableAnimation;
+import com.TobyX.core.PhysicsBody;
+import com.TobyX.core.PhysicsShape;
+import com.TobyX.core.PhysicsShapeAutoCompound;
+import com.TobyX.core.PhysicsShapeBox;
+import com.TobyX.core.PhysicsShapeSphere;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.component.VRTAnimatedComponent;
+import com.TobyX.bridge.component.VRTComponent;
+import com.TobyX.bridge.component.VRTLight;
+import com.TobyX.bridge.component.VRTManagedAnimation;
+import com.TobyX.bridge.component.node.control.VRTAnimatedImage;
+import com.TobyX.bridge.component.node.control.VRTImage;
+import com.TobyX.bridge.component.node.control.VRTQuad;
+import com.TobyX.bridge.component.node.control.VRTText;
+import com.TobyX.bridge.component.node.control.VRTVideoSurface;
+import com.TobyX.bridge.module.AnimationManager;
+import com.TobyX.bridge.module.MaterialManager;
+import com.TobyX.bridge.utility.ComponentEventDelegate;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -78,13 +78,13 @@ import java.util.EnumSet;
 import java.util.List;
 
 
-import static com.viromedia.bridge.component.node.VRTNodeManager.s2DUnitPer3DUnit;
+import static com.TobyX.bridge.component.node.VRTNodeManager.s2DUnitPer3DUnit;
 
 /**
  * Node is inherited by any component which is represented by a VRONode in native
  */
 public class VRTNode extends VRTComponent {
-    private static final String TAG = "Viro";
+    private static final String TAG = "Phantom";
     private static final boolean DEBUG_ANCHORING = false;
 
     /**
@@ -174,9 +174,9 @@ public class VRTNode extends VRTComponent {
             }
 
             final ARScene scene = (ARScene) ((VRTARScene) node.getParent()).getNativeScene();
-            if (node.mViroContext == null) {
+            if (node.mContext == null) {
                 if (DEBUG_ANCHORING) {
-                    Log.i(TAG, "   Delaying anchoring: ViroContext is null");
+                    Log.i(TAG, "   Delaying anchoring: PhantomContext is null");
                 }
                 return false;
             }
@@ -841,8 +841,8 @@ public class VRTNode extends VRTComponent {
         }
     }
 
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         // CCheck if this material has video materials. Reset the materials if we do.
         if (mMaterials != null) {
             boolean materialsChanged = false;
@@ -1040,7 +1040,7 @@ public class VRTNode extends VRTComponent {
         }
     }
 
-    public void setViroTag(String tag){
+    public void setTag(String tag){
         mNodeJni.setTag(tag);
     }
 
@@ -1177,7 +1177,7 @@ public class VRTNode extends VRTComponent {
         if (map.hasKey("useGravity")) {
             String bodyType = map.getString("type");
             if (!bodyType.equalsIgnoreCase("dynamic")){
-                ViroLog.warn(TAG,"Attempted to set useGravity for non-dynamic phsyics bodies.");
+                PhantomLog.warn(TAG,"Attempted to set useGravity for non-dynamic phsyics bodies.");
             } else {
                 mNodeJni.getPhysicsBody().setUseGravity(map.getBoolean("useGravity"));
             }
@@ -1300,7 +1300,7 @@ public class VRTNode extends VRTComponent {
 
     private void createPhysicsBody(PhysicsBody.RigidBodyType bodyType, float mass, PhysicsShape shape){
         mNodeJni.initPhysicsBody(bodyType, mass, shape);
-        if (mViroContext != null) {
+        if (mContext != null) {
             if (mPhysicsDelegate != null) {
                 mNodeJni.getPhysicsBody().setCollisionListener(mPhysicsDelegate);
             } else {
@@ -1326,7 +1326,7 @@ public class VRTNode extends VRTComponent {
 
     public void applyImpulse(float[] force, float[] position){
         if (!hasPhysicsBody){
-            ViroLog.error(TAG, "Attempted to set an impulse force on a non-physics node");
+            PhantomLog.error(TAG, "Attempted to set an impulse force on a non-physics node");
             return;
         }
         mNodeJni.getPhysicsBody().applyImpulse(new Vector(force), new Vector(position));
@@ -1334,7 +1334,7 @@ public class VRTNode extends VRTComponent {
 
     public void applyTorqueImpulse(float[] torque){
         if (!hasPhysicsBody){
-            ViroLog.error(TAG, "Attempted to set an impulse force on a non-physics node");
+            PhantomLog.error(TAG, "Attempted to set an impulse force on a non-physics node");
             return;
         }
         mNodeJni.getPhysicsBody().applyTorqueImpulse(new Vector(torque));
@@ -1342,7 +1342,7 @@ public class VRTNode extends VRTComponent {
 
     public void setVelocity(float[] velocity, boolean isConstant){
         if (!hasPhysicsBody){
-            ViroLog.error(TAG, "Attempted to set a velocity on a non-physics node");
+            PhantomLog.error(TAG, "Attempted to set a velocity on a non-physics node");
             return;
         }
 
@@ -1373,13 +1373,13 @@ public class VRTNode extends VRTComponent {
             normals.pushDouble(collidedNormal.z);
 
             WritableMap event = Arguments.createMap();
-            event.putString("viroTag", collidedTag);
+            event.putString("Tag", collidedTag);
             event.putArray("collidedPoint", points);
             event.putArray("collidedNormal", normals);
 
             node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                     node.getId(),
-                    ViroEvents.ON_COLLIDED,
+                    PhantomEvents.ON_COLLIDED,
                     event);
         }
     }
@@ -1417,7 +1417,7 @@ public class VRTNode extends VRTComponent {
 
             node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                     node.getId(),
-                    ViroEvents.ON_TRANSFORM_DELEGATE,
+                    PhantomEvents.ON_TRANSFORM_DELEGATE,
                     event);
         }
     }

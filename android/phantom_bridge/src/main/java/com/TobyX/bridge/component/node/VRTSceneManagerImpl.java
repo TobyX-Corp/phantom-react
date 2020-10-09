@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,14 +19,14 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ThemedReactContext;
 
 /**
  * SceneManager for building a {@link VRTScene}
- * corresponding to the ViroScene.js control.
+ * corresponding to the Scene.js control.
  */
 public class VRTSceneManagerImpl extends VRTSceneManager<VRTScene> {
 

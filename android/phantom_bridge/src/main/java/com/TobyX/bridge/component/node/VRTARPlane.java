@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,16 +19,16 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
-import com.viro.core.ARAnchor;
-import com.viro.core.ARPlaneAnchor;
-import com.viro.core.internal.ARDeclarativeNode;
-import com.viro.core.internal.ARDeclarativePlane;
-import com.viro.core.Node;
+import com.TobyX.core.ARAnchor;
+import com.TobyX.core.ARPlaneAnchor;
+import com.TobyX.core.internal.ARDeclarativeNode;
+import com.TobyX.core.internal.ARDeclarativePlane;
+import com.TobyX.core.Node;
 
 public class VRTARPlane extends VRTARNode {
 

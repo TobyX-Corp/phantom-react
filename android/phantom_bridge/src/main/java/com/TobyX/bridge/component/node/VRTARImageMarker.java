@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,14 +19,14 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.ARImageTarget;
-import com.viro.core.ARScene;
-import com.viro.core.Node;
-import com.viro.core.internal.ARDeclarativeImageNode;
-import com.viromedia.bridge.module.ARTrackingTargetsModule;
+import com.TobyX.core.ARImageTarget;
+import com.TobyX.core.ARScene;
+import com.TobyX.core.Node;
+import com.TobyX.core.internal.ARDeclarativeImageNode;
+import com.TobyX.bridge.module.ARTrackingTargetsModule;
 
 public class VRTARImageMarker extends VRTARNode {
 

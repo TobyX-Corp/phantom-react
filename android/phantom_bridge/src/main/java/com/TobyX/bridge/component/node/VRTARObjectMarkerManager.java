@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,13 +19,13 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
@@ -59,9 +59,9 @@ public class VRTARObjectMarkerManager extends VRTNodeManager<VRTARObjectMarker> 
     public Map getExportedCustomDirectEventTypeConstants() {
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_ANCHOR_FOUND, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_FOUND));
-        events.put(ViroEvents.ON_ANCHOR_UPDATED, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_UPDATED));
-        events.put(ViroEvents.ON_ANCHOR_REMOVED, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_REMOVED));
+        events.put(PhantomEvents.ON_ANCHOR_FOUND, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_FOUND));
+        events.put(PhantomEvents.ON_ANCHOR_UPDATED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_UPDATED));
+        events.put(PhantomEvents.ON_ANCHOR_REMOVED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_REMOVED));
 
         return events;
     }

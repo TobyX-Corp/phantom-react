@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import androidx.annotation.Nullable;
 
@@ -27,7 +27,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
@@ -53,8 +53,8 @@ public class VRTPortalSceneManager extends VRTNodeManager<VRTPortalScene> {
     public @Nullable
     Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-                ViroEvents.ON_PORTAL_ENTER, MapBuilder.of("registrationName", ViroEvents.ON_PORTAL_ENTER),
-                ViroEvents.ON_PORTAL_EXIT, MapBuilder.of("registrationName", ViroEvents.ON_PORTAL_EXIT)
+                PhantomEvents.ON_PORTAL_ENTER, MapBuilder.of("registrationName", PhantomEvents.ON_PORTAL_ENTER),
+                PhantomEvents.ON_PORTAL_EXIT, MapBuilder.of("registrationName", PhantomEvents.ON_PORTAL_EXIT)
         );
     }
 

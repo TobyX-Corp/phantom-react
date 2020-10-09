@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,16 +19,16 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.Node;
-import com.viro.core.Portal;
-import com.viro.core.PortalScene;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.Node;
+import com.TobyX.core.Portal;
+import com.TobyX.core.PortalScene;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.lang.ref.WeakReference;
 
@@ -82,14 +82,14 @@ public class VRTPortalScene extends VRTNode  {
     private void onPortalExit() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_PORTAL_EXIT,
+                PhantomEvents.ON_PORTAL_EXIT,
                 null);
     }
 
     private void onPortalEnter() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_PORTAL_ENTER,
+                PhantomEvents.ON_PORTAL_ENTER,
                 null);
     }
 

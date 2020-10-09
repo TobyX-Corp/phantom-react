@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import android.provider.MediaStore;
 
@@ -36,14 +36,14 @@ import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.annotations.ReactPropGroup;
 import com.facebook.yoga.YogaConstants;
-import com.viro.core.Material;
-import com.viro.core.VideoTexture;
-import com.viromedia.bridge.component.VRTViroViewGroupManager;
-import com.viromedia.bridge.module.MaterialManager;
-import com.viromedia.bridge.module.MaterialManager.MaterialWrapper;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.Material;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.bridge.component.VRTViewGroupManager;
+import com.TobyX.bridge.module.MaterialManager;
+import com.TobyX.bridge.module.MaterialManager.MaterialWrapper;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -52,9 +52,9 @@ import javax.annotation.Nullable;
 
 /**
  * Abstract NodeManager for setting {@link VRTNode} Control properties.
- * NOTE: Always extend from this class for all Node Viro controls.
+ * NOTE: Always extend from this class for all Node Phantom controls.
  */
-public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroupManager<T> {
+public abstract class VRTNodeManager<T extends VRTNode> extends VRTViewGroupManager<T> {
 
     public static final float s2DUnitPer3DUnit = 1000;
     private static final String WIDTH_NAME = "width";
@@ -188,9 +188,9 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
                 if (materialManager.isVideoMaterial(materials.getString(i))) {
                     if (!(nativeMaterial.getDiffuseTexture() instanceof VideoTexture)) {
                         // Recreate the material with the proper context.
-                        if (view.getViroContext() != null) {
+                        if (view.getContext() != null) {
                             MaterialWrapper materialWrapper = materialManager.getMaterialWrapper(materials.getString(i));
-                            VideoTexture videoTexture = new VideoTexture(view.getViroContext(), materialWrapper.getVideoTextureURI());
+                            VideoTexture videoTexture = new VideoTexture(view.getContext(), materialWrapper.getVideoTextureURI());
                             materialWrapper.recreate(videoTexture);
                             nativeMaterial = materialWrapper.getNativeMaterial();
                         }
@@ -235,8 +235,8 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
      * their properties properly converted from 3D to 2D units. It's easiest if we just make all Nodes
      * have FlexEnabledShadowNodes, and the components can choose whether or not
      */
-    protected class FlexEnabledShadowNode extends ViroLayoutShadowNode {
-        private final String TAG = ViroLog.getTag(VRTNodeManager.class);
+    protected class FlexEnabledShadowNode extends PhantomLayoutShadowNode {
+        private final String TAG = PhantomLog.getTag(VRTNodeManager.class);
 
         @ReactProp(name = "width", defaultFloat = 1)
         public void setWidth(Dynamic width) {
@@ -247,7 +247,7 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
                 Dynamic newWidth = DynamicFromMap.create(map, WIDTH_NAME);
                 super.setWidth(newWidth);
             } else {
-                ViroLog.warn(TAG, "Width is not of type Number or String. Doing nothing.");
+                PhantomLog.warn(TAG, "Width is not of type Number or String. Doing nothing.");
             }
         }
 
@@ -260,7 +260,7 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
                 Dynamic newHeight = DynamicFromMap.create(map, HEIGHT_NAME);
                 super.setHeight(newHeight);
             } else {
-                ViroLog.warn(TAG, "Height is not of type Number or String. Doing nothing.");
+                PhantomLog.warn(TAG, "Height is not of type Number or String. Doing nothing.");
             }
         }
 
@@ -281,7 +281,7 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
                 Dynamic newPadding = DynamicFromMap.create(map, PADDING_NAME);
                 super.setPaddings(index, newPadding);
             } else {
-                ViroLog.warn(TAG, "Padding is not of type Number of String. Doing nothing.");
+                PhantomLog.warn(TAG, "Padding is not of type Number of String. Doing nothing.");
             }
         }
 
@@ -305,19 +305,19 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
     public Map getExportedCustomDirectEventTypeConstants() {
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_HOVER, MapBuilder.of("registrationName", ViroEvents.ON_HOVER));
-        events.put(ViroEvents.ON_CLICK, MapBuilder.of("registrationName", ViroEvents.ON_CLICK));
-        events.put(ViroEvents.ON_TOUCH, MapBuilder.of("registrationName", ViroEvents.ON_TOUCH));
-        events.put(ViroEvents.ON_SWIPE, MapBuilder.of("registrationName", ViroEvents.ON_SWIPE));
-        events.put(ViroEvents.ON_SCROLL, MapBuilder.of("registrationName", ViroEvents.ON_SCROLL));
-        events.put(ViroEvents.ON_FUSE, MapBuilder.of("registrationName", ViroEvents.ON_FUSE));
-        events.put(ViroEvents.ON_PINCH, MapBuilder.of("registrationName", ViroEvents.ON_PINCH));
-        events.put(ViroEvents.ON_ROTATE, MapBuilder.of("registrationName", ViroEvents.ON_ROTATE));
-        events.put(ViroEvents.ON_DRAG, MapBuilder.of("registrationName", ViroEvents.ON_DRAG));
-        events.put(ViroEvents.ON_COLLIDED, MapBuilder.of("registrationName", ViroEvents.ON_COLLIDED));
-        events.put(ViroEvents.ON_TRANSFORM_DELEGATE, MapBuilder.of("registrationName", ViroEvents.ON_TRANSFORM_DELEGATE));
-        events.put(ViroEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_START));
-        events.put(ViroEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_FINISH));
+        events.put(PhantomEvents.ON_HOVER, MapBuilder.of("registrationName", PhantomEvents.ON_HOVER));
+        events.put(PhantomEvents.ON_CLICK, MapBuilder.of("registrationName", PhantomEvents.ON_CLICK));
+        events.put(PhantomEvents.ON_TOUCH, MapBuilder.of("registrationName", PhantomEvents.ON_TOUCH));
+        events.put(PhantomEvents.ON_SWIPE, MapBuilder.of("registrationName", PhantomEvents.ON_SWIPE));
+        events.put(PhantomEvents.ON_SCROLL, MapBuilder.of("registrationName", PhantomEvents.ON_SCROLL));
+        events.put(PhantomEvents.ON_FUSE, MapBuilder.of("registrationName", PhantomEvents.ON_FUSE));
+        events.put(PhantomEvents.ON_PINCH, MapBuilder.of("registrationName", PhantomEvents.ON_PINCH));
+        events.put(PhantomEvents.ON_ROTATE, MapBuilder.of("registrationName", PhantomEvents.ON_ROTATE));
+        events.put(PhantomEvents.ON_DRAG, MapBuilder.of("registrationName", PhantomEvents.ON_DRAG));
+        events.put(PhantomEvents.ON_COLLIDED, MapBuilder.of("registrationName", PhantomEvents.ON_COLLIDED));
+        events.put(PhantomEvents.ON_TRANSFORM_DELEGATE, MapBuilder.of("registrationName", PhantomEvents.ON_TRANSFORM_DELEGATE));
+        events.put(PhantomEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_START));
+        events.put(PhantomEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_FINISH));
 
         return events;
     }
@@ -332,13 +332,13 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViroViewGroup
         view.setCanCollide(canCollide);
     }
 
-    @ReactProp(name = "viroTag")
-    public void setViroTag(VRTNode view, String tag) {
-        view.setViroTag(tag);
+    @ReactProp(name = "Tag")
+    public void setTag(VRTNode view, String tag) {
+        view.setTag(tag);
     }
 
     @ReactProp(name = "hasTransformDelegate", defaultBoolean = false)
-    public void setViroTag(VRTNode view, boolean hasDelegate) {
+    public void setTag(VRTNode view, boolean hasDelegate) {
         view.setOnNativeTransformDelegate(hasDelegate);
     }
 

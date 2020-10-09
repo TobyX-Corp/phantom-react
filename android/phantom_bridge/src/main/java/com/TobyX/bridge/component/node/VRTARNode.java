@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,18 +19,18 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.ARAnchor;
-import com.viro.core.internal.ARDeclarativeNode;
-import com.viro.core.ARNode;
-import com.viromedia.bridge.utility.ARUtils;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.ARAnchor;
+import com.TobyX.core.internal.ARDeclarativeNode;
+import com.TobyX.core.ARNode;
+import com.TobyX.bridge.utility.ARUtils;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
 
@@ -59,7 +59,7 @@ public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
         returnMap.putMap("anchorFoundMap", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_ANCHOR_FOUND,
+                PhantomEvents.ON_ANCHOR_FOUND,
                 returnMap);
     }
 
@@ -69,7 +69,7 @@ public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
         returnMap.putMap("anchorUpdatedMap", (ReadableMap)ARUtils.mapFromARAnchor(arAnchor));
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_ANCHOR_UPDATED,
+                PhantomEvents.ON_ANCHOR_UPDATED,
                 returnMap);
     }
 
@@ -79,7 +79,7 @@ public class VRTARNode extends VRTNode implements ARDeclarativeNode.Delegate {
         handleAppearanceChange();
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_ANCHOR_REMOVED,
+                PhantomEvents.ON_ANCHOR_REMOVED,
                 null);
     }
 }

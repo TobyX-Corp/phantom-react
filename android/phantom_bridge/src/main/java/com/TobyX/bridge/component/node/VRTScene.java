@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import android.view.View;
 
@@ -30,18 +30,18 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.EventDelegate;
-import com.viro.core.internal.CameraCallback;
-import com.viro.core.Node;
-import com.viro.core.PhysicsShape;
-import com.viro.core.PhysicsWorld;
-import com.viro.core.Scene;
-import com.viro.core.Texture;
-import com.viro.core.Vector;
-import com.viro.core.VideoTexture;
-import com.viro.core.Renderer;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.EventDelegate;
+import com.TobyX.core.internal.CameraCallback;
+import com.TobyX.core.Node;
+import com.TobyX.core.PhysicsShape;
+import com.TobyX.core.PhysicsWorld;
+import com.TobyX.core.Scene;
+import com.TobyX.core.Texture;
+import com.TobyX.core.Vector;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.core.Renderer;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 public class VRTScene extends VRTNode implements Scene.VisibilityListener {
     private static final String TAG = VRTScene.class.getSimpleName();
@@ -129,8 +129,8 @@ public class VRTScene extends VRTNode implements Scene.VisibilityListener {
         mWallMaterial = soundRoom.hasKey(WALL_MATERIAL_KEY) ? soundRoom.getString(WALL_MATERIAL_KEY) : DEFAULT_MATERIAL;
         mCeilingMaterial = soundRoom.hasKey(CEILING_MATERIAL_KEY) ? soundRoom.getString(CEILING_MATERIAL_KEY) : DEFAULT_MATERIAL;
         mFloorMaterial = soundRoom.hasKey(FLOOR_MATERIAL_KEY) ? soundRoom.getString(FLOOR_MATERIAL_KEY) : DEFAULT_MATERIAL;
-        if (mViroContext != null) {
-            mNativeScene.setSoundRoom(mViroContext, new Vector(mSoundRoomSize),
+        if (mContext != null) {
+            mNativeScene.setSoundRoom(mContext, new Vector(mSoundRoomSize),
                     Scene.AudioMaterial.valueFromString(mWallMaterial),
                     Scene.AudioMaterial.valueFromString(mCeilingMaterial),
                     Scene.AudioMaterial.valueFromString(mFloorMaterial));
@@ -149,7 +149,7 @@ public class VRTScene extends VRTNode implements Scene.VisibilityListener {
             nativeEffects[i] = effect;
         }
         if (!mNativeScene.setEffects(nativeEffects)){
-            onError("Viro: Attempted to set an invalid effect!");
+            onError("Phantom: Attempted to set an invalid effect!");
         }
     }
 
@@ -185,11 +185,11 @@ public class VRTScene extends VRTNode implements Scene.VisibilityListener {
     }
 
     public void getCameraPositionAsync(CameraCallback callback) {
-        if (mViroContext == null || isTornDown()) {
+        if (mContext == null || isTornDown()) {
             callback.onGetCameraOrientation(0,0,0,0,0,0,0,0,0,0,0,0);
         }
         else {
-            mViroContext.getCameraOrientation(callback);
+            mContext.getCameraOrientation(callback);
         }
     }
 
@@ -226,10 +226,10 @@ public class VRTScene extends VRTNode implements Scene.VisibilityListener {
         event.putString("headset", mHeadset);
         event.putString("controller", mController);
         WritableMap eventContainer = Arguments.createMap();
-        eventContainer.putMap("platformInfoViro", (ReadableMap)event);
+        eventContainer.putMap("platformInfo", (ReadableMap)event);
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_PLATFORM_UPDATE,
+                PhantomEvents.ON_PLATFORM_UPDATE,
                 eventContainer);
     }
 

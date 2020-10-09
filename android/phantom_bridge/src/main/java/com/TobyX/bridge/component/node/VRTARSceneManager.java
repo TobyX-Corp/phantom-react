@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
@@ -27,9 +27,9 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viro.core.Vector;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
@@ -98,13 +98,13 @@ public class VRTARSceneManager extends VRTSceneManager<VRTARScene> {
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
         Map map = super.getExportedCustomDirectEventTypeConstants();
-        map.put(ViroEvents.ON_AMBIENT_LIGHT_UPDATE, MapBuilder.of("registrationName", ViroEvents.ON_AMBIENT_LIGHT_UPDATE));
-        map.put(ViroEvents.ON_TRACKING_UPDATED, MapBuilder.of("registrationName", ViroEvents.ON_TRACKING_UPDATED));
-        map.put(ViroEvents.ON_ANCHOR_FOUND, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_FOUND));
-        map.put(ViroEvents.ON_ANCHOR_UPDATED, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_UPDATED));
-        map.put(ViroEvents.ON_ANCHOR_REMOVED, MapBuilder.of("registrationName", ViroEvents.ON_ANCHOR_REMOVED));
-        map.put(ViroEvents.ON_CAMERA_AR_HIT_TEST_VIRO, MapBuilder.of("registrationName", ViroEvents.ON_CAMERA_AR_HIT_TEST_VIRO));
-        map.put(ViroEvents.ON_AR_POINT_CLOUD_UPDATE, MapBuilder.of("registrationName", ViroEvents.ON_AR_POINT_CLOUD_UPDATE));
+        map.put(PhantomEvents.ON_AMBIENT_LIGHT_UPDATE, MapBuilder.of("registrationName", PhantomEvents.ON_AMBIENT_LIGHT_UPDATE));
+        map.put(PhantomEvents.ON_TRACKING_UPDATED, MapBuilder.of("registrationName", PhantomEvents.ON_TRACKING_UPDATED));
+        map.put(PhantomEvents.ON_ANCHOR_FOUND, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_FOUND));
+        map.put(PhantomEvents.ON_ANCHOR_UPDATED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_UPDATED));
+        map.put(PhantomEvents.ON_ANCHOR_REMOVED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_REMOVED));
+        map.put(PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM MapBuilder.of("registrationName", PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM));
+        map.put(PhantomEvents.ON_AR_POINT_CLOUD_UPDATE, MapBuilder.of("registrationName", PhantomEvents.ON_AR_POINT_CLOUD_UPDATE));
         return map;
     }
 

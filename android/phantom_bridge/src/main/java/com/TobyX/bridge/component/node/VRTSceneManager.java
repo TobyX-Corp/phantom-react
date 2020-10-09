@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node;
+package com.TobyX.bridge.component.node;
 
 import androidx.annotation.Nullable;
 
@@ -28,15 +28,15 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.component.VRTViroViewGroupManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.component.VRTViewGroupManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
 /**
  * The base class for all SceneManagers
  */
-public abstract class VRTSceneManager<T extends VRTScene> extends VRTViroViewGroupManager<T> {
+public abstract class VRTSceneManager<T extends VRTScene> extends VRTViewGroupManager<T> {
 
     public VRTSceneManager(ReactApplicationContext context){
         super(context);
@@ -78,14 +78,14 @@ public abstract class VRTSceneManager<T extends VRTScene> extends VRTViroViewGro
 
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
-        Map map = MapBuilder.of(ViroEvents.ON_FUSE, MapBuilder.of("registrationName", ViroEvents.ON_FUSE));
-        map.put(ViroEvents.ON_HOVER, MapBuilder.of("registrationName", ViroEvents.ON_HOVER));
-        map.put(ViroEvents.ON_CLICK, MapBuilder.of("registrationName", ViroEvents.ON_CLICK));
-        map.put(ViroEvents.ON_SWIPE, MapBuilder.of("registrationName", ViroEvents.ON_SWIPE));
-        map.put(ViroEvents.ON_SCROLL, MapBuilder.of("registrationName", ViroEvents.ON_SCROLL));
-        map.put(ViroEvents.ON_COLLIDED, MapBuilder.of("registrationName", ViroEvents.ON_COLLIDED));
-        map.put(ViroEvents.ON_PLATFORM_UPDATE, MapBuilder.of("registrationName", ViroEvents.ON_PLATFORM_UPDATE));
-        map.put(ViroEvents.ON_CAMERA_TRANSFORM_UPDATE, MapBuilder.of("registrationName", ViroEvents.ON_CAMERA_TRANSFORM_UPDATE));
+        Map map = MapBuilder.of(PhantomEvents.ON_FUSE, MapBuilder.of("registrationName", PhantomEvents.ON_FUSE));
+        map.put(PhantomEvents.ON_HOVER, MapBuilder.of("registrationName", PhantomEvents.ON_HOVER));
+        map.put(PhantomEvents.ON_CLICK, MapBuilder.of("registrationName", PhantomEvents.ON_CLICK));
+        map.put(PhantomEvents.ON_SWIPE, MapBuilder.of("registrationName", PhantomEvents.ON_SWIPE));
+        map.put(PhantomEvents.ON_SCROLL, MapBuilder.of("registrationName", PhantomEvents.ON_SCROLL));
+        map.put(PhantomEvents.ON_COLLIDED, MapBuilder.of("registrationName", PhantomEvents.ON_COLLIDED));
+        map.put(PhantomEvents.ON_PLATFORM_UPDATE, MapBuilder.of("registrationName", PhantomEvents.ON_PLATFORM_UPDATE));
+        map.put(PhantomEvents.ON_CAMERA_TRANSFORM_UPDATE, MapBuilder.of("registrationName", PhantomEvents.ON_CAMERA_TRANSFORM_UPDATE));
         return map;
     }
 
