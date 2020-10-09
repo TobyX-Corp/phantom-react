@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.net.Uri;
 
@@ -28,15 +28,15 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.PortalScene;
-import com.viro.core.Texture;
-import com.viro.core.Vector;
-import com.viro.core.ViroContext;
-import com.viro.core.VideoTexture;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.PortalScene;
+import com.TobyX.core.Texture;
+import com.TobyX.core.Vector;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.lang.ref.WeakReference;
 
@@ -133,7 +133,7 @@ public class VRT360Video extends VRTNode {
     }
 
     private void resetVideo() {
-        if (mViroContext == null || mSource == null) {
+        if (mContext == null || mSource == null) {
             return;
         }
 
@@ -144,7 +144,7 @@ public class VRT360Video extends VRTNode {
 
         // Create Texture
         mDelegate = new Video360Delegate(this);
-        mVideoTextureJni = new VideoTexture(mViroContext, Uri.parse(mSource), mDelegate, Texture.StereoMode.valueFromString(mStereoMode));
+        mVideoTextureJni = new VideoTexture(mContext, Uri.parse(mSource), mDelegate, Texture.StereoMode.valueFromString(mStereoMode));
         mVideoTextureJni.setPlaybackListener(mDelegate);
         updateVideoTexture();
         setLoop(mLoop);
@@ -162,8 +162,8 @@ public class VRT360Video extends VRTNode {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         resetVideo();
     }
 
@@ -272,21 +272,21 @@ public class VRT360Video extends VRTNode {
     private void reactVideoBufferStartCallback() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_START,
+                PhantomEvents.ON_BUFFER_START,
                 null);
     }
 
     private void reactVideoBufferEndCallback() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_END,
+                PhantomEvents.ON_BUFFER_END,
                 null);
     }
 
     private void reactVideoFinishedCallback() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_FINISH,
+                PhantomEvents.ON_FINISH,
                 null);
     }
 
@@ -296,7 +296,7 @@ public class VRT360Video extends VRTNode {
         event.putDouble("totalTime", (double) totalTime);
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_UPDATE_TIME,
+                PhantomEvents.ON_UPDATE_TIME,
                 event);
     }
 

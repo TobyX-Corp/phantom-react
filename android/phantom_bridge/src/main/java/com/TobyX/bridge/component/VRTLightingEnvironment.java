@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,18 +19,18 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.PortalScene;
-import com.viro.core.Texture;
-import com.viro.core.internal.Image;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.HdrImageDownloader;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.PortalScene;
+import com.TobyX.core.Texture;
+import com.TobyX.core.internal.Image;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.HdrImageDownloader;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 public class VRTLightingEnvironment extends VRTNode {
     private ReadableMap mSourceMap;
@@ -104,7 +104,7 @@ public class VRTLightingEnvironment extends VRTNode {
     private void imageDownloadDidStart() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_START,
+                PhantomEvents.ON_LOAD_START,
                 null
         );
     }
@@ -112,7 +112,7 @@ public class VRTLightingEnvironment extends VRTNode {
     private void imageDownloadDidFinish() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_END,
+                PhantomEvents.ON_LOAD_END,
                 null
         );
     }
@@ -131,7 +131,7 @@ public class VRTLightingEnvironment extends VRTNode {
         @Override
         public void completed(Texture result) {
             if (result == null){
-                onError("Viro: Error loading hdr file.");
+                onError("Phantom: Error loading hdr file.");
                 return;
             } else {
                 if (mLatestTexture != null) {

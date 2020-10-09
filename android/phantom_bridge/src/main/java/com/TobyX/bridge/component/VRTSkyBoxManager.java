@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 
 import java.util.Map;
 
-public class VRTSkyBoxManager extends VRTViroViewGroupManager<VRTSkyBox> {
+public class VRTSkyBoxManager extends VRTViewGroupManager<VRTSkyBox> {
 
     public VRTSkyBoxManager(ReactApplicationContext context) {
         super(context);
@@ -65,8 +65,8 @@ public class VRTSkyBoxManager extends VRTViroViewGroupManager<VRTSkyBox> {
     @ReactProp(name = "format")
     public void setFormat(VRTSkyBox view, String format) { view.setFormat(format); }
 
-    protected final static String SKYBOX_LOAD_START = "onViroSkyBoxLoadStart";
-    protected final static String SKYBOX_LOAD_END = "onViroSkyBoxLoadEnd";
+    protected final static String SKYBOX_LOAD_START = "onSkyBoxLoadStart";
+    protected final static String SKYBOX_LOAD_END = "onSkyBoxLoadEnd";
 
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {

@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,19 +19,19 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import android.net.Uri;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.internal.BaseSound;
-import com.viro.core.SoundData;
-import com.viro.core.SoundField;
-import com.viro.core.Vector;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.internal.BaseSound;
+import com.TobyX.core.SoundData;
+import com.TobyX.core.SoundField;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 public class VRTSoundField extends VRTBaseSound implements SoundField.PlaybackListener {
 
@@ -59,14 +59,14 @@ public class VRTSoundField extends VRTBaseSound implements SoundField.PlaybackLi
 
     @Override
     protected BaseSound getNativeSound(String path) {
-        SoundField sound = new SoundField(mViroContext, Uri.parse(path), this);
+        SoundField sound = new SoundField(mContext, Uri.parse(path), this);
         sound.setPlaybackListener(this);
         return sound;
     }
 
     @Override
     protected BaseSound getNativeSound(SoundData data) {
-        SoundField sound = new SoundField(data, mViroContext, this);
+        SoundField sound = new SoundField(data, mContext, this);
         sound.setPlaybackListener(this);
         return sound;
     }

@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.util.Log;
 
@@ -29,9 +29,9 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 
 /**
  * ARSceneNavigatorManager for building a {@link VRTARSceneNavigator}
- * corresponding to the ViroARNavigator.js control.
+ * corresponding to the ARNavigator.js control.
  */
-public class VRTARSceneNavigatorManager extends VRTViroViewGroupManager<VRTARSceneNavigator> {
+public class VRTARSceneNavigatorManager extends VRTViewGroupManager<VRTARSceneNavigator> {
 
     public VRTARSceneNavigatorManager(ReactApplicationContext context) {
         super(context);

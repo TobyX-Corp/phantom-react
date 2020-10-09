@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.net.Uri;
 import android.util.Log;
@@ -28,17 +28,17 @@ import com.facebook.react.bridge.JSApplicationCausedNativeException;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.internal.BaseSound;
-import com.viro.core.ViroContext;
-import com.viro.core.SoundData;
-import com.viromedia.bridge.module.SoundModule;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.internal.BaseSound;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.SoundData;
+import com.TobyX.bridge.module.SoundModule;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.PhantomLog;
 
 public abstract class VRTBaseSound extends VRTComponent {
 
-    private static final String TAG = ViroLog.getTag(VRTBaseSound.class);
+    private static final String TAG = PhantomLog.getTag(VRTBaseSound.class);
     protected static final String NAME = "name";
     protected static final String URI = "uri";
 
@@ -92,7 +92,7 @@ public abstract class VRTBaseSound extends VRTComponent {
             }
         } else {
             // We should *NEVER* get in this case, so let's log in case.
-            ViroLog.warn(TAG, "seekToTime called before nativeSound was created!");
+            PhantomLog.warn(TAG, "seekToTime called before nativeSound was created!");
         }
     }
 
@@ -125,13 +125,13 @@ public abstract class VRTBaseSound extends VRTComponent {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         resetSound();
     }
 
     protected void resetSound() {
-        if (mViroContext == null) {
+        if (mContext == null) {
             return;
         }
         if (mNativeSound != null) {

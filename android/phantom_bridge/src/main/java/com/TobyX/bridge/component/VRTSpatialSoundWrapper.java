@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,12 +19,12 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.ViroContext;
-import com.viromedia.bridge.component.node.VRTNode;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.bridge.component.node.VRTNode;
 
 /**
  * This class wraps a SpatialSound object because a SpatialSound object can't extend both
@@ -111,7 +111,7 @@ public class VRTSpatialSoundWrapper extends VRTNode {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        mInnerSound.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        mInnerSound.setContext(context);
     }
 }

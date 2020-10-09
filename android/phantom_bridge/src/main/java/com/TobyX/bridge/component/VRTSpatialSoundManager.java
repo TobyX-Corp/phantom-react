@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import androidx.annotation.Nullable;
@@ -30,13 +30,13 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroCommands;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomCommands;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
-public class VRTSpatialSoundManager extends VRTViroViewGroupManager<VRTSpatialSoundWrapper> {
+public class VRTSpatialSoundManager extends VRTViewGroupManager<VRTSpatialSoundWrapper> {
 
     public VRTSpatialSoundManager(ReactApplicationContext context) {
         super(context);
@@ -97,19 +97,19 @@ public class VRTSpatialSoundManager extends VRTViroViewGroupManager<VRTSpatialSo
         sound.setMaxDistance(maxDistance);
     }
 
-    // TODO: VIRO-758 - GVR doesn't support onFinish.
+    // TODO: PHANTOM-758 - GVR doesn't support onFinish.
     @Override
     public @Nullable Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-                ViroEvents.ON_FINISH, MapBuilder.of("registrationName", ViroEvents.ON_FINISH),
-                ViroEvents.ON_ERROR, MapBuilder.of("registrationName", ViroEvents.ON_ERROR)
+                PhantomEvents.ON_FINISH, MapBuilder.of("registrationName", PhantomEvents.ON_FINISH),
+                PhantomEvents.ON_ERROR, MapBuilder.of("registrationName", PhantomEvents.ON_ERROR)
         );
     }
 
     @Override
     public void receiveCommand(VRTSpatialSoundWrapper sound, int commandType, @Nullable ReadableArray args) {
         switch (commandType) {
-            case ViroCommands.SEEK_TO_TIME_INDEX:
+            case PhantomCommands.SEEK_TO_TIME_INDEX:
                 sound.seekToTime((int) args.getDouble(0));
                 break;
             default:
@@ -120,6 +120,6 @@ public class VRTSpatialSoundManager extends VRTViroViewGroupManager<VRTSpatialSo
 
     @Override
     public Map<String,Integer> getCommandsMap() {
-        return MapBuilder.of(ViroCommands.SEEK_TO_TIME_NAME, ViroCommands.SEEK_TO_TIME_INDEX);
+        return MapBuilder.of(PhantomCommands.SEEK_TO_TIME_NAME, PhantomCommands.SEEK_TO_TIME_INDEX);
     }
 }

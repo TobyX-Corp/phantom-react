@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,16 +19,16 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.Material;
-import com.viro.core.VideoTexture;
-import com.viromedia.bridge.module.MaterialManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.Material;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.bridge.module.MaterialManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.lang.ref.WeakReference;
 
@@ -238,21 +238,21 @@ public class VRTMaterialVideo extends VRTComponent implements MaterialManager.Ma
     private void playerBufferStart() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_START,
+                PhantomEvents.ON_BUFFER_START,
                 null);
     }
 
     private void playerBufferEnd() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_END,
+                PhantomEvents.ON_BUFFER_END,
                 null);
     }
 
     private void playerDidFinishPlaying() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_FINISH,
+                PhantomEvents.ON_FINISH,
                 null);
     }
 
@@ -263,7 +263,7 @@ public class VRTMaterialVideo extends VRTComponent implements MaterialManager.Ma
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_UPDATE_TIME,
+                PhantomEvents.ON_UPDATE_TIME,
                 event);
     }
 

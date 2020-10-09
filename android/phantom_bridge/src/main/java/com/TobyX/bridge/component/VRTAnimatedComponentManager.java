@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,17 +19,17 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
-public class VRTAnimatedComponentManager extends VRTViroViewGroupManager<VRTAnimatedComponent> {
+public class VRTAnimatedComponentManager extends VRTViewGroupManager<VRTAnimatedComponent> {
 
     public VRTAnimatedComponentManager(ReactApplicationContext context) {
         super(context);
@@ -69,8 +69,8 @@ public class VRTAnimatedComponentManager extends VRTViroViewGroupManager<VRTAnim
     public Map getExportedCustomDirectEventTypeConstants() {
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_START));
-        events.put(ViroEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_FINISH));
+        events.put(PhantomEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_START));
+        events.put(PhantomEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_FINISH));
 
         return events;
     }

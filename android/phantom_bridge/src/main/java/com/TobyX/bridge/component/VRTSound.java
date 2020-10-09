@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,17 +19,17 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import android.net.Uri;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.internal.BaseSound;
-import com.viro.core.SoundData;
-import com.viro.core.Sound;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.internal.BaseSound;
+import com.TobyX.core.SoundData;
+import com.TobyX.core.Sound;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 public class VRTSound extends VRTBaseSound implements Sound.PlaybackListener {
 
@@ -39,14 +39,14 @@ public class VRTSound extends VRTBaseSound implements Sound.PlaybackListener {
 
     @Override
     protected BaseSound getNativeSound(String path) {
-        Sound sound = new Sound(mViroContext, Uri.parse(path), this);
+        Sound sound = new Sound(mContext, Uri.parse(path), this);
         sound.setPlaybackListener(this);
         return sound;
     }
 
     @Override
     protected BaseSound getNativeSound(SoundData data) {
-        Sound sound = new Sound(data, mViroContext, this);
+        Sound sound = new Sound(data, mContext, this);
         sound.setPlaybackListener(this);
         return sound;
     }
@@ -62,7 +62,7 @@ public class VRTSound extends VRTBaseSound implements Sound.PlaybackListener {
     @Override
     public void onSoundFinish(Sound sound) {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(),
-                ViroEvents.ON_FINISH,
+                PhantomEvents.ON_FINISH,
                 null);
     }
 

@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.view.ViewGroup;
 
@@ -35,15 +35,15 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * This is the base manager class for ALL Viro UI Components. Because we share some common
+ * This is the base manager class for ALL Phantom UI Components. Because we share some common
  * UI Component properties with React Native itself, we'll simply just override them here.
  */
-public abstract class VRTViroViewGroupManager<T extends ViewGroup>
+public abstract class VRTViewGroupManager<T extends ViewGroup>
         extends ViewGroupManager<T> {
 
     private final ReactApplicationContext mContext;
 
-    public VRTViroViewGroupManager(ReactApplicationContext context) {
+    public VRTViewGroupManager(ReactApplicationContext context) {
         mContext = context;
     }
 
@@ -53,7 +53,7 @@ public abstract class VRTViroViewGroupManager<T extends ViewGroup>
 
     @Override
     public LayoutShadowNode createShadowNodeInstance() {
-        return new ViroLayoutShadowNode();
+        return new PhantomLayoutShadowNode();
     }
 
     /* Override React Properties */
@@ -63,7 +63,7 @@ public abstract class VRTViroViewGroupManager<T extends ViewGroup>
         // no-op
     }
 
-    protected class ViroLayoutShadowNode extends LayoutShadowNode {
+    protected class PhantomLayoutShadowNode extends LayoutShadowNode {
 
         @ReactProp(name = "position")
         public void setPosition(@Nullable ReadableArray position) {

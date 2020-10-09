@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.graphics.Color;
 
@@ -27,11 +27,11 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.utility.Helper;
+import com.TobyX.bridge.utility.Helper;
 
 import javax.annotation.Nullable;
 
-public class VRTOmniLightManager extends VRTViroViewGroupManager<VRTOmniLight> {
+public class VRTOmniLightManager extends VRTViewGroupManager<VRTOmniLight> {
 
     public VRTOmniLightManager(ReactApplicationContext context) {
         super(context);

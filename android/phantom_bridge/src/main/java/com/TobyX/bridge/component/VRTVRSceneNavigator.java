@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,30 +19,30 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.os.Handler;
 import android.os.Looper;
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.ViroViewGVR;
-import com.viro.core.ViroViewOVR;
-import com.viro.core.ViroView;
-import com.viromedia.bridge.ReactViroPackage;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.PhantomViewGVR;
+import com.TobyX.core.PhantomViewOVR;
+import com.TobyX.core.PhantomView;
+import com.TobyX.bridge.PhantomReactPackage;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.lang.ref.WeakReference;
 
 public class VRTVRSceneNavigator extends VRT3DSceneNavigator {
-    private static final String TAG = ViroLog.getTag(VRTVRSceneNavigator.class);
+    private static final String TAG = PhantomLog.getTag(VRTVRSceneNavigator.class);
 
-    // keeps track if we should call setVrModeEnabled on the ViroView in onPropsSet(). We always
+    // keeps track if we should call setVrModeEnabled on the PhantomView in onPropsSet(). We always
     // need to set it the first time because we want to start with "false" and then switch to "true"
     // in order to prevent the disabling of low persistence mode when entering 360 mode.
     private boolean mNeedsSetVrMode = true;
     private boolean mVrMode = true;
 
-    private static class StartupListenerGVR implements ViroViewGVR.StartupListener {
+    private static class StartupListenerGVR implements PhantomViewGVR.StartupListener {
 
         private WeakReference<VRTVRSceneNavigator> mNavigator;
 
@@ -67,19 +67,19 @@ public class VRTVRSceneNavigator extends VRT3DSceneNavigator {
                     final VRTVRSceneNavigator sceneNav = navigatorWeakReference.get();
                     if(sceneNav != null) {
                         sceneNav.mGLInitialized = true;
-                        sceneNav.setViroContext();
+                        sceneNav.setContext();
                     }
                 }
             });
         }
 
         @Override
-        public void onFailure(ViroViewGVR.StartupError startupError, String s) {
+        public void onFailure(PhantomViewGVR.StartupError startupError, String s) {
 
         }
     }
 
-    private static class StartupListenerOVR implements ViroViewOVR.StartupListener {
+    private static class StartupListenerOVR implements PhantomViewOVR.StartupListener {
 
         private WeakReference<VRTVRSceneNavigator> mNavigator;
 
@@ -99,31 +99,31 @@ public class VRTVRSceneNavigator extends VRT3DSceneNavigator {
                 @Override
                 public void run() {
                     navigator.mGLInitialized = true;
-                    navigator.setViroContext();
+                    navigator.setContext();
                 }
             });
         }
 
         @Override
-        public void onFailure(ViroViewOVR.StartupError startupError, String s) {
+        public void onFailure(PhantomViewOVR.StartupError startupError, String s) {
 
         }
     }
 
     public VRTVRSceneNavigator(ReactContext reactContext,
-                               ReactViroPackage.ViroPlatform platform) {
+                               PhantomReactPackage.Platform platform) {
         super(reactContext, platform);
     }
 
-    protected ViroView createViroView(ReactContext reactContext) {
+    protected PhantomView createView(ReactContext reactContext) {
         switch (mPlatform) {
             case OVR_MOBILE:
-                return new ViroViewOVR(reactContext.getCurrentActivity(),
+                return new PhantomViewOVR(reactContext.getCurrentActivity(),
                         new StartupListenerOVR(this));
             case GVR:
                 // default case is to use GVR
             default:
-                return new ViroViewGVR(reactContext.getCurrentActivity(),
+                return new PhantomViewGVR(reactContext.getCurrentActivity(),
                         new StartupListenerGVR(this), new OnGVRExitListener(this), null, false);
         }
     }
@@ -136,7 +136,7 @@ public class VRTVRSceneNavigator extends VRT3DSceneNavigator {
     @Override
     public void onPropsSet() {
         if (mNeedsSetVrMode) {
-            mViroView.setVRModeEnabled(mVrMode);
+            mView.setVRModeEnabled(mVrMode);
             mNeedsSetVrMode = false;
         }
     }

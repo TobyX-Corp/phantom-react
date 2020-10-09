@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -28,11 +28,11 @@ import android.os.Looper;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.PhantomLog;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.internal.ExecutableAnimation;
+import com.TobyX.core.internal.ExecutableAnimation;
 
 import java.lang.ref.WeakReference;
 
@@ -41,7 +41,7 @@ import java.lang.ref.WeakReference;
  * away the loading of the ExecutableAnimation to subclasses.
  */
 public abstract class VRTManagedAnimation {
-    private static final String TAG = ViroLog.getTag(VRTManagedAnimation.class);
+    private static final String TAG = PhantomLog.getTag(VRTManagedAnimation.class);
 
     private enum AnimationState {
         SCHEDULED, RUNNING, PAUSED, TERMINATED
@@ -224,7 +224,7 @@ public abstract class VRTManagedAnimation {
             }
         }
         else {
-            ViroLog.warn(TAG, "Unable to play animation in state " + mState.name());
+            PhantomLog.warn(TAG, "Unable to play animation in state " + mState.name());
         }
     }
 
@@ -266,24 +266,24 @@ public abstract class VRTManagedAnimation {
      */
     private void startAnimation() {
         if (mState != AnimationState.SCHEDULED) {
-            ViroLog.info(TAG, "Aborted starting new animation, was no longer scheduled");
+            PhantomLog.info(TAG, "Aborted starting new animation, was no longer scheduled");
             mState = AnimationState.TERMINATED;
             return;
         }
         if (mNode == null) {
-            ViroLog.info(TAG, "Aborted starting new animation, no target node specified");
+            PhantomLog.info(TAG, "Aborted starting new animation, no target node specified");
             mState = AnimationState.TERMINATED;
             return;
         }
         if (mNode.isTornDown()) {
-            ViroLog.info(TAG, "Aborted starting new animation, node is torn down");
+            PhantomLog.info(TAG, "Aborted starting new animation, node is torn down");
             mState = AnimationState.TERMINATED;
             return;
         }
 
         handleLoadAnimation();
         if (mExecutableAnimation == null) {
-            ViroLog.info(TAG, "Aborted starting new animation, no animation is loaded");
+            PhantomLog.info(TAG, "Aborted starting new animation, no animation is loaded");
             mState = AnimationState.TERMINATED;
             return;
         }
@@ -311,7 +311,7 @@ public abstract class VRTManagedAnimation {
     private void onStartAnimation() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 mParentComponent.getId(),
-                ViroEvents.ON_ANIMATION_START,
+                PhantomEvents.ON_ANIMATION_START,
                 null);
     }
 
@@ -322,7 +322,7 @@ public abstract class VRTManagedAnimation {
     private void onFinishAnimation(ExecutableAnimation animation) {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 mParentComponent.getId(),
-                ViroEvents.ON_ANIMATION_FINISH,
+                PhantomEvents.ON_ANIMATION_FINISH,
                 null);
 
         // If the animation changed, we won't terminate or loop

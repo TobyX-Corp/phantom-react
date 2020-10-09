@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,18 +19,18 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.internal.ExecutableAnimation;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.module.AnimationManager;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.internal.ExecutableAnimation;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.module.AnimationManager;
+import com.TobyX.bridge.utility.PhantomLog;
 
 public class VRTAnimatedComponent extends VRTComponent {
-    private static final String TAG = ViroLog.getTag(VRTAnimatedComponent.class);
+    private static final String TAG = PhantomLog.getTag(VRTAnimatedComponent.class);
 
     private static class AnimatedComponentAnimation extends VRTManagedAnimation {
 
@@ -102,12 +102,12 @@ public class VRTAnimatedComponent extends VRTComponent {
     public void addView(View child, int index) {
         if (!(child instanceof VRTNode)) {
             throw new IllegalArgumentException("Can not add " + child.getClass().getSimpleName()
-                    + " as child of ViroAnimatedComponent");
+                    + " as child of AnimatedComponent");
         }
         super.addView(child, index);
 
         if (getChildCount() > 1) {
-            throw new IllegalStateException("ViroAnimatedComponent can only have 1 child, found more than 1.");
+            throw new IllegalStateException("AnimatedComponent can only have 1 child, found more than 1.");
         }
 
         mChildNode = (VRTNode) child;

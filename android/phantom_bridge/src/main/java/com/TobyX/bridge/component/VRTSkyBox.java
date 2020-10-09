@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.graphics.Bitmap;
 
@@ -30,16 +30,16 @@ import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.Node;
-import com.viro.core.PortalScene;
-import com.viro.core.internal.Image;
-import com.viro.core.Texture;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ImageDownloadListener;
-import com.viromedia.bridge.utility.ImageDownloader;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.Node;
+import com.TobyX.core.PortalScene;
+import com.TobyX.core.internal.Image;
+import com.TobyX.core.Texture;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.ImageDownloadListener;
+import com.TobyX.bridge.utility.ImageDownloader;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -49,7 +49,7 @@ import java.util.concurrent.CountDownLatch;
 public class VRTSkyBox extends VRTNode {
     private static final long COLOR_NOT_SET = 0;
 
-    private static final String TAG = ViroLog.getTag(VRTSkyBox.class);
+    private static final String TAG = PhantomLog.getTag(VRTSkyBox.class);
     private final ReactContext mContext;
     private ReadableMap mSourceMap;
     private Map<String, Image> mImageMap = new HashMap<>();
@@ -258,7 +258,7 @@ public class VRTSkyBox extends VRTNode {
                     final int height = result.getHeight();
 
                     if(width != height) {
-                        ViroLog.error(TAG, "Width and height for skybox textures must be square, current image dimensions are (" + width + "," + height + ")");
+                        PhantomLog.error(TAG, "Width and height for skybox textures must be square, current image dimensions are (" + width + "," + height + ")");
                     }
                 }
             }

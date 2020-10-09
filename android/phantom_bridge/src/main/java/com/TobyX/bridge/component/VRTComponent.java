@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -30,17 +30,17 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.facebook.react.views.view.ReactViewGroup;
-import com.viro.core.ViroContext;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 /**
- * Base class for any Viro UI Component. Equivalent to the VRTView in iOS.
+ * Base class for any Phantom UI Component. Equivalent to the VRTView in iOS.
  */
 public class VRTComponent extends ReactViewGroup {
 
     private static String TAG = VRTComponent.class.getSimpleName();
-    protected ViroContext mViroContext = null;
+    protected PhantomContext mContext = null;
     protected ReactContext mReactContext = null;
     protected VRTScene mScene = null;
     /*
@@ -78,16 +78,16 @@ public class VRTComponent extends ReactViewGroup {
         return mReactContext;
     }
 
-    public ViroContext getViroContext() { return mViroContext; }
+    public PhantomContext getContext() { return mContext; }
 
-    public void setViroContext(ViroContext context) {
-        mViroContext = context;
+    public void setContext(PhantomContext context) {
+        mContext = context;
 
         // Update our child views with the scene as well.
         for (int i = getChildCount() - 1; i >= 0; i--) {
             final View child = getChildAt(i);
             if (child instanceof VRTComponent){
-                ((VRTComponent)child).setViroContext(context);
+                ((VRTComponent)child).setContext(context);
             }
         }
     }
@@ -106,7 +106,7 @@ public class VRTComponent extends ReactViewGroup {
 
     /**
      * If in the case a React view is added / destroyed, update
-     * the ViroContext of child views if we can (if we have it).
+     * the PhantomContext of child views if we can (if we have it).
      */
     @Override
     public void addView(View child, int index) {
@@ -118,8 +118,8 @@ public class VRTComponent extends ReactViewGroup {
         }
 
         VRTComponent component = (VRTComponent) child;
-        if (mViroContext != null && component.mViroContext == null){
-            component.setViroContext(mViroContext);
+        if (mContext != null && component.mContext == null){
+            component.setContext(mContext);
         }
         if (mScene != null && component.mScene == null){
             component.setScene(mScene);
@@ -344,7 +344,7 @@ public class VRTComponent extends ReactViewGroup {
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_ERROR,
+                PhantomEvents.ON_ERROR,
                 event);
     }
 }

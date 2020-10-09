@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -27,16 +27,16 @@ import android.util.Log;
 import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.ViroViewARCore;
-import com.viro.core.ViroView;
-import com.viromedia.bridge.ReactViroPackage;
-import com.viromedia.bridge.component.node.VRTARScene;
-import com.viromedia.bridge.utility.DisplayRotationListener;
+import com.TobyX.core.ViewARCore;
+import com.TobyX.core.PhantomView;
+import com.TobyX.bridge.PhantomReactPackage;
+import com.TobyX.bridge.component.node.VRTARScene;
+import com.TobyX.bridge.utility.DisplayRotationListener;
 
 import java.lang.ref.WeakReference;
 
 /**
- * ARSceneNavigator manages the various AR scenes that a Viro App can navigate between.
+ * ARSceneNavigator manages the various AR scenes that a Phantom App can navigate between.
  */
 public class VRTARSceneNavigator extends VRT3DSceneNavigator {
 
@@ -44,7 +44,7 @@ public class VRTARSceneNavigator extends VRT3DSceneNavigator {
     private boolean mAutoFocusEnabled = false;
     private boolean mNeedsAutoFocusToggle = false;
 
-    private static class StartupListenerARCore implements ViroViewARCore.StartupListener {
+    private static class StartupListenerARCore implements ViewARCore.StartupListener {
 
         private WeakReference<VRTARSceneNavigator> mNavigator;
 
@@ -69,7 +69,7 @@ public class VRTARSceneNavigator extends VRT3DSceneNavigator {
                     VRTARSceneNavigator nav = navigatorWeakReference.get();
                     if (nav != null) {
                         nav.mGLInitialized = true;
-                        nav.setViroContext();
+                        nav.setContext();
                     }
                 }
             });
@@ -81,21 +81,21 @@ public class VRTARSceneNavigator extends VRT3DSceneNavigator {
         }
 
         @Override
-        public void onFailure(ViroViewARCore.StartupError error, String errorMessage) {
-            Log.e("Viro", "onRendererFailed [error: " + error + "], message [" + errorMessage + "]");
+        public void onFailure(ViewARCore.StartupError error, String errorMessage) {
+            Log.e("Phantom", "onRendererFailed [error: " + error + "], message [" + errorMessage + "]");
             // No-op
         }
     }
 
     public VRTARSceneNavigator(ReactContext context) {
-        super(context, ReactViroPackage.ViroPlatform.AR);
+        super(context, PhantomReactPackage.Platform.AR);
         final  WeakReference<VRTARSceneNavigator> weakSceneARRef = new WeakReference<VRTARSceneNavigator>(this);
         mRotationListener = new DisplayRotationListener(context) {
             @Override
             public void onDisplayRotationChanged(int rotation) {
                 VRTARSceneNavigator navigator = weakSceneARRef.get();
                 if (navigator != null) {
-                    ViroViewARCore view = navigator.getARView();
+                    ViewARCore view = navigator.getARView();
                     if (view != null) {
                         view.setCameraRotation(rotation);
                     }
@@ -106,30 +106,30 @@ public class VRTARSceneNavigator extends VRT3DSceneNavigator {
     }
 
     /*
-     Override the parent method to use the ViroARView.
+     Override the parent method to use the ARView.
      */
     @Override
-    protected ViroView createViroView(ReactContext reactContext) {
-        return new ViroViewARCore(reactContext.getCurrentActivity(),
+    protected PhantomView createPhantomView(ReactContext reactContext) {
+        return new ViewARCore(reactContext.getCurrentActivity(),
                 new StartupListenerARCore(this));
     }
 
     @Override
     public void addView(View child, int index) {
         // This view only accepts ARScene and VrView children!
-        if (!(child instanceof VRTARScene) && !(child instanceof ViroView)) {
+        if (!(child instanceof VRTARScene) && !(child instanceof PhantomView)) {
             throw new IllegalArgumentException("Attempted to add a non-ARScene element ["
                     + child.getClass().getSimpleName() + "] to ARSceneNavigator!");
         }
         super.addView(child, index);
     }
 
-    public ViroViewARCore getARView() {
-        return (ViroViewARCore) mViroView;
+    public ViewARCore getARView() {
+        return (ViewARCore) mView;
     }
 
     public void resetARSession() {
-        ViroViewARCore arView = getARView();
+        ViewARCore arView = getARView();
         // No-op for now.
     }
 
@@ -144,7 +144,7 @@ public class VRTARSceneNavigator extends VRT3DSceneNavigator {
     public void setAutoFocusEnabled(boolean enabled) {
         mAutoFocusEnabled = enabled;
         if (mGLInitialized) {
-            ((ViroViewARCore)mViroView).setCameraAutoFocusEnabled(mAutoFocusEnabled);
+            ((ViewARCore)mView).setCameraAutoFocusEnabled(mAutoFocusEnabled);
         } else {
             mNeedsAutoFocusToggle = true;
         }

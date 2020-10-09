@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,28 +19,28 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.ReactViroPackage;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.PhantomReactPackage;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
 /**
  * SceneNavigatorManager for building a {@link VRTVRSceneNavigator}
- * corresponding to the ViroSceneNavigator.js control.
+ * corresponding to the SceneNavigator.js control.
  */
-public class VRTSceneNavigatorManager extends VRTViroViewGroupManager<VRTVRSceneNavigator> {
+public class VRTSceneNavigatorManager extends VRTViewGroupManager<VRTVRSceneNavigator> {
 
-    private final ReactViroPackage.ViroPlatform mPlatform;
+    private final PhantomReactPackage.Platform mPlatform;
 
     public VRTSceneNavigatorManager(ReactApplicationContext context,
-                                    ReactViroPackage.ViroPlatform platform) {
+                                    PhantomReactPackage.Platform platform) {
         super(context);
         mPlatform = platform;
     }
@@ -78,14 +78,14 @@ public class VRTSceneNavigatorManager extends VRTViroViewGroupManager<VRTVRScene
         }
     }
 
-    @ReactProp(name = "hasOnExitViroCallback", defaultBoolean = false)
-    public void setHasOnExitViroCallback(VRTVRSceneNavigator navigator, boolean hasOnExitViroCallback) {
-        navigator.setHasOnExitViroCallback(hasOnExitViroCallback);
+    @ReactProp(name = "hasOnExitCallback", defaultBoolean = false)
+    public void setHasOnExitCallback(VRTVRSceneNavigator navigator, boolean hasOnExitCallback) {
+        navigator.setHasOnExitCallback(hasOnExitCallback);
     }
 
     @Override
     public Map getExportedCustomDirectEventTypeConstants() {
         return MapBuilder.of(
-                ViroEvents.ON_EXIT_VIRO, MapBuilder.of("registrationName", ViroEvents.ON_EXIT_VIRO));
+                PhantomEvents.ON_EXIT_PHANTOM, MapBuilder.of("registrationName", PhantomEvents.ON_EXIT_PHANTOM));
     }
 }

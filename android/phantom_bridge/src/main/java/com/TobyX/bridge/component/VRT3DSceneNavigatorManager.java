@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,28 +19,28 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.ReactViroPackage;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.PhantomReactPackage;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
 /**
  * SceneNavigatorManager for building a {@link VRT3DSceneNavigator}
- * corresponding to the Viro3DSceneNavigator.js control.
+ * corresponding to the SceneNavigator3D.js control.
  */
-public class VRT3DSceneNavigatorManager extends VRTViroViewGroupManager<VRT3DSceneNavigator> {
+public class VRT3DSceneNavigatorManager extends VRTViewGroupManager<VRT3DSceneNavigator> {
 
-    private final ReactViroPackage.ViroPlatform mPlatform;
+    private final PhantomReactPackage.Platform mPlatform;
 
     public VRT3DSceneNavigatorManager(ReactApplicationContext context,
-                                      ReactViroPackage.ViroPlatform platform) {
+                                      PhantomReactPackage.ViroPlatform platform) {
         super(context);
         mPlatform = platform;
     }

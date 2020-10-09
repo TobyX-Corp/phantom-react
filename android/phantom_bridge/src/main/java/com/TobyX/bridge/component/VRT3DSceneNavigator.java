@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component;
+package com.TobyX.bridge.component;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -31,31 +31,31 @@ import android.widget.FrameLayout;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.RendererConfiguration;
-import com.viro.core.ViroContext;
+import com.TobyX.core.RendererConfiguration;
+import com.TobyX.core.PhantomContext;
 
-import com.viro.core.ViroView;
-import com.viro.core.Vector;
-import com.viro.core.ViroViewScene;
-import com.viromedia.bridge.ReactViroPackage;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.module.MaterialManager;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.module.PerfMonitor;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.PhantomView;
+import com.TobyX.core.Vector;
+import com.TobyX.core.PhantomViewScene;
+import com.TobyX.bridge.PhantomReactPackage;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.module.MaterialManager;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.module.PerfMonitor;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 /**
- * VRT3DSceneNavigator manages the various scenes{@link ViroViewScene} that a Viro App can navigate between.
+ * VRT3DSceneNavigator manages the various scenes{@link PhantomViewScene} that a Phantom App can navigate between.
  */
 public class VRT3DSceneNavigator extends FrameLayout {
-    private static final String TAG = ViroLog.getTag(VRT3DSceneNavigator.class);
+    private static final String TAG = PhantomLog.getTag(VRT3DSceneNavigator.class);
 
     private static final String DAYDREAM = "daydream";
 
-    private static class StartupListener3DScene implements ViroViewScene.StartupListener {
+    private static class StartupListener3DScene implements PhantomViewScene.StartupListener {
 
         private WeakReference<VRT3DSceneNavigator> mNavigator;
 
@@ -79,13 +79,13 @@ public class VRT3DSceneNavigator extends FrameLayout {
                 public void run() {
                     final VRT3DSceneNavigator sceneNav = navigatorWeakReference.get();
                     sceneNav.mGLInitialized = true;
-                    sceneNav.setViroContext();
+                    sceneNav.setContext();
                 }
             });
         }
 
         @Override
-        public void onFailure(ViroViewScene.StartupError startupError, String s) {
+        public void onFailure(PhantomViewScene.StartupError startupError, String s) {
 
         }
 
@@ -132,7 +132,7 @@ public class VRT3DSceneNavigator extends FrameLayout {
     /**
      * View containing our renderer
      */
-    protected ViroView mViroView;
+    protected PhantomView mView;
 
     /**
      * Currently rendered scene
@@ -147,7 +147,7 @@ public class VRT3DSceneNavigator extends FrameLayout {
     /**
      * The platform that the developer has requested.
      */
-    protected final ReactViroPackage.ViroPlatform mPlatform;
+    protected final PhantomReactPackage.Platform mPlatform;
 
     /**
      * This SceneNavigator's LifecycleEventListener to register for React LifecycleEvents.
@@ -158,14 +158,14 @@ public class VRT3DSceneNavigator extends FrameLayout {
     /**
      * Context passed around to views to get render specific information.
      */
-    private ViroContext mViroContext;
+    private Context mContext;
 
     protected final ReactContext mReactContext;
 
     private boolean mViewAdded = false;
     protected boolean mGLInitialized = false;
 
-    private boolean mHasOnExitViroCallback = false;
+    private boolean mHasOnExitCallback = false;
 
     /*
      * Renderer configuration parameters.
@@ -173,31 +173,31 @@ public class VRT3DSceneNavigator extends FrameLayout {
     private RendererConfiguration mRendererConfig;
 
     public VRT3DSceneNavigator(ReactContext reactContext,
-                             ReactViroPackage.ViroPlatform platform) {
+                             PhantomReactPackage.Platform platform) {
         super(reactContext.getBaseContext(), null, -1);
         mPlatform = platform;
         mReactContext = reactContext;
         mRendererConfig = new RendererConfiguration();
 
-        // Create the ViroView
-        mViroView = createViroView(reactContext);
+        // Create the PhantomView
+        mView = createPhantomView(reactContext);
 
-        // Add the ViroView as a child so it's rendered.
-        addView((View) mViroView);
+        // Add the PhantomView as a child so it's rendered.
+        addView((View) mView);
 
-        mViroContext = mViroView.getViroContext();
+        mContext = mView.getContext();
 
         /*
          * Set the view for the debug console.
          */
         PerfMonitor perfMonitor = reactContext.getNativeModule(PerfMonitor.class);
-        perfMonitor.setView(mViroView);
+        perfMonitor.setView(mView);
 
         /*
-         * Trigger ViroView's onActivityStarted and onActivityResumed of the vrView as
+         * Trigger PhantomView's onActivityStarted and onActivityResumed of the vrView as
          * React creates it's views within the activity's onResume().
          */
-        mViroView.onActivityStarted(reactContext.getCurrentActivity());
+        mView.onActivityStarted(reactContext.getCurrentActivity());
 
         notifyScenePlatformInformation();
 
@@ -212,16 +212,16 @@ public class VRT3DSceneNavigator extends FrameLayout {
         materialManager.reloadMaterials();
     }
 
-    protected ViroView createViroView(ReactContext reactContext) {
+    protected PhantomView createPhantomView(ReactContext reactContext) {
 
-        return new ViroViewScene(reactContext.getCurrentActivity(),
+        return new PhantomViewScene(reactContext.getCurrentActivity(),
                 new StartupListener3DScene(this));
     }
 
     @Override
     public void addView(View child, int index) {
-        if (child instanceof ViroView) {
-            // only add a view to the childViews if it's a ViroView. This function is called
+        if (child instanceof PhantomView) {
+            // only add a view to the childViews if it's a PhantomView. This function is called
             // by the single argument addView(child) method.
             super.addView(child, index);
             return;
@@ -232,8 +232,8 @@ public class VRT3DSceneNavigator extends FrameLayout {
 
         VRTScene childScene = (VRTScene)child;
         mSceneArray.add(index, childScene);
-        childScene.setPlatformInformation(mViroView.getPlatform(), mViroView.getHeadset(),
-                mViroView.getControllerType());
+        childScene.setPlatformInformation(mView.getPlatform(), mView.getHeadset(),
+                mView.getControllerType());
         // Adding the scene view can occur after the prop type is set on the bridge.
         // Thus, refresh the selection of the current scene as needed.
         if (index == mSelectedSceneIndex){
@@ -244,13 +244,13 @@ public class VRT3DSceneNavigator extends FrameLayout {
         super.addView(child, index);
     }
 
-    protected void setViroContext() {
-        if (mViroView != null && mViewAdded && mGLInitialized && mSelectedSceneIndex < mSceneArray.size()) {
+    protected void setContext() {
+        if (mView != null && mViewAdded && mGLInitialized && mSelectedSceneIndex < mSceneArray.size()) {
             VRTScene childScene = mSceneArray.get(mSelectedSceneIndex);
-            childScene.setViroContext(mViroContext);
+            childScene.setContext(mContext);
             // Please don't delete this line. It's magic. But, legitimate magic.
             childScene.setScene(childScene);
-            childScene.setNativeRenderer(mViroView.getRenderer());
+            childScene.setNativeRenderer(mView.getRenderer());
         }
     }
 
@@ -261,8 +261,8 @@ public class VRT3DSceneNavigator extends FrameLayout {
             return;
         }
 
-        setViroContext();
-        mViroView.setScene(mSceneArray.get(mSelectedSceneIndex).getNativeScene());
+        setContext();
+        mView.setScene(mSceneArray.get(mSelectedSceneIndex).getNativeScene());
         mSceneArray.get(mSelectedSceneIndex).parentDidAppear();
     }
 
@@ -295,18 +295,18 @@ public class VRT3DSceneNavigator extends FrameLayout {
         }
     }
 
-    public void setHasOnExitViroCallback(boolean hasCallback) {
-        mHasOnExitViroCallback = hasCallback;
+    public void setHasOnExitCallback(boolean hasCallback) {
+        mHasOnExitCallback = hasCallback;
     }
 
     public void setDebug(boolean debug) {
-        mViroView.setDebug(debug);
+        mView.setDebug(debug);
     }
 
     private void notifyScenePlatformInformation() {
         for (VRTScene scene: mSceneArray) {
-            scene.setPlatformInformation(mViroView.getPlatform(), mViroView.getHeadset(),
-                    mViroView.getControllerType());
+            scene.setPlatformInformation(mView.getPlatform(), mView.getHeadset(),
+                    mView.getControllerType());
         }
     }
 
@@ -323,17 +323,17 @@ public class VRT3DSceneNavigator extends FrameLayout {
         }
 
         /**
-         * If we're exiting Viro and destroying the renderer, notify the MaterialManager so that if
-         * the application doesn't get killed, then the next time Viro starts, we know to reload the
+         * If we're exiting Phantom and destroying the renderer, notify the MaterialManager so that if
+         * the application doesn't get killed, then the next time Phantom starts, we know to reload the
          * materials.
          */
         MaterialManager materialManager = mReactContext.getNativeModule(MaterialManager.class);
         materialManager.shouldReload();
 
-        if (mViroView != null) {
-            mViroView.onActivityStopped(mReactContext.getCurrentActivity());
-            mViroView.dispose();
-            mViroView = null;
+        if (mView != null) {
+            mView.onActivityStopped(mReactContext.getCurrentActivity());
+            mView.dispose();
+            mView = null;
         }
     }
 
@@ -343,8 +343,8 @@ public class VRT3DSceneNavigator extends FrameLayout {
             childScene.onHostResume();
         }
 
-        if (mViroView != null){
-            mViroView.onActivityResumed(mReactContext.getCurrentActivity());
+        if (mView != null){
+            mView.onActivityResumed(mReactContext.getCurrentActivity());
         }
     }
 
@@ -354,8 +354,8 @@ public class VRT3DSceneNavigator extends FrameLayout {
             childScene.onHostPause();
         }
 
-        if (mViroView != null){
-            mViroView.onActivityPaused(mReactContext.getCurrentActivity());
+        if (mView != null){
+            mView.onActivityPaused(mReactContext.getCurrentActivity());
         }
     }
 
@@ -364,28 +364,28 @@ public class VRT3DSceneNavigator extends FrameLayout {
     }
 
     public void userDidRequestExitVR(){
-        if (!mHasOnExitViroCallback){
+        if (!mHasOnExitCallback){
             mReactContext.getCurrentActivity().finish();
             return;
         }
 
-        // Notify javascript listeners (for ReactNativeJs to ViroReactJs cases)
+        // Notify javascript listeners (for ReactNativeJs to PhantomReactJs cases)
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_EXIT_VIRO,
+                PhantomEvents.ON_EXIT_PHANTOM,
                 null);
 
-        // Notify Native listeners (for NativeApp to ViroReactJs cases)
+        // Notify Native listeners (for NativeApp to PhantomReactJs cases)
         Intent intent = new Intent();
-        intent.setAction(ReactViroPackage.ON_EXIT_VIRO_BROADCAST);
+        intent.setAction(PhantomReactPackage.ON_EXIT_PHANTOM_BROADCAST);
         LocalBroadcastManager.getInstance(mReactContext.getApplicationContext()).sendBroadcast(intent);
     }
 
     public void recenterTracking() {
-        if (mViroView.getHeadset().equalsIgnoreCase(DAYDREAM)) {
+        if (mView.getHeadset().equalsIgnoreCase(DAYDREAM)) {
             throw new IllegalStateException("recenterTracking should not be invoked on Daydream devices.");
         }
-        mViroView.recenterTracking();
+        mView.recenterTracking();
     }
 
 
@@ -398,10 +398,10 @@ public class VRT3DSceneNavigator extends FrameLayout {
      *         the input z value, which interpolates the depth between the near and far clipping plane.
      */
     public Vector unprojectPoint(Vector point) {
-        if(mViroView == null || mViroView.getRenderer() == null) {
+        if(mView == null || mView.getRenderer() == null) {
             throw new IllegalStateException("Unable to invoke unprojectPoint. Renderer is not initalized");
         }
-        return mViroView.getRenderer().unprojectPoint(point.x, point.y, point.z);
+        return mView.getRenderer().unprojectPoint(point.x, point.y, point.z);
     }
 
     /**
@@ -410,38 +410,38 @@ public class VRT3DSceneNavigator extends FrameLayout {
      * @return a {@link Vector} whose x and y values represent the screen coordinates.
      */
     public Vector projectPoint(Vector point) {
-        if(mViroView == null || mViroView.getRenderer() == null) {
+        if(mView == null || mView.getRenderer() == null) {
             throw new IllegalStateException("Unable to invoke unprojectPoint. Renderer is not initalized");
         }
 
-        return  mViroView.getRenderer().projectPoint(point.x, point.y, point.z);
+        return  mView.getRenderer().projectPoint(point.x, point.y, point.z);
     }
 
     public void setHDREnabled(boolean enabled) {
         mRendererConfig.setHDREnabled(enabled);
-        if (mViroView != null) {
-            mViroView.setHDREnabled(enabled);
+        if (mView != null) {
+            mView.setHDREnabled(enabled);
         }
     }
 
     public void setPBREnabled(boolean enabled) {
         mRendererConfig.setPBREnabled(enabled);
-        if (mViroView != null) {
-            mViroView.setPBREnabled(enabled);
+        if (mView != null) {
+            mView.setPBREnabled(enabled);
         }
     }
 
     public void setBloomEnabled(boolean enabled) {
         mRendererConfig.setBloomEnabled(enabled);
-        if (mViroView != null) {
-            mViroView.setBloomEnabled(enabled);
+        if (mView != null) {
+            mView.setBloomEnabled(enabled);
         }
     }
 
     public void setShadowsEnabled(boolean enabled) {
         mRendererConfig.setShadowsEnabled(enabled);
-        if (mViroView != null) {
-            mViroView.setShadowsEnabled(enabled);
+        if (mView != null) {
+            mView.setShadowsEnabled(enabled);
         }
     }
 
