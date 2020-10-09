@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -15,23 +15,23 @@
  enable the checks by uncommenting the line in the respective render() functions. If
  you do uncomment the checks, don't forget to update this list:
 
- Viro3DSceneNavigator
- ViroAmbientLight
- ViroAnimatedComponent
- ViroCamera
- ViroController
- ViroDirectionalLight
- ViroOmniLight
- ViroOrbitCamera
- ViroScene
- ViroSceneNavigator
- ViroSpotLight
- ViroVRSceneNavigator
- AR/ViroARImageMarker
- AR/ViroARPlane
- AR/ViroARPlaneSelector
- AR/ViroARScene
- AR/ViroARSceneNavigator
+ SceneNavigator3D
+ AmbientLight
+ AnimatedComponent
+ Camera
+ Controller
+ DirectionalLight
+ OmniLight
+ OrbitCamera
+ Scene
+ SceneNavigator
+ SpotLight
+ VRSceneNavigator
+ AR/ARImageMarker
+ AR/ARPlane
+ AR/ARPlaneSelector
+ AR/ARScene
+ AR/ARSceneNavigator
 
  */
 export function checkMisnamedProps(component, props) {
@@ -63,9 +63,9 @@ export function checkMisnamedProps(component, props) {
     }
   }
 
-  if (upperCaseComponent === 'ViroSkyBox'.toUpperCase()
-      || upperCaseComponent === 'Viro360Image'.toUpperCase()
-      || upperCaseComponent === 'Viro360Video'.toUpperCase()) {
+  if (upperCaseComponent === 'SkyBox'.toUpperCase()
+      || upperCaseComponent === 'Image360'.toUpperCase()
+      || upperCaseComponent === 'Video360'.toUpperCase()) {
 
     if (props.onHover) {
       console.warn('The <' + component + '> component does not take on an `onHover` property. Pass the `onHover` prop to <Scene> instead.');

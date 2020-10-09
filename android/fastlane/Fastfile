@@ -21,7 +21,6 @@ platform :android do
   before_all do
     BUILD_INTERMEDIATES = "/var/tmp/build_intermediates/"
     GIT_BRANCH = git_branch
-    S3_BASE_URL = "https://s3-us-west-2.amazonaws.com/viro-builds/"
   end
 
   def on_error(exception)
@@ -32,7 +31,6 @@ platform :android do
            payload: {
             "Git Repository:" =>  "phantom-react/#{GIT_BRANCH}",
             "Fastlane Lane:" => ENV["FASTLANE_LANE_NAME"],
-            "Detailed Logs:" => "<https://virobuilds.ngrok.io/blue/organizations/jenkins/react-viro/activity/|react-viro Pipeline>",
             "Exception:" => "```#{exception}```"
            },
            use_webhook_configured_username_and_icon: true
@@ -51,90 +49,20 @@ platform :android do
   lane :gradle_clean_bridge do
     begin
       gradle(task: "clean")
-      sh("rm ../viro_renderer/viro_renderer-release.aar") # just to make sure
+      sh("rm ../phantom_renderer/phantom_renderer-release.aar") # just to make sure
     rescue => exception
            on_error(exception)
     end
   end
   
-  lane :react_viro_bridge_aar do
+  lane :phantom_react_bridge_aar do
     begin
-      sh("cp #{BUILD_INTERMEDIATES}viroreact_aar/viro_renderer-release.aar ../viro_renderer/")
+      sh("cp #{BUILD_INTERMEDIATES}phantomreact_aar/phantom_renderer-release.aar ../phantom_renderer/")
     rescue => exception
            on_error(exception)
     end
   end
   
-  lane :upload_builds_and_slack do
-    Dir.chdir("#{BUILD_INTERMEDIATES}s3_artifacts") do
-     timestamp=Time.now.strftime('%Y-%m-%d_%H-%M-%S')
-     virocore_filename=sh("basename /var/tmp/build_intermediates/s3_artifacts/virocore-release-v*.aar| tr -d '\n'")
-     viroreact_filename=sh("basename /var/tmp/build_intermediates/s3_artifacts/phantom-react-*.tgz| tr -d '\n'")
-     gvr_test_filename="app-gvr-release.apk"
-     ovr_test_filename="app-ovr-release.apk"
-     git_log_filename="git_log.txt"
-     sh("aws s3 sync . s3://viro-builds/#{timestamp}/")
-     s3_base_url="s3://viro-builds/#{timestamp}"
-
-     url_virocore = sh("aws s3 presign #{s3_base_url}/#{virocore_filename} --expires-in 86400")
-     url_tgz = sh("aws s3 presign #{s3_base_url}/#{viroreact_filename} --expires-in 86400")
-     url_gvr_apk = sh("aws s3 presign #{s3_base_url}/#{gvr_test_filename} --expires-in 86400")
-     url_ovr_apk = sh("aws s3 presign #{s3_base_url}/#{ovr_test_filename} --expires-in 86400")
-     url_gitlog = sh("aws s3 presign #{s3_base_url}/#{git_log_filename} --expires-in 86400")
-     #slack wouldnt hyperlink for https urls
-     replace="http"
-     url_virocore=url_virocore.sub(/https/, 'http')
-     url_tgz=url_tgz.sub(/https/, 'http')
-     url_gvr_apk=url_gvr_apk.sub(/https/, 'http')
-     url_ovr_apk=url_ovr_apk.sub(/https/, 'http')
-     url_gitlog=url_gitlog.sub(/https/, 'http')
-     git_log_contents=sh("cat #{git_log_filename}")
-     slack(
-           use_webhook_configured_username_and_icon: true,
-           message: ":white_check_mark: Build Pipeline successfully completed and artifacts uploaded to S3.",
-           success: true,
-           payload: {
-             "Build Date" => Time.new.to_s,
-             "Built Commits" => "```#{git_log_contents}```",
-           },
-           default_payloads: [],
-           attachment_properties: {
-              fields: [
-              {
-                 title: "Virocore AAR",
-                 value: "URL #{url_virocore}",
-                 short: false
-              },
-              {
-                 title: "ViroReact NPM TGZ",
-                 value: "URL #{url_tgz}",
-                 short: false
-              },
-              {
-                 title: "ViroReact GVR Release Test (android)",
-                 value: "URL #{url_gvr_apk}",
-                 short: false
-              },
-              {
-                 title: "ViroReact OVR Release Test",
-                 value: "URL #{url_ovr_apk}",
-                 short: false
-              },
-              {              
-                title: "Git Log",
-                value: "URL #{url_gitlog}>",
-                short: false
-              },
-              {
-                 title: "ViroReact GVR Release Test (ios)",
-                 value: "Uploaded to :rocket:",
-                 short: false
-              }
-           ]
-          }
-       )
-    end
-  end  
   after_all do |lane|
     # This block is called, only if the executed lane was successful
 

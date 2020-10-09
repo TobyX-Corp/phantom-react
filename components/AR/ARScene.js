@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -175,10 +175,10 @@ var ARScene = createReactClass({
   },
 
   _onPlatformUpdate: function(event: Event) {
-    this.props.onPlatformUpdate && this.props.onPlatformUpdate(event.nativeEvent.platformInfoViro);
+    this.props.onPlatformUpdate && this.props.onPlatformUpdate(event.nativeEvent.platformInfo);
   },
 
-  // TODO VIRO-3172: Remove in favor of deprecating onTrackingInitialized
+  // TODO PHANTOM-3172: Remove in favor of deprecating onTrackingInitialized
   componentDidMount :function(){
     this.onTrackingFirstInitialized = false;
   },
@@ -188,7 +188,7 @@ var ARScene = createReactClass({
       this.props.onTrackingUpdated(event.nativeEvent.state, event.nativeEvent.reason);
     }
 
-    // TODO VIRO-3172: Remove in favor of deprecating onTrackingInitialized
+    // TODO PHANTOM-3172: Remove in favor of deprecating onTrackingInitialized
     if ((event.nativeEvent.state == Constants.TRACKING_LIMITED ||
          event.nativeEvent.state == Constants.TRACKING_NORMAL) &&
          !this.onTrackingFirstInitialized) {
@@ -227,12 +227,12 @@ var ARScene = createReactClass({
     this.props.onAnchorRemoved && this.props.onAnchorRemoved(event.nativeEvent.anchor);
   },
 
-  async findCollisionsWithRayAsync(from, to, closest, viroTag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, viroTag);
+  async findCollisionsWithRayAsync(from, to, closest, Tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, Tag);
   },
 
-  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, viroTag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, viroTag);
+  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, Tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, Tag);
   },
 
   async performARHitTestWithRay(ray) {
@@ -255,7 +255,7 @@ var ARScene = createReactClass({
    * ##### DEPRECATION WARNING - this prop may be removed in future releases #####
    */
   async getCameraPositionAsync() {
-    console.warn("[Viro] ARScene.getCameraPositionAsync has been DEPRECATED. Please use getCameraOrientationAsync instead.");
+    console.warn("[Phantom] ARScene.getCameraPositionAsync has been DEPRECATED. Please use getCameraOrientationAsync instead.");
     var orientation = await NativeModules.VRTCameraModule.getCameraOrientation(findNodeHandle(this));
     position = [orientation[0], orientation[1], orientation[2]];
     return position;
@@ -272,7 +272,7 @@ var ARScene = createReactClass({
   },
 
   async getCameraPositionAsync() {
-    return await ViroCameraModule.getCameraPosition(findNodeHandle(this));
+    return await CameraModule.getCameraPosition(findNodeHandle(this));
   },
 
   getChildContext: function() {
@@ -325,7 +325,7 @@ var ARScene = createReactClass({
     }
 
     if (this.props.onTrackingInitialized && !this.onTrackingFirstInitialized){
-      console.warn("[Viro] ARScene.onTrackingInitialized() has been DEPRECATED. Please use onTrackingUpdated() instead.");
+      console.warn("[Phantom] ARScene.onTrackingInitialized() has been DEPRECATED. Please use onTrackingUpdated() instead.");
     }
 
     return (
@@ -343,24 +343,24 @@ var ARScene = createReactClass({
         canCameraARHitTest={this.props.onCameraARHitTest != undefined}
         canARPointCloudUpdate={this.props.onARPointCloudUpdate != undefined}
         canCameraTransformUpdate={this.props.onCameraTransformUpdate != undefined}
-        onHoverViro={this._onHover}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onDragViro={this._onDrag}
-        onPinchViro={this._onPinch}
-        onRotateViro={this._onRotate}
-        onFuseViro={this._onFuse}
-        onCameraARHitTestViro={this._onCameraARHitTest}
-        onARPointCloudUpdateViro={this._onARPointCloudUpdate}
-        onCameraTransformUpdateViro={this._onCameraTransformUpdate}
-        onPlatformUpdateViro={this._onPlatformUpdate}
-        onTrackingUpdatedViro={this._onTrackingUpdated}
-        onAmbientLightUpdateViro={this._onAmbientLightUpdate}
-        onAnchorFoundViro={this._onAnchorFound}
-        onAnchorUpdatedViro={this._onAnchorUpdated}
-        onAnchorRemovedViro={this._onAnchorRemoved}
+        onHover={this._onHover}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onDrag={this._onDrag}
+        onPinch={this._onPinch}
+        onRotate={this._onRotate}
+        onFuse={this._onFuse}
+        onCameraARHitTest={this._onCameraARHitTest}
+        onARPointCloudUpdate={this._onARPointCloudUpdate}
+        onCameraTransformUpdate={this._onCameraTransformUpdate}
+        onPlatformUpdate={this._onPlatformUpdate}
+        onTrackingUpdated={this._onTrackingUpdated}
+        onAmbientLightUpdate={this._onAmbientLightUpdate}
+        onAnchorFound={this._onAnchorFound}
+        onAnchorUpdated={this._onAnchorUpdated}
+        onAnchorRemoved={this._onAnchorRemoved}
         timeToFuse={timeToFuse}
         anchorDetectionTypes={anchorDetectionTypes}
         displayPointCloud={displayPointCloud}
@@ -393,25 +393,25 @@ var VRTARScene = requireNativeComponent(
           canCameraARHitTest: true,
           canARPointCloudUpdate: true,
           canCameraTransformUpdate: true,
-          onHoverViro: true,
-          onClickViro: true,
-          onTouchViro: true,
-          onScrollViro: true,
-          onSwipeViro: true,
-          onDragViro:true,
-          onPinchViro:true,
-          onRotateViro:true,
-          onFuseViro:true,
-          onPlatformUpdateViro: true,
-          onTrackingInitializedViro: true,
-          onTrackingUpdatedViro:true,
-          onAmbientLightUpdateViro: true,
-          onAnchorFoundViro: true,
-          onAnchorUpdatedViro: true,
-          onAnchorRemovedViro:true,
-          onCameraARHitTestViro: true,
-          onARPointCloudUpdateViro: true,
-          onCameraTransformUpdateViro: true,
+          onHover: true,
+          onClick: true,
+          onTouch: true,
+          onScroll: true,
+          onSwipe: true,
+          onDrag:true,
+          onPinch:true,
+          onRotate:true,
+          onFuse:true,
+          onPlatformUpdate: true,
+          onTrackingInitialized: true,
+          onTrackingUpdated:true,
+          onAmbientLightUpdate: true,
+          onAnchorFound: true,
+          onAnchorUpdated: true,
+          onAnchorRemoved:true,
+          onCameraARHitTest: true,
+          onARPointCloudUpdate: true,
+          onCameraTransformUpdate: true,
           timeToFuse:true,
           pointCloudImage:true,
           pointCloudScale:true,

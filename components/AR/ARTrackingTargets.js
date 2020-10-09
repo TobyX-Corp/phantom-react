@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -50,13 +50,13 @@ class ARTrackingTargets {
   static checkForRequiredProps(key, target) {
     // source is required
     if (target.source == undefined) {
-      console.error("ViroTrackingTarget [" + target + "] requires a `source` property");
+      console.error("TrackingTarget [" + target + "] requires a `source` property");
     }
 
     // physicalWidth is required for Image targets
     if (!target.type || target.type == 'Image') {
       if (target.physicalWidth == undefined) {
-        console.error("ViroTrackingTarget [" + target + "] requires a `physicalWidth` property");
+        console.error("TrackingTarget [" + target + "] requires a `physicalWidth` property");
       }
     }
 

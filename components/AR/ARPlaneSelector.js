@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -66,7 +66,7 @@ var ARPlaneSelector = createReactClass({
       PropTypes.func
     ]),
     onCollision: PropTypes.func,
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onAnchorFound: PropTypes.func,
     onAnchorUpdated: PropTypes.func,
     onAnchorRemoved: PropTypes.func,

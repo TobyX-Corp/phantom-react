@@ -1,1 +1,1 @@
-include ':gvr_common', ':viro_bridge', ':viro_renderer', ':arcore_client'
+include ':gvr_common', ':phantom_bridge', ':phantom_renderer', ':arcore_client'

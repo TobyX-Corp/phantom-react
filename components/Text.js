@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -120,7 +120,7 @@ var Text = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -204,7 +204,7 @@ var Text = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.viroTag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },
@@ -252,7 +252,7 @@ var Text = createReactClass({
       <VRTText
         {...this.props}
         ref={ component => {this._component = component; }}
-        onNativeTransformDelegateViro={transformDelegate}
+        onNativeTransformDelegate={transformDelegate}
         hasTransformDelegate={this.props.onTransformUpdate != undefined}
         style={[this.props.style]}
         canHover={this.props.onHover != undefined}
@@ -264,22 +264,22 @@ var Text = createReactClass({
         canPinch={this.props.onPinch != undefined}
         canRotate={this.props.onRotate != undefined}
         canFuse={this.props.onFuse != undefined}
-        onHoverViro={this._onHover}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onDragViro={this._onDrag}
-        onPinchViro={this._onPinch}
-        onRotateViro={this._onRotate}
-        onFuseViro={this._onFuse}
-        onAnimationStartViro={this._onAnimationStart}
-        onAnimationFinishViro={this._onAnimationFinish}
+        onHover={this._onHover}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onDrag={this._onDrag}
+        onPinch={this._onPinch}
+        onRotate={this._onRotate}
+        onFuse={this._onFuse}
+        onAnimationStart={this._onAnimationStart}
+        onAnimationFinish={this._onAnimationFinish}
         materials={materials}
         transformBehaviors={transformBehaviors}
         outerStroke={outerStroke}
         canCollide={this.props.onCollision != undefined}
-        onCollisionViro={this._onCollision}
+        onCollision={this._onCollision}
         timeToFuse={timeToFuse}
       />
     );
@@ -301,22 +301,22 @@ var VRTText = requireNativeComponent(
                 canPinch: true,
                 canRotate: true,
                 canFuse: true,
-                onHoverViro:true,
-                onClickViro:true,
-                onTouchViro:true,
-                onScrollViro:true,
-                onSwipeViro:true,
-                onDragViro:true,
-                onPinchViro:true,
-                onRotateViro:true,
-                onFuseViro:true,
+                onHover:true,
+                onClick:true,
+                onTouch:true,
+                onScroll:true,
+                onSwipe:true,
+                onDrag:true,
+                onPinch:true,
+                onRotate:true,
+                onFuse:true,
                 timeToFuse:true,
                 canCollide:true,
-                onCollisionViro:true,
-                onNativeTransformDelegateViro:true,
+                onCollision:true,
+                onNativeTransformDelegate:true,
                 hasTransformDelegate:true,
-                onAnimationStartViro:true,
-                onAnimationFinishViro:true
+                onAnimationStart:true,
+                onAnimationFinish:true
       }
 });
 

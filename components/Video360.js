@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -114,11 +114,11 @@ var Video360 = createReactClass({
 
     let nativeProps = Object.assign({}, this.props);
     nativeProps.source = vidsrc;
-    nativeProps.onBufferStartViro = this._onBufferStart;
-    nativeProps.onBufferEndViro = this._onBufferEnd;
-    nativeProps.onErrorViro = this._onError;
-    nativeProps.onFinishViro = this._onFinish;
-    nativeProps.onUpdateTimeViro = this._onUpdateTime;
+    nativeProps.onBufferStart = this._onBufferStart;
+    nativeProps.onBufferEnd = this._onBufferEnd;
+    nativeProps.onError = this._onError;
+    nativeProps.onFinish = this._onFinish;
+    nativeProps.onUpdateTime = this._onUpdateTime;
     nativeProps.ref = component => {this._component = component; };
     return (
       <VRO360Video {...nativeProps} />
@@ -143,11 +143,11 @@ var Video360 = createReactClass({
 var VRO360Video = requireNativeComponent(
   'VRT360Video', Video360, {
     nativeOnly: {
-      onBufferStartViro: true,
-      onBufferEndViro: true,
-      onUpdateTimeViro: true,
-      onErrorViro:true,
-      onFinishViro: true}
+      onBufferStart: true,
+      onBufferEnd: true,
+      onUpdateTime: true,
+      onError:true,
+      onFinish: true}
   }
 );
 

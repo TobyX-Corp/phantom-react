@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -19,7 +19,7 @@ import { checkMisnamedProps } from '../Utilities/Props';
 var createReactClass = require('create-react-class');
 
 /**
- * Container for Viro Components anchored to a detected object.
+ * Container for Phantom Components anchored to a detected object.
  */
 var ARObjectMarker = createReactClass({
   propTypes: {
@@ -54,7 +54,7 @@ var ARObjectMarker = createReactClass({
       PropTypes.func
     ]),
     onCollision: PropTypes.func,
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onAnchorFound: PropTypes.func,
     onAnchorUpdated: PropTypes.func,
     onAnchorRemoved: PropTypes.func,
@@ -113,7 +113,7 @@ var ARObjectMarker = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.viroTag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },
@@ -163,21 +163,21 @@ var ARObjectMarker = createReactClass({
         canPinch={this.props.onPinch != undefined}
         canRotate={this.props.onRotate != undefined}
         canFuse={this.props.onFuse != undefined}
-        onHoverViro={this._onHover}
-        onClickViro={this._onClickState}
-        onTouchViro={this._onTouch}
-        onScrollViro={this._onScroll}
-        onSwipeViro={this._onSwipe}
-        onDragViro={this._onDrag}
-        onPinchViro={this._onPinch}
-        onRotateViro={this._onRotate}
-        onFuseViro={this._onFuse}
+        onHover={this._onHover}
+        onClick={this._onClickState}
+        onTouch={this._onTouch}
+        onScroll={this._onScroll}
+        onSwipe={this._onSwipe}
+        onDrag={this._onDrag}
+        onPinch={this._onPinch}
+        onRotate={this._onRotate}
+        onFuse={this._onFuse}
         timeToFuse={timeToFuse}
         canCollide={this.props.onCollision != undefined}
-        onCollisionViro={this._onCollision}
-        onAnchorFoundViro={this._onAnchorFound}
-        onAnchorUpdatedViro={this._onAnchorUpdated}
-        onAnchorRemovedViro={this._onAnchorRemoved}
+        onCollision={this._onCollision}
+        onAnchorFound={this._onAnchorFound}
+        onAnchorUpdated={this._onAnchorUpdated}
+        onAnchorRemoved={this._onAnchorRemoved}
         />
     );
   }
@@ -205,21 +205,21 @@ var VRTARObjectMarker = requireNativeComponent(
       canPinch: true,
       canRotate: true,
       canFuse: true,
-      onHoverViro:true,
-      onClickViro:true,
-      onTouchViro:true,
-      onScrollViro:true,
-      onSwipeViro:true,
-      onDragViro:true,
-      onPinchViro:true,
-      onRotateViro:true,
-      onFuseViro:true,
+      onHover:true,
+      onClick:true,
+      onTouch:true,
+      onScroll:true,
+      onSwipe:true,
+      onDrag:true,
+      onPinch:true,
+      onRotate:true,
+      onFuse:true,
       timeToFuse:true,
       canCollide:true,
-      onCollisionViro:true,
-      onAnchorFoundViro:true,
-      onAnchorUpdatedViro:true,
-      onAnchorRemovedViro:true,
+      onCollision:true,
+      onAnchorFound:true,
+      onAnchorUpdated:true,
+      onAnchorRemoved:true,
       renderingOrder: true,
     }
   }

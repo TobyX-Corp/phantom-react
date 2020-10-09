@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge;
+package com.TobyX.bridge;
 
 import android.util.Log;
 
@@ -28,81 +28,81 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
-import com.viromedia.bridge.component.VRT3DSceneNavigatorManager;
-import com.viromedia.bridge.component.VRTAnimatedComponentManager;
-import com.viromedia.bridge.component.VRTControllerManager;
-import com.viromedia.bridge.component.VRT360ImageManager;
-import com.viromedia.bridge.component.VRTAmbientLightManager;
-import com.viromedia.bridge.component.VRTDirectionalLightManager;
-import com.viromedia.bridge.component.VRTLightingEnvironmentManager;
-import com.viromedia.bridge.component.VRTMaterialVideoManager;
-import com.viromedia.bridge.component.VRTOmniLightManager;
-import com.viromedia.bridge.component.VRTSkyBoxManager;
-import com.viromedia.bridge.component.VRTSoundFieldManager;
-import com.viromedia.bridge.component.VRTSoundManager;
-import com.viromedia.bridge.component.VRTSpatialSoundManager;
-import com.viromedia.bridge.component.VRTSpotLightManager;
-import com.viromedia.bridge.component.VRTVRSceneNavigatorManager;
-import com.viromedia.bridge.component.node.VRTARImageMarkerManager;
-import com.viromedia.bridge.component.node.VRTARObjectMarkerManager;
-import com.viromedia.bridge.component.node.VRTARPlaneManager;
-import com.viromedia.bridge.component.node.VRTARSceneManager;
-import com.viromedia.bridge.component.node.VRTSceneManagerImpl;
-import com.viromedia.bridge.component.node.control.VRT3DObjectManager;
-import com.viromedia.bridge.component.node.control.VRTAnimatedImageManager;
-import com.viromedia.bridge.component.node.control.VRTGeometryManager;
-import com.viromedia.bridge.component.node.control.VRTParticleEmitterManager;
-import com.viromedia.bridge.component.node.control.VRTPolygonManager;
-import com.viromedia.bridge.component.node.control.VRTPolylineManager;
-import com.viromedia.bridge.component.node.control.VRTTextManager;
-import com.viromedia.bridge.component.VRT360VideoManager;
-import com.viromedia.bridge.component.node.VRTCameraManager;
-import com.viromedia.bridge.component.node.VRTOrbitCameraManager;
-import com.viromedia.bridge.component.node.VRTFlexViewManager;
-import com.viromedia.bridge.component.node.VRTNodeManagerImpl;
-import com.viromedia.bridge.component.node.control.VRTBoxManager;
-import com.viromedia.bridge.component.VRTSceneNavigatorManager;
-import com.viromedia.bridge.component.VRTARSceneNavigatorManager;
-import com.viromedia.bridge.component.node.control.VRTSphereManager;
-import com.viromedia.bridge.component.node.control.VRTImageManager;
-import com.viromedia.bridge.component.node.control.VRTQuadManager;
-import com.viromedia.bridge.component.node.control.VRTVideoSurfaceManager;
-import com.viromedia.bridge.component.node.VRTPortalSceneManager;
-import com.viromedia.bridge.component.node.VRTPortalManager;
+import com.TobyX.bridge.component.VRT3DSceneNavigatorManager;
+import com.TobyX.bridge.component.VRTAnimatedComponentManager;
+import com.TobyX.bridge.component.VRTControllerManager;
+import com.TobyX.bridge.component.VRT360ImageManager;
+import com.TobyX.bridge.component.VRTAmbientLightManager;
+import com.TobyX.bridge.component.VRTDirectionalLightManager;
+import com.TobyX.bridge.component.VRTLightingEnvironmentManager;
+import com.TobyX.bridge.component.VRTMaterialVideoManager;
+import com.TobyX.bridge.component.VRTOmniLightManager;
+import com.TobyX.bridge.component.VRTSkyBoxManager;
+import com.TobyX.bridge.component.VRTSoundFieldManager;
+import com.TobyX.bridge.component.VRTSoundManager;
+import com.TobyX.bridge.component.VRTSpatialSoundManager;
+import com.TobyX.bridge.component.VRTSpotLightManager;
+import com.TobyX.bridge.component.VRTVRSceneNavigatorManager;
+import com.TobyX.bridge.component.node.VRTARImageMarkerManager;
+import com.TobyX.bridge.component.node.VRTARObjectMarkerManager;
+import com.TobyX.bridge.component.node.VRTARPlaneManager;
+import com.TobyX.bridge.component.node.VRTARSceneManager;
+import com.TobyX.bridge.component.node.VRTSceneManagerImpl;
+import com.TobyX.bridge.component.node.control.VRT3DObjectManager;
+import com.TobyX.bridge.component.node.control.VRTAnimatedImageManager;
+import com.TobyX.bridge.component.node.control.VRTGeometryManager;
+import com.TobyX.bridge.component.node.control.VRTParticleEmitterManager;
+import com.TobyX.bridge.component.node.control.VRTPolygonManager;
+import com.TobyX.bridge.component.node.control.VRTPolylineManager;
+import com.TobyX.bridge.component.node.control.VRTTextManager;
+import com.TobyX.bridge.component.VRT360VideoManager;
+import com.TobyX.bridge.component.node.VRTCameraManager;
+import com.TobyX.bridge.component.node.VRTOrbitCameraManager;
+import com.TobyX.bridge.component.node.VRTFlexViewManager;
+import com.TobyX.bridge.component.node.VRTNodeManagerImpl;
+import com.TobyX.bridge.component.node.control.VRTBoxManager;
+import com.TobyX.bridge.component.VRTSceneNavigatorManager;
+import com.TobyX.bridge.component.VRTARSceneNavigatorManager;
+import com.TobyX.bridge.component.node.control.VRTSphereManager;
+import com.TobyX.bridge.component.node.control.VRTImageManager;
+import com.TobyX.bridge.component.node.control.VRTQuadManager;
+import com.TobyX.bridge.component.node.control.VRTVideoSurfaceManager;
+import com.TobyX.bridge.component.node.VRTPortalSceneManager;
+import com.TobyX.bridge.component.node.VRTPortalManager;
 
 
-import com.viromedia.bridge.module.ARSceneModule;
-import com.viromedia.bridge.module.ARSceneNavigatorModule;
-import com.viromedia.bridge.module.ARTrackingTargetsModule;
-import com.viromedia.bridge.module.AnimationManager;
-import com.viromedia.bridge.module.CameraModule;
-import com.viromedia.bridge.module.ControllerModule;
-import com.viromedia.bridge.module.MaterialManager;
-import com.viromedia.bridge.module.NodeModule;
-import com.viromedia.bridge.module.SceneModule;
-import com.viromedia.bridge.module.SceneNavigatorModule;
-import com.viromedia.bridge.module.PerfMonitor;
-import com.viromedia.bridge.module.SoundModule;
-import com.viromedia.bridge.module.VRT3DSceneNavigatorModule;
-import com.viromedia.bridge.module.VRTImageModule;
+import com.TobyX.bridge.module.ARSceneModule;
+import com.TobyX.bridge.module.ARSceneNavigatorModule;
+import com.TobyX.bridge.module.ARTrackingTargetsModule;
+import com.TobyX.bridge.module.AnimationManager;
+import com.TobyX.bridge.module.CameraModule;
+import com.TobyX.bridge.module.ControllerModule;
+import com.TobyX.bridge.module.MaterialManager;
+import com.TobyX.bridge.module.NodeModule;
+import com.TobyX.bridge.module.SceneModule;
+import com.TobyX.bridge.module.SceneNavigatorModule;
+import com.TobyX.bridge.module.PerfMonitor;
+import com.TobyX.bridge.module.SoundModule;
+import com.TobyX.bridge.module.VRT3DSceneNavigatorModule;
+import com.TobyX.bridge.module.VRTImageModule;
 
 import java.util.Arrays;
 import java.util.List;
 
 /**
- * ReactViroPackage class containing an array of all ViroViewManagers to be created.
+ * PhantomReactPackage class containing an array of all ViewManagers to be created.
  */
-public class ReactViroPackage implements ReactPackage {
-    public static final String ON_EXIT_VIRO_BROADCAST ="com.viromedia.bridge.broadcast.OnExitViro";
+public class PhantomReactPackage implements ReactPackage {
+    public static final String ON_EXIT_PHANTOM_BROADCAST ="com.TobyX.bridge.broadcast.OnExit";
 
-    public enum ViroPlatform {
+    public enum Platform {
         GVR, OVR_MOBILE, AR
     }
 
-    private final ViroPlatform mViroPlatform;
+    private final Platform mPlatform;
 
-    public ReactViroPackage(ViroPlatform platform) {
-        mViroPlatform = platform;
+    public PhantomReactPackage(Platform platform) {
+        mPlatform = platform;
     }
 
     @Override
@@ -129,10 +129,10 @@ public class ReactViroPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
-                new VRTSceneNavigatorManager(reactContext, mViroPlatform),
-                new VRTVRSceneNavigatorManager(reactContext, mViroPlatform),
+                new VRTSceneNavigatorManager(reactContext, mPlatform),
+                new VRTVRSceneNavigatorManager(reactContext, mPlatform),
                 new VRTSceneManagerImpl(reactContext),
-                new VRT3DSceneNavigatorManager(reactContext, mViroPlatform),
+                new VRT3DSceneNavigatorManager(reactContext, mPlatform),
                 new VRTBoxManager(reactContext),
                 new VRTGeometryManager(reactContext),
                 new VRTVideoSurfaceManager(reactContext),

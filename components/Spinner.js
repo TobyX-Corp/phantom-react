@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -21,10 +21,10 @@ var Node = require('./Node');
 var Image = require('./Image');
 
 // Setup spinner assets
-var Spinner_1 = require('./Resources/viro_spinner_1.png');
-var Spinner_1a = require('./Resources/viro_spinner_1a.png');
-var Spinner_1_w = require('./Resources/viro_spinner_1_w.png');
-var Spinner_1a_w = require('./Resources/viro_spinner_1a_w.png');
+var Spinner_1 = require('./Resources/phantom_spinner_1.png');
+var Spinner_1a = require('./Resources/phantom_spinner_1a.png');
+var Spinner_1_w = require('./Resources/phantom_spinner_1_w.png');
+var Spinner_1a_w = require('./Resources/phantom_spinner_1a_w.png');
 /**
  * Composite control for a 2D Spinner
  */
@@ -110,7 +110,7 @@ var Spinner = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    viroTag: PropTypes.string,
+    Tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -175,8 +175,8 @@ var Spinner = createReactClass({
             onRotate={this.props.onRotate}
             onFuse={this.props.onFuse}
             animation={this.props.animation}
-            onAnimationStartViro={this._onAnimationStart}
-            onAnimationFinishViro={this._onAnimationFinish}
+            onAnimationStart={this._onAnimationStart}
+            onAnimationFinish={this._onAnimationFinish}
             dragType={this.props.dragType}
             ignoreEventHandling={this.props.ignoreEventHandling}
             onTransformUpdate={this.props.onTransformUpdate} ref={component => {this._component = component}}>

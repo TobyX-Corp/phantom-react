@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -71,8 +71,8 @@ var SpatialSound = createReactClass({
 
     let nativeProps = Object.assign({}, this.props);
     nativeProps.source = soundSrc;
-    nativeProps.onErrorViro = this._onError;
-    nativeProps.onFinishViro = this._onFinish;
+    nativeProps.onError = this._onError;
+    nativeProps.onFinish = this._onFinish;
     nativeProps.ref = component => {this._component = component; };
 
     return (
@@ -109,8 +109,8 @@ var VRTSound = require('./Sound').VRTSound;
 var VRTSpatialSound = requireNativeComponent(
   'VRTSpatialSound', SpatialSound, {
     nativeOnly: {
-      onFinishViro: true,
-      onErrorViro: true,
+      onFinish: true,
+      onError: true,
     }
   }
 );

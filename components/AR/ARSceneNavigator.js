@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -71,8 +71,8 @@ var ARSceneNavigator = createReactClass({
   sceneNavigator: (undefined: ?Object),
   getDefaultProps: function() {
     return {
-      // Make sure viroAppProps aren't null to save us having to always check
-      viroAppProps: {},
+      // Make sure AppProps aren't null to save us having to always check
+      AppProps: {},
     };
   },
 
@@ -396,7 +396,7 @@ var ARSceneNavigator = createReactClass({
   },
 
   /*
-   Starts recording video of the Viro renderer and external audio
+   Starts recording video of the Phantom renderer and external audio
 
    fileName - name of the file (without extension)
    saveToCameraRoll - whether or not the file should also be saved to the camera roll
@@ -407,7 +407,7 @@ var ARSceneNavigator = createReactClass({
   },
 
   /*
-   Stops recording video of the Viro renderer
+   Stops recording video of the Phantom renderer
 
    returns Object w/ success, url and errorCode keys.
    */
@@ -416,7 +416,7 @@ var ARSceneNavigator = createReactClass({
   },
 
   /*
-   Takes a screenshot of the Viro renderer
+   Takes a screenshot of the Phantom renderer
 
    fileName - name of the file (without extension)
    saveToCameraRoll - whether or not the file should also be saved to the camera roll
@@ -480,14 +480,14 @@ var ARSceneNavigator = createReactClass({
     var items = this._renderSceneStackItems();
 
     // update the arSceneNavigator with the latest given props on every render
-    this.arSceneNavigator.viroAppProps = this.props.viroAppProps;
-    this.sceneNavigator.viroAppProps = this.props.viroAppProps;
+    this.arSceneNavigator.AppProps = this.props.AppProps;
+    this.sceneNavigator.AppProps = this.props.AppProps;
 
     // If the user simply passes us the props from the root React component,
     // then we'll have an extra 'rootTag' key which React automatically includes
     // so remove it.
-    delete this.arSceneNavigator.viroAppProps.rootTag;
-    delete this.sceneNavigator.viroAppProps.rootTag;
+    delete this.arSceneNavigator.AppProps.rootTag;
+    delete this.sceneNavigator.AppProps.rootTag;
 
     return (
       <VRTARSceneNavigator
