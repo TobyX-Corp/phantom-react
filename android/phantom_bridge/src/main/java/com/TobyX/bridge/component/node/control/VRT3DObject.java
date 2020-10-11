@@ -26,7 +26,6 @@ import android.net.Uri;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.Material;
 import com.TobyX.core.AsyncObject3DListener;
 import com.TobyX.core.PhantomContext;
 import com.TobyX.core.internal.ExecutableAnimation;
