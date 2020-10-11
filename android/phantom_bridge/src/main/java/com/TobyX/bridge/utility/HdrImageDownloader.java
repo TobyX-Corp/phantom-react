@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.utility;
+package com.TobyX.bridge.utility;
 
 import android.content.Context;
 import android.net.Uri;
@@ -27,13 +27,13 @@ import android.os.AsyncTask;
 import androidx.annotation.UiThread;
 import android.util.Log;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.Texture;
+import com.TobyX.core.Texture;
 
 /**
  * Helper class for downloading HDR image data into a {@link Texture} object.
  */
 public class HdrImageDownloader {
-    private static final String TAG = ViroLog.getTag(HdrImageDownloader.class);
+    private static final String TAG = PhantomLog.getTag(HdrImageDownloader.class);
     private static final String URI_KEY = "uri";
     private static final String HDR_KEY = ".hdr";
 

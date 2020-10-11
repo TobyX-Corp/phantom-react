@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -29,17 +29,17 @@ import android.os.Looper;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.internal.Image;
-import com.viro.core.Material;
-import com.viro.core.Node;
-import com.viro.core.ParticleEmitter;
-import com.viro.core.Vector;
-import com.viro.core.ViroContext;
-import com.viro.core.Quad;
-import com.viro.core.Texture;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.ImageDownloadListener;
-import com.viromedia.bridge.utility.ImageDownloader;
+import com.TobyX.core.internal.Image;
+import com.TobyX.core.Material;
+import com.TobyX.core.Node;
+import com.TobyX.core.ParticleEmitter;
+import com.TobyX.core.Vector;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.Quad;
+import com.TobyX.core.Texture;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.ImageDownloadListener;
+import com.TobyX.bridge.utility.ImageDownloader;
 
 import java.util.ArrayList;
 
@@ -187,8 +187,8 @@ public class VRTParticleEmitter extends VRTControl {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
 
         // Refresh the emitter when a new render context is set
         if (mNativeEmitter == null){
@@ -214,12 +214,12 @@ public class VRTParticleEmitter extends VRTControl {
         }
 
         final Node node = getNodeJni();
-        if (mViroContext == null || mScene == null || mScene.getNativeScene() == null|| node == null) {
+        if (mContext == null || mScene == null || mScene.getNativeScene() == null|| node == null) {
             return;
         }
 
         if (mImage == null || !mImage.hasKey("source")){
-            onError("Viro: Missing required Image for a Viro Particle Emitter!");
+            onError("Phantom: Missing required Image for a Phantom Particle Emitter!");
             return;
         }
 
@@ -236,7 +236,7 @@ public class VRTParticleEmitter extends VRTControl {
 
         // Create emitter if we haven't yet done so.
         if (mNativeEmitter == null) {
-            mNativeEmitter = new ParticleEmitter(mViroContext, mNativeQuad);
+            mNativeEmitter = new ParticleEmitter(mContext, mNativeQuad);
             node.setParticleEmitter(mNativeEmitter);
         }
 
@@ -331,7 +331,7 @@ public class VRTParticleEmitter extends VRTControl {
             String strBlendMode = mImage.getString("blendMode");
             Material.BlendMode blendMode = Material.BlendMode.valueFromString(strBlendMode);
             if (blendMode == null) {
-                onError("Viro: Attempted to set an invalid Blend mode!");
+                onError("Phantom: Attempted to set an invalid Blend mode!");
                 return;
             }
             mNativeEmitter.setBlendMode(blendMode);
@@ -458,7 +458,7 @@ public class VRTParticleEmitter extends VRTControl {
             ReadableMap spawnVolume = mSpawnBehavior.getMap("spawnVolume");
 
             if (!spawnVolume.hasKey("shape")){
-                onError("Viro: Spawn Volume missing required shape parameter!");
+                onError("Phantom: Spawn Volume missing required shape parameter!");
                 return;
             }
 
@@ -477,7 +477,7 @@ public class VRTParticleEmitter extends VRTControl {
 
             if (!stringShapeName.equals("box")
                     && !stringShapeName.equals("sphere") && !stringShapeName.equals("point")){
-                onError("Viro: Invalid spawn shape provided for particle burst parameter!");
+                onError("Phantom: Invalid spawn shape provided for particle burst parameter!");
                 return;
             }
 
@@ -530,7 +530,7 @@ public class VRTParticleEmitter extends VRTControl {
             ReadableMap map = mParticlePhysics.getMap("explosiveImpulse");
 
             if (!map.hasKey("position") || !map.hasKey("impulse")){
-                onError("Viro: Missing required explosion impulse force and location for emitter!");
+                onError("Phantom: Missing required explosion impulse force and location for emitter!");
                 return;
             }
 

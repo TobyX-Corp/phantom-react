@@ -1,4 +1,4 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('viro_renderer-release.aar'))
+artifacts.add("default", file('phantom_renderer-release.aar'))
 
 

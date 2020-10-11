@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -27,11 +27,11 @@ import android.view.View;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContext;
-import com.viromedia.bridge.component.node.VRTNode;
+import com.TobyX.bridge.component.node.VRTNode;
 
 /**
- * Control is inherited by all Viro UI controls that
- * contains a native Node {@link com.viro.core.Node}.
+ * Control is inherited by all Phantom UI controls that
+ * contains a native Node {@link com.Phantom.core.Node}.
  */
 public class VRTControl extends VRTNode {
 

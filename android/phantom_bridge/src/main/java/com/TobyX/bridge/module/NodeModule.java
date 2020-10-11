@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.view.View;
 
@@ -37,15 +37,15 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.BoundingBox;
-import com.viro.core.Matrix;
-import com.viro.core.Object3D;
-import com.viro.core.Quaternion;
-import com.viro.core.Vector;
-import com.viromedia.bridge.component.node.VRTNode;
+import com.TobyX.core.BoundingBox;
+import com.TobyX.core.Matrix;
+import com.TobyX.core.Object3D;
+import com.TobyX.core.Quaternion;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.component.node.VRTNode;
 
-import com.viro.core.Node;
-import com.viromedia.bridge.component.node.control.VRT3DObject;
+import com.TobyX.core.Node;
+import com.TobyX.bridge.component.node.control.VRT3DObject;
 import java.util.Set;
 
 import static java.lang.Math.toDegrees;
@@ -68,8 +68,8 @@ public class NodeModule extends ReactContextBaseJavaModule {
         uiManager.addUIBlock(new UIBlock() {
             @Override
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                if (!(viroView instanceof VRTNode)){
+                View View = nativeViewHierarchyManager.resolveView(viewTag);
+                if (!(View instanceof VRTNode)){
                     throw new IllegalViewOperationException("Invalid view returned when applying force: expected a node-type control!");
                 }
 
@@ -90,7 +90,7 @@ public class NodeModule extends ReactContextBaseJavaModule {
                 }
                 float[] forceArray = { (float)force.getDouble(0), (float)force.getDouble(1), (float)force.getDouble(2)};
 
-                VRTNode nodeControl = (VRTNode) viroView;
+                VRTNode nodeControl = (VRTNode) View;
                 nodeControl.applyImpulse(forceArray, forcePosition);
             }
         });
@@ -102,8 +102,8 @@ public class NodeModule extends ReactContextBaseJavaModule {
         uiManager.addUIBlock(new UIBlock() {
             @Override
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                if (!(viroView instanceof VRTNode)){
+                View View = nativeViewHierarchyManager.resolveView(viewTag);
+                if (!(View instanceof VRTNode)){
                     throw new IllegalViewOperationException("Invalid view returned when applying force: expected a node-type control!");
                 }
 
@@ -112,7 +112,7 @@ public class NodeModule extends ReactContextBaseJavaModule {
                 }
 
                 float[] torqueArray = { (float)torque.getDouble(0), (float)torque.getDouble(1), (float)torque.getDouble(2)};
-                VRTNode nodeControl = (VRTNode) viroView;
+                VRTNode nodeControl = (VRTNode) View;
                 nodeControl.applyTorqueImpulse(torqueArray);
             }
         });
@@ -124,8 +124,8 @@ public class NodeModule extends ReactContextBaseJavaModule {
         uiManager.addUIBlock(new UIBlock() {
             @Override
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                if (!(viroView instanceof VRTNode)){
+                View View = nativeViewHierarchyManager.resolveView(viewTag);
+                if (!(View instanceof VRTNode)){
                     throw new IllegalViewOperationException("Invalid view returned when applying velocity: expected a node-type control!");
                 }
 
@@ -134,7 +134,7 @@ public class NodeModule extends ReactContextBaseJavaModule {
                 }
 
                 float[] velocityArray = { (float)velocity.getDouble(0), (float)velocity.getDouble(1), (float)velocity.getDouble(2)};
-                VRTNode nodeControl = (VRTNode) viroView;
+                VRTNode nodeControl = (VRTNode) View;
                 nodeControl.setVelocity(velocityArray, false);
             }
         });
@@ -147,9 +147,9 @@ public class NodeModule extends ReactContextBaseJavaModule {
          uiManager.addUIBlock(new UIBlock() {
              @Override
              public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                 View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                 VRTNode nodeView = (VRTNode) viroView;
-                 if (!(viroView instanceof VRTNode)){
+                 View View = nativeViewHierarchyManager.resolveView(viewTag);
+                 VRTNode nodeView = (VRTNode) View;
+                 if (!(View instanceof VRTNode)){
                      throw new IllegalViewOperationException("Invalid view, expected VRTNode!");
                  }
 
@@ -190,9 +190,9 @@ public class NodeModule extends ReactContextBaseJavaModule {
         uiManager.addUIBlock(new UIBlock() {
             @Override
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                VRTNode nodeView = (VRTNode) viroView;
-                if (!(viroView instanceof VRTNode)){
+                View View = nativeViewHierarchyManager.resolveView(viewTag);
+                VRTNode nodeView = (VRTNode) View;
+                if (!(View instanceof VRTNode)){
                     throw new IllegalViewOperationException("Invalid view, expected VRTNode!");
                 }
 
@@ -219,9 +219,9 @@ public class NodeModule extends ReactContextBaseJavaModule {
         uiManager.addUIBlock(new UIBlock() {
             @Override
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
-                View viroView = nativeViewHierarchyManager.resolveView(viewTag);
-                VRT3DObject nodeView = (VRT3DObject) viroView;
-                if (!(viroView instanceof VRT3DObject)) {
+                View View = nativeViewHierarchyManager.resolveView(viewTag);
+                VRT3DObject nodeView = (VRT3DObject) View;
+                if (!(View instanceof VRT3DObject)) {
                     throw new IllegalViewOperationException("Invalid view, expected VRT3DObject!");
                 }
                 Object3D node = (Object3D)nodeView.getNodeJni();

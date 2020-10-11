@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.util.Pair;
 import androidx.annotation.Nullable;
@@ -30,8 +30,8 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.component.node.VRTNodeManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.component.node.VRTNodeManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ import java.util.Map;
 
 /**
  * Object3dManager for building a {@link VRT3DObject}
- * corresponding to Viro3dObject.js control.
+ * corresponding to Object3D.js control.
  */
 public class VRT3DObjectManager extends VRTControlManager<VRT3DObject> {
     private static final String URI_KEY = "uri";
@@ -119,11 +119,11 @@ public class VRT3DObjectManager extends VRTControlManager<VRT3DObject> {
     public Map getExportedCustomDirectEventTypeConstants() {
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_LOAD_START, MapBuilder.of("registrationName", ViroEvents.ON_LOAD_START));
-        events.put(ViroEvents.ON_LOAD_END, MapBuilder.of("registrationName", ViroEvents.ON_LOAD_END));
-        events.put(ViroEvents.ON_ERROR, MapBuilder.of("registrationName", ViroEvents.ON_ERROR));
-        events.put(ViroEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_START));
-        events.put(ViroEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", ViroEvents.ON_ANIMATION_FINISH));
+        events.put(PhantomEvents.ON_LOAD_START, MapBuilder.of("registrationName", PhantomEvents.ON_LOAD_START));
+        events.put(PhantomEvents.ON_LOAD_END, MapBuilder.of("registrationName", PhantomEvents.ON_LOAD_END));
+        events.put(PhantomEvents.ON_ERROR, MapBuilder.of("registrationName", PhantomEvents.ON_ERROR));
+        events.put(PhantomEvents.ON_ANIMATION_START, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_START));
+        events.put(PhantomEvents.ON_ANIMATION_FINISH, MapBuilder.of("registrationName", PhantomEvents.ON_ANIMATION_FINISH));
 
         return events;
     }

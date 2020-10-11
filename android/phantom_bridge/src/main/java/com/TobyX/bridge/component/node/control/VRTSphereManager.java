@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -18,21 +18,21 @@
 //  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.component.node.VRTNode;
-import com.viromedia.bridge.component.node.VRTNodeManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.component.node.VRTNode;
+import com.TobyX.bridge.component.node.VRTNodeManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
 /**
  * SphereManager for building a {@link VRTSphere}
- * corresponding to the ViroSphere.js control.
+ * corresponding to the Sphere.js control.
  */
 public class VRTSphereManager extends VRTControlManager<VRTSphere> {
 

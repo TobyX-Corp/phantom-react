@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.utility;
+package com.TobyX.bridge.utility;
 
 
 import android.content.Context;
@@ -38,7 +38,7 @@ import com.facebook.imagepipeline.image.CloseableImage;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.Texture;
+import com.TobyX.core.Texture;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
@@ -48,7 +48,7 @@ import java.util.concurrent.CountDownLatch;
  * by leveraging the Facebook Fresco image downloading/caching library.
  */
 public class ImageDownloader {
-    private static final String TAG = ViroLog.getTag(ImageDownloader.class);
+    private static final String TAG = PhantomLog.getTag(ImageDownloader.class);
     private static final String URI_KEY = "uri";
     private final Context mContext;
     private final ConcurrentHashMap<CountDownLatch, Bitmap> mImageMap;
@@ -106,7 +106,7 @@ public class ImageDownloader {
         if (toReturn != null) {
             return toReturn;
         } else {
-            ViroLog.warn(TAG, "Could not download image at: " + uri.toString());
+            PhantomLog.warn(TAG, "Could not download image at: " + uri.toString());
             return null;
         }
     }
@@ -119,7 +119,7 @@ public class ImageDownloader {
      */
     public void getImageAsync(ReadableMap map, ImageDownloadListener listener) {
         if (listener == null) {
-            ViroLog.warn(TAG, "The given ImageDownloadListener is null. Doing nothing.");
+            PhantomLog.warn(TAG, "The given ImageDownloadListener is null. Doing nothing.");
             return;
         }
 

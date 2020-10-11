@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.app.Application;
 
@@ -29,7 +29,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.devsupport.interfaces.DevOptionHandler;
 import com.facebook.react.devsupport.interfaces.DevSupportManager;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.ViroView;
+import com.TobyX.core.PhantomView;
 
 import java.lang.ref.WeakReference;
 
@@ -57,33 +57,33 @@ public class PerfMonitor extends ReactContextBaseJavaModule {
 
     private boolean mIsInitialized = false;
 
-    private WeakReference<ViroView> mView;
+    private WeakReference<PhantomView> mView;
 
     public PerfMonitor(ReactApplicationContext context) {
         super(context);
     }
 
     public void onOptionSelected() {
-        ViroView view = mView.get();
+        PhantomView view = mView.get();
         if (view != null) {
             view.setDebugHUDEnabled(!mIsShowing);
         }
         mIsShowing = !mIsShowing;
     }
 
-    public void setView(ViroView view) {
+    public void setView(PhantomView view) {
         if (!mIsInitialized) {
             Application application = getCurrentActivity().getApplication();
             if (application instanceof ReactApplication) {
                 ReactApplication reactApplication = (ReactApplication) application;
                 DevSupportManager devSupport = reactApplication.getReactNativeHost().getReactInstanceManager().getDevSupportManager();
-                devSupport.addCustomDevOption("[Viro] Toggle FPS Display", new PerfOptionHandler(this));
+                devSupport.addCustomDevOption("[Phantom] Toggle FPS Display", new PerfOptionHandler(this));
 
                 mIsInitialized = true;
             }
         }
 
-        mView = new WeakReference<ViroView>(view);
+        mView = new WeakReference<PhantomView>(view);
         view.setDebugHUDEnabled(mIsShowing);
     }
 

@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 
 import android.graphics.Bitmap;
@@ -29,19 +29,19 @@ import android.os.Looper;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.internal.Image;
-import com.viro.core.Material;
-import com.viro.core.Quad;
-import com.viro.core.Texture;
-import com.viromedia.bridge.utility.ImageDownloadListener;
-import com.viromedia.bridge.utility.ImageDownloader;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.internal.Image;
+import com.TobyX.core.Material;
+import com.TobyX.core.Quad;
+import com.TobyX.core.Texture;
+import com.TobyX.bridge.utility.ImageDownloadListener;
+import com.TobyX.bridge.utility.ImageDownloader;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.util.List;
 
 public class VRTImage extends VRTControl {
-    private static final String TAG = ViroLog.getTag(VRTImage.class);
+    private static final String TAG = PhantomLog.getTag(VRTImage.class);
     static final String DEFAULT_RESIZE_MODE = "stretchToFill";
     static final String DEFAULT_CLIP_MODE = "clipToBounds";
     static final float DEFAULT_WIDTH = 1;
@@ -96,7 +96,7 @@ public class VRTImage extends VRTControl {
 
     public void setPlaceholderSource(ReadableMap placeholderSource) {
         if (placeholderSource == null) {
-            ViroLog.warn(TAG, "PlaceholderSource shouldn't be null. We should've provided a default.");
+            PhantomLog.warn(TAG, "PlaceholderSource shouldn't be null. We should've provided a default.");
         }
         mPlaceholderSourceMap = placeholderSource;
     }
@@ -288,7 +288,7 @@ public class VRTImage extends VRTControl {
     void imageDownloadDidStart() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_START,
+                PhantomEvents.ON_LOAD_START,
                 null
         );
     }
@@ -296,7 +296,7 @@ public class VRTImage extends VRTControl {
     void imageDownloadDidFinish() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_END,
+                PhantomEvents.ON_LOAD_END,
                 null
         );
     }

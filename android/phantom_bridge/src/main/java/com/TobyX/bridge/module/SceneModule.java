@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.view.View;
 
@@ -34,16 +34,16 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.Node;
-import com.viro.core.PhysicsBody;
-import com.viro.core.PhysicsShape;
-import com.viro.core.PhysicsShapeAutoCompound;
-import com.viro.core.PhysicsShapeBox;
-import com.viro.core.PhysicsShapeSphere;
-import com.viro.core.PhysicsWorld;
-import com.viro.core.Scene;
-import com.viromedia.bridge.component.node.VRTScene;
-import com.viromedia.bridge.utility.Helper;
+import com.TobyX.core.Node;
+import com.TobyX.core.PhysicsBody;
+import com.TobyX.core.PhysicsShape;
+import com.TobyX.core.PhysicsShapeAutoCompound;
+import com.TobyX.core.PhysicsShapeBox;
+import com.TobyX.core.PhysicsShapeSphere;
+import com.TobyX.core.PhysicsWorld;
+import com.TobyX.core.Scene;
+import com.TobyX.bridge.component.node.VRTScene;
+import com.TobyX.bridge.utility.Helper;
 
 @ReactModule(name = "VRTSceneModule")
 public class SceneModule extends ReactContextBaseJavaModule {
@@ -67,7 +67,7 @@ public class SceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (!(sceneView instanceof VRTScene)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling findCollisionsWithRayAsync: expected a ViroScene!");
+                            "calling findCollisionsWithRayAsync: expected a Scene!");
                 }
 
                 float[] fromPosArray = Helper.toFloatArray(fromPos);
@@ -102,7 +102,7 @@ public class SceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (!(sceneView instanceof VRTScene)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling findCollisionsWithShapeAsync: expected a ViroScene!");
+                            "calling findCollisionsWithShapeAsync: expected a Scene!");
                 }
 
                 float[] fromPosArray = Helper.toFloatArray(fromPos);

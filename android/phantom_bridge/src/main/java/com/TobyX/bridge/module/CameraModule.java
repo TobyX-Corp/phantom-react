@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.view.View;
 
@@ -33,9 +33,9 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.internal.CameraCallback;
-import com.viromedia.bridge.component.node.VRTCamera;
-import com.viromedia.bridge.component.node.VRTScene;
+import com.TobyX.core.internal.CameraCallback;
+import com.TobyX.bridge.component.node.VRTCamera;
+import com.TobyX.bridge.component.node.VRTScene;
 
 @ReactModule(name = "VRTCameraModule")
 public class CameraModule extends ReactContextBaseJavaModule {

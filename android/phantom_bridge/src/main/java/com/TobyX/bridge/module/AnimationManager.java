@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.util.Log;
 
@@ -31,20 +31,20 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.internal.AnimationChain;
-import com.viro.core.internal.AnimationGroup;
-import com.viro.core.internal.ExecutableAnimation;
-import com.viro.core.internal.ExecutableAnimation.ExecutionType;
-import com.viro.core.internal.LazyMaterial;
-import com.viro.core.Material;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.internal.AnimationChain;
+import com.TobyX.core.internal.AnimationGroup;
+import com.TobyX.core.internal.ExecutableAnimation;
+import com.TobyX.core.internal.ExecutableAnimation.ExecutionType;
+import com.TobyX.core.internal.LazyMaterial;
+import com.TobyX.core.Material;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.util.HashMap;
 
 @ReactModule(name = "VRTAnimationManager")
 public class AnimationManager extends ReactContextBaseJavaModule {
 
-    private static final String TAG = ViroLog.getTag(AnimationManager.class);
+    private static final String TAG = PhantomLog.getTag(AnimationManager.class);
 
     static class LazyMaterialReact extends LazyMaterial {
 
@@ -71,7 +71,7 @@ public class AnimationManager extends ReactContextBaseJavaModule {
     }
 
     /*
-     TODO: change this back to non-static. Required for VIRO-3474.
+     TODO: change this back to non-static. Required for PHANTOM-3474.
      */
     private static HashMap<String, ExecutableAnimation> sParsedAnimations;
     public void clearAnimations() {
@@ -107,7 +107,7 @@ public class AnimationManager extends ReactContextBaseJavaModule {
             String animationName = iter.nextKey();
             ExecutableAnimation animation = parseAnimationObjectHelper(animationName, ExecutionType.PARALLEL);
             sParsedAnimations.put(animationName, animation);
-            ViroLog.debug(TAG, "Parsed animation: [" + animationName + "]");
+            PhantomLog.debug(TAG, "Parsed animation: [" + animationName + "]");
         }
     }
 
@@ -127,7 +127,7 @@ public class AnimationManager extends ReactContextBaseJavaModule {
             case String:
                 return parseAnimationObject(mRawAnimations.getString(animationName), executionType);
             default:
-                ViroLog.error(TAG, "Invalid animation object received of type: ["
+                PhantomLog.error(TAG, "Invalid animation object received of type: ["
                         + mRawAnimations.getType(animationName) + "]");
                 return null;
         }
@@ -151,7 +151,7 @@ public class AnimationManager extends ReactContextBaseJavaModule {
             case String:
                 return parseAnimationObject(array.getString(index), executionType);
             default:
-                ViroLog.error(TAG, "Invalid animation object received of type: ["
+                PhantomLog.error(TAG, "Invalid animation object received of type: ["
                         + array.getType(index) + "]");
                 return null;
         }
@@ -175,7 +175,7 @@ public class AnimationManager extends ReactContextBaseJavaModule {
             } else if (childAnimation instanceof AnimationChain) {
                 animationChain.addAnimation((AnimationChain) childAnimation);
             } else {
-                ViroLog.warn(TAG, "Unknown ExecutableAnimation type [" + childAnimation.getClass().getSimpleName() + "]!");
+                PhantomLog.warn(TAG, "Unknown ExecutableAnimation type [" + childAnimation.getClass().getSimpleName() + "]!");
             }
         }
         return animationChain;

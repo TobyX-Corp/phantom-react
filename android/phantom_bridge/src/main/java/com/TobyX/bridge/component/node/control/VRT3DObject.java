@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,22 +19,23 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.net.Uri;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.AsyncObject3DListener;
-import com.viro.core.ViroContext;
-import com.viro.core.internal.ExecutableAnimation;
 import com.viro.core.Material;
-import com.viro.core.Node;
-import com.viro.core.Object3D;
-import com.viromedia.bridge.utility.ViroEvents;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.AsyncObject3DListener;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.internal.ExecutableAnimation;
+import com.TobyX.core.Material;
+import com.TobyX.core.Node;
+import com.TobyX.core.Object3D;
+import com.TobyX.bridge.utility.PhantomEvents;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomLog;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ import android.util.Log;
 import android.util.Pair;
 
 public class VRT3DObject extends VRTControl {
-    private static final String TAG = ViroLog.getTag(VRT3DObject.class);
+    private static final String TAG = PhantomLog.getTag(VRT3DObject.class);
 
     private static class Object3dAnimation extends NodeAnimation {
         private WeakReference<Node> mNodeWeak;
@@ -112,7 +113,7 @@ public class VRT3DObject extends VRTControl {
 
     public void setType(String type) {
         if (type == null || type.isEmpty()) {
-            throw new IllegalArgumentException("Missing required prop [type] for Viro3DObject");
+            throw new IllegalArgumentException("Missing required prop [type] for Object3D");
         }
 
         mType = Object3D.Type.fromString(type);
@@ -120,7 +121,7 @@ public class VRT3DObject extends VRTControl {
 
     public void setSource(String source) {
         if (source == null || source.trim().isEmpty()) {
-            throw new IllegalArgumentException("source is a required prop for Viro3DObject");
+            throw new IllegalArgumentException("source is a required prop for Object3D");
         }
         mSource = Helper.parseUri(source, mReactContext);
         mSourceChanged = true;
@@ -145,7 +146,7 @@ public class VRT3DObject extends VRTControl {
         Set<String> keys = model.getMorphTargetKeys();
         for (Pair<String, Float> target : targets) {
             if (!keys.contains(target.first)) {
-                ViroLog.warn(TAG, "Unknown MorphTarget: " + target.first + "found!");
+                PhantomLog.warn(TAG, "Unknown MorphTarget: " + target.first + "found!");
                 continue;
             }
 
@@ -162,19 +163,19 @@ public class VRT3DObject extends VRTControl {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         onPropsSet();
     }
 
     @Override
     protected void onPropsSet() {
-        if (mViroContext == null || mSource == null || !mSourceChanged) {
+        if (mContext == null || mSource == null || !mSourceChanged) {
             return;
         }
 
         if (mType == null) {
-            throw new IllegalStateException("`type` property not set on Viro3DObject.");
+            throw new IllegalStateException("`type` property not set on Object3D.");
         }
 
         super.onPropsSet();
@@ -241,11 +242,11 @@ public class VRT3DObject extends VRTControl {
 
             // When in release mode, the objects are packaged as resources so we use the
             // resource constructor
-            getObject3D().loadModel(mViroContext, mSource.toString(), mType, listener, resourceMap);
+            getObject3D().loadModel(mContext, mSource.toString(), mType, listener, resourceMap);
         } else {
             // When in debug mode (not release), the objects are loaded as URLs so we use
             // the URL constructor
-            getObject3D().loadModel(mViroContext, mSource, mType, listener);
+            getObject3D().loadModel(mContext, mSource, mType, listener);
         }
         mSourceChanged = false;
     }
@@ -253,7 +254,7 @@ public class VRT3DObject extends VRTControl {
     private void loadDidStart() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_START,
+                PhantomEvents.ON_LOAD_START,
                 null
         );
     }
@@ -261,7 +262,7 @@ public class VRT3DObject extends VRTControl {
     public void loadDidEnd() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_LOAD_END,
+                PhantomEvents.ON_LOAD_END,
                 null
         );
     }

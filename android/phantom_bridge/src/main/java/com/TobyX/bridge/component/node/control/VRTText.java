@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,16 +19,16 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.graphics.Color;
 
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.Material;
-import com.viro.core.ViroContext;
-import com.viro.core.Text;
+import com.TobyX.core.Material;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.Text;
 
 import java.util.List;
 
@@ -170,7 +170,7 @@ public class VRTText extends VRTControl {
     }
 
     private void updateLabel() {
-        if (mViroContext == null || isTornDown() || mText == null) {
+        if (mContext == null || isTornDown() || mText == null) {
             return;
         }
 
@@ -180,7 +180,7 @@ public class VRTText extends VRTControl {
         }
 
         // Create text
-        mNativeText = new Text.TextBuilder().viroContext(mViroContext)
+        mNativeText = new Text.TextBuilder().PhantomContext(mContext)
                 .textString(mText)
                 .fontFamilyName(mFontFamilyName)
                 .fontSize(mSize)
@@ -216,8 +216,8 @@ public class VRTText extends VRTControl {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         updateLabel();
     }
 

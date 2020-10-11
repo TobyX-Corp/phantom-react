@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 
 import android.graphics.Bitmap;
@@ -35,13 +35,13 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.VideoTexture;
-import com.viro.core.internal.Image;
-import com.viro.core.Material;
-import com.viro.core.Texture;
-import com.viromedia.bridge.component.VRTMaterialVideo;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ImageDownloader;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.core.internal.Image;
+import com.TobyX.core.Material;
+import com.TobyX.core.Texture;
+import com.TobyX.bridge.component.VRTMaterialVideo;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.ImageDownloader;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -55,12 +55,12 @@ public class MaterialManager extends ReactContextBaseJavaModule {
 
     // TODO: figure out a good place to load the libraries.
     static {
-        System.loadLibrary("viro_renderer");
+        System.loadLibrary("phantom_renderer");
     }
 
     // TODO: make the following non-static!
     /*
-     The following two static Maps and the clearMaterials function are a result of VIRO-3474, which
+     The following two static Maps and the clearMaterials function are a result of PHANTOM-3474, which
      is caused by a React Native bug, if/when they fix it, we need to revert the maps back to instance
      variables.
      */

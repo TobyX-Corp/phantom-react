@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,18 +19,18 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.utility;
+package com.TobyX.bridge.utility;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.ReadableMap;
-import com.viro.core.ARAnchor;
-import com.viro.core.ARHitTestResult;
-import com.viro.core.ARImageAnchor;
-import com.viro.core.ARPlaneAnchor;
-import com.viro.core.ARPointCloud;
-import com.viro.core.Vector;
+import com.TobyX.core.ARAnchor;
+import com.TobyX.core.ARHitTestResult;
+import com.TobyX.core.ARImageAnchor;
+import com.TobyX.core.ARPlaneAnchor;
+import com.TobyX.core.ARPointCloud;
+import com.TobyX.core.Vector;
 
 public class ARUtils {
 
@@ -62,7 +62,7 @@ public class ARUtils {
         return returnMap;
     }
 
-    // TODO: VIRO-2170 ARHitTestResults should also use Vectors
+    // TODO: PHANTOM-2170 ARHitTestResults should also use Vectors
     public static WritableMap mapFromARHitTestResult(ARHitTestResult result) {
         WritableMap returnMap = Arguments.createMap();
         returnMap.putString("type", result.getType().getStringValue());
@@ -112,8 +112,8 @@ public class ARUtils {
     }
 
     /*
-     Rotation from the renderer/jni (ViroCore) comes as radians, so we need to convert
-     to degrees for ViroReact
+     Rotation from the renderer/jni (PhantomCore) comes as radians, so we need to convert
+     to degrees for PhantomReact
      */
     private static WritableArray arrayFromRotationArray(float[] array) {
         WritableArray returnArray = Arguments.createArray();

@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -27,9 +27,9 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viro.core.Vector;
-import com.viromedia.bridge.component.node.VRTNodeManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.component.node.VRTNodeManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,18 +52,18 @@ public class VRTPolygonManager extends VRTControlManager<VRTPolygon> {
     @ReactProp(name = "vertices")
     public void setVertices(VRTPolygon view, ReadableArray vertices) {
         if (vertices == null || vertices.size() == 0) {
-            throw new IllegalArgumentException("[ViroPolygon] Invalid Polygon vertex boundary list provided!");
+            throw new IllegalArgumentException("[Polygon] Invalid Polygon vertex boundary list provided!");
         }
 
         List<Vector> vecVertices = new ArrayList<Vector>();
         for (int i = 0; i < vertices.size(); i ++) {
             ReadableArray vecArray = vertices.getArray(i);
             if (vecArray == null || vecArray.size() < 2) {
-                throw new IllegalArgumentException("[ViroPolygon] Invalid Polygon vertex boundary list provided!");
+                throw new IllegalArgumentException("[Polygon] Invalid Polygon vertex boundary list provided!");
             }
 
             if (vecArray.size() > 2){
-                Log.w("Viro","[ViroPolygon] Polygon only supports xy coordinates! " +
+                Log.w("Phantom","[Polygon] Polygon only supports xy coordinates! " +
                         "But a set of 3 points had been provided!");
 
             }
@@ -88,10 +88,10 @@ public class VRTPolygonManager extends VRTControlManager<VRTPolygon> {
             for (int i = 0; i < holeArray.size(); i++) {
                 ReadableArray vecArray = holeArray.getArray(i);
                 if (vecArray == null || vecArray.size() < 2) {
-                    throw new IllegalArgumentException("[ViroPolygon] Invalid hole vertex boundary list provided!");
+                    throw new IllegalArgumentException("[Polygon] Invalid hole vertex boundary list provided!");
                 }
                 if (vecArray.size() > 2) {
-                    Log.w("Viro","[ViroPolygon] Polygon only supports xy coordinates! " +
+                    Log.w("Phantom","[Polygon] Polygon only supports xy coordinates! " +
                             "But a set of 3 points had been provided for hole " + h + "!");
 
                 }
@@ -109,7 +109,7 @@ public class VRTPolygonManager extends VRTControlManager<VRTPolygon> {
         if (coordinates == null) {
             // do-nothing
         } else if (coordinates.size() != 4) {
-            throw new IllegalArgumentException("[ViroPolygon] Expected 4 uv coordinates, got " + coordinates.size());
+            throw new IllegalArgumentException("[Polygon] Expected 4 uv coordinates, got " + coordinates.size());
         } else { // not null && has 4 elements
             u0 = (float) coordinates.getDouble(0);
             v0 = (float) coordinates.getDouble(1);

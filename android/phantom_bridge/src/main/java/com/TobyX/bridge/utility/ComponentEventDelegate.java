@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,27 +19,27 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.utility;
+package com.TobyX.bridge.utility;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.ARHitTestResult;
-import com.viro.core.ARPointCloud;
-import com.viro.core.internal.CameraCallback;
-import com.viro.core.EventDelegate;
-import com.viro.core.Node;
-import com.viro.core.ClickState;
-import com.viro.core.ControllerStatus;
-import com.viro.core.PinchState;
-import com.viro.core.RotateState;
-import com.viro.core.SwipeState;
-import com.viro.core.TouchState;
-import com.viromedia.bridge.component.VRTComponent;
-import com.viromedia.bridge.component.node.VRTARScene;
-import com.viromedia.bridge.component.node.VRTScene;
+import com.TobyX.core.ARHitTestResult;
+import com.TobyX.core.ARPointCloud;
+import com.TobyX.core.internal.CameraCallback;
+import com.TobyX.core.EventDelegate;
+import com.TobyX.core.Node;
+import com.TobyX.core.ClickState;
+import com.TobyX.core.ControllerStatus;
+import com.TobyX.core.PinchState;
+import com.TobyX.core.RotateState;
+import com.TobyX.core.SwipeState;
+import com.TobyX.core.TouchState;
+import com.TobyX.bridge.component.VRTComponent;
+import com.TobyX.bridge.component.node.VRTARScene;
+import com.TobyX.bridge.component.node.VRTScene;
 
 import java.lang.ref.WeakReference;
 
@@ -73,7 +73,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         component.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 component.getId(),
-                ViroEvents.ON_HOVER,
+                PhantomEvents.ON_HOVER,
                 event);
     }
 
@@ -98,7 +98,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         component.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 component.getId(),
-                ViroEvents.ON_CLICK,
+                PhantomEvents.ON_CLICK,
                 event);
     }
 
@@ -120,7 +120,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         component.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 component.getId(),
-                ViroEvents.ON_TOUCH,
+                PhantomEvents.ON_TOUCH,
                 event);
     }
 
@@ -136,7 +136,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
         event.putInt("swipeState", swipeState.getTypeId());
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_SWIPE,
+                PhantomEvents.ON_SWIPE,
                 event);
     }
 
@@ -156,7 +156,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
         event.putArray("scrollPos", scrollPos);
         component.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 component.getId(),
-                ViroEvents.ON_SCROLL,
+                PhantomEvents.ON_SCROLL,
                 event);
     }
 
@@ -177,7 +177,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_DRAG,
+                PhantomEvents.ON_DRAG,
                 event);
     }
 
@@ -192,7 +192,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
         event.putInt("source", source);
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_FUSE,
+                PhantomEvents.ON_FUSE,
                 event);
     }
 
@@ -210,7 +210,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_PINCH,
+                PhantomEvents.ON_PINCH,
                 event);
     }
 
@@ -256,7 +256,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
                     scene.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                             scene.getId(),
-                            ViroEvents.ON_CAMERA_AR_HIT_TEST_VIRO,
+                            PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM,
                             event);
                 }
             });
@@ -278,7 +278,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
             arScene.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                     arScene.getId(),
-                    ViroEvents.ON_AR_POINT_CLOUD_UPDATE,
+                    PhantomEvents.ON_AR_POINT_CLOUD_UPDATE,
                     event);
         }
     }
@@ -297,7 +297,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_ROTATE,
+                PhantomEvents.ON_ROTATE,
                 event);
     }
 
@@ -313,7 +313,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
         event.putInt("controllerStatus", controllerStatus.getTypeId());
         node.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                 node.getId(),
-                ViroEvents.ON_CONTROLLER_STATUS,
+                PhantomEvents.ON_CONTROLLER_STATUS,
                 event);
     }
 
@@ -351,7 +351,7 @@ public class ComponentEventDelegate implements EventDelegate.EventDelegateCallba
 
             scene.getReactContext().getJSModule(RCTEventEmitter.class).receiveEvent(
                     scene.getId(),
-                    ViroEvents.ON_CAMERA_TRANSFORM_UPDATE,
+                    PhantomEvents.ON_CAMERA_TRANSFORM_UPDATE,
                     event);
         }
     }

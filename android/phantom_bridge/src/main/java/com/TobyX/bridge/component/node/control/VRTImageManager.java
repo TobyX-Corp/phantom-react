@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,15 +19,15 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.viromedia.bridge.component.node.VRTNodeManager;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.bridge.component.node.VRTNodeManager;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.util.Map;
 
@@ -97,9 +97,9 @@ public class VRTImageManager extends VRTControlManager<VRTImage> {
     public Map getExportedCustomDirectEventTypeConstants() {
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_LOAD_START, MapBuilder.of("registrationName", ViroEvents.ON_LOAD_START));
-        events.put(ViroEvents.ON_LOAD_END, MapBuilder.of("registrationName", ViroEvents.ON_LOAD_END));
-        events.put(ViroEvents.ON_ERROR, MapBuilder.of("registrationName", ViroEvents.ON_ERROR));
+        events.put(PhantomEvents.ON_LOAD_START, MapBuilder.of("registrationName", PhantomEvents.ON_LOAD_START));
+        events.put(PhantomEvents.ON_LOAD_END, MapBuilder.of("registrationName", PhantomEvents.ON_LOAD_END));
+        events.put(PhantomEvents.ON_ERROR, MapBuilder.of("registrationName", PhantomEvents.ON_ERROR));
 
         return events;
     }

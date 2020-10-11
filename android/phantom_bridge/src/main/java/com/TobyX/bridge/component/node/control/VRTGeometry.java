@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,14 +19,14 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.util.Log;
 
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.Geometry;
-import com.viro.core.Submesh;
-import com.viro.core.Vector;
+import com.TobyX.core.Geometry;
+import com.TobyX.core.Submesh;
+import com.TobyX.core.Vector;
 
 import java.util.ArrayList;
 import java.util.List;

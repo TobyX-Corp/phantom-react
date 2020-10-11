@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.view.View;
 
@@ -35,8 +35,8 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.Vector;
-import com.viromedia.bridge.component.VRT3DSceneNavigator;
+import com.TobyX.core.Vector;
+import com.TobyX.bridge.component.VRT3DSceneNavigator;
 
 @ReactModule(name = "VRT3DSceneNavigatorModule")
 public class VRT3DSceneNavigatorModule extends ReactContextBaseJavaModule {

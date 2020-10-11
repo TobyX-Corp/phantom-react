@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.net.Uri;
 
@@ -27,13 +27,13 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
-import com.viro.core.Material;
-import com.viro.core.Texture;
-import com.viro.core.ViroContext;
-import com.viro.core.Quad;
-import com.viro.core.VideoTexture;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ViroEvents;
+import com.TobyX.core.Material;
+import com.TobyX.core.Texture;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.core.Quad;
+import com.TobyX.core.VideoTexture;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.PhantomEvents;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -130,7 +130,7 @@ public class VRTVideoSurface extends VRTControl {
     }
 
     private void resetVideo() {
-        if (mViroContext == null || mSource == null) {
+        if (mContext == null || mSource == null) {
             return;
         }
 
@@ -152,7 +152,7 @@ public class VRTVideoSurface extends VRTControl {
         }
         mDelegate = new VideoSurfaceDelegate(this);
 
-        mVideoTexture = new VideoTexture(mViroContext, Uri.parse(mSource), mDelegate,
+        mVideoTexture = new VideoTexture(mContext, Uri.parse(mSource), mDelegate,
                 Texture.StereoMode.valueFromString(mStereoMode));
         loadVideo();
 
@@ -177,8 +177,8 @@ public class VRTVideoSurface extends VRTControl {
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
         resetVideo();
     }
 
@@ -257,21 +257,21 @@ public class VRTVideoSurface extends VRTControl {
     private void playerBufferStart() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_START,
+                PhantomEvents.ON_BUFFER_START,
                 null);
     }
 
     private void playerBufferEnd() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_BUFFER_END,
+                PhantomEvents.ON_BUFFER_END,
                 null);
     }
 
     private void playerDidFinishPlaying() {
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_FINISH,
+                PhantomEvents.ON_FINISH,
                 null);
     }
 
@@ -282,7 +282,7 @@ public class VRTVideoSurface extends VRTControl {
 
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 getId(),
-                ViroEvents.ON_UPDATE_TIME,
+                PhantomEvents.ON_UPDATE_TIME,
                 event);
     }
 

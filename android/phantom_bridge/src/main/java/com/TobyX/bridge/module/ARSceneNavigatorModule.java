@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.Manifest;
 import android.app.Activity;
@@ -46,11 +46,11 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.Vector;
-import com.viro.core.ViroMediaRecorder;
-import com.viro.core.ViroMediaRecorder.Error;
-import com.viro.core.ViroViewARCore;
-import com.viromedia.bridge.component.VRTARSceneNavigator;
+import com.TobyX.core.Vector;
+import com.TobyX.core.MediaRecorder;
+import com.TobyX.core.MediaRecorder.Error;
+import com.TobyX.core.ViewARCore;
+import com.TobyX.bridge.component.VRTARSceneNavigator;
 
 @ReactModule(name = "VRTARSceneNavigatorModule")
 public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
@@ -82,19 +82,19 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
                 View sceneView = nativeViewHierarchyManager.resolveView(sceneNavTag);
                 if (!(sceneView instanceof VRTARSceneNavigator)) {
-                    throw new IllegalViewOperationException("Viro: Attempted to call startVideoRecording on a non-ARSceneNav view!");
+                    throw new IllegalViewOperationException("Phantom: Attempted to call startVideoRecording on a non-ARSceneNav view!");
                 }
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final ViroMediaRecorder recorder = scene.getARView().getRecorder();
+                final MediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     reactErrorDelegate.invoke(UNSUPPORTED_PLATFORM_ERROR);
                     return;
                 }
 
                 // Construct an error listener callback that may be triggered during recording.
-                final ViroMediaRecorder.RecordingErrorListener viroErrorDelegate = new ViroMediaRecorder.RecordingErrorListener() {
+                final MediaRecorder.RecordingErrorListener ErrorDelegate = new MediaRecorder.RecordingErrorListener() {
                     @Override
                     public void onRecordingFailed(Error error) {
                         reactErrorDelegate.invoke(error.toInt());
@@ -105,7 +105,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 checkPermissionsAndRun(new PermissionListener() {
                     @Override
                     public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-                        recorder.startRecordingAsync(fileName, saveToCameraRool, viroErrorDelegate);
+                        recorder.startRecordingAsync(fileName, saveToCameraRool, ErrorDelegate);
                         return true;
                     }
                 }, true);
@@ -121,12 +121,12 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
                 View sceneView = nativeViewHierarchyManager.resolveView(sceneNavTag);
                 if (!(sceneView instanceof VRTARSceneNavigator)) {
-                    throw new IllegalViewOperationException("Viro: Attempted to call startVideoRecording on a non-ARSceneNav view!");
+                    throw new IllegalViewOperationException("Phantom: Attempted to call startVideoRecording on a non-ARSceneNav view!");
                 }
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final ViroMediaRecorder recorder = scene.getARView().getRecorder();
+                final MediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     WritableMap returnMap = Arguments.createMap();
                     returnMap.putBoolean(RECORDING_SUCCESS_KEY, false);
@@ -137,8 +137,8 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 }
 
                 // Construct a completion delegate callback to be notified of the result of the recording.
-                final ViroMediaRecorder.VideoRecordingFinishListener completionCallback =
-                        new ViroMediaRecorder.VideoRecordingFinishListener() {
+                final MediaRecorder.VideoRecordingFinishListener completionCallback =
+                        new MediaRecorder.VideoRecordingFinishListener() {
                     @Override
                     public void onError(Error error) {
                         WritableMap returnMap = Arguments.createMap();
@@ -179,12 +179,12 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
             public void execute(NativeViewHierarchyManager nativeViewHierarchyManager) {
                 View sceneView = nativeViewHierarchyManager.resolveView(sceneNavTag);
                 if (!(sceneView instanceof VRTARSceneNavigator)) {
-                    throw new IllegalViewOperationException("Viro: Attempted to call startVideoRecording on a non-ARSceneNav view!");
+                    throw new IllegalViewOperationException("Phantom: Attempted to call startVideoRecording on a non-ARSceneNav view!");
                 }
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final ViroMediaRecorder recorder = scene.getARView().getRecorder();
+                final MediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     WritableMap returnMap = Arguments.createMap();
                     returnMap.putBoolean(RECORDING_SUCCESS_KEY, false);
@@ -195,7 +195,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 }
 
                 // Construct a completion delegate callback to be notified of sceenshot results.
-                final ViroMediaRecorder.ScreenshotFinishListener callback = new ViroMediaRecorder.ScreenshotFinishListener() {
+                final MediaRecorder.ScreenshotFinishListener callback = new MediaRecorder.ScreenshotFinishListener() {
                     @Override
                     public void onError(Error error) {
                         WritableMap returnMap = Arguments.createMap();
@@ -302,7 +302,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
 
     @ReactMethod()
     public void isARSupportedOnDevice(final Callback successCallback) {
-        ViroViewARCore.ARCoreAvailability availability = ViroViewARCore.isARSupportedOnDevice(getReactApplicationContext());
+        ViewARCore.ARCoreAvailability availability = ViewARCore.isARSupportedOnDevice(getReactApplicationContext());
         successCallback.invoke(availability.toString());
     }
 
@@ -319,7 +319,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
         }
 
         if (!(activity instanceof ReactActivity)){
-            Log.e("Viro","Error: Missing ReactActivity required for checking recording permissions!");
+            Log.e("Phantom","Error: Missing ReactActivity required for checking recording permissions!");
 
             // Trigger a permission failure callback.
             listener.onRequestPermissionsResult(0, null, null);

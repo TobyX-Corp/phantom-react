@@ -1,4 +1,4 @@
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -32,9 +32,9 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.ARImageTarget;
-import com.viromedia.bridge.utility.ImageDownloadListener;
-import com.viromedia.bridge.utility.ImageDownloader;
+import com.TobyX.core.ARImageTarget;
+import com.TobyX.bridge.utility.ImageDownloadListener;
+import com.TobyX.bridge.utility.ImageDownloader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -135,7 +135,7 @@ public class ARTrackingTargetsModule extends ReactContextBaseJavaModule {
     }
 
     /*
-     TODO: change this back to non-static. Required for VIRO-3474.
+     TODO: change this back to non-static. Required for PHANTOM-3474.
      */
     private static HashMap<String, ARTargetPromise> sPromiseMap = new HashMap<>();
     public void clearTargets() {

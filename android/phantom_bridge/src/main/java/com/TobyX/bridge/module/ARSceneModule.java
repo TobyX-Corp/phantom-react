@@ -1,4 +1,4 @@
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,7 +19,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.module;
+package com.TobyX.bridge.module;
 
 import android.graphics.Point;
 import android.view.View;
@@ -36,13 +36,13 @@ import com.facebook.react.uimanager.NativeViewHierarchyManager;
 import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
-import com.viro.core.ARHitTestListener;
-import com.viro.core.ARHitTestResult;
-import com.viro.core.Renderer;
-import com.viro.core.Vector;
-import com.viro.core.ViroViewARCore;
-import com.viromedia.bridge.component.VRTARSceneNavigator;
-import com.viromedia.bridge.utility.ARUtils;
+import com.TobyX.core.ARHitTestListener;
+import com.TobyX.core.ARHitTestResult;
+import com.TobyX.core.Renderer;
+import com.TobyX.core.Vector;
+import com.TobyX.core.ViewARCore;
+import com.TobyX.bridge.component.VRTARSceneNavigator;
+import com.TobyX.bridge.utility.ARUtils;
 
 
 @ReactModule(name = "VRTARSceneModule")
@@ -67,11 +67,11 @@ public class ARSceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (sceneView.getParent() == null || !(sceneView.getParent() instanceof VRTARSceneNavigator)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling performARHitTestWithRay: expected ViroARSceneNavigator as parent");
+                            "calling performARHitTestWithRay: expected ARSceneNavigator as parent");
                 }
 
                 VRTARSceneNavigator arSceneNavigator = (VRTARSceneNavigator) sceneView.getParent();
-                ViroViewARCore arView = arSceneNavigator.getARView();
+                ViewARCore arView = arSceneNavigator.getARView();
 
                 if (ray.size() != 3) {
                     promise.resolve(Arguments.createArray());
@@ -107,11 +107,11 @@ public class ARSceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (sceneView.getParent() == null || !(sceneView.getParent() instanceof VRTARSceneNavigator)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling performARHitTestWithRay: expected ViroARSceneNavigator as parent");
+                            "calling performARHitTestWithRay: expected ARSceneNavigator as parent");
                 }
 
                 VRTARSceneNavigator arSceneNavigator = (VRTARSceneNavigator) sceneView.getParent();
-                ViroViewARCore arView = arSceneNavigator.getARView();
+                ViewARCore arView = arSceneNavigator.getARView();
 
                 if ((origin.size() != 3) || (destination.size() != 3)) {
                     promise.resolve(Arguments.createArray());
@@ -152,11 +152,11 @@ public class ARSceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (sceneView.getParent() == null || !(sceneView.getParent() instanceof VRTARSceneNavigator)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling performARHitTestWithPosition: expected ViroARSceneNavigator as parent");
+                            "calling performARHitTestWithPosition: expected ARSceneNavigator as parent");
                 }
 
                 VRTARSceneNavigator arSceneNavigator = (VRTARSceneNavigator) sceneView.getParent();
-                ViroViewARCore arView = arSceneNavigator.getARView();
+                ViewARCore arView = arSceneNavigator.getARView();
 
                 if (position.size() != 3) {
                     promise.resolve(Arguments.createArray());
@@ -192,11 +192,11 @@ public class ARSceneModule extends ReactContextBaseJavaModule {
                 View sceneView = nativeViewHierarchyManager.resolveView(viewTag);
                 if (sceneView.getParent() == null || !(sceneView.getParent() instanceof VRTARSceneNavigator)) {
                     throw new IllegalViewOperationException("Invalid view returned when " +
-                            "calling performARHitTestWithPoint: expected ViroARSceneNavigator as parent");
+                            "calling performARHitTestWithPoint: expected ARSceneNavigator as parent");
                 }
 
                 VRTARSceneNavigator arSceneNavigator = (VRTARSceneNavigator) sceneView.getParent();
-                ViroViewARCore arView = arSceneNavigator.getARView();
+                ViewARCore arView = arSceneNavigator.getARView();
 
                 arView.performARHitTest(new Point(x, y), new ARHitTestListener() {
                     @Override

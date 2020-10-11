@@ -1,4 +1,4 @@
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -19,22 +19,22 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-package com.viromedia.bridge.component.node.control;
+package com.TobyX.bridge.component.node.control;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import com.facebook.react.bridge.ReactContext;
-import com.viro.core.AnimatedTexture;
-import com.viro.core.Texture;
-import com.viro.core.ViroContext;
-import com.viromedia.bridge.utility.Helper;
-import com.viromedia.bridge.utility.ImageDownloadListener;
-import com.viromedia.bridge.utility.ImageDownloader;
-import com.viromedia.bridge.utility.ViroLog;
+import com.TobyX.core.AnimatedTexture;
+import com.TobyX.core.Texture;
+import com.TobyX.core.PhantomContext;
+import com.TobyX.bridge.utility.Helper;
+import com.TobyX.bridge.utility.ImageDownloadListener;
+import com.TobyX.bridge.utility.ImageDownloader;
+import com.TobyX.bridge.utility.PhantomLog;
 
 public class VRTAnimatedImage extends VRTImage {
-    private static final String TAG = ViroLog.getTag(VRTAnimatedImage.class);
+    private static final String TAG = PhantomLog.getTag(VRTAnimatedImage.class);
     private AnimatedTextureLoadCallback mMainAnimatedTextureDownloadListener;
     private AnimatedImagePlaceholderCallback mAnimatedImagePlaceholderListener;
     private boolean mPaused;
@@ -122,7 +122,7 @@ public class VRTAnimatedImage extends VRTImage {
             return;
         }
 
-        if (mViroContext == null) {
+        if (mContext == null) {
             return;
         }
 
@@ -137,13 +137,13 @@ public class VRTAnimatedImage extends VRTImage {
 
         Uri sourceUri = Helper.parseUri(mSourceMap.getString(URI_KEY), getContext());
         mMainAnimatedTextureDownloadListener = new AnimatedTextureLoadCallback();
-        mLatestImageTexture = new AnimatedTexture(mViroContext, sourceUri, mMainAnimatedTextureDownloadListener);
+        mLatestImageTexture = new AnimatedTexture(mContext, sourceUri, mMainAnimatedTextureDownloadListener);
         mPendingTextureLoad = false;
     }
 
     @Override
-    public void setViroContext(ViroContext context) {
-        super.setViroContext(context);
+    public void setContext(PhantomContext context) {
+        super.setContext(context);
 
         if (mPendingTextureLoad) {
             downloadSourceImage(null);
