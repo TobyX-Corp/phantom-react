@@ -1,0 +1,6 @@
+framework module PhantomKit {
+  umbrella header "PhantomKit.h"
+
+  export *
+  module * { export * }
+}

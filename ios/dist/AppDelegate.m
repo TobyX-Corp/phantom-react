@@ -9,7 +9,7 @@
 
 #import "AppDelegate.h"
 
-#import <ViroReact/VRTBundleURLProvider.h>
+#import <PhantomReact/VRTBundleURLProvider.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
@@ -33,7 +33,7 @@
     }
 
     RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"VIRO_PROJECT_NAME"
+                                                      moduleName:@"PHANTOM_PROJECT_NAME"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
     rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
