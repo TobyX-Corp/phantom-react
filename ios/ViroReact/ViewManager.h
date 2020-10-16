@@ -1,9 +1,4 @@
-//
-//  ViroReactFrameworkTests.m
-//  ViroReactFrameworkTests
-//
-//  Created by vik.advani on 2/14/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -23,36 +18,28 @@
 //  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
 
-#import <XCTest/XCTest.h>
+#import <UIKit/UIKit.h>
 
-@interface ViroReactFrameworkTests : XCTestCase
 
-@end
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTViewManager.h>
+#import <React/RCTConvert.h>
+#import <React/RCTLog.h>
 
-@implementation ViroReactFrameworkTests
+@class RCTBridge;
+@class RCTEventDispatcher;
+@class RCTShadowView;
+@class RCTSparseArray;
+@class UIManager;
+@class VRTView;
+@class VRTShadowView;
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
+typedef void (^ViewManagerUIBlock)(UIManager *uiManager, NSDictionary<NSNumber *, VRTView *> *viewRegistry);
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+@interface ViewManager : RCTViewManager <RCTBridgeModule>
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
+-(BOOL)isRootFlexBoxPanel;
 
 @end

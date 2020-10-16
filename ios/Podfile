@@ -32,14 +32,14 @@ def common
 
 end
 
-target 'ViroReact' do
+target 'PhantomReact' do
   common
 end
 
-target 'ViroReact_static_lib' do
+target 'PhantomReact_static_lib' do
   common
 end
 
 
-target 'ViroReact_release_tests' do
+target 'PhantomReact_release_tests' do
 end

@@ -1,4 +1,9 @@
-//  Copyright © 2015 Viro Media. All rights reserved.
+//
+//  PhantomReactFrameworkTests.m
+//  PhantomReactFrameworkTests
+//
+//  Created by vik.advani on 2/14/17.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -18,28 +23,36 @@
 //  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 
-#import <UIKit/UIKit.h>
+#import <XCTest/XCTest.h>
 
+@interface PhantomReactFrameworkTests : XCTestCase
 
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventDispatcher.h>
-#import <React/RCTViewManager.h>
-#import <React/RCTConvert.h>
-#import <React/RCTLog.h>
+@end
 
-@class RCTBridge;
-@class RCTEventDispatcher;
-@class RCTShadowView;
-@class RCTSparseArray;
-@class ViroUIManager;
-@class VRTView;
-@class VRTShadowView;
+@implementation PhantomReactFrameworkTests
 
-typedef void (^ViroViewManagerUIBlock)(ViroUIManager *uiManager, NSDictionary<NSNumber *, VRTView *> *viewRegistry);
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+}
 
-@interface ViroViewManager : RCTViewManager <RCTBridgeModule>
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
 
--(BOOL)isRootFlexBoxPanel;
+- (void)testExample {
+    // This is an example of a functional test case.
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+- (void)testPerformanceExample {
+    // This is an example of a performance test case.
+    [self measureBlock:^{
+        // Put the code you want to measure the time of here.
+    }];
+}
 
 @end

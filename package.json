@@ -29,8 +29,8 @@
     "react-native": "0.62.2"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/TobyX-Corp/phantom-react"
+    "type": "git",
+    "url": "https://github.com/TobyX-Corp/phantom-react"
   },
   "homepage": "https://github.com/TobyX-Corp/phantom-react"
 }

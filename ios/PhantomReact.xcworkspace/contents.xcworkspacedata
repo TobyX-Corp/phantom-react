@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ViroReact.xcodeproj">
+      location = "group:/Users/zheyuanzhang/Documents/GitHub/phantom-react/ios/PhantomReact.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

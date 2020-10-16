@@ -27,15 +27,15 @@ test/android/local.properties
 #iOS
 ios/Pods/Pods.xcodeproj/xcuserdata/
 ios/Pods/
-ios/ViroReact.xcodeproj/xcuserdata/
-ios/ViroReact.xcworkspace/xcuserdata/
-test/ios/ViroExample.xcworkspace/xcuserdata/
-test/ios/ViroExample/Pods/Pods.xcodeproj/xcuserdata/
-test/ios/ViroExample/ViroExample.xcodeproj/xcuserdata/
-test/ios/ViroExample/ViroExample.xcworkspace/xcuserdata/
-test/ios/ViroExample/Pods/
+ios/PhantomReact.xcodeproj/xcuserdata/
+ios/PhantomReact.xcworkspace/xcuserdata/
+test/ios/PhantomExample.xcworkspace/xcuserdata/
+test/ios/PhantomExample/Pods/Pods.xcodeproj/xcuserdata/
+test/ios/PhantomExample/PhantomExample.xcodeproj/xcuserdata/
+test/ios/PhantomExample/PhantomExample.xcworkspace/xcuserdata/
+test/ios/PhantomExample/Pods/
 ios/ngrokendpoint.txt
-ios/ViroRenderer/ViroKit.framework/_CodeSignature/
+ios/PhantomRenderer/PhantomKit.framework/_CodeSignature/
 
 # Figment Android
 Figment/android/.idea
