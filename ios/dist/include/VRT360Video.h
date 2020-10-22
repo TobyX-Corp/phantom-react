@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 1/28/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -35,11 +35,11 @@
 @property (nonatomic, assign) BOOL loop;
 @property (nonatomic, assign) BOOL muted;
 @property (nonatomic, assign) float volume;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferStartViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferEndViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onUpdateTimeViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferStartPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferEndPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onUpdateTimePhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 @property (nonatomic, copy, nullable) NSString *stereoMode;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;

@@ -1,13 +1,13 @@
 //
 //  VRTSurfaceManager.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 1/11/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "ViroViewManager.h"
+#import "ViewManager.h"
 
-@interface VRTSurfaceManager : ViroViewManager
+@interface VRTSurfaceManager : ViewManager
 @end

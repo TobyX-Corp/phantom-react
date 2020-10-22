@@ -1,9 +1,9 @@
 //
 //  VRTPerfMonitor.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Raj Advani on 3/28/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTBridgeModule.h>
 #import <React/RCTBridge.h>
 

@@ -1,9 +1,9 @@
 //
 //  VRTSound.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 1/26/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -42,8 +42,8 @@
 @property (nonatomic, assign) NSString *rolloffModel;
 @property (nonatomic, assign) float minDistance;
 @property (nonatomic, assign) float maxDistance;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 
 - (instancetype)initWithSoundType:(VROSoundType)soundType bridge:(RCTBridge *)bridge;
 
@@ -85,8 +85,8 @@
 @property (nonatomic, assign) NSString *rolloffModel;
 @property (nonatomic, assign) float minDistance;
 @property (nonatomic, assign) float maxDistance;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;
 

@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 12/11/15.
-//  Copyright © 2015 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -33,12 +33,12 @@
 @interface VRTScene : VRTNode<VROSceneDelegateProtocol>
 
 @property (nonatomic, assign) BOOL recticleEnabled;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onPlatformUpdateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onPlatformUpdatePhantom;
 @property (nonatomic, copy) NSDictionary *physicsWorld;
 @property (nonatomic, readwrite) std::shared_ptr<VROSceneControllerDelegateiOS> delegate;
 @property (nonatomic, readwrite) std::shared_ptr<VROSceneController> sceneController;
 @property (nonatomic, copy, nullable) NSArray<NSString *> *postProcessEffects;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onCameraTransformUpdateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onCameraTransformUpdatePhantom;
 @property (nonatomic, assign) BOOL canCameraTransformUpdate;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;

@@ -511,8 +511,8 @@ static NSString *const kWebPrefix = @"http";
     [_innerSound setMaxDistance:maxDistance];
 }
 
-- (void)setonFinishPhantom:(RCTDirectEventBlock)onFinishPhantom {
-    [_innerSound setonFinishPhantom:onFinishPhantom];
+- (void)setOnFinishPhantom:(RCTDirectEventBlock)onFinishPhantom {
+    [_innerSound setOnFinishPhantom:onFinishPhantom];
 }
 
 @end

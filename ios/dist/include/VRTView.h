@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 10/21/15.
-//  Copyright © 2015 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,15 +25,15 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTComponent.h>
 #import <React/RCTBridge.h>
 #import <React/UIView+React.h>
 #import "VRTMaterialManager.h"
 
-typedef NS_ENUM(NSInteger, ViroConstraintType) {
-  ViroConstraintTypeNone,
-  ViroConstraintTypeBillboard,
+typedef NS_ENUM(NSInteger, ConstraintType) {
+  ConstraintTypeNone,
+  ConstraintTypeBillboard,
 };
 
 @interface VRTView : UIView {

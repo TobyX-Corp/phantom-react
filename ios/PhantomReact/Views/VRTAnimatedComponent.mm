@@ -163,7 +163,7 @@
     self.managedAnimation.delay = delay;
 }
 
-- (void)setonAnimationStartPhantom:(RCTDirectEventBlock)onStartPhantom {
+- (void)setOnAnimationStartPhantom:(RCTDirectEventBlock)onStartPhantom {
     self.managedAnimation.onStart = onStartPhantom;
 }
 

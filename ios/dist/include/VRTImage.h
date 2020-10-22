@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/3/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -56,9 +56,9 @@ enum class VROImageClipMode {
 @property (nonatomic, copy) VRTUIImageWrapper *placeholderSource;
 @property (nonatomic, assign) bool mipmap;
 @property (nonatomic, assign) VROTextureInternalFormat format;
-@property (nonatomic, copy) RCTDirectEventBlock onLoadStartViro;
-@property (nonatomic, copy) RCTDirectEventBlock onLoadEndViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy) RCTDirectEventBlock onLoadStartPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onLoadEndPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 @property (nonatomic, copy, nullable) NSString *stereoMode;
 @property (readwrite, nonatomic) std::shared_ptr<VROTexture> texture;
 @property (nonatomic, assign) bool imageNeedsDownload;

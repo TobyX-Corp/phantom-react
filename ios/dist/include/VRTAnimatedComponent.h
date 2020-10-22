@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 2/19/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -37,8 +37,8 @@
 @property (nonatomic, assign) BOOL run;
 @property (nonatomic, strong) VRTNode *vroSubview;
 
-@property (nonatomic, copy) RCTDirectEventBlock onAnimationStartViro;
-@property (nonatomic, copy) RCTDirectEventBlock onAnimationFinishViro;
+@property (nonatomic, copy) RCTDirectEventBlock onAnimationStartPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onAnimationFinishPhantom;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;
 

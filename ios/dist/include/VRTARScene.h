@@ -1,9 +1,9 @@
 //
 //  VRTARScene.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 6/13/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -34,14 +34,14 @@
 @interface VRTARScene : VRTScene <VROARSceneDelegateProtocol, VRTImageAsyncLoaderEventDelegate>
 
 @property (nonatomic, copy, nullable) NSArray<NSString *> *anchorDetectionTypes;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onTrackingUpdatedViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onAmbientLightUpdateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onTrackingUpdated;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onAmbientLightUpdate;
 
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorFoundViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorUpdatedViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorRemovedViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onCameraARHitTestViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onARPointCloudUpdateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorFound;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorUpdated;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onAnchorRemoved;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onCameraARHitTest;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onARPointCloudUpdate;
 
 @property (nonatomic, assign) BOOL canCameraARHitTest;
 @property (nonatomic, assign) BOOL canARPointCloudUpdate;

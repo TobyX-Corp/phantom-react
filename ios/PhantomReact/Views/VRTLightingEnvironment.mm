@@ -68,7 +68,7 @@
     _onLoadStartPhantom = onLoadStart;
 }
 
-- (void)setonLoadEndPhantom:(RCTDirectEventBlock)onLoadEnd {
+- (void)setOnLoadEndPhantom:(RCTDirectEventBlock)onLoadEnd {
     _onLoadEndPhantom = onLoadEnd;
 }
 

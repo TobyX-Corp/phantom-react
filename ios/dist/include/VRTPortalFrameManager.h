@@ -1,14 +1,14 @@
 //
 //  VRTPortalFrameManager.h
-//  ViroExample
+//  PhantomExample
 //
 //  Created by Raj Advani on 8/6/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "ViroViewManager.h"
+#import "ViewManager.h"
 
-@interface VRTPortalFrameManager : ViroViewManager
+@interface VRTPortalFrameManager : ViewManager
 
 @end

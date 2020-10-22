@@ -150,7 +150,7 @@ static NSArray<NSNumber *> *const kDefaultSize = @[@(0), @(0), @(0)];
     }
 }
 
-- (void)setonPlatformUpdatePhantom:(RCTDirectEventBlock)onPlatformUpdatePhantom {
+- (void)setOnPlatformUpdatePhantom:(RCTDirectEventBlock)onPlatformUpdatePhantom {
     _onPlatformUpdatePhantom = onPlatformUpdatePhantom;
     [self notifyOnPlatformUpdate];
 }

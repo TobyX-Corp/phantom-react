@@ -2,7 +2,7 @@
 //  VRTHDRImageAsyncLoader.h
 //  React
 //
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -26,7 +26,7 @@
 
 #ifndef VRTHDRImageAsyncLoader_h
 #define VRTHDRImageAsyncLoader_h
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 @class VRTHDRImageAsyncLoader;
 
 /*

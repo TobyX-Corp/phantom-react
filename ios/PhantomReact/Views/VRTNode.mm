@@ -403,7 +403,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
     [self.nodeAnimation updateAnimation];
 }
 
-- (void)setonAnimationStartPhantom:(RCTDirectEventBlock)onAnimationStartPhantom {
+- (void)setOnAnimationStartPhantom:(RCTDirectEventBlock)onAnimationStartPhantom {
     self.nodeAnimation.onStart = onAnimationStartPhantom;
 }
 

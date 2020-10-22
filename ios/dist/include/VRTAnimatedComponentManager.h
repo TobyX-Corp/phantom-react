@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 2/19/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -26,8 +26,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViroViewManager.h"
+#import "ViewManager.h"
 
-@interface VRTAnimatedComponentManager : ViroViewManager
+@interface VRTAnimatedComponentManager : ViewManager
 
 @end

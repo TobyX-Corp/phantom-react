@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Raj Advani on 8/24/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -67,12 +67,12 @@ extern const int k2DPointsPerSpatialUnit;
 @property (nonatomic, assign) BOOL visible;
 
 // Event properties
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onHoverViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onClickViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFuseViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onDragViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onPinchViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onRotateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onHoverPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onClickPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFusePhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onDragPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onPinchPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onRotatePhantom;
 @property (nonatomic, assign) BOOL canHover;
 @property (nonatomic, assign) BOOL canClick;
 @property (nonatomic, assign) BOOL canFuse;
@@ -95,19 +95,19 @@ extern const int k2DPointsPerSpatialUnit;
 @property (nonatomic) VRTNodeAnimation *nodeAnimation;
 // Animation definition
 @property (readwrite, nonatomic) NSDictionary *animation;
-@property (nonatomic, copy) RCTDirectEventBlock onAnimationStartViro;
-@property (nonatomic, copy) RCTDirectEventBlock onAnimationFinishViro;
+@property (nonatomic, copy) RCTDirectEventBlock onAnimationStartPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onAnimationFinishPhantom;
 
 // Shadow/Light properties
 @property (nonatomic, assign) int lightReceivingBitMask;
 @property (nonatomic, assign) int shadowCastingBitMask;
 
 // Transform Update properties:
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onNativeTransformDelegateViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onNativeTransformDelegatePhantom;
 @property (nonatomic, assign) BOOL hasTransformDelegate;
 
 // Physics properties
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onCollisionViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onCollisionPhantom;
 @property (nonatomic, copy) NSDictionary *physicsDictionary;
 - (void)applyImpulse:(VROVector3f)impulse withOffset:(VROVector3f)offset;
 - (void)applyTorqueImpulse:(VROVector3f)torque;
