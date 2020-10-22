@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/3/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -32,7 +32,7 @@
 #import "VRTImageAsyncLoader.h"
 #import "VRTPhotoLibraryAsyncLoader.h"
 
-@interface RCTImageSource (Viro)
+@interface RCTImageSource (Phantom)
 
 @property (nonatomic, assign) BOOL packagerAsset;
 
@@ -48,8 +48,8 @@
     NSString *_stereoMode;
 }
 
-@synthesize onLoadStartViro = _onLoadStartViro;
-@synthesize onLoadEndViro = _onLoadEndViro;
+@synthesize onLoadStartPhantom = _onLoadStartPhantom;
+@synthesize onLoadEndPhantom = _onLoadEndPhantom;
 @synthesize source = _source;
 @synthesize rotation = _rotation;
 
@@ -73,12 +73,12 @@
     _imageNeedsDownload = YES;
 }
 
-- (void)setOnLoadStartViro:(RCTDirectEventBlock)onLoadStart {
-    _onLoadStartViro = onLoadStart;
+- (void)setOnLoadStartPhantom:(RCTDirectEventBlock)onLoadStart {
+    _onLoadStartPhantom = onLoadStart;
 }
 
-- (void)setOnLoadEndViro:(RCTDirectEventBlock)onLoadEnd {
-    _onLoadEndViro = onLoadEnd;
+- (void)setonLoadEndPhantom:(RCTDirectEventBlock)onLoadEnd {
+    _onLoadEndPhantom = onLoadEnd;
 }
 
 - (void)setFormat:(VROTextureInternalFormat)format {
@@ -135,8 +135,8 @@
 #pragma mark - VRTAsyncLoaderEventDelegate
 
 - (void)imageLoaderDidStart:(VRTImageAsyncLoader *)loader {
-    if(self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if(self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
 }
 
@@ -155,18 +155,18 @@
             [self updateSceneWithSphereTexture];
         }
         
-        if(self.onLoadEndViro) {
-            self.onLoadEndViro(@{@"success":@(success)});
+        if(self.onLoadEndPhantom) {
+            self.onLoadEndPhantom(@{@"success":@(success)});
         }
-        if ((!success || !image) && self.onErrorViro) {
-            self.onErrorViro(@{ @"error": @"Image failed to load" });
+        if ((!success || !image) && self.onErrorPhantom) {
+            self.onErrorPhantom(@{ @"error": @"Image failed to load" });
         }
     });
 }
 
 - (void)hdrImageLoaderDidStart:(VRTHDRImageAsyncLoader *)loader {
-    if(self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if(self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
 }
 
@@ -178,11 +178,11 @@
             [self updateSceneWithSphereTexture];
         }
 
-        if(self.onLoadEndViro) {
-            self.onLoadEndViro(@{@"success":@(success)});
+        if(self.onLoadEndPhantom) {
+            self.onLoadEndPhantom(@{@"success":@(success)});
         }
-        if ((!success) && self.onErrorViro) {
-            self.onErrorViro(@{ @"error": @"Image failed to load" });
+        if ((!success) && self.onErrorPhantom) {
+            self.onErrorPhantom(@{ @"error": @"Image failed to load" });
         }
     });
 }

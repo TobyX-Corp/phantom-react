@@ -1,9 +1,9 @@
 //
 //  VRTSound.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 1/26/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -240,14 +240,14 @@ static NSString *const kWebPrefix = @"http";
 }
 
 - (void)soundDidFail:(NSString *)error {
-    if (self.onErrorViro) {
-        self.onErrorViro(@{ @"error": error });
+    if (self.onErrorPhantom) {
+        self.onErrorPhantom(@{ @"error": error });
     }
 }
 
 - (void)soundDidFinish {
-    if (self.onFinishViro) {
-        self.onFinishViro(@{@"finished": @(true),});
+    if (self.onFinishPhantom) {
+        self.onFinishPhantom(@{@"finished": @(true),});
     }
     // If loop set to true, then seek to 0 and play (incase AVAudioPlayer pauses the video after playing)
     if (_loop) {
@@ -511,8 +511,8 @@ static NSString *const kWebPrefix = @"http";
     [_innerSound setMaxDistance:maxDistance];
 }
 
-- (void)setOnFinishViro:(RCTDirectEventBlock)onFinishViro {
-    [_innerSound setOnFinishViro:onFinishViro];
+- (void)setonFinishPhantom:(RCTDirectEventBlock)onFinishPhantom {
+    [_innerSound setonFinishPhantom:onFinishPhantom];
 }
 
 @end

@@ -1,9 +1,9 @@
 //
 //  VRTParticleEmitterManager.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 8/15/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -49,7 +49,7 @@ RCT_EXPORT_VIEW_PROPERTY(image, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(spawnBehavior, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(particleAppearance, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(particlePhysics, NSDictionary)
-RCT_EXPORT_VIEW_PROPERTY(onNativeTransformDelegateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onNativeTransformDelegatePhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(hasTransformDelegate, BOOL)
 
 - (VRTNodeContainerShadowView *)shadowView

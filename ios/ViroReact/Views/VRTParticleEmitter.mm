@@ -1,9 +1,9 @@
 //
 //  VRTParticleEmitter.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 8/15/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTConvert.h>
 #import "VRTParticleEmitter.h"
 #import "VRTImageAsyncLoader.h"
@@ -134,7 +134,7 @@ const int kDefaultMaxParticles = 500;
     }
     
     if (!self.image || ![self.image objectForKey:@"source"]){
-        RCTLogError(@"Viro: Missing required Image for a Viro Particle Emitter!");
+        RCTLogError(@"Phantom: Missing required Image for a Phantom Particle Emitter!");
         return;
     }
 
@@ -251,7 +251,7 @@ const int kDefaultMaxParticles = 500;
         stringFactor = std::string([[self.image objectForKey:@"blendMode"] UTF8String]);
         VROBlendMode mode = VROMaterial::getBlendModeFromString(stringFactor);
         if (mode == VROBlendMode::None){
-            RCTLogError(@"Viro: Attempted to set an invalid Blend mode!");
+            RCTLogError(@"Phantom: Attempted to set an invalid Blend mode!");
             return;
         }
         _emitter->setBlendMode(mode);
@@ -325,7 +325,7 @@ const int kDefaultMaxParticles = 500;
                 burst.referenceValueStart = [[burstDictionary objectForKey:@"distance"] doubleValue];
                 burst.referenceValueInterval = [[burstDictionary objectForKey:@"cooldownDistance"] doubleValue];
             } else {
-                RCTLogError(@"Viro: Unsupported interpolation factor provided! Must specify either time or distance.");
+                RCTLogError(@"Phantom: Unsupported interpolation factor provided! Must specify either time or distance.");
                 continue;
             }
             
@@ -346,7 +346,7 @@ const int kDefaultMaxParticles = 500;
         NSArray *shapeParams = [spawnVolume objectForKey:@"params"];
 
         if (stringShapeName == nil) {
-            RCTLogError(@"Viro: Missing required volume shape type, skipping spawn volume interpolation data.");
+            RCTLogError(@"Phantom: Missing required volume shape type, skipping spawn volume interpolation data.");
             return;
         }
 
@@ -356,7 +356,7 @@ const int kDefaultMaxParticles = 500;
         } else if ([stringShapeName caseInsensitiveCompare:@"Sphere"] == NSOrderedSame) {
             vol.shape = VROParticleSpawnVolume::Shape::Sphere;
         } else {
-            RCTLogError(@"Viro: Incorrect spawn volume shape type. Must be either sphere or box.");
+            RCTLogError(@"Phantom: Incorrect spawn volume shape type. Must be either sphere or box.");
             return;
         }
 
@@ -476,7 +476,7 @@ const int kDefaultMaxParticles = 500;
         if (VROStringUtil::strcmpinsensitive(stringFactor, "Distance")) {
             factor = VROParticleModifier::VROModifierFactor::Distance;
         } else if (!VROStringUtil::strcmpinsensitive(stringFactor, "Time") && intervalsDictArray && [intervalsDictArray count] > 0) {
-            RCTLogError(@"Viro: Provided unknown interpolation factor to interpolate against!");
+            RCTLogError(@"Phantom: Provided unknown interpolation factor to interpolate against!");
             return nullptr;
         }
     }
@@ -487,7 +487,7 @@ const int kDefaultMaxParticles = 500;
         // Ensure we have a valid interval configuration
         NSDictionary *intervalDict = [intervalsDictArray objectAtIndex:i];
         if (![intervalDict objectForKey:@"interval"] || ![intervalDict objectForKey:@"endValue"]) {
-            RCTLogError(@"Viro: Incorrectly configured interpolation data, skipping interpolation.");
+            RCTLogError(@"Phantom: Incorrectly configured interpolation data, skipping interpolation.");
             continue;
         }
 
@@ -652,7 +652,7 @@ const int kDefaultMaxParticles = 500;
             _needsImageUpdate = true;
             [self updateEmitter];
         } else {
-            perror("Viro: Error loading particle image resource");
+            perror("Phantom: Error loading particle image resource");
         }
     });
 }

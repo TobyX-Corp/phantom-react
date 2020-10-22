@@ -2,7 +2,7 @@
 //  VRTLightingEnvironment.h
 //  React
 //
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -32,9 +32,9 @@
 @interface VRTLightingEnvironment : VRTControl<VRTHDRImageAsyncLoaderEventDelegate>
 
 @property (nonatomic, copy) RCTImageSource *source;
-@property (nonatomic, copy) RCTDirectEventBlock onLoadStartViro;
-@property (nonatomic, copy) RCTDirectEventBlock onLoadEndViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy) RCTDirectEventBlock onLoadStartPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onLoadEndPhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;
 - (void)updateSceneLightingEnvironment;

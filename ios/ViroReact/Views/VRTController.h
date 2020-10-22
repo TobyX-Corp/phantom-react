@@ -2,7 +2,7 @@
 //  VRTController.h
 //  React
 //
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -31,10 +31,10 @@
 
 @interface VRTController : VRTView<VROEventDelegateProtocol>
 
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onClickViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFuseViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onRotateViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onPinchViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onClickPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFusePhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onRotatePhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onPinchPhantom;
 
 @property (nonatomic, assign) BOOL canClick;
 @property (nonatomic, assign) BOOL canFuse;

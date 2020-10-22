@@ -1,9 +1,9 @@
 //
 //  VRTMaterialVideoManager.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by vik.advani on 3/8/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -37,11 +37,11 @@ RCT_EXPORT_VIEW_PROPERTY(paused, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(loop, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(muted, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(volume, float)
-RCT_EXPORT_VIEW_PROPERTY(onBufferStartViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onBufferEndViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onFinishViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onErrorViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onUpdateTimeViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBufferStartPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBufferEndPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onFinishPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onErrorPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onUpdateTimePhantom, RCTDirectEventBlock)
 
 - (VRTView *)view {
     return [[VRTMaterialVideo alloc] initWithBridge:self.bridge];

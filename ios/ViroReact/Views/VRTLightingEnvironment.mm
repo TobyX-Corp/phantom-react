@@ -2,7 +2,7 @@
 //  VRTLightingEnvironment.m
 //  React
 //
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -29,7 +29,7 @@
 #import "VRTUtils.h"
 #import "VRTLightingEnvironment.h"
 
-@interface RCTImageSource (Viro)
+@interface RCTImageSource (Phantom)
 @property (nonatomic, assign) BOOL packagerAsset;
 @end
 
@@ -41,8 +41,8 @@
     std::shared_ptr<VROPortal> _targetedPortal;
 }
 
-@synthesize onLoadStartViro = _onLoadStartViro;
-@synthesize onLoadEndViro = _onLoadEndViro;
+@synthesize onLoadStartPhantom = _onLoadStartPhantom;
+@synthesize onLoadEndPhantom = _onLoadEndPhantom;
 @synthesize source = _source;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
@@ -64,12 +64,12 @@
     _textureNeedsDownload = YES;
 }
 
-- (void)setOnLoadStartViro:(RCTDirectEventBlock)onLoadStart {
-    _onLoadStartViro = onLoadStart;
+- (void)setOnLoadStartPhantom:(RCTDirectEventBlock)onLoadStart {
+    _onLoadStartPhantom = onLoadStart;
 }
 
-- (void)setOnLoadEndViro:(RCTDirectEventBlock)onLoadEnd {
-    _onLoadEndViro = onLoadEnd;
+- (void)setonLoadEndPhantom:(RCTDirectEventBlock)onLoadEnd {
+    _onLoadEndPhantom = onLoadEnd;
 }
 
 - (void)didSetProps:(NSArray<NSString *> *)changedProps {
@@ -79,8 +79,8 @@
             [_imageHdrAsyncLoader cancel];
             [_imageHdrAsyncLoader loadHdrImage:_source];
         } else {
-            if (self.onErrorViro) {
-                self.onErrorViro(@{ @"error": @"Lighting Environment Image source is not of type hdr!" });
+            if (self.onErrorPhantom) {
+                self.onErrorPhantom(@{ @"error": @"Lighting Environment Image source is not of type hdr!" });
             }
         }
         _textureNeedsDownload = NO;
@@ -110,8 +110,8 @@
 
 #pragma mark - VRTAsyncLoaderEventDelegate
 - (void)hdrImageLoaderDidStart:(VRTHDRImageAsyncLoader *)loader {
-    if(self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if(self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
 }
 
@@ -124,12 +124,12 @@
             [self updateSceneLightingEnvironment];
         }
         
-        if(self.onLoadEndViro) {
-            self.onLoadEndViro(@{@"success":@(success)});
+        if(self.onLoadEndPhantom) {
+            self.onLoadEndPhantom(@{@"success":@(success)});
         }
         
-        if (!success && self.onErrorViro) {
-            self.onErrorViro(@{ @"error": @"Image failed to load" });
+        if (!success && self.onErrorPhantom) {
+            self.onErrorPhantom(@{ @"error": @"Image failed to load" });
         }
     });
 }

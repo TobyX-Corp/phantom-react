@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/11/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -36,7 +36,7 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_VIEW_PROPERTY(currentSceneIndex, NSInteger)
 RCT_EXPORT_VIEW_PROPERTY(vrModeEnabled, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(onExitViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onExit, RCTDirectEventBlock)
 
 - (VRTSceneNavigator *)view
 {

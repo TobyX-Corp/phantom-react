@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 2/19/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -36,8 +36,8 @@ RCT_EXPORT_VIEW_PROPERTY(animation, NSString);
 RCT_EXPORT_VIEW_PROPERTY(loop, BOOL);
 RCT_EXPORT_VIEW_PROPERTY(delay, float);
 RCT_EXPORT_VIEW_PROPERTY(run, BOOL);
-RCT_EXPORT_VIEW_PROPERTY(onAnimationStartViro, RCTDirectEventBlock);
-RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishViro, RCTDirectEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(onAnimationStartPhantom, RCTDirectEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishPhantom, RCTDirectEventBlock);
 
 - (VRTView *)view
 {

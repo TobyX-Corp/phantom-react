@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 9/15/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import "VRTControl.h"
 #import <React/RCTLog.h>
 
@@ -34,7 +34,7 @@
 }
 
 - (void)insertReactSubview:(UIView *)view atIndex:(NSInteger)atIndex {
-    RCTLogError(@"A control component cannot have children. Only containers such <ViroNode> or <ViroFlexView> are allowed to have children");
+    RCTLogError(@"A control component cannot have children. Only containers such <Node> or <FlexView> are allowed to have children");
 }
 
 @end;

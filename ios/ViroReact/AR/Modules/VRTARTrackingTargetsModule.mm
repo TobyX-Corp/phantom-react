@@ -1,9 +1,9 @@
 //
 //  VRTARTrackingTargetsModule.mm
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 2/1/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -145,7 +145,7 @@
             NSError *error;
             BOOL success = [fileManager removeItemAtPath:localFile.absoluteString error:&error];
             if (!success) {
-                NSLog(@"[Viro] - could not delete file %@, err: %@", localFile.absoluteString, [error localizedDescription]);
+                NSLog(@"[Phantom] - could not delete file %@, err: %@", localFile.absoluteString, [error localizedDescription]);
             }
         }
     }
@@ -188,7 +188,7 @@
                         // create object target
                         _arTarget = std::make_shared<VROARObjectTargetiOS>([NSURL URLWithString:filePath]);
                     } else {
-                        NSLog(@"[Viro] error writing obj to local file %@", [error localizedDescription]);
+                        NSLog(@"[Phantom] error writing obj to local file %@", [error localizedDescription]);
                     }
                     
                     @synchronized(self) {

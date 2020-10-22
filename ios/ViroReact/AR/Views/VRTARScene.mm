@@ -1,9 +1,9 @@
 //
 //  VRTARScene.mm
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 6/13/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import "VRTARScene.h"
 #import "VRTARAnchorNode.h"
 #import "VRTARPlane.h"
@@ -105,19 +105,19 @@ static NSString *const kPointCloudKey = @"pointCloud";
 #pragma mark VROARSceneDelegateProtocol Implementation
 
 - (void)onTrackingUpdated:(VROARTrackingState)state withReason:(VROARTrackingStateReason)reason {
-    if (self.onTrackingUpdatedViro) {
-        self.onTrackingUpdatedViro(@{kVRTTrackingState : @((int)state),
+    if (self.onTrackingUpdated) {
+        self.onTrackingUpdated(@{kVRTTrackingState : @((int)state),
                                      kVRTTrackingStateReason : @((int)reason)});
     }
 }
 
 - (void)onAmbientLightUpdate:(float)intensity color:(VROVector3f)color {
-    if (self.onAmbientLightUpdateViro) {
+    if (self.onAmbientLightUpdate) {
         NSString *lightColor = [NSString stringWithFormat:@"#%02x%02x%02x",
                                 (int) MIN(255, MAX(0, color.x * 255)),
                                 (int) MIN(255, MAX(0, color.y * 255)),
                                 (int) MIN(255, MAX(0, color.z * 255))];
-        self.onAmbientLightUpdateViro(@{kVRTAmbientLightInfoKey: @{ kVRTAmbientIntensityKey : @(intensity),
+        self.onAmbientLightUpdate(@{kVRTAmbientLightInfoKey: @{ kVRTAmbientIntensityKey : @(intensity),
                                                                     kVRTAmbientColorKey : lightColor
                                                                     }});
     }
@@ -168,38 +168,38 @@ static NSString *const kPointCloudKey = @"pointCloud";
 }
 
 - (void)onAnchorFound:(std::shared_ptr<VROARAnchor>)anchor {
-    if (self.onAnchorFoundViro) {
-        self.onAnchorFoundViro(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
+    if (self.onAnchorFound) {
+        self.onAnchorFound(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
     }
 }
 
 - (void)onAnchorUpdated:(std::shared_ptr<VROARAnchor>)anchor {
-    if (self.onAnchorUpdatedViro) {
-        self.onAnchorUpdatedViro(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
+    if (self.onAnchorUpdated) {
+        self.onAnchorUpdated(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
     }
 }
 
 - (void)onAnchorRemoved:(std::shared_ptr<VROARAnchor>)anchor {
-    if (self.onAnchorRemovedViro) {
-        self.onAnchorRemovedViro(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
+    if (self.onAnchorRemoved) {
+        self.onAnchorRemoved(@{@"anchor" : [VRTARUtils createDictionaryFromAnchor:anchor]});
     }
 }
 
 - (void)onCameraARHitTest:(std::vector<std::shared_ptr<VROARHitTestResult>>)results {
-    if(self.onCameraARHitTestViro) {
+    if(self.onCameraARHitTest) {
         NSMutableArray *resultArray = [[NSMutableArray alloc] initWithCapacity:results.size()];
         for (std::shared_ptr<VROARHitTestResult> &result : results) {
             [resultArray addObject:[VRTARHitTestUtil dictForARHitResult:result]];
         }
         
         NSArray<NSNumber *> * camOrientation = [self cameraOrientation];
-        self.onCameraARHitTestViro(@{kCameraHitTestResults:resultArray,kCameraOrientation:camOrientation});
+        self.onCameraARHitTest(@{kCameraHitTestResults:resultArray,kCameraOrientation:camOrientation});
     }
 }
 
 - (void)onARPointCloudUpdate:(std::shared_ptr<VROARPointCloud>)pointCloud {
-    if (self.onARPointCloudUpdateViro) {
-        self.onARPointCloudUpdateViro(@{kPointCloudKey:[VRTARUtils createDictionaryFromARPointCloud:pointCloud]});
+    if (self.onARPointCloudUpdate) {
+        self.onARPointCloudUpdate(@{kPointCloudKey:[VRTARUtils createDictionaryFromARPointCloud:pointCloud]});
     }
 }
 
@@ -225,7 +225,7 @@ static NSString *const kPointCloudKey = @"pointCloud";
                 _vroArScene->setPointCloudSurface(_pointCloudParticleSurface);
             }
         } else {
-            perror("Viro: Error loading point cloud image resource");
+            perror("Phantom: Error loading point cloud image resource");
         }
     });
 }

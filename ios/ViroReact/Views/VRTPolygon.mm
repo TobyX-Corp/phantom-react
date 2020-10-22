@@ -1,8 +1,8 @@
 //
 //  VRTPolygon.mm
-//  ViroReact
+//  PhantomReact
 //
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -24,7 +24,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTLog.h>
 #import "VRTPolygon.h"
 #import "VRTUtils.h"
@@ -84,7 +84,7 @@
         _uvCoordinateArr[2] = 1;
         _uvCoordinateArr[3] = 1;
     } else if ([uvCoordinates count] != 4) {
-        RCTLogError(@"[ViroSurface] Expected 4 numbers, only got %lu", [uvCoordinates count]);
+        RCTLogError(@"[Surface] Expected 4 numbers, only got %lu", [uvCoordinates count]);
     } else {
         populateFloatArrayFromNSArray(uvCoordinates, _uvCoordinateArr, 4);
     }
@@ -108,10 +108,10 @@
     for (int i = 0; i < [_vertices count]; i++) {
         NSArray *pointArray = [_vertices objectAtIndex:i];
         if (!pointArray || [pointArray count] < 2) {
-            RCTLogError(@"ViroPolygon points should have at least 2 coordinates.");
+            RCTLogError(@"Polygon points should have at least 2 coordinates.");
             continue;
         } else if ([pointArray count] > 2) {
-            RCTLogWarn(@"[ViroPolygon] Polygon only supports xy coordinates! But a set of 3 points had been provided!");
+            RCTLogWarn(@"[Polygon] Polygon only supports xy coordinates! But a set of 3 points had been provided!");
         }
         VROVector3f nativePoint = VROVector3f([[pointArray objectAtIndex:0] floatValue],
                                               [[pointArray objectAtIndex:1] floatValue],
@@ -127,10 +127,10 @@
         for (int i = 0; i < [holeArray count]; i++) {
             NSArray *pointArray = [holeArray objectAtIndex:i];
             if (!pointArray || [pointArray count] < 2) {
-                RCTLogError(@"ViroPolygon holes should have at least 2 coordinates");
+                RCTLogError(@"Polygon holes should have at least 2 coordinates");
                 continue;
             } else if ([pointArray count] > 2) {
-                RCTLogWarn(@"[ViroPolygon] Polygon only supports xy coordinates! But a set of 3 points had been provided for a hole!");
+                RCTLogWarn(@"[Polygon] Polygon only supports xy coordinates! But a set of 3 points had been provided for a hole!");
             }
             VROVector3f nativePoint = VROVector3f([[pointArray objectAtIndex:0] floatValue],
                                                   [[pointArray objectAtIndex:1] floatValue],

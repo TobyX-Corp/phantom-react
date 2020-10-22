@@ -1,9 +1,9 @@
 //
 //  VRTARObjectMarker.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 8/10/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the

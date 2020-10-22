@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Raj Advani on 10/5/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -45,8 +45,8 @@
 
 @implementation VRTSkybox
 
-@synthesize onViroSkyBoxLoadStart = _onViroSkyBoxLoadStart;
-@synthesize onViroSkyBoxLoadEnd = _onViroSkyBoxLoadEnd;
+@synthesize onSkyBoxLoadStart = _onSkyBoxLoadStart;
+@synthesize onSkyBoxLoadEnd = _onSkyBoxLoadEnd;
 @synthesize source = _source;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
@@ -75,11 +75,11 @@
 }
 
 - (void)setOnLoadStart:(RCTDirectEventBlock)onLoadStart {
-    _onViroSkyBoxLoadStart = onLoadStart;
+    _onSkyBoxLoadStart = onLoadStart;
 }
 
 - (void)setOnLoadEnd:(RCTDirectEventBlock)onLoadEnd {
-    _onViroSkyBoxLoadEnd = onLoadEnd;
+    _onSkyBoxLoadEnd = onLoadEnd;
 }
 
 - (void)setFormat:(VROTextureInternalFormat)format {
@@ -138,8 +138,8 @@
 - (void)imageLoaderDidStart:(VRTImageAsyncLoader *)loader {
     // Invoke these delegates only once (for the px image)
     if (loader.tag == @"px") {
-        if(self.onViroSkyBoxLoadStart) {
-            self.onViroSkyBoxLoadStart(nil);
+        if(self.onSkyBoxLoadStart) {
+            self.onSkyBoxLoadStart(nil);
         }
     }
 }
@@ -179,8 +179,8 @@
                 [self.downloadedImages removeAllObjects];
             }
             
-            if(self.onViroSkyBoxLoadEnd) {
-                self.onViroSkyBoxLoadEnd(@{@"success":@(success)});
+            if(self.onSkyBoxLoadEnd) {
+                self.onSkyBoxLoadEnd(@{@"success":@(success)});
             }
         }
     });

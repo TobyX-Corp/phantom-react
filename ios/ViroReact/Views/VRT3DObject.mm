@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 4/14/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -172,12 +172,12 @@
     std::string url = std::string([[_url description] UTF8String]);
     std::string base = url.substr(0, url.find_last_of('/'));
     
-    if (self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if (self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
     
     if (!_type) {
-        RCTLogError(@"`type` property not set on Viro3DObject.");
+        RCTLogError(@"`type` property not set on Object3D.");
         return;
     }
     
@@ -210,13 +210,13 @@
             node->setShadowCastingBitMask([weakSelf shadowCastingBitMask], true);
         }
         
-        if (weakSelf && weakSelf.onLoadEndViro) {
-            weakSelf.onLoadEndViro(nil);
+        if (weakSelf && weakSelf.onLoadEndPhantom) {
+            weakSelf.onLoadEndPhantom(nil);
         }
 
         if (!success) {
-            if (weakSelf && weakSelf.onErrorViro) {
-                weakSelf.onErrorViro(@{ @"error": @"model failed to load" });
+            if (weakSelf && weakSelf.onErrorPhantom) {
+                weakSelf.onErrorPhantom(@{ @"error": @"model failed to load" });
             }
         }
     };
@@ -230,7 +230,7 @@
     } else if ([_type caseInsensitiveCompare:@"GLB"] == NSOrderedSame) {
         VROGLTFLoader::loadGLTFFromResource(url, {},  VROResourceType::URL, self.node, true, self.driver, onFinish);
     } else {
-        self.onErrorViro(@{ @"error": @"model failed to load" });
+        self.onErrorPhantom(@{ @"error": @"model failed to load" });
     }
     _sourceChanged = NO;
 }

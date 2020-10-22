@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 1/28/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -39,11 +39,11 @@ RCT_EXPORT_VIEW_PROPERTY(loop, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(muted, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(volume, float)
 RCT_EXPORT_VIEW_PROPERTY(rotation, NSNumberArray)
-RCT_EXPORT_VIEW_PROPERTY(onBufferStartViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onBufferEndViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onFinishViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onUpdateTimeViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onErrorViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBufferStartPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBufferEndPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onFinishPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onUpdateTimePhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onErrorPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(stereoMode, NSString)
 
 - (VRT360Video *)view

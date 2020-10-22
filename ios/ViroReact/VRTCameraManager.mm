@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Raj Advani on 10/5/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -35,8 +35,8 @@ RCT_EXPORT_VIEW_PROPERTY(position, NSNumberArray)
 RCT_EXPORT_VIEW_PROPERTY(rotation, NSNumberArray)
 RCT_EXPORT_VIEW_PROPERTY(animation, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(fieldOfView, float)
-RCT_EXPORT_VIEW_PROPERTY(onAnimationStartViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAnimationStartPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishPhantom, RCTDirectEventBlock)
 
 - (VRTView *)view {
     return [[VRTCamera alloc] initWithBridge:self.bridge];

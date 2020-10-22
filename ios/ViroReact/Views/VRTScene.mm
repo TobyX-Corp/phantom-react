@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 12/11/15.
-//  Copyright © 2015 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTConvert.h>
 #import "VRTScene.h"
 #import "VRTCamera.h"
@@ -37,7 +37,7 @@
 #import "VRTTreeNode.h"
 #import <map>
 
-static NSString *const kPlatformInfoKey = @"platformInfoViro";
+static NSString *const kPlatformInfoKey = @"platformInfoPhantom";
 static NSString *const kVrPlatformKey = @"vrPlatform";
 static NSString *const kPlatformKey = @"platform";
 static NSString *const kHeadsetKey = @"headset";
@@ -65,7 +65,7 @@ static NSArray<NSNumber *> *const kDefaultSize = @[@(0), @(0), @(0)];
     /*
      This BOOL ensures we only set the sound room when necessary, because doing so
      activates GVR, and in current GVR versions this can cause issues with video
-     recording, until VIRO-2944 is resolved.
+     recording, until PHANTOM-2944 is resolved.
      */
     BOOL _soundRoomSet;
 }
@@ -150,14 +150,14 @@ static NSArray<NSNumber *> *const kDefaultSize = @[@(0), @(0), @(0)];
     }
 }
 
-- (void)setOnPlatformUpdateViro:(RCTDirectEventBlock)onPlatformUpdateViro {
-    _onPlatformUpdateViro = onPlatformUpdateViro;
+- (void)setonPlatformUpdatePhantom:(RCTDirectEventBlock)onPlatformUpdatePhantom {
+    _onPlatformUpdatePhantom = onPlatformUpdatePhantom;
     [self notifyOnPlatformUpdate];
 }
 
 - (void)notifyOnPlatformUpdate {
-    if (_onPlatformUpdateViro && _vroView) {
-        _onPlatformUpdateViro(@{kPlatformInfoKey: @{kPlatformKey : [_vroView getPlatform],
+    if (_onPlatformUpdatePhantom && _vroView) {
+        _onPlatformUpdatePhantom(@{kPlatformInfoKey: @{kPlatformKey : [_vroView getPlatform],
                                                     kHeadsetKey : [_vroView getHeadset],
                                                     kControllerKey : [_vroView getController]}});
     }
@@ -202,9 +202,9 @@ static NSArray<NSNumber *> *const kDefaultSize = @[@(0), @(0), @(0)];
 #pragma mark - VROEventDelegateiOS implementation
 
 - (void)onCameraTransformUpdate:(VROVector3f)position rotation:(VROVector3f)rotation forward:(VROVector3f)forward up:(VROVector3f)up {
-    if (self.onCameraTransformUpdateViro) {
+    if (self.onCameraTransformUpdatePhantom) {
         NSArray<NSNumber *> * camTransform = [self cameraOrientation];
-        self.onCameraTransformUpdateViro(@{kCameraTransform:camTransform});
+        self.onCameraTransformUpdatePhantom(@{kCameraTransform:camTransform});
 
     }
 }

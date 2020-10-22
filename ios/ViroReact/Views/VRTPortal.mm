@@ -1,9 +1,9 @@
 //
 //  VRTPortal.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Raj Advani on 8/6/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -45,7 +45,7 @@
 
 - (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex {
     if(![subview isKindOfClass:[VRT3DObject class]]) {
-           RCTLogError(@"Only a Viro3DObject can be a child of ViroPortal.");
+           RCTLogError(@"Only a Object3D can be a child of Portal.");
     }
  
     [super insertReactSubview:subview atIndex:atIndex];

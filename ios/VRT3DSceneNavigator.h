@@ -1,9 +1,9 @@
 //
 //  VRT3DSceneNavigator.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Manish Bodhankar on 3/12/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -38,7 +38,7 @@
 @property (nonatomic, assign) NSInteger currentSceneIndex;
 @property (nonatomic, readwrite, strong) NSMutableArray<VRTScene *> *currentViews;
 @property (readwrite, nonatomic) VRTScene *currentScene;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onExitViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onExit;
 @property (nonatomic, readwrite) BOOL hdrEnabled;
 @property (nonatomic, readwrite) BOOL pbrEnabled;
 @property (nonatomic, readwrite) BOOL bloomEnabled;

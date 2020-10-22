@@ -1,9 +1,9 @@
 //
 //  VRTPortalScene.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Raj Advani on 8/6/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -76,14 +76,14 @@
 #pragma mark - VROPortalDelegateProtocol Implementations
 
 - (void)onPortalEnter {
-    if (self.onPortalEnterViro) {
-        self.onPortalEnterViro(nil);
+    if (self.onPortalEnterPhantom) {
+        self.onPortalEnterPhantom(nil);
     }
 }
 
 - (void)onPortalExit {
-    if (self.onPortalExitViro) {
-        self.onPortalExitViro(nil);
+    if (self.onPortalExitPhantom) {
+        self.onPortalExitPhantom(nil);
     }
 }
 

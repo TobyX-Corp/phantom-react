@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/3/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -190,8 +190,8 @@ static float const kDefaultHeight = 1;
 #pragma mark - VRTAsyncLoaderEventDelegate
 
 - (void)imageLoaderDidStart:(VRTImageAsyncLoader *)loader {
-    if(self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if(self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
 }
 
@@ -211,11 +211,11 @@ static float const kDefaultHeight = 1;
             [self applyMaterials];
         }
         
-        if(self.onLoadEndViro) {
-            self.onLoadEndViro(@{@"success":@(success)});
+        if(self.onLoadEndPhantom) {
+            self.onLoadEndPhantom(@{@"success":@(success)});
         }
-        if ((!success || !image) && self.onErrorViro) {
-            self.onErrorViro(@{ @"error": @"Image failed to load" });
+        if ((!success || !image) && self.onErrorPhantom) {
+            self.onErrorPhantom(@{ @"error": @"Image failed to load" });
         }
     });
 }

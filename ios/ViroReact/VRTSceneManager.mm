@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 11/3/15.
-//  Copyright © 2015 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -35,7 +35,7 @@
 #import "VRTSceneManager.h"
 #import "VRTCamera.h"
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 
 @implementation VRTSceneManager {
   
@@ -43,28 +43,28 @@
 
 RCT_EXPORT_MODULE()
 
-RCT_EXPORT_VIEW_PROPERTY(onHoverViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onClickViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onFuseViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onHoverPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onClickPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onFusePhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onDragPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(timeToFuse, float)
 RCT_EXPORT_VIEW_PROPERTY(canHover, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canClick, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canFuse, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canDrag, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(onPinchViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onRotateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPinchPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onRotatePhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(canPinch, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canRotate, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(soundRoom, NSDictionary)
-RCT_EXPORT_VIEW_PROPERTY(onPlatformUpdateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPlatformUpdatePhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(physicsWorld, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(postProcessEffects, NSArray<NSString *>)
 RCT_EXPORT_VIEW_PROPERTY(ignoreEventHandling, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(dragType, NSString)
 RCT_EXPORT_VIEW_PROPERTY(dragPlane, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(canCameraTransformUpdate, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(onCameraTransformUpdateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onCameraTransformUpdatePhantom, RCTDirectEventBlock)
 
 - (VRTView *)view
 {

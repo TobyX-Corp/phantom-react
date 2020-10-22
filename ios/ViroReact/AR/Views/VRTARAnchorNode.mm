@@ -1,9 +1,9 @@
 //
 //  VRTARNode.mm
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 6/15/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -59,23 +59,23 @@
 - (void)onARAnchorAttached:(std::shared_ptr<VROARAnchor>) anchor {
     self.isAnchored = true;
     [self handleAppearanceChange];
-    if (_onAnchorFoundViro) {
-        _onAnchorFoundViro(@{ @"anchorFoundMap" : [VRTARUtils createDictionaryFromAnchor:anchor]});
+    if (_onAnchorFound) {
+        _onAnchorFound(@{ @"anchorFoundMap" : [VRTARUtils createDictionaryFromAnchor:anchor]});
     }
 }
 
 - (void)onARAnchorUpdated:(std::shared_ptr<VROARAnchor>) anchor {
-    if (_onAnchorUpdatedViro) {
-        _onAnchorUpdatedViro(@{ @"anchorUpdatedMap" : [VRTARUtils createDictionaryFromAnchor:anchor]});
+    if (_onAnchorUpdated) {
+        _onAnchorUpdated(@{ @"anchorUpdatedMap" : [VRTARUtils createDictionaryFromAnchor:anchor]});
     }
 }
 
 - (void)onARAnchorRemoved {
     self.isAnchored = false;
     [self handleAppearanceChange];
-    if (_onAnchorRemovedViro) {
+    if (_onAnchorRemoved) {
         // we don't need to return any args for anchor removed
-        _onAnchorRemovedViro(@{});
+        _onAnchorRemoved(@{});
     }
 }
 

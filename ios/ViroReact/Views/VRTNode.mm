@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Raj Advani on 8/24/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -225,7 +225,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
     [self handleAppearanceChange];
 }
 
-- (void)setViroTag:(NSString *)tag {
+- (void)setTag:(NSString *)tag {
     std::string nodeTag;
     if (tag) {
         nodeTag = std::string([tag UTF8String]);
@@ -289,8 +289,8 @@ const double kTransformDelegateDistanceFilter = 0.01;
                       [NSNumber numberWithFloat:position.z],
                       nil];
     
-    if (self.onNativeTransformDelegateViro){
-        self.onNativeTransformDelegateViro(@{@"position":array});
+    if (self.onNativeTransformDelegatePhantom){
+        self.onNativeTransformDelegatePhantom(@{@"position":array});
     }
 }
 
@@ -403,12 +403,12 @@ const double kTransformDelegateDistanceFilter = 0.01;
     [self.nodeAnimation updateAnimation];
 }
 
-- (void)setOnAnimationStartViro:(RCTDirectEventBlock)onAnimationStartViro {
-    self.nodeAnimation.onStart = onAnimationStartViro;
+- (void)setonAnimationStartPhantom:(RCTDirectEventBlock)onAnimationStartPhantom {
+    self.nodeAnimation.onStart = onAnimationStartPhantom;
 }
 
-- (void)setOnAnimationFinishViro:(RCTDirectEventBlock)onAnimationFinishViro {
-    self.nodeAnimation.onFinish = onAnimationFinishViro;
+- (void)setOnAnimationFinishPhantom:(RCTDirectEventBlock)onAnimationFinishPhantom {
+    self.nodeAnimation.onFinish = onAnimationFinishPhantom;
 }
 
 #pragma mark - Flexbox
@@ -533,7 +533,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
         [text didSetProps:nil];
     }
     else {
-        //VA: TODO, VIRO-742 if we want flex for componenents that don't have width and height property then uncomment below line.
+        //VA: TODO, PHANTOM-742 if we want flex for componenents that don't have width and height property then uncomment below line.
         //[self node]->setScale({(float)scale.x, (float)scale.y, 1.0});
     }
 }
@@ -569,12 +569,12 @@ const double kTransformDelegateDistanceFilter = 0.01;
     [self node]->setHighAccuracyEvents(enabled);
 }
 
-- (void)onHoverViro:(RCTDirectEventBlock)block {
-    _onHoverViro = block;
+- (void)onHoverPhantom:(RCTDirectEventBlock)block {
+    _onHoverPhantom = block;
 }
 
-- (void)onClickViro:(RCTDirectEventBlock)block {
-    _onClickViro = block;
+- (void)onClickPhantom:(RCTDirectEventBlock)block {
+    _onClickPhantom = block;
 }
 
 - (void)setCanCollide:(BOOL)canCollide {
@@ -696,7 +696,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
 -(void)onHover:(int)source node:(std::shared_ptr<VRONode>)node
     isHovering:(bool)isHovering
  hoverLocation:(std::vector<float>)location {
-    if (self.onHoverViro != nil) {
+    if (self.onHoverPhantom != nil) {
         NSArray *locationArray;
         if (location.size() == 3) {
             locationArray = @[@(location.at(0)), @(location.at(1)), @(location.at(2))];
@@ -704,7 +704,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
             locationArray = @[];
         }
         
-        self.onHoverViro(@{@"source": @(source),
+        self.onHoverPhantom(@{@"source": @(source),
                            @"isHovering":@(isHovering),
                            @"position": locationArray});
     }
@@ -712,7 +712,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
 
 -(void)onClick:(int)source node:(std::shared_ptr<VRONode>)node clickState:(VROEventDelegate::ClickState)clickState
  clickLocation:(std::vector<float>)location{
-    if (self.onClickViro != nil) {
+    if (self.onClickPhantom != nil) {
         NSArray *locationArray;
         if (location.size() == 3) {
             locationArray = @[@(location.at(0)), @(location.at(1)), @(location.at(2))];
@@ -720,7 +720,7 @@ const double kTransformDelegateDistanceFilter = 0.01;
             locationArray = @[];
         }
         
-        self.onClickViro(@{@"source": @(source),
+        self.onClickPhantom(@{@"source": @(source),
                            @"clickState":@(clickState),
                            @"position": locationArray});
     }
@@ -728,29 +728,29 @@ const double kTransformDelegateDistanceFilter = 0.01;
 
 - (void)onPinch:(int)source node:(std::shared_ptr<VRONode>)node scaleFactor:(float)scale
      pinchState:(VROEventDelegate::PinchState)pinchState {
-    if(self.onPinchViro != nil) {
-        self.onPinchViro(@{@"source": @(source), @"pinchState":@(pinchState), @"scaleFactor":@(scale)});
+    if(self.onPinchPhantom != nil) {
+        self.onPinchPhantom(@{@"source": @(source), @"pinchState":@(pinchState), @"scaleFactor":@(scale)});
     }
 }
 
 - (void)onRotate:(int)source node:(std::shared_ptr<VRONode>)node rotationRadians:(float)rotation
      rotateState:(VROEventDelegate::RotateState)rotateState {
-    if(self.onRotateViro != nil) {
+    if(self.onRotatePhantom != nil) {
         // convert to degrees from radians
         float degreesRotation = toDegrees(rotation);
-        self.onRotateViro(@{@"source": @(source), @"rotateState":@(rotateState), @"rotationFactor":@(degreesRotation)});
+        self.onRotatePhantom(@{@"source": @(source), @"rotateState":@(rotateState), @"rotationFactor":@(degreesRotation)});
     }
 }
 
 - (void)onFuse:(int)source node:(std::shared_ptr<VRONode>)node {
-    if (self.onFuseViro != nil) {
-        self.onFuseViro(@{@"source": @(source)});
+    if (self.onFusePhantom != nil) {
+        self.onFusePhantom(@{@"source": @(source)});
     }
 }
 
 - (void)onDrag:(int)source node:(std::shared_ptr<VRONode>)node posX:(float)x posY:(float)y posZ:(float)z {
-    if (self.onDragViro != nil) {
-        self.onDragViro(@{@"source": @(source),
+    if (self.onDragPhantom != nil) {
+        self.onDragPhantom(@{@"source": @(source),
                           @"dragToPos" : @[@(x), @(y), @(z)]});
     }
 }
@@ -1124,6 +1124,6 @@ const double kTransformDelegateDistanceFilter = 0.01;
     [normal insertObject:[NSNumber numberWithFloat:collision.collidedNormal.y] atIndex:1];
     [normal insertObject:[NSNumber numberWithFloat:collision.collidedNormal.z] atIndex:2];
     
-    self.onCollisionViro(@{@"viroTag": @(collision.collidedBodyTag.c_str()), @"collidedPoint":coordinate, @"collidedNormal":normal});
+    self.onCollisionPhantom(@{@"Tag": @(collision.collidedBodyTag.c_str()), @"collidedPoint":coordinate, @"collidedNormal":normal});
 }
 @end

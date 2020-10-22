@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 1/20/16.
-//  Copyright © 2016 Viro Media.. All rights reserved.
+//  Copyright © 2020 TobyX Corp.. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -656,7 +656,7 @@ RCT_EXPORT_METHOD(deleteMaterials:(NSArray *)materials) {
 
 // DEPRECATED: this is only in place for Beta. This needs to be
 //             replaced with asynchronous image loading.
-//             Tracked by VIRO-912
+//             Tracked by PHANTOM-912
 - (UIImage *)downloadImageSync:(id)json {
     VRTUIImageWrapper *uiImageWrapper = [RCTConvert VRTUIImageWrapper:json];
     if(uiImageWrapper != nil){

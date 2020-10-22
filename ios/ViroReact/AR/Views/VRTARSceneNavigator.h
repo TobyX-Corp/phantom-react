@@ -1,9 +1,9 @@
 //
 //  VRTARSceneNavigator.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 6/12/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -38,7 +38,7 @@
 @property (nonatomic, readwrite, strong) NSMutableArray<VRTScene *> *currentViews;
 @property (readwrite, nonatomic) VRTScene *currentScene;
 @property (nonatomic, copy) NSString *worldAlignment;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onExitViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onExit;
 @property (nonatomic, assign) BOOL autofocus;
 @property (nonatomic, copy) NSString *videoQuality;
 @property (nonatomic, assign) NSInteger numberOfTrackedImages;

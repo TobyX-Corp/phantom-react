@@ -1,9 +1,9 @@
 //
 //  VRTQuad.mm
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 1/11/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -24,7 +24,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTLog.h>
 #import "VRTQuad.h"
 #import "VRTUtils.h"
@@ -76,7 +76,7 @@ static float const kDefaultHeight = 1;
         _uvCoordinateArr[2] = 1;
         _uvCoordinateArr[3] = 1;
     } else if ([uvCoordinates count] != 4) {
-        RCTLogError(@"[ViroSurface] Expected 4 numbers, only got %lu", [uvCoordinates count]);
+        RCTLogError(@"[Surface] Expected 4 numbers, only got %lu", [uvCoordinates count]);
     } else {
         populateFloatArrayFromNSArray(uvCoordinates, _uvCoordinateArr, 4);
     }

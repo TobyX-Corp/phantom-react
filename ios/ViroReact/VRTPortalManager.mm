@@ -1,9 +1,9 @@
 //
 //  VRTPortalFrameManager.m
-//  ViroExample
+//  PhantomExample
 //
 //  Created by Raj Advani on 8/6/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -42,27 +42,27 @@ RCT_EXPORT_VIEW_PROPERTY(transformBehaviors, NSArray<NSString *>)
 RCT_EXPORT_VIEW_PROPERTY(renderingOrder, int)
 RCT_EXPORT_VIEW_PROPERTY(visible, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(animation, NSDictionary)
-RCT_EXPORT_VIEW_PROPERTY(onAnimationStartViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onHoverViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onClickViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onFuseViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onDragViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAnimationStartPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onAnimationFinishPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onHoverPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onClickPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onFusePhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onDragPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(timeToFuse, float)
 RCT_EXPORT_VIEW_PROPERTY(canHover, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canClick, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canFuse, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canDrag, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(opacity, float)
-RCT_EXPORT_VIEW_PROPERTY(onPinchViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onRotateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPinchPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onRotatePhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(canPinch, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canRotate, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(physicsBody, NSDictionary)
-RCT_EXPORT_VIEW_PROPERTY(onCollisionViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onCollisionPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(canCollide, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(viroTag, NSString)
-RCT_EXPORT_VIEW_PROPERTY(onNativeTransformDelegateViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(Tag, NSString)
+RCT_EXPORT_VIEW_PROPERTY(onNativeTransformDelegatePhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(hasTransformDelegate, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(lightReceivingBitMask, int)
 RCT_EXPORT_VIEW_PROPERTY(shadowCastingBitMask, int)

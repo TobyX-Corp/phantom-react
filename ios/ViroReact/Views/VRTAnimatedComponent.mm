@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 2/19/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -163,12 +163,12 @@
     self.managedAnimation.delay = delay;
 }
 
-- (void)setOnAnimationStartViro:(RCTDirectEventBlock)onStartViro {
-    self.managedAnimation.onStart = onStartViro;
+- (void)setonAnimationStartPhantom:(RCTDirectEventBlock)onStartPhantom {
+    self.managedAnimation.onStart = onStartPhantom;
 }
 
-- (void)setOnAnimationFinishViro:(RCTDirectEventBlock)onFinishViro {
-    self.managedAnimation.onFinish = onFinishViro;
+- (void)setOnAnimationFinishPhantom:(RCTDirectEventBlock)onFinishPhantom {
+    self.managedAnimation.onFinish = onFinishPhantom;
 }
 
 - (void)setAnimation:(NSString *)animation {

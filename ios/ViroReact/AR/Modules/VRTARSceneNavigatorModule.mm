@@ -1,9 +1,9 @@
 //
 //  VRTARSceneNavigatorModule.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Andy Chu on 7/25/17.
-//  Copyright © 2017 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -143,7 +143,7 @@ RCT_EXPORT_METHOD(setWorldOrigin:(nonnull NSNumber *)reactTag
                     populateFloatArrayFromNSArray(posArray, positionValues, 3);
                     originMatrix.translate({positionValues[0], positionValues[1], positionValues[2]});
                 } else {
-                    RCTLogError(@"[Viro] worldOrigin position requires 3 values");
+                    RCTLogError(@"[Phantom] worldOrigin position requires 3 values");
                 }
             }
             
@@ -155,7 +155,7 @@ RCT_EXPORT_METHOD(setWorldOrigin:(nonnull NSNumber *)reactTag
                     originMatrix.rotateY(toRadians(rotationValues[1]));
                     originMatrix.rotateZ(toRadians(rotationValues[2]));
                 } else {
-                    RCTLogError(@"[Viro] worldOrigin rotation requires 3 values");
+                    RCTLogError(@"[Phantom] worldOrigin rotation requires 3 values");
                 }
             }
             

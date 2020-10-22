@@ -2,7 +2,7 @@
 //  VRTAnimatedImage.m
 //  React
 //
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -77,8 +77,8 @@ static float const kDefaultHeight = 1;
         return;
     }
 
-    if(self.onLoadStartViro) {
-        self.onLoadStartViro(nil);
+    if(self.onLoadStartPhantom) {
+        self.onLoadStartPhantom(nil);
     }
 
     self.currentPendingImage++;
@@ -98,14 +98,14 @@ static float const kDefaultHeight = 1;
             if (succeeded) {
                 [self updateMainImage:width height:height];
                 [self applyMaterials];
-                if(self.onLoadEndViro) {
-                    self.onLoadEndViro(@{@"success":@(succeeded)});
+                if(self.onLoadEndPhantom) {
+                    self.onLoadEndPhantom(@{@"success":@(succeeded)});
                 }
                 [self setPaused:self.paused];
                 [self setLoop:self.loop];
             } else {
-                if(self.onLoadEndViro) {
-                    self.onErrorViro(@{ @"error": @"Image failed to load" });
+                if(self.onLoadEndPhantom) {
+                    self.onErrorPhantom(@{ @"error": @"Image failed to load" });
                 }
             }
         });

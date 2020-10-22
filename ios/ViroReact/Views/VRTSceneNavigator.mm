@@ -4,7 +4,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/11/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -26,7 +26,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTAssert.h>
 #import <React/RCTLog.h>
 #import "VRTSceneNavigator.h"
@@ -39,7 +39,7 @@
 #import "VRTMaterialVideo.h"
 
 /**
- VRTSceneNavigator manages the various scenes that a Viro App can navigate between.
+ VRTSceneNavigator manages the various scenes that a Phantom App can navigate between.
  **/
 
 @implementation VRTSceneNavigator {
@@ -164,13 +164,13 @@
 }
 
 - (void)userDidRequestExitVR {
-    // Notify javascript listeners (for ReactNativeJs to ViroReactJs cases)
-    if (self.onExitViro != nil) {
-        self.onExitViro(nil);
+    // Notify javascript listeners (for ReactNativeJs to PhantomReactJs cases)
+    if (self.onExit != nil) {
+        self.onExit(nil);
     }
     
-    // Notify Native listeners (for NativeApp to ViroReactJs cases)
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kVRTOnExitViro object:nil]];
+    // Notify Native listeners (for NativeApp to PhantomReactJs cases)
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kVRTonExit object:nil]];
 }
 
 - (void)setSceneView:(VRTScene *)sceneView {
@@ -208,8 +208,8 @@
     
     /*
      We need to always ensure that React's root view is showing when we
-     are deallocating Viro and our renderer. This is because GVR does not
-     perform the proper cleanup on its windows: VIRO-1067
+     are deallocating Phantom and our renderer. This is because GVR does not
+     perform the proper cleanup on its windows: PHANTOM-1067
      */
     if (RCTIsMainQueue()){
         NSArray *windowArray = [UIApplication sharedApplication].windows;
@@ -220,7 +220,7 @@
         /*
          Search the top level rootView controllers and their children to see if their views are
          RCTRootView. If so, then make that root view visible. This is a hack that
-         removes GVR's frozen frame referenced in VIRO-1067 during shutdown.
+         removes GVR's frozen frame referenced in PHANTOM-1067 during shutdown.
          */
         for (int i = 0; i < [windowArray count]; i ++) {
             UIWindow *window = [windowArray objectAtIndex:i];

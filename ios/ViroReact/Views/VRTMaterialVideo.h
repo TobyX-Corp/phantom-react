@@ -1,9 +1,9 @@
 //
 //  VRTMaterialVideo.h
-//  ViroReact
+//  PhantomReact
 //
 //  Created by vik.advani on 3/8/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -36,11 +36,11 @@
 @property (nonatomic, assign) BOOL muted;
 @property (nonatomic, assign) float volume;
 @property (nonatomic, copy) NSString * material;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferStartViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferEndViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishViro;
-@property (nonatomic, copy, nullable) RCTDirectEventBlock onUpdateTimeViro;
-@property (nonatomic, copy) RCTDirectEventBlock onErrorViro;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferStartPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onBufferEndPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onFinishPhantom;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onUpdateTimePhantom;
+@property (nonatomic, copy) RCTDirectEventBlock onErrorPhantom;
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge;
 - (void)seekToTime:(float)time;

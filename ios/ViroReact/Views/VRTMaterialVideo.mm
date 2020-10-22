@@ -1,9 +1,9 @@
 //
 //  VRTMaterialVideo.mm
-//  ViroReact
+//  PhantomReact
 //
 //  Created by vik.advani on 3/8/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -143,33 +143,33 @@
 #pragma mark VROVideoDelegate implementation
 
 - (void)videoWillBuffer {
-    if (self.onBufferStartViro) {
-        self.onBufferStartViro(nil);
+    if (self.onBufferStartPhantom) {
+        self.onBufferStartPhantom(nil);
     }
 }
 
 - (void)videoDidBuffer {
-    if (self.onBufferEndViro) {
-        self.onBufferEndViro(nil);
+    if (self.onBufferEndPhantom) {
+        self.onBufferEndPhantom(nil);
     }
 }
 
 - (void)videoDidFinish {
-    if (self.onFinishViro) {
-        self.onFinishViro(@{@"finished": @(true),});
+    if (self.onFinishPhantom) {
+        self.onFinishPhantom(@{@"finished": @(true),});
     }
 }
 
 - (void)videoDidUpdateTime:(float)currentTimeInSeconds totalTimeInSeconds:(float)totalTime{
-    if (self.onUpdateTimeViro) {
-        self.onUpdateTimeViro(@{@"currentTime": @(currentTimeInSeconds),
+    if (self.onUpdateTimePhantom) {
+        self.onUpdateTimePhantom(@{@"currentTime": @(currentTimeInSeconds),
                                 @"totalTime": @(totalTime)});
     }
 }
 
 - (void)videoDidFail:(NSString *)error {
-    if (self.onErrorViro) {
-        self.onErrorViro(@{ @"error": @"Video failed to load" });
+    if (self.onErrorPhantom) {
+        self.onErrorPhantom(@{ @"error": @"Video failed to load" });
     }
 }
 

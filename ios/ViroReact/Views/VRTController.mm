@@ -21,7 +21,7 @@
 //  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTLog.h>
 #import "VRTController.h"
 #import "VRTMaterialManager.h"
@@ -100,9 +100,9 @@
 
 -(void)onClick:(int)source node:(std::shared_ptr<VRONode>)node clickState:(VROEventDelegate::ClickState)clickState
  clickLocation:(std::vector<float>)location {
-    if (self.onClickViro != nil) {
+    if (self.onClickPhantom != nil) {
         if (location.size() > 0) {
-            self.onClickViro(@{@"source": @(source),
+            self.onClickPhantom(@{@"source": @(source),
                                @"clickState":@(clickState),
                                @"position":@[@(location[0]), @(location[1]), @(location[2])]});
         }
@@ -110,8 +110,8 @@
 }
 
 -(void)onFuse:(int)source node:(std::shared_ptr<VRONode>)node {
-    if (self.onFuseViro != nil) {
-        self.onFuseViro(@{@"source": @(source)});
+    if (self.onFusePhantom != nil) {
+        self.onFusePhantom(@{@"source": @(source)});
     }
 }
 @end

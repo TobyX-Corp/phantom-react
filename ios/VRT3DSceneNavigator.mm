@@ -1,9 +1,9 @@
 //
 //  VRT3DSceneNavigator.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Manish Bodhankar on 3/12/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <ViroKit/ViroKit.h>
+#import <PhantomKit/PhantomKit.h>
 #import <React/RCTAssert.h>
 #import <React/RCTLog.h>
 #import "VRT3DSceneNavigator.h"
@@ -37,7 +37,7 @@
 #import "VRTMaterialManager.h"
 
 /**
- VRT3DSceneNavigator manages the various scenes that a Viro App can navigate between.
+ VRT3DSceneNavigator manages the various scenes that a Phantom App can navigate between.
  **/
 
 @implementation VRT3DSceneNavigator {
@@ -160,13 +160,13 @@
 }
 
 - (void)userDidRequestExitVR {
-  // Notify javascript listeners (for ReactNativeJs to ViroReactJs cases)
-  if (self.onExitViro != nil) {
-    self.onExitViro(nil);
+  // Notify javascript listeners (for ReactNativeJs to PhantomReactJs cases)
+  if (self.onExit != nil) {
+    self.onExit(nil);
   }
   
-  // Notify Native listeners (for NativeApp to ViroReactJs cases)
-  [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kVRTOnExitViro object:nil]];
+  // Notify Native listeners (for NativeApp to PhantomReactJs cases)
+  [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kVRTonExit object:nil]];
 }
 
 - (void)setSceneView:(VRTScene *)sceneView {

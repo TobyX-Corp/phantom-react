@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Andy Chu on 9/29/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -25,4 +25,4 @@
 //  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-static NSString *const kVRTOnExitViro = @"OnExitViro";
+static NSString *const kVRTonExit = @"onExit";

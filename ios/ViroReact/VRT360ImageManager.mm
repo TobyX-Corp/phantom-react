@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 3/3/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -34,9 +34,9 @@
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(source, RCTImageSource)
-RCT_EXPORT_VIEW_PROPERTY(onLoadStartViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onLoadEndViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onErrorViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onLoadStartPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onLoadEndPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onErrorPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(rotation, NSNumberArray)
 RCT_EXPORT_VIEW_PROPERTY(format, VROTextureInternalFormat)
 RCT_EXPORT_VIEW_PROPERTY(stereoMode, NSString)

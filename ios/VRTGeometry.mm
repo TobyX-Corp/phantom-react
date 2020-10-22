@@ -1,9 +1,9 @@
 //
 //  VRTGeometry.m
-//  ViroReact
+//  PhantomReact
 //
 //  Created by Raj Advani on 9/10/18.
-//  Copyright © 2018 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining
 //  a copy of this software and associated documentation files (the
@@ -79,10 +79,10 @@
     for (int i = 0; i < [array count]; i++) {
         NSArray *pointArray = [array objectAtIndex:i];
         if (!pointArray || [pointArray count] < coordsPerPoint) {
-            RCTLogError(@"ViroGeometry %@ should have at least %d coordinates", type, coordsPerPoint);
+            RCTLogError(@"Geometry %@ should have at least %d coordinates", type, coordsPerPoint);
             continue;
         } else if ([pointArray count] != coordsPerPoint) {
-            RCTLogWarn(@"ViroGeometry %@ requires %d coordinates per point, but was given a point with %d coordinates",
+            RCTLogWarn(@"Geometry %@ requires %d coordinates per point, but was given a point with %d coordinates",
                        type, coordsPerPoint, (int) [pointArray count]);
         }
         
