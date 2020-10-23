@@ -3,7 +3,7 @@
 //  React
 //
 //  Created by Vik Advani on 1/13/16.
-//  Copyright © 2016 Viro Media. All rights reserved.
+//  Copyright © 2020 TobyX Corp. All rights reserved.
 //
 
 #import "VROTextManager.h"
@@ -39,9 +39,9 @@ RCT_EXPORT_VIEW_PROPERTY(opacity, CGFloat)
 
 RCT_EXPORT_VIEW_PROPERTY(transformBehaviors, NSArray<NSString *>)
 
-RCT_EXPORT_VIEW_PROPERTY(onHoverViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onClickViro, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onTouchViro, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onHoverPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onClickPhantom, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onTouchPhantom, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(canHover, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canClick, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(canTouch, BOOL)

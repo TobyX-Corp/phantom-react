@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2017-present, Viro Media, Inc.
+# Copyright (c) 2020-present, TobyX Corp.
 # All rights reserved.
 #
 # This launches a ngrok process to tunnel from
@@ -20,7 +20,7 @@ fi
 numtries=0
 endpointfile="ngrokendpoint.txt"
 THIS_DIR=$(dirname "$0")
-# Write the ngrok endpoint to a file, the xcode shell script in ViroSample will read from this file.
+# Write the ngrok endpoint to a file, the xcode shell script in PhantomSample will read from this file.
 
 # First remove existing ngrok endpoint file if it exists.
 if [ -f $THIS_DIR/$endpointfile ] ; then

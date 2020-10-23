@@ -64,6 +64,10 @@
 		<data>
 		p7zUk6V5YFcwFCu87MJ9FJSsE/g=
 		</data>
+		<key>Headers/VROARImageDatabase.h</key>
+		<data>
+		dvCxXlmrQgaQCDtW3jKmOqCesJ4=
+		</data>
 		<key>Headers/VROARImageTarget.h</key>
 		<data>
 		6V4uvkc7LUTY1y43GlFvj1rJksI=
@@ -255,6 +259,10 @@
 		<key>Headers/VROEventDelegate.h</key>
 		<data>
 		CZDPLNQry5ctwcZSIz30iln1Cfo=
+		</data>
+		<key>Headers/VROEventDelegateiOS.h</key>
+		<data>
+		yvnxyVFD+703KUaARqby03zZ+l8=
 		</data>
 		<key>Headers/VROExecutableAnimation.h</key>
 		<data>
@@ -463,6 +471,10 @@
 		<key>Headers/VROPhysicsBodyDelegate.h</key>
 		<data>
 		w82NaN1/vBQu+TKpjhYkNBGKknk=
+		</data>
+		<key>Headers/VROPhysicsBodyDelegateiOS.h</key>
+		<data>
+		UIJtjJhEYwxbhT0OxBB9vQe+CiE=
 		</data>
 		<key>Headers/VROPhysicsContactResultCallback.h</key>
 		<data>
@@ -2312,6 +2324,17 @@
 			uz3a0wynPr/VDT2+MKzFK5yTHn9LjrxzQH34hZd1l+g=
 			</data>
 		</dict>
+		<key>Headers/VROARImageDatabase.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dvCxXlmrQgaQCDtW3jKmOqCesJ4=
+			</data>
+			<key>hash2</key>
+			<data>
+			MHg/PFcTvRB9O58SeLnZedWqi/u9S6FWsiGNdQhgKgg=
+			</data>
+		</dict>
 		<key>Headers/VROARImageTarget.h</key>
 		<dict>
 			<key>hash</key>
@@ -2838,6 +2861,17 @@
 			<key>hash2</key>
 			<data>
 			jFRvbdOGkhTiU/vshgl+uPyaWKJPegoDegZ2ZFYsp3w=
+			</data>
+		</dict>
+		<key>Headers/VROEventDelegateiOS.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			yvnxyVFD+703KUaARqby03zZ+l8=
+			</data>
+			<key>hash2</key>
+			<data>
+			DZphCWuW3BAxCxbLlOC2zXls+MR/4Lh2CVFUc2+PyVs=
 			</data>
 		</dict>
 		<key>Headers/VROExecutableAnimation.h</key>
@@ -3410,6 +3444,17 @@
 			<key>hash2</key>
 			<data>
 			Vmem3gbYoxDFMJ6t/ZGezVklBRDiEYcYCLtI2EYtli8=
+			</data>
+		</dict>
+		<key>Headers/VROPhysicsBodyDelegateiOS.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UIJtjJhEYwxbhT0OxBB9vQe+CiE=
+			</data>
+			<key>hash2</key>
+			<data>
+			0QlUkddpHeI//38sokgw4aFjRfZvfYXFmymyQc/UjoE=
 			</data>
 		</dict>
 		<key>Headers/VROPhysicsContactResultCallback.h</key>

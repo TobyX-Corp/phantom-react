@@ -40,7 +40,7 @@ public class VRT3DSceneNavigatorManager extends VRTViewGroupManager<VRT3DSceneNa
     private final PhantomReactPackage.Platform mPlatform;
 
     public VRT3DSceneNavigatorManager(ReactApplicationContext context,
-                                      PhantomReactPackage.ViroPlatform platform) {
+                                      PhantomReactPackage.Platform platform) {
         super(context);
         mPlatform = platform;
     }
@@ -98,9 +98,9 @@ public class VRT3DSceneNavigatorManager extends VRTViewGroupManager<VRT3DSceneNa
         }
     }
 
-    @ReactProp(name = "hasOnExitViroCallback", defaultBoolean = false)
-    public void setHasOnExitViroCallback(VRT3DSceneNavigator navigator, boolean hasOnExitViroCallback) {
-        navigator.setHasOnExitViroCallback(hasOnExitViroCallback);
+    @ReactProp(name = "hasOnExitPhantomCallback", defaultBoolean = false)
+    public void setHasOnExitPhantomCallback(VRT3DSceneNavigator navigator, boolean hasOnExitPhantomCallback) {
+        navigator.setHasOnExitPhantomCallback(hasOnExitPhantomCallback);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class VRT3DSceneNavigatorManager extends VRTViewGroupManager<VRT3DSceneNa
 
         Map events = super.getExportedCustomDirectEventTypeConstants();
 
-        events.put(ViroEvents.ON_EXIT_VIRO, MapBuilder.of("registrationName", ViroEvents.ON_EXIT_VIRO));
+        events.put(PhantomEvents.ON_EXIT_PHANTOM, MapBuilder.of("registrationName", PhantomEvents.ON_EXIT_PHANTOM));
 
         return events;
     }
