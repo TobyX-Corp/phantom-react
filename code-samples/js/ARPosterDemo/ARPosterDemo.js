@@ -29,7 +29,7 @@ import {
   ViroAmbientLight,
   ViroParticleEmitter,
   ViroSphere,
-} from 'react-viro';
+} from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 

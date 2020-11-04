@@ -1,8 +1,8 @@
 rootProject.name = 'ViroSample'
 
 include ':app'
-include ':react_viro', ':arcore_client', ':gvr_common', ':viro_renderer'
-project(':arcore_client').projectDir = new File('../node_modules/react-viro/android/arcore_client')
-project(':gvr_common').projectDir = new File('../node_modules/react-viro/android/gvr_common')
-project(':viro_renderer').projectDir = new File('../node_modules/react-viro/android/viro_renderer')
-project(':react_viro').projectDir = new File('../node_modules/react-viro/android/react_viro')
+include ':phantom_react', ':arcore_client', ':gvr_common', ':phantom_renderer'
+project(':arcore_client').projectDir = new File('../node_modules/phantom-react/android/arcore_client')
+project(':gvr_common').projectDir = new File('../node_modules/phantom-react/android/gvr_common')
+project(':phantom_renderer').projectDir = new File('../node_modules/phantom-react/android/phantom_renderer')
+project(':phantom_react').projectDir = new File('../node_modules/phantom-react/android/phantom_react')

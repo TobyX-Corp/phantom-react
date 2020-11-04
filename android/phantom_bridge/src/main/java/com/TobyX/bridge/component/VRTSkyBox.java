@@ -64,7 +64,7 @@ public class VRTSkyBox extends VRTNode {
     public VRTSkyBox(ReactContext context) {
         super(context);
         mContext = context;
-        mImageDownloader = new ImageDownloader(getContext());
+        mImageDownloader = new ImageDownloader(getPhantomContext());
         mColor = COLOR_NOT_SET;
     }
 

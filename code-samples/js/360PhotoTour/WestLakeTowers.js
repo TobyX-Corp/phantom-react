@@ -22,7 +22,7 @@ import {
   ViroNode,
   ViroImage,
   ViroUtils,
-} from 'react-viro';
+} from 'phantom-react';
 
 let polarToCartesian = ViroUtils.polarToCartesian;
 

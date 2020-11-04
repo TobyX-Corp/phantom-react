@@ -12,7 +12,7 @@ import {
   Viro3DObject,
   ViroOmniLight,
   ViroController
-} from 'react-viro';
+} from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 

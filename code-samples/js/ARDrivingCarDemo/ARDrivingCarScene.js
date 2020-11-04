@@ -28,7 +28,7 @@ import {
   ViroSpotLight,
   ViroQuad,
   ViroBox,
-} from 'react-viro';
+} from 'phantom-react';
 
 import renderIf from './renderIf';
 

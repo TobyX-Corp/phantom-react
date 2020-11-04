@@ -21,7 +21,7 @@ import {
   ViroBox,
   ViroButton,
   ViroSurface,
-} from 'react-viro';
+} from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 /*

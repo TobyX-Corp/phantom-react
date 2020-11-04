@@ -78,7 +78,7 @@ public class VRTComponent extends ReactViewGroup {
         return mReactContext;
     }
 
-    public PhantomContext getContext() { return mContext; }
+    public PhantomContext getPhantomContext() { return mContext; }
 
     public void setContext(PhantomContext context) {
         mContext = context;

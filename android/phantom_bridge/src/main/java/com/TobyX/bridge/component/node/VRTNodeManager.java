@@ -179,7 +179,7 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViewGroupMana
     @ReactProp(name = "materials")
     public void setMaterials(VRTNode view, @Nullable ReadableArray materials) {
         // get material manager
-        MaterialManager materialManager = getContext().getNativeModule(MaterialManager.class);
+        MaterialManager materialManager = getPhantomContext().getNativeModule(MaterialManager.class);
 
         ArrayList<Material> nativeMaterials = new ArrayList<>();
         if (materials != null) {
@@ -188,9 +188,9 @@ public abstract class VRTNodeManager<T extends VRTNode> extends VRTViewGroupMana
                 if (materialManager.isVideoMaterial(materials.getString(i))) {
                     if (!(nativeMaterial.getDiffuseTexture() instanceof VideoTexture)) {
                         // Recreate the material with the proper context.
-                        if (view.getContext() != null) {
+                        if (view.getPhantomContext() != null) {
                             MaterialWrapper materialWrapper = materialManager.getMaterialWrapper(materials.getString(i));
-                            VideoTexture videoTexture = new VideoTexture(view.getContext(), materialWrapper.getVideoTextureURI());
+                            VideoTexture videoTexture = new VideoTexture(view.getPhantomContext(), materialWrapper.getVideoTextureURI());
                             materialWrapper.recreate(videoTexture);
                             nativeMaterial = materialWrapper.getNativeMaterial();
                         }

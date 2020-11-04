@@ -17,7 +17,7 @@ import {
   ViroBox,
   Viro3DObject,
   ViroOmniLight
-} from 'react-viro';
+} from 'phantom-react';
 
 /*
  Scene with a set of particle template examples, where the user

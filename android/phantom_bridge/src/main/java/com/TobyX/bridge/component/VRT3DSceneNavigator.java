@@ -185,7 +185,7 @@ public class VRT3DSceneNavigator extends FrameLayout {
         // Add the PhantomView as a child so it's rendered.
         addView((View) mView);
 
-        mContext = mView.getContext();
+        mContext = mView.getPhantomContext();
 
         /*
          * Set the view for the debug console.

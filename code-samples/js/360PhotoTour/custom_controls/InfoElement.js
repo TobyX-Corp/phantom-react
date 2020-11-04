@@ -19,7 +19,7 @@ import {
   ViroNode,
   ViroAnimations,
   ViroAnimatedComponent,
-} from 'react-viro';
+} from 'phantom-react';
 
 /**
  * Pull in all the images needed for this control.

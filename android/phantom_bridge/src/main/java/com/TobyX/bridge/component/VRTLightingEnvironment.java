@@ -66,7 +66,7 @@ public class VRTLightingEnvironment extends VRTNode {
         imageDownloadDidStart();
 
         mHdrImageDownloadListener = new IBLImageDownloadListener();
-        HdrImageDownloader.getHdrTextureAsync(mSourceMap, mHdrImageDownloadListener, getContext());
+        HdrImageDownloader.getHdrTextureAsync(mSourceMap, mHdrImageDownloadListener, getPhantomContext());
         mImageNeedsDownload = false;
     }
 

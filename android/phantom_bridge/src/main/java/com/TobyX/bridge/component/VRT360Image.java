@@ -102,7 +102,7 @@ public class VRT360Image extends VRTNode {
         imageDownloadDidStart();
         invalidateImageDownloadListeners();
 
-        final Context context = getContext();
+        final Context context = getPhantomContext();
         if (mIsHdr){
             mHDRDownloadListener = new HDRImageDownloadListener();
             HdrImageDownloader.getHdrTextureAsync(mSourceMap, mHDRDownloadListener, context);

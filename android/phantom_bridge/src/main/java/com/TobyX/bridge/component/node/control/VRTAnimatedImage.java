@@ -100,7 +100,7 @@ public class VRTAnimatedImage extends VRTImage {
 
     @Override
     public void updateImage() {
-        final ImageDownloader downloader = new ImageDownloader(getContext());
+        final ImageDownloader downloader = new ImageDownloader(getPhantomContext());
         downloader.setTextureFormat(Texture.Format.RGBA8);
 
         // If an image isn't already set, then first fetch the placeholder (which should be on disk)
@@ -135,7 +135,7 @@ public class VRTAnimatedImage extends VRTImage {
             throw new IllegalArgumentException("Unable to find \"uri\" key in given source map.");
         }
 
-        Uri sourceUri = Helper.parseUri(mSourceMap.getString(URI_KEY), getContext());
+        Uri sourceUri = Helper.parseUri(mSourceMap.getString(URI_KEY), getPhantomContext());
         mMainAnimatedTextureDownloadListener = new AnimatedTextureLoadCallback();
         mLatestImageTexture = new AnimatedTexture(mContext, sourceUri, mMainAnimatedTextureDownloadListener);
         mPendingTextureLoad = false;

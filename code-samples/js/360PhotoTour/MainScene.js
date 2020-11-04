@@ -22,7 +22,7 @@ import {
   ViroAnimations,
   ViroNode,
   ViroText
-} from 'react-viro';
+} from 'phantom-react';
 
 /**
  * Set all the images and assets required in this scene.

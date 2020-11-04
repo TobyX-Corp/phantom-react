@@ -197,7 +197,7 @@ public class VRTVideoSurface extends VRTControl {
     }
 
     public void setSource(String source) {
-        mSource = Helper.parseUri(source, getContext()).toString();
+        mSource = Helper.parseUri(source, getPhantomContext()).toString();
         mGeometryNeedsUpdate = true;
     }
 

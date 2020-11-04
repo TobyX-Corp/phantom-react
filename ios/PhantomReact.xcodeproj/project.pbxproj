@@ -943,15 +943,15 @@
 		1F26F36BB497D53C763A9F25 /* Pods-PhantomReact_static_lib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_static_lib.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_static_lib/Pods-PhantomReact_static_lib.release.xcconfig"; sourceTree = "<group>"; };
 		1F660B6625420E4B0061356B /* VRTARSceneModule.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VRTARSceneModule.mm; path = PhantomReact/AR/Modules/VRTARSceneModule.mm; sourceTree = "<group>"; };
 		20F958EFD22BC49F2EF3DBAF /* libPods-PhantomReact_static_lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhantomReact_static_lib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		24F1137CD82BA3E4D836FBA1 /* Pods-ViroReact_static_lib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_static_lib.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_static_lib/Pods-ViroReact_static_lib.release.xcconfig"; sourceTree = "<group>"; };
-		26E68AF050CB842CF2264F09 /* Pods-ViroReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact/Pods-ViroReact.debug.xcconfig"; sourceTree = "<group>"; };
+		24F1137CD82BA3E4D836FBA1 /* Pods-PhantomReact_static_lib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_static_lib.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_static_lib/Pods-PhantomReact_static_lib.release.xcconfig"; sourceTree = "<group>"; };
+		26E68AF050CB842CF2264F09 /* Pods-PhantomReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact/Pods-PhantomReact.debug.xcconfig"; sourceTree = "<group>"; };
 		2FB6E4879BD03B4489DEF1D3 /* Pods-PhantomReact_release_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_release_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_release_tests/Pods-PhantomReact_release_tests.debug.xcconfig"; sourceTree = "<group>"; };
 		3841459F9B7DA39E98653A8A /* Pods-PhantomReact_static_lib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_static_lib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_static_lib/Pods-PhantomReact_static_lib.debug.xcconfig"; sourceTree = "<group>"; };
 		4B5E275D25119A8000F87496 /* VRTSceneNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VRTSceneNavigator.h; path = PhantomReact/Views/VRTSceneNavigator.h; sourceTree = "<group>"; };
 		4B5E277C25119A8000F87496 /* VRTSceneNavigator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VRTSceneNavigator.mm; path = PhantomReact/Views/VRTSceneNavigator.mm; sourceTree = "<group>"; };
 		76D29439EDF21B67CF5E47C4 /* Pods-PhantomReact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact/Pods-PhantomReact.debug.xcconfig"; sourceTree = "<group>"; };
 		7927738EE26175BE7394889B /* libPods-PhantomReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhantomReact.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8737B88293C9F8DE1C4F5FB9 /* Pods-ViroReact_release_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_release_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_release_tests/Pods-ViroReact_release_tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8737B88293C9F8DE1C4F5FB9 /* Pods-PhantomReact_release_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_release_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_release_tests/Pods-PhantomReact_release_tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A04D4DE2023EDDF00FD5F68 /* VRTARTrackingTargetsModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VRTARTrackingTargetsModule.h; path = PhantomReact/AR/Modules/VRTARTrackingTargetsModule.h; sourceTree = "<group>"; };
 		8A04D4DF2023EDDF00FD5F68 /* VRTARTrackingTargetsModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = VRTARTrackingTargetsModule.mm; path = PhantomReact/AR/Modules/VRTARTrackingTargetsModule.mm; sourceTree = "<group>"; };
 		8A04D5162024F6B200FD5F68 /* VRTARImageMarkerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VRTARImageMarkerManager.h; path = PhantomReact/AR/Managers/VRTARImageMarkerManager.h; sourceTree = "<group>"; };
@@ -1013,7 +1013,7 @@
 		8BDD9F5C1E53A70000A42870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BDD9F661E53A70000A42870 /* PhantomReactFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhantomReactFrameworkTests.m; sourceTree = "<group>"; };
 		8BDD9F681E53A70000A42870 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8BDD9FF21E53C8AF00A42870 /* libReact.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReact.a; path = "../../../Library/Developer/Xcode/DerivedData/ViroExample-gkouhyhsaclhqudkejassforysvo/Build/Products/Debug-iphoneos/libReact.a"; sourceTree = "<group>"; };
+		8BDD9FF21E53C8AF00A42870 /* libReact.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReact.a; path = "../../../Library/Developer/Xcode/DerivedData/PhantomExample-gkouhyhsaclhqudkejassforysvo/Build/Products/Debug-iphoneos/libReact.a"; sourceTree = "<group>"; };
 		8BE0D4541DFA0D050032AB99 /* libPhantomReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPhantomReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE0D4671DFA15880032AB99 /* ViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewManager.h; path = PhantomReact/ViewManager.h; sourceTree = "<group>"; };
 		8BE0D4681DFA15880032AB99 /* ViewManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewManager.mm; path = PhantomReact/ViewManager.mm; sourceTree = "<group>"; };
@@ -1123,7 +1123,7 @@
 		8BE0D5211DFA3DEA0032AB99 /* VRTImageAsyncLoaderEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VRTImageAsyncLoaderEventDelegate.h; path = PhantomReact/Utility/VRTImageAsyncLoaderEventDelegate.h; sourceTree = "<group>"; };
 		8BE0D5221DFA3DEA0032AB99 /* VRTTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VRTTreeNode.h; path = PhantomReact/Utility/VRTTreeNode.h; sourceTree = "<group>"; };
 		8BE0D5231DFA3DEA0032AB99 /* VRTTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VRTTreeNode.m; path = PhantomReact/Utility/VRTTreeNode.m; sourceTree = "<group>"; };
-		8EB99B003C13099B09EC75DC /* Pods-ViroReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact/Pods-ViroReact.release.xcconfig"; sourceTree = "<group>"; };
+		8EB99B003C13099B09EC75DC /* Pods-PhantomReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact/Pods-PhantomReact.release.xcconfig"; sourceTree = "<group>"; };
 		8F346B181F225559000D16B9 /* VRTManagedAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRTManagedAnimation.h; sourceTree = "<group>"; };
 		8F346B191F225559000D16B9 /* VRTManagedAnimation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VRTManagedAnimation.mm; sourceTree = "<group>"; };
 		8F3AB8B721485B9200DF68EA /* VRTGeometryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VRTGeometryManager.h; sourceTree = "<group>"; };
@@ -1173,9 +1173,9 @@
 		A5F6D4001E4B0DFF00655F60 /* VRTController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VRTController.mm; path = PhantomReact/Views/VRTController.mm; sourceTree = "<group>"; };
 		A5F6D4031E4B179700655F60 /* VRTControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VRTControllerManager.h; path = PhantomReact/VRTControllerManager.h; sourceTree = "<group>"; };
 		A5F6D4041E4B179700655F60 /* VRTControllerManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = VRTControllerManager.mm; path = PhantomReact/VRTControllerManager.mm; sourceTree = "<group>"; };
-		B955E98ED74516070EE079F5 /* Pods-ViroReact_release_tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_release_tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_release_tests/Pods-ViroReact_release_tests.release.xcconfig"; sourceTree = "<group>"; };
+		B955E98ED74516070EE079F5 /* Pods-PhantomReact_release_tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_release_tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_release_tests/Pods-PhantomReact_release_tests.release.xcconfig"; sourceTree = "<group>"; };
 		EEEA0703A90241AFA313E89B /* Pods-PhantomReact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact/Pods-PhantomReact.release.xcconfig"; sourceTree = "<group>"; };
-		FDD4EDD8C10B59A4481813F9 /* Pods-ViroReact_static_lib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViroReact_static_lib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViroReact_static_lib/Pods-ViroReact_static_lib.debug.xcconfig"; sourceTree = "<group>"; };
+		FDD4EDD8C10B59A4481813F9 /* Pods-PhantomReact_static_lib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhantomReact_static_lib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhantomReact_static_lib/Pods-PhantomReact_static_lib.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1582,12 +1582,12 @@
 			isa = PBXGroup;
 			children = (
 				8BDD9D9E1E09F39B00A42870 /* Pods.xcodeproj */,
-				26E68AF050CB842CF2264F09 /* Pods-ViroReact.debug.xcconfig */,
-				8EB99B003C13099B09EC75DC /* Pods-ViroReact.release.xcconfig */,
-				8737B88293C9F8DE1C4F5FB9 /* Pods-ViroReact_release_tests.debug.xcconfig */,
-				B955E98ED74516070EE079F5 /* Pods-ViroReact_release_tests.release.xcconfig */,
-				FDD4EDD8C10B59A4481813F9 /* Pods-ViroReact_static_lib.debug.xcconfig */,
-				24F1137CD82BA3E4D836FBA1 /* Pods-ViroReact_static_lib.release.xcconfig */,
+				26E68AF050CB842CF2264F09 /* Pods-PhantomReact.debug.xcconfig */,
+				8EB99B003C13099B09EC75DC /* Pods-PhantomReact.release.xcconfig */,
+				8737B88293C9F8DE1C4F5FB9 /* Pods-PhantomReact_release_tests.debug.xcconfig */,
+				B955E98ED74516070EE079F5 /* Pods-PhantomReact_release_tests.release.xcconfig */,
+				FDD4EDD8C10B59A4481813F9 /* Pods-PhantomReact_static_lib.debug.xcconfig */,
+				24F1137CD82BA3E4D836FBA1 /* Pods-PhantomReact_static_lib.release.xcconfig */,
 				76D29439EDF21B67CF5E47C4 /* Pods-PhantomReact.debug.xcconfig */,
 				EEEA0703A90241AFA313E89B /* Pods-PhantomReact.release.xcconfig */,
 				2FB6E4879BD03B4489DEF1D3 /* Pods-PhantomReact_release_tests.debug.xcconfig */,
@@ -1615,7 +1615,7 @@
 			dependencies = (
 			);
 			name = PhantomReact_release_tests;
-			productName = ViroReact;
+			productName = PhantomReact;
 			productReference = 131E1ECD20B89A560075D8E0 /* libPhantomReact_release_tests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -1637,7 +1637,7 @@
 			dependencies = (
 			);
 			name = PhantomReact_static_lib;
-			productName = ViroReact;
+			productName = PhantomReact;
 			productReference = 1385B29C20CA091C00C3B6CE /* libPhantomReact_static_lib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -1659,7 +1659,7 @@
 			dependencies = (
 			);
 			name = PhantomReact;
-			productName = ViroReact;
+			productName = PhantomReact;
 			productReference = 8BE0D4541DFA0D050032AB99 /* libPhantomReact.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -1670,7 +1670,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Viro Media";
+				ORGANIZATIONNAME = "TobyX Corp";
 				TargetAttributes = {
 					8BE0D4531DFA0D050032AB99 = {
 						CreatedOnToolsVersion = 7.3;

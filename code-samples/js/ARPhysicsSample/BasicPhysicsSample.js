@@ -18,7 +18,7 @@ import {
   ViroFlexView,
   ViroAmbientLight,
   ViroLightingEnvironment
-} from 'react-viro';
+} from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 var CONTROLLER_PUSH = 1;

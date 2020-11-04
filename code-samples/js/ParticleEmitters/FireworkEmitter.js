@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
-import {ViroParticleEmitter} from 'react-viro';
+import {ViroParticleEmitter} from 'phantom-react';
 import PropTypes from 'prop-types';
 var ColorPropType = require('react-native').ColorPropType;
 var createReactClass = require('create-react-class');

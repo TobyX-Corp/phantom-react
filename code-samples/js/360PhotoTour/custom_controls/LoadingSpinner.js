@@ -27,7 +27,7 @@ import {
   ViroText,
   ViroSphere,
   ViroUtils,
-} from 'react-viro';
+} from 'phantom-react';
 let polarToCartesian = ViroUtils.polarToCartesian;
 
 /**

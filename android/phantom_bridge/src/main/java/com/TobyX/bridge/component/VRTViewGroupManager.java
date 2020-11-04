@@ -47,7 +47,7 @@ public abstract class VRTViewGroupManager<T extends ViewGroup>
         mContext = context;
     }
 
-    public ReactApplicationContext getContext() {
+    public ReactApplicationContext getPhantomContext() {
         return mContext;
     }
 

@@ -234,7 +234,7 @@ public class VRT3DObject extends VRTControl {
             if (mResources != null) {
                 resourceMap = new HashMap<>();
                 for (String resource : mResources) {
-                    Uri uri = Helper.parseUri(resource, getContext());
+                    Uri uri = Helper.parseUri(resource, getPhantomContext());
                     resourceMap.put(resource, uri.toString());
                 }
             }

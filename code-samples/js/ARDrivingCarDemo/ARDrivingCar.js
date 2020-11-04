@@ -17,7 +17,7 @@ import * as PlatformUtils from './PlatformUtils';
 import {
   ViroARSceneNavigator,
   ViroConstants,
-} from 'react-viro';
+} from 'phantom-react';
 
 var joystickWidth = 200;
 

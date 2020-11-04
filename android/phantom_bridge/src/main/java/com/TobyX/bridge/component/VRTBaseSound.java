@@ -151,7 +151,7 @@ public abstract class VRTBaseSound extends VRTComponent {
             }
             mNativeSound = getNativeSound(data);
         } else if (mSource.hasKey(URI)) {
-            Uri uri = Helper.parseUri(mSource.getString(URI), getContext());
+            Uri uri = Helper.parseUri(mSource.getString(URI), getPhantomContext());
             mNativeSound = getNativeSound(uri.toString());
         } else {
             throw new IllegalArgumentException("Unknown sound source.");

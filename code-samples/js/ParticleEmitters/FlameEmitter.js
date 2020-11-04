@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {ViroParticleEmitter} from 'react-viro';
+import {ViroParticleEmitter} from 'phantom-react';
 var createReactClass = require('create-react-class');
 
 var FlameEmitter = createReactClass({

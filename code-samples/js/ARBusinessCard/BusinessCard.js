@@ -23,7 +23,7 @@ import {
   ViroNode,
   Viro3DObject,
   ViroQuad
-} from 'react-viro';
+} from 'phantom-react';
 
 export class BusinessCard extends Component {
 
