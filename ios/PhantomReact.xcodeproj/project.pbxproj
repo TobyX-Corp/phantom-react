@@ -2395,6 +2395,7 @@
 			baseConfigurationReference = 3841459F9B7DA39E98653A8A /* Pods-PhantomReact_static_lib.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/dist/PhantomRenderer",
@@ -2405,7 +2406,7 @@
 					"$(inherited)/**",
 				);
 				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2418,6 +2419,7 @@
 			baseConfigurationReference = 1F26F36BB497D53C763A9F25 /* Pods-PhantomReact_static_lib.release.xcconfig */;
 			buildSettings = {
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/dist/PhantomRenderer",
@@ -2429,7 +2431,7 @@
 					"$(inherited)/**",
 				);
 				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2529,6 +2531,7 @@
 			baseConfigurationReference = 76D29439EDF21B67CF5E47C4 /* Pods-PhantomReact.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/dist/PhantomRenderer",
@@ -2538,7 +2541,7 @@
 					"$(inherited)/**",
 				);
 				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2550,6 +2553,7 @@
 			baseConfigurationReference = EEEA0703A90241AFA313E89B /* Pods-PhantomReact.release.xcconfig */;
 			buildSettings = {
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = armv7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/dist/PhantomRenderer",
@@ -2560,7 +2564,7 @@
 					"$(inherited)/**",
 				);
 				MACH_O_TYPE = staticlib;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

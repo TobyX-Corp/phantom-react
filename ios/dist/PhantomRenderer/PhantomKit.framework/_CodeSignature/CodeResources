@@ -68,6 +68,10 @@
 		<data>
 		p7zUk6V5YFcwFCu87MJ9FJSsE/g=
 		</data>
+		<key>Headers/VROARImageDatabase.h</key>
+		<data>
+		dvCxXlmrQgaQCDtW3jKmOqCesJ4=
+		</data>
 		<key>Headers/VROARImageTarget.h</key>
 		<data>
 		6V4uvkc7LUTY1y43GlFvj1rJksI=
@@ -495,6 +499,10 @@
 		<key>Headers/VROPhysicsBodyDelegate.h</key>
 		<data>
 		w82NaN1/vBQu+TKpjhYkNBGKknk=
+		</data>
+		<key>Headers/VROPhysicsBodyDelegateiOS.h</key>
+		<data>
+		NBewS++DLZ0kKTvIC+wBIPdPfJg=
 		</data>
 		<key>Headers/VROPhysicsContactResultCallback.h</key>
 		<data>
@@ -1926,7 +1934,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LnLsygV8oO567HSIwaO7FeoyrlY=
+		9addMGgwXlaIes7/E93LToFNGF8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -2369,6 +2377,17 @@
 			<key>hash2</key>
 			<data>
 			uz3a0wynPr/VDT2+MKzFK5yTHn9LjrxzQH34hZd1l+g=
+			</data>
+		</dict>
+		<key>Headers/VROARImageDatabase.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			dvCxXlmrQgaQCDtW3jKmOqCesJ4=
+			</data>
+			<key>hash2</key>
+			<data>
+			MHg/PFcTvRB9O58SeLnZedWqi/u9S6FWsiGNdQhgKgg=
 			</data>
 		</dict>
 		<key>Headers/VROARImageTarget.h</key>
@@ -3546,6 +3565,17 @@
 			<key>hash2</key>
 			<data>
 			Vmem3gbYoxDFMJ6t/ZGezVklBRDiEYcYCLtI2EYtli8=
+			</data>
+		</dict>
+		<key>Headers/VROPhysicsBodyDelegateiOS.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NBewS++DLZ0kKTvIC+wBIPdPfJg=
+			</data>
+			<key>hash2</key>
+			<data>
+			7BXbyOLvTwSTKwl/25KXzDiy34zRELzT/FT+25JmPMI=
 			</data>
 		</dict>
 		<key>Headers/VROPhysicsContactResultCallback.h</key>
