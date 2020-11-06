@@ -9,15 +9,15 @@ import {StyleSheet} from 'react-native';
 
 import {
   AppRegistry,
-  ViroScene,
-  ViroVideo,
-  ViroSceneNavigator,
-  ViroMaterials,
-  Viro360Video,
-  ViroButton,
-  ViroImage,
-  ViroNode,
-  ViroAnimations,
+  Scene,
+  Video,
+  SceneNavigator,
+  Materials,
+  Video360,
+  Button,
+  Image,
+  Node,
+  Animations,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -36,7 +36,7 @@ var videos = [
   {uri:'https://s3-us-west-2.amazonaws.com/viro/MediaDemo360_2.mp4'}
 ];
 
-var Viro360Theatre = createReactClass({
+var Theatre360 = createReactClass({
   getInitialState() {
     return {
       videoControlsAnimation:"fadeIn",
@@ -52,13 +52,13 @@ var Viro360Theatre = createReactClass({
    */
   render: function() {
     return (
-        <ViroScene onClick={this._onVideoTapped} reticleEnabled={this.state.videoControlsAnimation=="fadeIn"}>
-          <Viro360Video ref={VIDEO_REF} source={videos[this.state.videoIndex]} volume={1.0}
+        <Scene onClick={this._onVideoTapped} reticleEnabled={this.state.videoControlsAnimation=="fadeIn"}>
+          <Video360 ref={VIDEO_REF} source={videos[this.state.videoIndex]} volume={1.0}
             loop={this.state.loopVideo} paused={this.state.videoPaused} />
 
           {this._renderVideoControl()}
 
-        </ViroScene>
+        </Scene>
     );
   },
 
@@ -81,15 +81,15 @@ var Viro360Theatre = createReactClass({
    */
   _renderVideoControl(){
     return(
-      <ViroNode position={[0,-0.8,0]} opacity={1.0}
+      <Node position={[0,-0.8,0]} opacity={1.0}
         animation={{name : this.state.videoControlsAnimation, run : this.state.runAnimation, loop : false}} >
 
-        <ViroImage
+        <Image
           scale={[1.4, 1.2, 1]}
           position={[0, -0.27,-2.1]}
           source={require("./res/player_controls_container.png")} />
 
-        <ViroButton
+        <Button
           position={[-buttonSize-0.1,0,-2]}
           scale={[1, 1, 1]}
           width={buttonSize}
@@ -101,7 +101,7 @@ var Viro360Theatre = createReactClass({
 
         {this._renderPlayControl()}
 
-        <ViroButton
+        <Button
           position={[buttonSize+0.1, 0,-2]}
           scale={[1, 1, 1]}
           width={buttonSize}
@@ -111,7 +111,7 @@ var Viro360Theatre = createReactClass({
           clickSource={require("./res/skip_hover.png")}
           onClick={this._playNextVideo} />
 
-        <ViroButton
+        <Button
           position={[-0.3, -0.4 ,-2]}
           scale={[1, 1, 1]}
           width={0.5}
@@ -121,7 +121,7 @@ var Viro360Theatre = createReactClass({
           clickSource={require("./res/icon_2D_hover.png")}
           onClick={this._launchTheatreScene} />
 
-        <ViroButton
+        <Button
           position={[0.3, -0.4 ,-2]}
           scale={[1, 1, 1]}
           width={0.5}
@@ -130,7 +130,7 @@ var Viro360Theatre = createReactClass({
           hoverSource={require("./res/icon_360_hover.png")}
           clickSource={require("./res/icon_360_hover.png")} />
 
-      </ViroNode>
+      </Node>
     );
   },
 
@@ -140,7 +140,7 @@ var Viro360Theatre = createReactClass({
   _renderPlayControl(){
     if (this.state.videoPaused){
       return (
-          <ViroButton
+          <Button
               position={[0,0,-2]}
               scale={[1, 1, 1]}
               width={buttonSize}
@@ -153,7 +153,7 @@ var Viro360Theatre = createReactClass({
       );
     } else {
       return (
-          <ViroButton
+          <Button
               position={[0,0,-2]}
               scale={[1, 1, 1]}
               width={buttonSize}
@@ -168,7 +168,7 @@ var Viro360Theatre = createReactClass({
   },
 
   _launchTheatreScene(){
-    this.props.sceneNavigator.jump("ViroTheatre", {scene:require('./ViroTheatre')});
+    this.props.sceneNavigator.jump("Theatre", {scene:require('./Theatre')});
   },
   _togglePauseVideo() {
     this.setState({
@@ -204,9 +204,9 @@ var Viro360Theatre = createReactClass({
 
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   fadeOut:{properties:{opacity: 0.0}, duration: 500},
   fadeIn:{properties:{opacity: 1.0}, duration: 500},
 });
 
-module.exports = Viro360Theatre;
+module.exports = Theatre360;

@@ -15,8 +15,8 @@ import {
 import * as PlatformUtils from './PlatformUtils';
 
 import {
-  ViroARSceneNavigator,
-  ViroConstants,
+  ARSceneNavigator,
+  Constants,
 } from 'phantom-react';
 
 var joystickWidth = 200;
@@ -53,7 +53,7 @@ export default class ARDrivingCar extends Component {
     }
 
     // bind functions here
-    this.getViroARView = this.getViroARView.bind(this);
+    this.getARView = this.getARView.bind(this);
     this.exitAR = this.exitAR.bind(this);
 
     //this.getRecordingUI = this.getRecordingUI.bind(this);
@@ -95,7 +95,7 @@ export default class ARDrivingCar extends Component {
     return (
       <View style={styles.outerContainer}>
         
-        {this.getViroARView()}
+        {this.getARView()}
 
         {this.getCarControls()}
 
@@ -107,9 +107,9 @@ export default class ARDrivingCar extends Component {
     )
   }
 
-  getViroARView() {
-    // use viroAppProps to pass in "changing/dynamic" values, passProps is "not" dynamic.
-    let viroAppProps = {
+  getARView() {
+    // use appProps to pass in "changing/dynamic" values, passProps is "not" dynamic.
+    let appProps = {
       direction : (this.state.left ? 1 : 0) + (this.state.up ? 2 : 0) + (this.state.right ? 4 : 0) + (this.state.down ? 8 : 0),
       leftRightRatio : this.state.leftRightRatio,
       shouldResetCar : this.state.shouldResetCar,
@@ -117,10 +117,10 @@ export default class ARDrivingCar extends Component {
       setIsOverPlane : this.setIsOverPlane,
     }
     return (
-      <ViroARSceneNavigator
+      <ARSceneNavigator
         ref={(ref)=>{this.arNavigator = ref}}
         apiKey={apiKey}
-        viroAppProps={viroAppProps}
+        appProps={appProps}
         initialScene={{
           scene: require('./ARDrivingCarScene.js'),
           passProps: {
@@ -567,7 +567,7 @@ var styles = StyleSheet.create({
     flexDirection : 'column',
     justifyContent : 'center',
   },
-  attributionViroLogo : {
+  attributionLogo : {
     position : 'absolute',
     bottom : 30,
     flexDirection: 'column',

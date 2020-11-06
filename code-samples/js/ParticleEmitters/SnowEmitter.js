@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
-import {ViroParticleEmitter} from 'phantom-react';
+import {ParticleEmitter} from 'phantom-react';
 import PropTypes from 'prop-types';
 var createReactClass = require('create-react-class');
 
@@ -51,7 +51,7 @@ var SnowEmitter = createReactClass({
     var fallSpeed = (this.props.fallSpeed == undefined) ? 1.0 : this.props.fallSpeed;
     var windShear = (this.props.windShear == undefined) ? 1.0 : this.props.windShear;
     return (
-      <ViroParticleEmitter
+      <ParticleEmitter
         position={[0, 4.5, 0]}
         duration={2000}
         visible={true}

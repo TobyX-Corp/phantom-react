@@ -1,6 +1,6 @@
 platform :ios, '9.3'
-target 'ViroSample' do
+target 'PhantomSample' do
   use_frameworks!
-  pod 'ViroReact', :path => '../node_modules/phantom-react/ios/'
-  pod 'ViroKit', :path => '../node_modules/phantom-react/ios/dist/ViroRenderer/'
+  pod 'PhantomReact', :path => '../node_modules/phantom-react/ios/'
+  pod 'PhantomKit', :path => '../node_modules/phantom-react/ios/dist/PhantomRenderer/'
 end

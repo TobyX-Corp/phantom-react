@@ -99,7 +99,7 @@ android {
     flavorDimensions "platform"
 
     defaultConfig {
-        applicationId "com.virosample"
+        applicationId "com.phantomsample"
         minSdkVersion 23
         targetSdkVersion 28
         multiDexEnabled true
@@ -119,15 +119,15 @@ android {
     }
     productFlavors {
         ar {
-            resValue 'string', 'app_name', 'ViroSample-ar'
+            resValue 'string', 'app_name', 'PhantomSample-ar'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"' //default to GVR
         }
         gvr {
-            resValue 'string', 'app_name', 'ViroSample-gvr'
+            resValue 'string', 'app_name', 'PhantomSample-gvr'
             buildConfigField 'String', 'VR_PLATFORM', '"GVR"'
         }
         ovr {
-            resValue 'string', 'app_name', 'ViroSample-ovr'
+            resValue 'string', 'app_name', 'PhantomSample-ovr'
             applicationIdSuffix '.ovr'
             buildConfigField 'String', 'VR_PLATFORM', '"OVR_MOBILE"'
         }

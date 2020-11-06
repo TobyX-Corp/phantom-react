@@ -10,20 +10,20 @@ var SmokeEmitter = require('./SmokeEmitter');
 var createReactClass = require('create-react-class');
 
 import {
-  ViroScene,
-  ViroText,
-  Viro360Image,
-  ViroMaterials,
-  ViroBox,
-  Viro3DObject,
-  ViroOmniLight
+  Scene,
+  Text,
+  Image360,
+  Materials,
+  Box,
+  Object3D,
+  OmniLight
 } from 'phantom-react';
 
 /*
  Scene with a set of particle template examples, where the user
  can iterate through each particle emitters by clicking the scene.
  */
-var ViroParticleTemplates = createReactClass({
+var ParticleTemplates = createReactClass({
   getInitialState() {
     return {
       currentEffect:0
@@ -42,9 +42,9 @@ var ViroParticleTemplates = createReactClass({
 
   render: function() {
     return (
-     <ViroScene onClick={this.clickedScene}>
+     <Scene onClick={this.clickedScene}>
         {this.getEffect()}
-     </ViroScene>
+     </Scene>
     );
   },
 
@@ -110,7 +110,7 @@ var styles = StyleSheet.create({
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   ground:{
     cullMode: "None",
     shininess: 2.0,
@@ -118,4 +118,4 @@ ViroMaterials.createMaterials({
     lightingModel: "Blinn",
   }
  });
-module.exports = ViroParticleTemplates;
+module.exports = ParticleTemplates;

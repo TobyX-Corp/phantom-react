@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -16,12 +16,12 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroScene,
-  Viro360Image,
-  ViroImage,
-  ViroAnimations,
-  ViroNode,
-  ViroText
+  Scene,
+  Image360,
+  Image,
+  Animations,
+  Node,
+  Text
 } from 'phantom-react';
 
 /**
@@ -46,16 +46,16 @@ export default class MainScene extends Component {
   }
 
   /**
-   * Renders a scene with a 360 Photo background that contains a single WeWork ViroImage. This
+   * Renders a scene with a 360 Photo background that contains a single WeWork Image. This
    * image will be faded/scaled in with the "showTitleAnimation" when the scene first appears. Clicking on
-   * the WeWork ViroImage will launch the user into the next scene (WestLakeTowers).
+   * the WeWork Image will launch the user into the next scene (WestLakeTowers).
    */
   render() {
     return (
-      <ViroScene style={styles.container}>
-        <Viro360Image source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
+      <Scene style={styles.container}>
+        <Image360 source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
 
-        <ViroImage
+        <Image
           position={[0, 0, -5]} source={weworkImage} scale={[.1, .1, .1]}
           opacity={0.0} onClick={this._onTitleClicked}
           animation={{
@@ -63,13 +63,13 @@ export default class MainScene extends Component {
             run : this.state.runShowTitleAnimation,
             loop : false,
           }} />
-      </ViroScene>
+      </Scene>
     );
   }
 
   /**
-   * Callback function for when image has finished loading in the Viro360Photo.
-   * We then animate the WeWork ViroImage into the scene through the
+   * Callback function for when image has finished loading in the Photo360.
+   * We then animate the WeWork Image into the scene through the
    * setting of state runShowTitleAnimation.
    */
   _onBackgroundPhotoLoadEnd() {
@@ -79,7 +79,7 @@ export default class MainScene extends Component {
   }
 
   /**
-   * Callback function for when the user taps on the WeWork ViroImage
+   * Callback function for when the user taps on the WeWork Image
    * where we navigate into the second scene.
    */
   _onTitleClicked() {
@@ -102,7 +102,7 @@ var styles = StyleSheet.create({
 /**
  * Declare all your animations here. They'll be referenced by the animation props.
  */
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     showTitleAnimation: {properties:{scaleX:2, scaleY:2, scaleZ:2, opacity:1.0}, easing:"PowerDecel", duration:1000},
 });
 

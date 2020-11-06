@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {ViroParticleEmitter, ViroNode} from 'phantom-react';
+import {ParticleEmitter, Node} from 'phantom-react';
 var createReactClass = require('create-react-class');
 
 var BasicSmokeEmitter = createReactClass({
@@ -13,7 +13,7 @@ var BasicSmokeEmitter = createReactClass({
 
   render: function() {
     return (
-      <ViroParticleEmitter
+      <ParticleEmitter
           position={this.props.location}
           duration={1500}
           visible={true}

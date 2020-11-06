@@ -1,4 +1,4 @@
-rootProject.name = 'ViroSample'
+rootProject.name = 'PhantomSample'
 
 include ':app'
 include ':phantom_react', ':arcore_client', ':gvr_common', ':phantom_renderer'

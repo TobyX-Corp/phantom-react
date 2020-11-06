@@ -5,22 +5,22 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroScene,
-  ViroImage,
-  ViroText,
-  Viro360Image,
-  ViroFlexView,
-  ViroVideo,
-  Viro3DObject,
-  ViroMaterials,
-  ViroCamera,
-  ViroOrbitCamera,
-  ViroNode,
-  ViroDirectionalLight,
-  ViroAnimations,
-  ViroBox,
-  ViroButton,
-  ViroSurface,
+  Scene,
+  Image,
+  Text,
+  Image360,
+  FlexView,
+  Video,
+  Object3D,
+  Materials,
+  Camera,
+  OrbitCamera,
+  Node,
+  DirectionalLight,
+  Animations,
+  Box,
+  Button,
+  Surface,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -56,7 +56,7 @@ function getProductSourceText(online, giftWrappable) {
  * Register the required materials. These can be dynamically registered based on
  * the product list.
  */
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   tv: {
     shininess: 2.0,
     lightingModel: "Blinn",
@@ -144,46 +144,46 @@ var ProductShowcase = createReactClass({
   render: function() {
     var product = products[this.state.productToShow];
     return (
-      <ViroScene >
+      <Scene >
 
-        <Viro360Image source={require('./res/interior_viro.jpg')} />
+        <Image360 source={require('./res/interior_phantom.jpg')} />
 
-        <ViroDirectionalLight color="#aaaaaa" direction={[0, 0, -1.0]} />
+        <DirectionalLight color="#aaaaaa" direction={[0, 0, -1.0]} />
 
         {/* Outer animation block used to fade in/out components when switching between products */}
-        <ViroNode animation={{ name : this.state.globalAnimation, run : this.state.runGlobalAnimation, loop : false, onFinish : this.state.onFinishGlobal }}>
+        <Node animation={{ name : this.state.globalAnimation, run : this.state.runGlobalAnimation, loop : false, onFinish : this.state.onFinishGlobal }}>
 
           {/* This is the top left text box containing the title + description text */}
-          <ViroFlexView style={styles.titleContainer} position={[-3.8, 1, -7]} rotation={[0, 40, 0]} height={2} width={4}
+          <FlexView style={styles.titleContainer} position={[-3.8, 1, -7]} rotation={[0, 40, 0]} height={2} width={4}
             animation={{ name : this.state.mainAnimation, run : this.state.runAnimation, loop : false }} >
-            <ViroText style={styles.prodTitleText} text={product.productTitleText} width={4} height={.5} />
-            <ViroText style={styles.prodDescriptionText} text={product.productDescriptionText} />
-          </ViroFlexView>
+            <Text style={styles.prodTitleText} text={product.productTitleText} width={4} height={.5} />
+            <Text style={styles.prodDescriptionText} text={product.productDescriptionText} />
+          </FlexView>
 
           {/* This is the bottom left text box containing the product details text */}
-          <ViroFlexView style={styles.titleContainer} position={[-3.8, -1.1, -7]} rotation={[0, 40, 0]} height={2} width={4}
+          <FlexView style={styles.titleContainer} position={[-3.8, -1.1, -7]} rotation={[0, 40, 0]} height={2} width={4}
             animation={{ name : this.state.mainAnimation, run : this.state.runAnimation, loop : false}} >
-            <ViroFlexView style={styles.rowContainer}>
-              <ViroText style={styles.prodDescriptionText} text={product.productDetails1} />
-            </ViroFlexView>
-            <ViroFlexView style={styles.rowContainer}>
-              <ViroText style={styles.prodDescriptionText} text={product.productDetails2} />
-            </ViroFlexView>
-            <ViroFlexView style={styles.rowContainer}>
-              <ViroText style={styles.prodDescriptionText} text={product.productDetails3} />
-            </ViroFlexView>
-          </ViroFlexView>
+            <FlexView style={styles.rowContainer}>
+              <Text style={styles.prodDescriptionText} text={product.productDetails1} />
+            </FlexView>
+            <FlexView style={styles.rowContainer}>
+              <Text style={styles.prodDescriptionText} text={product.productDetails2} />
+            </FlexView>
+            <FlexView style={styles.rowContainer}>
+              <Text style={styles.prodDescriptionText} text={product.productDetails3} />
+            </FlexView>
+          </FlexView>
 
           {/* This is the top right text box containing the product price and stock status*/}
-          <ViroFlexView style={styles.titleContainer} position={[3.8, 1, -7]} rotation={[0, -40, 0]} height={2} width={4}
+          <FlexView style={styles.titleContainer} position={[3.8, 1, -7]} rotation={[0, -40, 0]} height={2} width={4}
             animation={{ name : this.state.mainAnimation, run : this.state.runAnimation, loop : false}} >
-            <ViroFlexView style={styles.rowContainer} >
-              <ViroText style={styles.prodDescriptionText} text="Price:" />
-              <ViroText style={styles.priceText} text={product.price} />
-            </ViroFlexView>
-            <ViroText style={styles.prodDescriptionText} text={getInStockText(product.inStock)} />
-            <ViroText style={styles.prodDescriptionText} text={getProductSourceText(product.online, product.giftWrappable)} />
-          </ViroFlexView>
+            <FlexView style={styles.rowContainer} >
+              <Text style={styles.prodDescriptionText} text="Price:" />
+              <Text style={styles.priceText} text={product.price} />
+            </FlexView>
+            <Text style={styles.prodDescriptionText} text={getInStockText(product.inStock)} />
+            <Text style={styles.prodDescriptionText} text={getProductSourceText(product.online, product.giftWrappable)} />
+          </FlexView>
 
           {this._getProductModel()}
 
@@ -191,39 +191,39 @@ var ProductShowcase = createReactClass({
 
           {this._getNavButtons()}
 
-        </ViroNode>
-      </ViroScene>
+        </Node>
+      </Scene>
     );
   },
   /*
-   * This function returns the Viro3DObjects of the current productToShow.
+   * This function returns the Object3Ds of the current productToShow.
    */
   _getProductModel() {
     // get the products dictionary
     var product = products[this.state.productToShow];
     var objects = [];
 
-    // a product may have multiple obj's representing it, so create a Viro3DObject component for each
+    // a product may have multiple obj's representing it, so create a Object3D component for each
     for (var i = 0; i < product.objects.length; i++) {
-      objects.push((<Viro3DObject key={"model" + i} source={product.objects[i]} materials={product.materials[i]} type="OBJ"/>))
+      objects.push((<Object3D key={"model" + i} source={product.objects[i]} materials={product.materials[i]} type="OBJ"/>))
     }
 
     var position = [0 + product.objectOffset[0], 0 + product.objectOffset[1], -5 + product.objectOffset[2]];
     var scale = [.3 * product.objectScaleMultipler[0], .3 * product.objectScaleMultipler[1], .3 * product.objectScaleMultipler[2]];
 
-    ViroAnimations.registerAnimations({
+    Animations.registerAnimations({
       resetModel:{properties:{positionX:position[0], positionY:position[1], positionZ:position[2], rotateY: product.objectRotation[1]}, duration:1000},
     })
 
     return (
-      <ViroNode key="obj" rotation={product.objectRotation} scale={scale} position={position} onClick={this._onClickModel}
+      <Node key="obj" rotation={product.objectRotation} scale={scale} position={position} onClick={this._onClickModel}
         animation={{name : this.state.objectAnimation, run : this.state.runObjectAnimation, loop : true}} >
         {objects}
-      </ViroNode>
+      </Node>
     )
   },
   /*
-   * This function is called by the render() function and returns a ViroVideo component if the
+   * This function is called by the render() function and returns a Video component if the
    * current product has a product video.
    */
   _getVideoIfAvailable() {
@@ -235,7 +235,7 @@ var ProductShowcase = createReactClass({
     }
 
     return (
-      <ViroVideo position={[3.8, -1.1, -7]} rotation={[0, -40, 0]} paused={this.state.videoPaused} loop={true} height={2} width={4}
+      <Video position={[3.8, -1.1, -7]} rotation={[0, -40, 0]} paused={this.state.videoPaused} loop={true} height={2} width={4}
           onClick={this._onClickVideo} source={product.productVideo}
           animation={{name : this.state.mainAnimation, run : this.state.runAnimation, loop : false}} />
     );
@@ -265,12 +265,12 @@ var ProductShowcase = createReactClass({
   _getSingleNavButton(forward, index, centered) {
     var position = [(centered ? 0 : (forward ? 2 : -2)), -3, -7];
     return (
-      <ViroNode key={forward ? "forwardBtn" : "backBtn"} position={position} onClick={this._prepareSwitchProduct(index)}
+      <Node key={forward ? "forwardBtn" : "backBtn"} position={position} onClick={this._prepareSwitchProduct(index)}
         transformBehaviors="billboard" animation={{ name : this.state.mainAnimation, run : this.state.runAnimation, loop : false }} >
-        <ViroImage source={products[index].previewImage} width={2.8} height={.7}/>
-        <ViroText text={products[index].productTitleText} width={2} height={.7} style={styles.navButtonText}
+        <Image source={products[index].previewImage} width={2.8} height={.7}/>
+        <Text text={products[index].productTitleText} width={2} height={.7} style={styles.navButtonText}
             textClipMode="ClipToBounds" position={[forward ? .1 : -.1, 0, .05]} />
-      </ViroNode>
+      </Node>
     );
   },
   /*
@@ -328,7 +328,7 @@ var ProductShowcase = createReactClass({
     });
   },
   /*
-   * This function is the onClick listener of the ViroVideo component and pauses the video when clicked.
+   * This function is the onClick listener of the Video component and pauses the video when clicked.
    */
   _onClickVideo() {
     this.setState({
@@ -340,14 +340,14 @@ var ProductShowcase = createReactClass({
 /*
  * Register the various animations we require
  */
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   fadeOut:{properties:{opacity:0}, duration:2000},
   fadeIn:{properties:{opacity: 1}, duration:2000},
   scaleAndRotate:{properties:{rotateY: "+=90", positionZ: "-3"}, duration:1000},
 });
 
 /*
- * Register styles for ViroFlexView and ViroText
+ * Register styles for FlexView and Text
  */
 var styles = StyleSheet.create({
   rowContainer: {

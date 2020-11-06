@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -16,15 +16,15 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroScene,
-  Viro360Image,
-  ViroAnimations,
-  ViroNode,
-  ViroImage,
-  ViroUtils,
+  Scene,
+  Image360,
+  Animations,
+  Node,
+  Image,
+  Utils,
 } from 'phantom-react';
 
-let polarToCartesian = ViroUtils.polarToCartesian;
+let polarToCartesian = Utils.polarToCartesian;
 
 /**
  * Set all the images and assets required in this scene.
@@ -62,8 +62,8 @@ export default class OfficeTourSplashScene extends Component {
      */
   render() {
     return (
-      <ViroScene style={styles.container}>
-        <Viro360Image source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
+      <Scene style={styles.container}>
+        <Image360 source={backgroundImage} onLoadEnd={this._onBackgroundPhotoLoadEnd}/>
 
         {
           /*
@@ -75,7 +75,7 @@ export default class OfficeTourSplashScene extends Component {
 
         {this._getInfoControls()}
 
-      </ViroScene>
+      </Scene>
     );
  }
 
@@ -85,7 +85,7 @@ export default class OfficeTourSplashScene extends Component {
    */
   _getInfoControls() {
     return (
-      <ViroNode
+      <Node
         opacity={0.0}
         animation={{
           name : "fadeIn",
@@ -96,18 +96,18 @@ export default class OfficeTourSplashScene extends Component {
         <InfoElement content={slutWindowCard} contentCardScale={[3.67,4,1]} position={polarToCartesian([-5, 0, 0])}/>
         <InfoElement content={monorailInfoCard} contentCardScale={[3.67,4,1]} position={polarToCartesian([-5, 77, -10])}/>
         <InfoElement content={statueWindowCard} contentCardScale={[4,3.95,2]} position={polarToCartesian([-5, 277, 0])}/>
-        <ViroImage
+        <Image
           scale={[1, 1, 1]}
           position={[0, -3.5, 0]}
           rotation={[-90, 0, 0]}
           source={backImage}
           onClick={this._onBackClick}/>
-      </ViroNode>
+      </Node>
     );
   }
 
   /**
-   * Callback function for when image has finished loading in the Viro360Photo.
+   * Callback function for when image has finished loading in the Photo360.
    * We then animate the main info elements into the scene through the
    * setting of state showSceneItems.
    */
@@ -141,7 +141,7 @@ var styles = StyleSheet.create({
 /**
  * Declare all your animations here. They'll be referenced by the animation props.
  */
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     fadeIn:{properties:{opacity: 1.0}, duration: 1000},
 });
 

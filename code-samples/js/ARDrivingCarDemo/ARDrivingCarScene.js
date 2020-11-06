@@ -5,29 +5,29 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-  ViroConstants,
-  ViroARImageMarker,
-  Viro3DObject,
-  ViroAmbientLight,
-  ViroMaterialVideo,
-  ViroMaterials,
-  ViroAnimations,
-  ViroNode,
-  ViroPortal,
-  ViroPortalScene,
-  Viro360Video,
-  Viro360Image,
-  ViroVideo,
-  ViroDirectionalLight,
-  ViroLightingEnvironment,
-  ViroImage,
-  ViroSound,
-  ViroParticleEmitter,
-  ViroSpotLight,
-  ViroQuad,
-  ViroBox,
+  ARScene,
+  Text,
+  Constants,
+  ARImageMarker,
+  Object3D,
+  AmbientLight,
+  MaterialVideo,
+  Materials,
+  Animations,
+  Node,
+  Portal,
+  PortalScene,
+  Video360,
+  Image360,
+  Video,
+  DirectionalLight,
+  LightingEnvironment,
+  Image,
+  Sound,
+  ParticleEmitter,
+  SpotLight,
+  Quad,
+  Box,
 } from 'phantom-react';
 
 import renderIf from './renderIf';
@@ -101,7 +101,7 @@ export default class ARDrivingCarScene extends Component {
 
   render() {
 
-    if (this.props.arSceneNavigator.viroAppProps.isReady && !this.state.isReady) {
+    if (this.props.arSceneNavigator.appProps.isReady && !this.state.isReady) {
       // Setting state in the render() function *could* cause an infinite loop so make
       // sure you aren't. This'll cause a yellow box warning, but you can throw it in 
       // a setTimeout for 100ms before setting isReady to true to prevent that too.
@@ -112,7 +112,7 @@ export default class ARDrivingCarScene extends Component {
       setTimeout(()=>{this._setInitialCarDirection()}, 400);
     }
     
-    let resetValue = this.props.arSceneNavigator.viroAppProps.shouldResetCar;
+    let resetValue = this.props.arSceneNavigator.appProps.shouldResetCar;
     if (resetValue && shouldResetCarValue != resetValue) {
       setTimeout(()=>{this._resetCar()}, 50);
     }
@@ -123,24 +123,24 @@ export default class ARDrivingCarScene extends Component {
     let environmentLightSource = require('./res/learner_park_1k.hdr');
 
     // we should pause the acceleration sound if we're not ready OR we're not either driving forward or backwards (2 & 8 bitmask)
-    let shouldPauseAccelSound = !this.state.isReady || !(this.props.arSceneNavigator.viroAppProps.direction & 10)
+    let shouldPauseAccelSound = !this.state.isReady || !(this.props.arSceneNavigator.appProps.direction & 10)
     let shouldPauseIdleSound = !this.state.isReady || !shouldPauseAccelSound
 
     return (
-      <ViroARScene ref={(scene)=>{this.scene = scene}} onCameraARHitTest={onCameraARHitTestCallback} onTrackingUpdated={this._onInitialized}
+      <ARScene ref={(scene)=>{this.scene = scene}} onCameraARHitTest={onCameraARHitTestCallback} onTrackingUpdated={this._onInitialized}
         physicsWorld={{gravity : [0, -5, 0]}}>
 
-        <ViroLightingEnvironment source={environmentLightSource} />
+        <LightingEnvironment source={environmentLightSource} />
 
         {this._getScanningQuads()}
 
         {this._getCarModel()}
 
-        <ViroSound source={require('./res/car_ambient.mp3')} paused={!this.state.isReady} loop={true} />
-        <ViroSound source={require('./res/car_drive.mp3')} paused={shouldPauseAccelSound} loop={true} />
-        <ViroSound source={require('./res/car_idle.mp3')} paused={shouldPauseIdleSound} loop={true} volume={this.state.volumeLevel} />
+        <Sound source={require('./res/car_ambient.mp3')} paused={!this.state.isReady} loop={true} />
+        <Sound source={require('./res/car_drive.mp3')} paused={shouldPauseAccelSound} loop={true} />
+        <Sound source={require('./res/car_idle.mp3')} paused={shouldPauseIdleSound} loop={true} volume={this.state.volumeLevel} />
 
-      </ViroARScene>
+      </ARScene>
     );
   }
 
@@ -178,11 +178,11 @@ export default class ARDrivingCarScene extends Component {
     }
 
     return (
-      <ViroNode transformBehaviors={"billboardY"} position={this.state.planeReticleLocation}
+      <Node transformBehaviors={"billboardY"} position={this.state.planeReticleLocation}
         scale={[.5, .5, .5]} >
-        <ViroImage rotation={[-90, 0, 0]} visible={this.state.foundPlane} source={require('./res/tracking_diffuse_2.png')}/>
-        <ViroImage rotation={[-90, 0, 0]} visible={!this.state.foundPlane} source={require('./res/tracking_diffuse.png')} />
-      </ViroNode>
+        <Image rotation={[-90, 0, 0]} visible={this.state.foundPlane} source={require('./res/tracking_diffuse_2.png')}/>
+        <Image rotation={[-90, 0, 0]} visible={!this.state.foundPlane} source={require('./res/tracking_diffuse.png')} />
+      </Node>
     )
   }
 
@@ -193,16 +193,16 @@ export default class ARDrivingCarScene extends Component {
     var transformBehaviors = this.state.shouldBillboard ? "billboardY" : [];
 
     return (
-      <ViroNode position={position} rotation={this.state.modelWorldRotation} transformBehaviors={transformBehaviors}>
-        <ViroNode ref={(car)=>{this.car = car}}
+      <Node position={position} rotation={this.state.modelWorldRotation} transformBehaviors={transformBehaviors}>
+        <Node ref={(car)=>{this.car = car}}
           scale={[carScale,carScale,carScale]} >
 
-          <ViroAmbientLight ref={(light)=>{this.ambientLight = light}} color={'#f5f8e0'}
+          <AmbientLight ref={(light)=>{this.ambientLight = light}} color={'#f5f8e0'}
             intensity={200} />
 
-          <ViroQuad width={5.691} height={5.691} materials={["dropShadow"]} rotation={[-90,0,0]}/>
+          <Quad width={5.691} height={5.691} materials={["dropShadow"]} rotation={[-90,0,0]}/>
 
-          <Viro3DObject
+          <Object3D
             ref={(car)=>{this.carRotationNode = car}}
             position={[0,0,0]}
             source={require('./res/car_body.vrx')}
@@ -215,10 +215,10 @@ export default class ARDrivingCarScene extends Component {
             ]} />
 
           {/* Front left - need 2 containers, 1 for the side-to-side rotation, 1 for spin*/}
-          <ViroNode ref={(wheel)=>{this.frontLeftWheelContainer = wheel}}
+          <Node ref={(wheel)=>{this.frontLeftWheelContainer = wheel}}
             position={[-.610, .363, -1.336]} >
-            <ViroNode ref={(wheel)=>{this.frontLeftWheel = wheel}} >
-              <Viro3DObject
+            <Node ref={(wheel)=>{this.frontLeftWheel = wheel}} >
+              <Object3D
                 source={require('./res/car_wheels.vrx')}
                 type='VRX'
                 rotation={[0, 180, 0]} // the left wheels need to be rotated 180
@@ -228,14 +228,14 @@ export default class ARDrivingCarScene extends Component {
                   require('./res/wheels_Roughness.jpg'),
                   require('./res/wheels_Normal_OpenGL.jpg'),
                 ]}/>
-            </ViroNode>
-          </ViroNode>
+            </Node>
+          </Node>
 
           {/* Front right - need 2 containers, 1 for the side-to-side rotation, 1 for spin*/}
-          <ViroNode ref={(wheel)=>{this.frontRightWheelContainer = wheel}}
+          <Node ref={(wheel)=>{this.frontRightWheelContainer = wheel}}
             position={[.610, .363, -1.336]} >
-            <ViroNode ref={(wheel)=>{this.frontRightWheel = wheel}} >
-              <Viro3DObject
+            <Node ref={(wheel)=>{this.frontRightWheel = wheel}} >
+              <Object3D
                 source={require('./res/car_wheels.vrx')}
                 type='VRX'
                 resources={[
@@ -244,13 +244,13 @@ export default class ARDrivingCarScene extends Component {
                   require('./res/wheels_Roughness.jpg'),
                   require('./res/wheels_Normal_OpenGL.jpg'),
                 ]}/>
-            </ViroNode>
-          </ViroNode>
+            </Node>
+          </Node>
 
           {/* Rear left */}
-          <ViroNode ref={(wheel)=>{this.rearLeftWheel = wheel}}
+          <Node ref={(wheel)=>{this.rearLeftWheel = wheel}}
             position={[-.610, .363, 1.355]} >
-            <Viro3DObject
+            <Object3D
               source={require('./res/car_wheels.vrx')}
               type='VRX'
               rotation={[0, 180, 0]} // the left wheels need to be rotated 180
@@ -260,12 +260,12 @@ export default class ARDrivingCarScene extends Component {
                 require('./res/wheels_Roughness.jpg'),
                 require('./res/wheels_Normal_OpenGL.jpg'),
               ]}/>
-          </ViroNode>
+          </Node>
 
           {/* Rear right */}
-          <ViroNode ref={(wheel)=>{this.rearRightWheel = wheel}}
+          <Node ref={(wheel)=>{this.rearRightWheel = wheel}}
             position={[.610, .363, 1.355]} >
-            <Viro3DObject
+            <Object3D
               source={require('./res/car_wheels.vrx')}
               type='VRX'
               resources={[
@@ -274,20 +274,20 @@ export default class ARDrivingCarScene extends Component {
                 require('./res/wheels_Roughness.jpg'),
                 require('./res/wheels_Normal_OpenGL.jpg'),
               ]}/>
-          </ViroNode>
+          </Node>
 
 
-        </ViroNode>
-      </ViroNode>
+        </Node>
+      </Node>
     )
   }
 
   _onInitialized(state, reason) {
-    if (state == ViroConstants.TRACKING_NORMAL) {
+    if (state == Constants.TRACKING_NORMAL) {
       this.setState({
         text : "Hello World!"
       });
-    } else if (state == ViroConstants.TRACKING_NONE) {
+    } else if (state == Constants.TRACKING_NONE) {
       // Handle loss of tracking
     }
   }
@@ -303,7 +303,7 @@ export default class ARDrivingCarScene extends Component {
             foundPlane : true,
             lastFoundPlaneLocation : result.transform.position
           });
-          this.props.arSceneNavigator.viroAppProps.setIsOverPlane(true);
+          this.props.arSceneNavigator.appProps.setIsOverPlane(true);
           return;
         }
       }
@@ -319,12 +319,12 @@ export default class ARDrivingCarScene extends Component {
       displayHitReticle: true,
       foundPlane : false,
     });
-    this.props.arSceneNavigator.viroAppProps.setIsOverPlane(false);
+    this.props.arSceneNavigator.appProps.setIsOverPlane(false);
   }
 
   _computeNewLocation() {
 
-    let pressedDirectionButtons = this.props.arSceneNavigator.viroAppProps.direction
+    let pressedDirectionButtons = this.props.arSceneNavigator.appProps.direction
 
     let computedVelocity = currentVelocity + currentAcceleration * (intervalTime / 1000)
     
@@ -344,7 +344,7 @@ export default class ARDrivingCarScene extends Component {
 
     let desiredLeanRotation = 0
     // compute new directions based on the joystick
-    let turnRatio = this.props.arSceneNavigator.viroAppProps.leftRightRatio
+    let turnRatio = this.props.arSceneNavigator.appProps.leftRightRatio
     if ( (pressedDirectionButtons & 5) > 0) { // if left or right was pressed...
       let additionalRotation = 0;
       if ( (pressedDirectionButtons & 1) > 0 ) { // Left
@@ -435,7 +435,7 @@ export default class ARDrivingCarScene extends Component {
   }
 
   _computeAcceleration() {
-    let pressedDirectionButtons = this.props.arSceneNavigator.viroAppProps.direction
+    let pressedDirectionButtons = this.props.arSceneNavigator.appProps.direction
 
     if ( (pressedDirectionButtons & 2) > 0 ) {
       if (currentVelocity < 0) {
@@ -493,7 +493,7 @@ export default class ARDrivingCarScene extends Component {
   }
 }
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   dropShadow: {
     diffuseTexture: require('./res/car_shadow.png'),
     lightingModel: "Constant",

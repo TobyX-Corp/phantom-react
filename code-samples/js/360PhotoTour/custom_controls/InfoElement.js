@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -15,10 +15,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  ViroImage,
-  ViroNode,
-  ViroAnimations,
-  ViroAnimatedComponent,
+  Image,
+  Node,
+  Animations,
+  AnimatedComponent,
 } from 'phantom-react';
 
 /**
@@ -34,7 +34,7 @@ var CONTENT_CARD_REF = 'contentCard';
 var ICON_CARD_REF = 'iconCard';
 
 /**
- * Custom control that toggles between two viro images: an Icon Card and a Content Card.
+ * Custom control that toggles between two phantom images: an Icon Card and a Content Card.
  * This control can be given a reference to the required('./image') content to be displayed,
  * and as well as the size it should be scaled to. Note that the Icon Card is displayed by default.
  *
@@ -75,9 +75,9 @@ export default class InfoElement extends Component {
      */
     render() {
       return (
-        <ViroNode onClick={this._onCardClick} {...this.props}>
+        <Node onClick={this._onCardClick} {...this.props}>
           {/* Info Card */}
-          <ViroImage
+          <Image
             transformBehaviors={["billboard"]}
             width={1}
             height={1}
@@ -90,9 +90,9 @@ export default class InfoElement extends Component {
                          onFinish:this._animateIconCardFinished }}/>
 
           {/* Content Card*/}
-          <ViroNode scale={[this.props.contentCardScale[0], this.props.contentCardScale[1], this.props.contentCardScale[2]]}
+          <Node scale={[this.props.contentCardScale[0], this.props.contentCardScale[1], this.props.contentCardScale[2]]}
                     transformBehaviors={["billboard"]}>
-            <ViroImage
+            <Image
               width={1}
               height={1}
               opacity={0.0}
@@ -102,8 +102,8 @@ export default class InfoElement extends Component {
                            run : this.state.runInfoCardAnimation,
                            loop:false,
                            onFinish:this._animateContentCardFinished }}/>
-          </ViroNode>
-        </ViroNode>
+          </Node>
+        </Node>
       );
     }
 
@@ -155,7 +155,7 @@ export default class InfoElement extends Component {
 
 }
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     hideAnim: {properties:{scaleX:.1, scaleY:.1, scaleZ:.1, opacity:0.0}, easing:"Bounce", duration:100},
     showContentCardAnim: {properties:{scaleX:1, scaleY:1, scaleZ:1, opacity:1.0}, easing:"PowerDecel", duration:150},
     showIconAnim: {properties:{scaleX:.5, scaleY:.5, scaleZ:.5, opacity:1.0}, easing:"PowerDecel", duration:150},

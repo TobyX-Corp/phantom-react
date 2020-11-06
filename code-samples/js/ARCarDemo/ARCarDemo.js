@@ -5,17 +5,17 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroMaterials,
-  ViroNode,
-  ViroAnimations,
-  Viro3DObject,
-  ViroLightingEnvironment,
-  ViroARImageMarker,
-  ViroARTrackingTargets,
-  ViroSphere,
-  ViroSpotLight,
-  ViroQuad,
+  ARScene,
+  Materials,
+  Node,
+  Animations,
+  Object3D,
+  LightingEnvironment,
+  ARImageMarker,
+  ARTrackingTargets,
+  Sphere,
+  SpotLight,
+  Quad,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -37,49 +37,49 @@ var ARCarDemo = createReactClass({
 
   render: function() {
     return (
-      <ViroARScene>
+      <ARScene>
 
-        <ViroLightingEnvironment source={require('./res/tesla/garage_1k.hdr')}/>
+        <LightingEnvironment source={require('./res/tesla/garage_1k.hdr')}/>
 
-        <ViroARImageMarker target={"logo"} onAnchorFound={this._onAnchorFound} pauseUpdates={this.state.pauseUpdates}>
-          <ViroNode scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animName, run:this.state.playAnim,}}>
-            <ViroSphere materials={["white_sphere"]}
+        <ARImageMarker target={"logo"} onAnchorFound={this._onAnchorFound} pauseUpdates={this.state.pauseUpdates}>
+          <Node scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animName, run:this.state.playAnim,}}>
+            <Sphere materials={["white_sphere"]}
               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
               position={[-.2, .25, 0]}
               onClick={this._selectWhite}
               animation={{name:"tapAnimation", run:this.state.tapWhite, onFinish:this._animateFinished}}
               shadowCastingBitMask={0} />
 
-            <ViroSphere materials={["blue_sphere"]}
+            <Sphere materials={["blue_sphere"]}
               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
               position={[-.1, .25, 0]}
               onClick={this._selectBlue}
               animation={{name:"tapAnimation", run:this.state.tapBlue, onFinish:this._animateFinished}}
               shadowCastingBitMask={0} />
 
-            <ViroSphere materials={["grey_sphere"]}
+            <Sphere materials={["grey_sphere"]}
               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
               position={[0, .25, 0]}
               onClick={this._selectGrey}
               animation={{name:"tapAnimation", run:this.state.tapGrey, onFinish:this._animateFinished}}
               shadowCastingBitMask={0} />
 
-            <ViroSphere materials={["red_sphere"]}
+            <Sphere materials={["red_sphere"]}
               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
               position={[.1, .25, 0]}
               onClick={this._selectRed}
               animation={{name:"tapAnimation", run:this.state.tapRed, onFinish:this._animateFinished}}
               shadowCastingBitMask={0} />
 
-            <ViroSphere materials={["yellow_sphere"]}
+            <Sphere materials={["yellow_sphere"]}
               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
               position={[.2, .25, 0]}
               onClick={this._selectYellow}
               animation={{name:"tapAnimation", run:this.state.tapYellow, onFinish:this._animateFinished}}
               shadowCastingBitMask={0}/>
-          </ViroNode>
+          </Node>
 
-          <Viro3DObject
+          <Object3D
             scale={[0, 0, 0]}
             source={require('./res/tesla/object_car.obj')}
             resources={[require('./res/tesla/object_car.mtl'),
@@ -89,7 +89,7 @@ var ARCarDemo = createReactClass({
             onClick={this._toggleButtons}
             animation={{name:"scaleCar", run:this.state.animateCar,}} />
 
-          <ViroSpotLight
+          <SpotLight
             innerAngle={5}
             outerAngle={25}
             direction={[0,-1,0]}
@@ -101,14 +101,14 @@ var ARCarDemo = createReactClass({
             shadowFarZ={7}
             shadowOpacity={.7} />
 
-          <ViroQuad
+          <Quad
             rotation={[-90, 0, 0]}
             position={[0, -0.001, 0]}
             width={2.5} height={2.5}
             arShadowReceiver={true} />
 
-        </ViroARImageMarker>
-      </ViroARScene>
+        </ARImageMarker>
+      </ARScene>
     );
   },
   _onAnchorFound() {
@@ -163,7 +163,7 @@ var ARCarDemo = createReactClass({
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   white: {
     lightingModel: "PBR",
     diffuseTexture: require('./res/tesla/object_car_main_Base_Color.png'),
@@ -216,7 +216,7 @@ ViroMaterials.createMaterials({
   },
 });
 
-ViroARTrackingTargets.createTargets({
+ARTrackingTargets.createTargets({
   logo : {
     source : require('./res/logo.png'),
     orientation : "Up",
@@ -224,7 +224,7 @@ ViroARTrackingTargets.createTargets({
   }
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     scaleUp:{properties:{scaleX:1, scaleY:1, scaleZ:1,},
                   duration: 500, easing: "bounce"},
     scaleDown:{properties:{scaleX:0, scaleY:0, scaleZ:0,},

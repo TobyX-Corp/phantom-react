@@ -4,20 +4,20 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-  Viro360Image,
-  ViroMaterials,
-  ViroBox,
-  ViroQuad,
-  Viro3DObject,
-  ViroOmniLight,
-  ViroController,
-  ViroNode,
-  ViroARPlane,
-  ViroFlexView,
-  ViroAmbientLight,
-  ViroLightingEnvironment
+  ARScene,
+  Text,
+  Image360,
+  Materials,
+  Box,
+  Quad,
+  Object3D,
+  OmniLight,
+  Controller,
+  Node,
+  ARPlane,
+  FlexView,
+  AmbientLight,
+  LightingEnvironment
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -27,7 +27,7 @@ var CONTROLLER_PULL = 3;
 
 /*
  Basic Physics example demonstrating how to apply constant forces, and
- as well how to apply an impulse force, inreference to a ViroController
+ as well how to apply an impulse force, inreference to a Controller
  in response to user actions.
  */
 var BasicARPhysicsSample = createReactClass({
@@ -44,12 +44,12 @@ var BasicARPhysicsSample = createReactClass({
 
   render: function() {
     return (
-     <ViroARScene physicsWorld={{ gravity:[0,-9.81,0], drawBounds:this.state.showCollisionBox }} ref={(component)=>{this.sceneRef = component}}>
-      <ViroAmbientLight color={"#FFFFFF"} intensity={10}/>
-      <ViroLightingEnvironment source={require('./res/ibl_envr.hdr')}/>
+     <ARScene physicsWorld={{ gravity:[0,-9.81,0], drawBounds:this.state.showCollisionBox }} ref={(component)=>{this.sceneRef = component}}>
+      <AmbientLight color={"#FFFFFF"} intensity={10}/>
+      <LightingEnvironment source={require('./res/ibl_envr.hdr')}/>
 
-      {/* ViroARPlaneSelector to detect for placing our "floor" plane and physics scene. */}
-      <ViroARPlane
+      {/* ARPlaneSelector to detect for placing our "floor" plane and physics scene. */}
+      <ARPlane
         key={"firstPlane"}
         ref={(component)=>{this.arPlaneRef = component}}
         onAnchorFound={this._onAnchorFound}>
@@ -57,8 +57,8 @@ var BasicARPhysicsSample = createReactClass({
         {/* Create our physics group node example, at the location of user-selected plane */}
         {this._getPhysicsGroup()}
 
-      </ViroARPlane>
-     </ViroARScene>
+      </ARPlane>
+     </ARScene>
     );
   },
 
@@ -85,16 +85,16 @@ var BasicARPhysicsSample = createReactClass({
 
     this.ballProperties = {friction:0.6, type:'Dynamic', mass:4, enabled:true, useGravity:true, shape:{type:'Sphere', params:[0.14]}, restitution:0.65};
     return (
-      <ViroNode position={this.state.planePosition}>
+      <Node position={this.state.planePosition}>
 
         {/* Create 2 UI buttons for controlling interaction with the basketballs */}
         {this._getHUDControl()}
 
         {/* Bind controls for interacting with the scene.*/}
-        <ViroController ref={(component)=>{this.controllerRef = component}} />
+        <Controller ref={(component)=>{this.controllerRef = component}} />
 
         {/* A Single Ball we have spawned in our scene */}
-        <Viro3DObject ref={(obj)=>{this.ball = obj}}
+        <Object3D ref={(obj)=>{this.ball = obj}}
                       source={require('./res/object_basketball_pbr.vrx')}
                       scale={[0.5, 0.5, 0.5]}
                       position={[0, 0, 1.0]}
@@ -105,7 +105,7 @@ var BasicARPhysicsSample = createReactClass({
                                   require('./res/blinn1_Normal_OpenGL.png')]}
                       type="VRX"
                       physicsBody={this.ballProperties}
-                      viroTag="BallTag"
+                      tag="BallTag"
                       onClick={this.state.controllerConfig == CONTROLLER_PUSH ? this.onItemPushImpulse("BallTag") : undefined}
                       onDrag={this.state.controllerConfig == CONTROLLER_GRIP ? ()=>{} : undefined}/>
 
@@ -113,32 +113,32 @@ var BasicARPhysicsSample = createReactClass({
         {this._renderCubes()}
 
         {/* Quad representing the ground. */}
-        <ViroQuad position={[0,0,0]} scale={[6.0, 8.0, 1.0]} rotation={[-90, 0, 0]} physicsBody={{ type:'Static', restitution:0.75 }}
+        <Quad position={[0,0,0]} scale={[6.0, 8.0, 1.0]} rotation={[-90, 0, 0]} physicsBody={{ type:'Static', restitution:0.75 }}
           onClickState={this.state.controllerConfig == CONTROLLER_PULL ? this.onItemPullForce("Surface") : undefined}
           ref={(component)=>{this.floorSurface = component}} onCollision={this._onFloorCollide} materials={'ground'}/>
-      </ViroNode>
+      </Node>
     );
   },
 
   _getHUDControl(){
     return (
-      <ViroNode position={[0, 1.5, -7.75]} transformBehaviors={["billboardX", "billboardY"]}>
-        <ViroFlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[-1.5,0,0]} onClick={this._resetScene}>
-          <ViroText style={styles.hud_text}  text={ "Reset Scene"} />
-        </ViroFlexView>
+      <Node position={[0, 1.5, -7.75]} transformBehaviors={["billboardX", "billboardY"]}>
+        <FlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[-1.5,0,0]} onClick={this._resetScene}>
+          <Text style={styles.hud_text}  text={ "Reset Scene"} />
+        </FlexView>
 
-        <ViroFlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[0,0,0]} onClick={this._toggleControllerInteraction}>
-          <ViroText style={styles.hud_text}  text={this._getControllerTextMode()} />
-        </ViroFlexView>
+        <FlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[0,0,0]} onClick={this._toggleControllerInteraction}>
+          <Text style={styles.hud_text}  text={this._getControllerTextMode()} />
+        </FlexView>
 
-        <ViroFlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[1.5,0,0]} onClick={this._toggleCollisionBox}>
-          <ViroText style={styles.hud_text}  text={"Toggle Phyz boxes"} />
-        </ViroFlexView>
+        <FlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[1.5,0,0]} onClick={this._toggleCollisionBox}>
+          <Text style={styles.hud_text}  text={"Toggle Phyz boxes"} />
+        </FlexView>
 
-        <ViroFlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[3,0,0]} onClick={this._addCube}>
-          <ViroText style={styles.hud_text}  text={"Add Cube"} />
-        </ViroFlexView>
-      </ViroNode>
+        <FlexView style={{flexDirection: 'column'}} width={1} height={0.8} materials="hud_text_bg" position={[3,0,0]} onClick={this._addCube}>
+          <Text style={styles.hud_text}  text={"Add Cube"} />
+        </FlexView>
+      </Node>
     )
   },
 
@@ -222,7 +222,7 @@ var BasicARPhysicsSample = createReactClass({
   },
 
  _onFloorCollide(collidedTag, collidedPoint, collidedNormal){
-    console.log("Viro box has collided on the " + collidedTag);
+    console.log("Box has collided on the " + collidedTag);
     if (collidedTag == "BallTag"){
       this.floorSurface.setNativeProps({materials:["ground_hit"]});
     }
@@ -232,7 +232,7 @@ var BasicARPhysicsSample = createReactClass({
     var views = [];
     for (var i = 0; i < this.state.totalCubes; i ++){
       var cubeKey = "CubeTag_" + i;
-      views.push((<ViroBox scale={[0.2, 0.2, 0.2]}
+      views.push((<Box scale={[0.2, 0.2, 0.2]}
                         position={[-0.5, 1, -1.3]}
                         rotation={[0, 0, 0]}
                         physicsBody={{type:'Dynamic', mass:25, enabled:true, useGravity:true, restitution:0.35, friction:0.75}}
@@ -259,7 +259,7 @@ var styles = StyleSheet.create({
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   hud_text_bg: {
     diffuseColor: "#00ffff"
   },

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2017-present, Viro Media, Inc.
+# Copyright (c) 2020-present, TobyX Corp.
 # All rights reserved.
 #
 # This launches a ngrok process to tunnel from

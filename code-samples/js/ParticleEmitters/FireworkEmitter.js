@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
-import {ViroParticleEmitter} from 'phantom-react';
+import {ParticleEmitter} from 'phantom-react';
 import PropTypes from 'prop-types';
 var ColorPropType = require('react-native').ColorPropType;
 var createReactClass = require('create-react-class');
@@ -19,17 +19,17 @@ var FireworkEmitter = createReactClass({
   },
 
   render: function() {
-    var viroFireworkColors =["#ff2d2d","#42ff42","#00edff","#ffff00","#ffb5f8","#00ff1d","#00edff","#ffb14c", "#ff7cf4"];
-    var colorRand1 = viroFireworkColors[Math.floor((Math.random() * 5) + 0)];
-    var colorRand2 = viroFireworkColors[Math.floor((Math.random() * 5) + 0)];
-    var colorRand3 = viroFireworkColors[Math.floor((Math.random() * 5) + 0)];
+    var fireworkColors =["#ff2d2d","#42ff42","#00edff","#ffff00","#ffb5f8","#00ff1d","#00edff","#ffb14c", "#ff7cf4"];
+    var colorRand1 = fireworkColors[Math.floor((Math.random() * 5) + 0)];
+    var colorRand2 = fireworkColors[Math.floor((Math.random() * 5) + 0)];
+    var colorRand3 = fireworkColors[Math.floor((Math.random() * 5) + 0)];
 
     var startColorRange1 = this.props.startColor == undefined ? colorRand1 : this.props.startColor;
     var startColorRange2 = this.props.startColor == undefined ? colorRand2 : this.props.startColor;
     var endColor = this.props.endColor == undefined ? colorRand3 : this.props.endColor;
 
     return (
-      <ViroParticleEmitter
+      <ParticleEmitter
           position={this.props.explosionLocation}
           duration={1200}
           delay={this.props.explosionDelay}

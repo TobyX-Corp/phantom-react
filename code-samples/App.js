@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -16,8 +16,8 @@ import {
 } from 'react-native';
 
 import {
-  ViroVRSceneNavigator,
-  ViroARSceneNavigator,
+  VRSceneNavigator,
+  ARSceneNavigator,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -31,8 +31,8 @@ var vrScenes = {
     '360PhotoTour': require('./js/360PhotoTour/MainScene'),
     'HumanBody': require('./js/HumanBody/MainScene'),
     'ProductShowcase': require('./js/ProductShowcase/ProductShowcase'),
-    'ViroMediaPlayer': require('./js/ViroMediaPlayer/ViroTheatre'),
-    'ParticleEmitters': require('./js/ParticleEmitters/ViroParticleTemplates'),
+    'MediaPlayer': require('./js/MediaPlayer/Theatre'),
+    'ParticleEmitters': require('./js/ParticleEmitters/ParticleTemplates'),
     'PhysicsSample': require('./js/PhysicsSample/BasicPhysicsSample'),
 }
 
@@ -46,12 +46,12 @@ var arScenes = {
 
 var showARScene = true;
 
-var ViroCodeSamplesSceneNavigator = createReactClass({
+var CodeSamplesSceneNavigator = createReactClass({
   render: function() {
 
     if (showARScene) {
       return (
-        <ViroARSceneNavigator
+        <ARSceneNavigator
           initialScene={{
             scene: arScenes['ARSimpleSample'],
           }}
@@ -59,7 +59,7 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
         );
     } else {
       return (
-        <ViroVRSceneNavigator
+        <VRSceneNavigator
           initialScene={{
             scene: vrScenes['360PhotoTour'],
           }}
@@ -71,6 +71,6 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
 });
 
 // Uncomment the below line to use the ARDrivingCar Demo. Don't forget to set the apiKey variable in ARDrivingCar.js
-// ViroCodeSamplesSceneNavigator = require('./js/ARDrivingCarDemo/ARDrivingCar');
+// CodeSamplesSceneNavigator = require('./js/ARDrivingCarDemo/ARDrivingCar');
 
-module.exports = ViroCodeSamplesSceneNavigator;
+module.exports = CodeSamplesSceneNavigator;

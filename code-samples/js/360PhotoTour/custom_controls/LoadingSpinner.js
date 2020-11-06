@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -16,22 +16,22 @@ import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
-  ViroScene,
-  ViroLight,
-  Viro360Image,
-  ViroImageCard,
-  ViroAnimations,
-  ViroAnimatedComponent,
-  ViroNode,
-  ViroSpinner,
-  ViroText,
-  ViroSphere,
-  ViroUtils,
+  Scene,
+  Light,
+  Image360,
+  ImageCard,
+  Animations,
+  AnimatedComponent,
+  Node,
+  Spinner,
+  Text,
+  Sphere,
+  Utils,
 } from 'phantom-react';
-let polarToCartesian = ViroUtils.polarToCartesian;
+let polarToCartesian = Utils.polarToCartesian;
 
 /**
- * Render a simple custom control that groups together a ViroSpinner and text.
+ * Render a simple custom control that groups together a Spinner and text.
  */
 export default class LoadingSpinner extends Component {
   constructor() {
@@ -42,13 +42,13 @@ export default class LoadingSpinner extends Component {
     var spinnerPosition = polarToCartesian([0, 0, 0]);
     var textPosition = polarToCartesian([1, -25, -40]);
     return (
-      <ViroNode {...this.props}>
-                {/* NOTE: Additional layer of ViroNode is placed to get around a temporary billboarding bug */}
-                <ViroNode position={polarToCartesian([0, 0, 0])} transformBehaviors={["billboard"]}>
-                  <ViroSpinner position={spinnerPosition} scale={[.7,.7,.1]} spinnerType='dark' />
-                  <ViroText style={styles.spinnerTextStyle} position={textPosition} text="Loading ...." />
-                </ViroNode>
-      </ViroNode>
+      <Node {...this.props}>
+                {/* NOTE: Additional layer of Node is placed to get around a temporary billboarding bug */}
+                <Node position={polarToCartesian([0, 0, 0])} transformBehaviors={["billboard"]}>
+                  <Spinner position={spinnerPosition} scale={[.7,.7,.1]} spinnerType='dark' />
+                  <Text style={styles.spinnerTextStyle} position={textPosition} text="Loading ...." />
+                </Node>
+      </Node>
     );
   }
 }

@@ -5,19 +5,19 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroARScene,
-  ViroText,
-  ViroMaterials,
-  ViroBox,
-  Viro3DObject,
-  ViroAmbientLight,
-  ViroSpotLight,
-  ViroARPlane,
-  ViroARPlaneSelector,
-  ViroQuad,
-  ViroNode,
-  ViroAnimations,
-  ViroConstants
+  ARScene,
+  Text,
+  Materials,
+  Box,
+  Object3D,
+  AmbientLight,
+  SpotLight,
+  ARPlane,
+  ARPlaneSelector,
+  Quad,
+  Node,
+  Animations,
+  Constants
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -31,18 +31,18 @@ var HelloWorldSceneAR = createReactClass({
   },
   render: function() {
     return (
-      <ViroARScene onTrackingUpdated={this._onTrackingUpdated}>
+      <ARScene onTrackingUpdated={this._onTrackingUpdated}>
 
-        {/* Text to show whether or not the AR system has initialized yet, see ViroARScene's onTrackingInitialized*/}
-        <ViroText text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
+        {/* Text to show whether or not the AR system has initialized yet, see ARScene's onTrackingInitialized*/}
+        <Text text={this.state.text} scale={[.5, .5, .5]} position={[0, 0, -1]} style={styles.helloWorldTextStyle} />
 
-        <ViroBox position={[0, -.5, -1]}
+        <Box position={[0, -.5, -1]}
           animation={{name: "rotate", run: true, loop: true}}
           scale={[.3, .3, .1]} materials={["grid"]} />
 
-        <ViroAmbientLight color={"#aaaaaa"} influenceBitMask={1} />
+        <AmbientLight color={"#aaaaaa"} influenceBitMask={1} />
 
-        <ViroSpotLight
+        <SpotLight
             innerAngle={5}
             outerAngle={90}
             direction={[0,-1,-.2]}
@@ -54,11 +54,11 @@ var HelloWorldSceneAR = createReactClass({
         {/* Node that contains a light, an object and a surface to catch its shadow
             notice that the dragType is "FixedToWorld" so the object can be dragged
             along real world surfaces and points. */}
-        <ViroNode position={[-.5, -.5, -.5]} dragType="FixedToWorld" onDrag={()=>{}} >
+        <Node position={[-.5, -.5, -.5]} dragType="FixedToWorld" onDrag={()=>{}} >
 
           {/* Spotlight to cast light on the object and a shadow on the surface, see
-              the Viro documentation for more info on lights & shadows */}
-          <ViroSpotLight
+              the Phantom documentation for more info on lights & shadows */}
+          <SpotLight
             innerAngle={5}
             outerAngle={45}
             direction={[0,-1,-.2]}
@@ -71,7 +71,7 @@ var HelloWorldSceneAR = createReactClass({
             shadowFarZ={5}
             shadowOpacity={.7} />
 
-          <Viro3DObject
+          <Object3D
               source={require('./res/emoji_smile/emoji_smile.vrx')}
               position={[0, .2, 0]}
               scale={[.2, .2, .2]}
@@ -83,22 +83,22 @@ var HelloWorldSceneAR = createReactClass({
                        require('./res/emoji_smile/emoji_smile_specular.png'),
                        require('./res/emoji_smile/emoji_smile_normal.png')]}/>
 
-          <ViroQuad
+          <Quad
             rotation={[-90,0,0]}
             width={.5} height={.5}
             arShadowReceiver={true}
             lightReceivingBitMask={2} />
 
-        </ViroNode>
+        </Node>
 
         {/* Node that contains a light, an object and a surface to catch its shadow
           notice that the dragType is "FixedToWorld" so the object can be dragged
           along real world surfaces and points. */}
-        <ViroNode position={[.5,-.5,-.5]} dragType="FixedToWorld" onDrag={()=>{}} >
+        <Node position={[.5,-.5,-.5]} dragType="FixedToWorld" onDrag={()=>{}} >
 
           {/* Spotlight to cast light on the object and a shadow on the surface, see
-              the Viro documentation for more info on lights & shadows */}
-          <ViroSpotLight
+              the Phantom documentation for more info on lights & shadows */}
+          <SpotLight
             innerAngle={5}
             outerAngle={45}
             direction={[0,-1,-.2]}
@@ -111,7 +111,7 @@ var HelloWorldSceneAR = createReactClass({
             shadowFarZ={5}
             shadowOpacity={.7} />
 
-          <Viro3DObject
+          <Object3D
             source={require('./res/object_soccerball/object_soccer_ball.vrx')}
             position={[0, .15, 0]}
             scale={[.3, .3, .3]}
@@ -122,21 +122,21 @@ var HelloWorldSceneAR = createReactClass({
             resources={[require('./res/object_soccerball/object_soccer_ball_diffuse.png'),
                        require('./res/object_soccerball/object_soccer_ball_normal.png'),
                        require('./res/object_soccerball/object_soccer_ball_specular.png')]}/>
-          <ViroQuad
+          <Quad
             rotation={[-90,0,0]}
             width={.5} height={.5}
             arShadowReceiver={true}
             lightReceivingBitMask={4} />
 
-        </ViroNode>
+        </Node>
 
-      </ViroARScene>
+      </ARScene>
     );
   },
   _onTrackingUpdated(state, reason) {
     // if the state changes to "TRACKING_NORMAL" for the first time, then
     // that means the AR session has initialized!
-    if (!this.state.hasARInitialized && state == ViroConstants.TRACKING_NORMAL) {
+    if (!this.state.hasARInitialized && state == Constants.TRACKING_NORMAL) {
       this.setState({
         hasARInitialized : true,
         text : "Hello World!"
@@ -155,13 +155,13 @@ var styles = StyleSheet.create({
   },
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   grid: {
     diffuseTexture: require('./res/grid_bg.jpg'),
   },
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
   rotate: {
     properties: {
       rotateY: "+=90"

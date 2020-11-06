@@ -4,16 +4,16 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroSpotLight,
-  ViroDirectionalLight,
-  ViroAmbientLight,
-  ViroOrbitCamera,
-  ViroScene,
-  Viro3DObject,
-  ViroText,
-  ViroSkyBox,
-  ViroNode,
-  ViroMaterials,
+  SpotLight,
+  DirectionalLight,
+  AmbientLight,
+  OrbitCamera,
+  Scene,
+  Object3D,
+  Text,
+  SkyBox,
+  Node,
+  Materials,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -27,30 +27,30 @@ var MainScene = createReactClass({
 
   render: function() {
     return (
-     <ViroScene style={styles.container}>
-        <ViroSkyBox source={{nx:require('./res/grid_bg.jpg'),
+     <Scene style={styles.container}>
+        <SkyBox source={{nx:require('./res/grid_bg.jpg'),
                              px:require('./res/grid_bg.jpg'),
                              ny:require('./res/grid_bg.jpg'),
                              py:require('./res/grid_bg.jpg'),
                              nz:require('./res/grid_bg.jpg'),
                              pz:require('./res/grid_bg.jpg')}} />
-        <ViroOrbitCamera position={[0, 0, -0]} active={true} focalPoint={[0, 0, -1]} />
-        <ViroDirectionalLight direction={[0, 0, -1]} color="#ffffff" />
+        <OrbitCamera position={[0, 0, -0]} active={true} focalPoint={[0, 0, -1]} />
+        <DirectionalLight direction={[0, 0, -1]} color="#ffffff" />
 
-        <ViroAmbientLight color="#aaaaaa" />
+        <AmbientLight color="#aaaaaa" />
 
-         <ViroNode position={[0, 0, -1]} >
-            <Viro3DObject source={require('./res/heart.obj')}
+         <Node position={[0, 0, -1]} >
+            <Object3D source={require('./res/heart.obj')}
                        materials={["heart"]} type="OBJ" />
-       </ViroNode>
-       <ViroText text="Heart" position={[0.0, 0.0, -3]} style={styles.textStyle}
+       </Node>
+       <Text text="Heart" position={[0.0, 0.0, -3]} style={styles.textStyle}
                  transformBehaviors={["billboardY"]}/>
-     </ViroScene>
+     </Scene>
     );
   },
 });
 
-var materials = ViroMaterials.createMaterials({
+var materials = Materials.createMaterials({
    heart: {
      lightingModel: "Blinn",
      diffuseTexture: require('./res/Heart_D3.jpg'),

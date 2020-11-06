@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -15,20 +15,20 @@ import {
 } from 'react-native';
 
 import {
-  ViroARScene,
-  ViroImage,
-  ViroQuad,
-  ViroNode,
-  ViroMaterials,
-  ViroOmniLight,
-  ViroARTrackingTargets,
-  ViroARImageMarker,
-  ViroAnimations,
-  Viro3DObject,
-  ViroSpotLight,
-  ViroAmbientLight,
-  ViroParticleEmitter,
-  ViroSphere,
+  ARScene,
+  Image,
+  Quad,
+  Node,
+  Materials,
+  OmniLight,
+  ARTrackingTargets,
+  ARImageMarker,
+  Animations,
+  Object3D,
+  SpotLight,
+  AmbientLight,
+  ParticleEmitter,
+  Sphere,
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
@@ -46,14 +46,14 @@ var ARPosterDemo = createReactClass({
 
   render() {
     return (
-      <ViroARScene>
-        <ViroAmbientLight color="#ffffff" intensity={200}/>
+      <ARScene>
+        <AmbientLight color="#ffffff" intensity={200}/>
 
-        <ViroARImageMarker target={"poster"} onAnchorFound={this._onAnchorFound} pauseUpdates={this.state.pauseUpdates}>
+        <ARImageMarker target={"poster"} onAnchorFound={this._onAnchorFound} pauseUpdates={this.state.pauseUpdates}>
 
-          <ViroNode position={[0, -.1, 0]} scale={[0,0,0]} rotation={[-90, 0, 0]} dragType="FixedToWorld" onDrag={()=>{}}
+          <Node position={[0, -.1, 0]} scale={[0,0,0]} rotation={[-90, 0, 0]} dragType="FixedToWorld" onDrag={()=>{}}
             animation={{name:"scaleModel", run:this.state.playAnim,}} >
-            <Viro3DObject onLoadEnd={this._onModelLoad}
+            <Object3D onLoadEnd={this._onModelLoad}
               source={require('./res/blackpanther/object_bpanther_anim.vrx')}
               resources={[require('./res/blackpanther/object_bpanther_Base_Color.png'),
                           require('./res/blackpanther/object_bpanther_Metallic.png'),
@@ -65,39 +65,39 @@ var ARPosterDemo = createReactClass({
               animation={{name:this.state.animationName, run:this.state.modelAnim, loop:this.state.loopState, onFinish:this._onFinish,}}
               type="VRX" />
   
-          </ViroNode>
+          </Node>
 
-        </ViroARImageMarker>
+        </ARImageMarker>
 
-        <ViroOmniLight
+        <OmniLight
             intensity={300}
             position={[-10, 10, 1]}
             color={"#FFFFFF"}
             attenuationStartDistance={20}
             attenuationEndDistance={30} />
 
-        <ViroOmniLight
+        <OmniLight
             intensity={300}
             position={[10, 10, 1]}
             color={"#FFFFFF"}
             attenuationStartDistance={20}
             attenuationEndDistance={30} />
 
-        <ViroOmniLight
+        <OmniLight
             intensity={300}
             position={[-10, -10, 1]}
             color={"#FFFFFF"}
             attenuationStartDistance={20}
             attenuationEndDistance={30} />
 
-        <ViroOmniLight
+        <OmniLight
             intensity={300}
             position={[10, -10, 1]}
             color={"#FFFFFF"}
             attenuationStartDistance={20}
             attenuationEndDistance={30} />
 
-        <ViroSpotLight
+        <SpotLight
           position={[0, 8, -2]}
           color="#ffffff"
           direction={[0, -1, 0]}
@@ -109,14 +109,14 @@ var ARPosterDemo = createReactClass({
           castsShadow={true}
         />
 
-        <ViroQuad
+        <Quad
           rotation={[-90, 0, 0]}
           position={[0, -1.6, 0]}
           width={5} height={5}
           arShadowReceiver={true}
           />
 
-      </ViroARScene>
+      </ARScene>
     );
   },
 
@@ -154,7 +154,7 @@ var styles = StyleSheet.create({
   },
 });
 
-ViroARTrackingTargets.createTargets({
+ARTrackingTargets.createTargets({
   poster : {
     source : require('./res/blackpanther.jpg'),
     orientation : "Up",
@@ -162,7 +162,7 @@ ViroARTrackingTargets.createTargets({
   }
 });
 
-ViroAnimations.registerAnimations({
+Animations.registerAnimations({
     scaleModel:{properties:{scaleX:1, scaleY:1, scaleZ:1,},
                   duration: 1000},
 });

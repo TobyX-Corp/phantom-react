@@ -4,21 +4,21 @@ import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 
 import {
-  ViroScene,
-  ViroText,
-  Viro360Image,
-  ViroMaterials,
-  ViroBox,
-  Viro3DObject,
-  ViroOmniLight,
-  ViroController
+  Scene,
+  Text,
+  Image360,
+  Materials,
+  Box,
+  Object3D,
+  OmniLight,
+  Controller
 } from 'phantom-react';
 
 var createReactClass = require('create-react-class');
 
 /*
  Basic Physics example demonstrating how to apply constant forces, and
- as well how to apply an impulse force, inreference to a ViroController
+ as well how to apply an impulse force, inreference to a Controller
  in response to user actions.
  */
 var BasicPhysicsSample = createReactClass({
@@ -59,21 +59,21 @@ var BasicPhysicsSample = createReactClass({
 
   render: function() {
     return (
-     <ViroScene>
-      <ViroController ref={this._setControllerNodeRef} />
-       <ViroBox
+     <Scene>
+      <Controller ref={this._setControllerNodeRef} />
+       <Box
            physicsBody={{
              type:'Static'
            }}
            position={[0, -2, -3]}
            materials={["ground"]}
            height={1} width={50} length={50}
-           viroTag="Ground"
+           tag="Ground"
            onCollision={this.onGroundCollide}
            onClick={this.spawnBox}
        />
 
-       <ViroBox
+       <Box
          ref={this._setBoxRef}
          position={[0, 6, -3]}
          materials={'box'}
@@ -82,13 +82,13 @@ var BasicPhysicsSample = createReactClass({
            mass: 2,
            force:{value:this.state.boxConstantForce}
          }}
-         viroTag="Box"
+         tag="Box"
          onCollision={this.onBoxCollide}
          onClick={this.onBoxClicked}
          onDrag ={this.onDragg}
          />
 
-     </ViroScene>
+     </Scene>
     );
   },
 
@@ -117,12 +117,12 @@ var BasicPhysicsSample = createReactClass({
   },
 
   onBoxCollide(collidedTag, collidedPoint, collidedNormal){
-    console.log("Viro box has collided on the " + collidedTag);
+    console.log("Box has collided on the " + collidedTag);
   }
 
 });
 
-ViroMaterials.createMaterials({
+Materials.createMaterials({
   box: {
       cullMode: "None",
       shininess: 2.0,
