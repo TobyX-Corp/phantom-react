@@ -8,4 +8,5 @@ Pod::Spec.new do |s|
   s.author              = 'TobyX Corp'
   s.requires_arc        = true
   s.platform            = :ios, '9.3'
+  s.homepage		= 'https://tobyx-corp.github.io/phantom-core/'
 end
