@@ -267,7 +267,7 @@ public class VRTParticleEmitter extends VRTControl {
 
         mCurrentImageUri = imageUri;
 
-        final ImageDownloader downloader = new ImageDownloader(getPhantomContext());
+        final ImageDownloader downloader = new ImageDownloader(getContext());
         if (mCurrentImageUri != null){
             mImageDownloadListener = new ImageParticleDownloadListener();
             downloader.getImageAsync(imageMap, mImageDownloadListener);

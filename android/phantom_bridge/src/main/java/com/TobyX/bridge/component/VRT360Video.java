@@ -201,7 +201,7 @@ public class VRT360Video extends VRTNode {
     }
 
     public void setSource(String source) {
-        mSource = Helper.parseUri(source, getPhantomContext()).toString();
+        mSource = Helper.parseUri(source, getContext()).toString();
         mNeedsVideoTextureReset = true;
     }
 

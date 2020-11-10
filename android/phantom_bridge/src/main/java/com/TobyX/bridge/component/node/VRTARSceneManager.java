@@ -103,7 +103,7 @@ public class VRTARSceneManager extends VRTSceneManager<VRTARScene> {
         map.put(PhantomEvents.ON_ANCHOR_FOUND, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_FOUND));
         map.put(PhantomEvents.ON_ANCHOR_UPDATED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_UPDATED));
         map.put(PhantomEvents.ON_ANCHOR_REMOVED, MapBuilder.of("registrationName", PhantomEvents.ON_ANCHOR_REMOVED));
-        map.put(PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM MapBuilder.of("registrationName", PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM));
+        map.put(PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM, MapBuilder.of("registrationName", PhantomEvents.ON_CAMERA_AR_HIT_TEST_PHANTOM));
         map.put(PhantomEvents.ON_AR_POINT_CLOUD_UPDATE, MapBuilder.of("registrationName", PhantomEvents.ON_AR_POINT_CLOUD_UPDATE));
         return map;
     }

@@ -100,7 +100,7 @@ public class VRTARScene extends VRTScene implements ARScene.Listener {
             return;
         }
 
-        final ImageDownloader downloader = new ImageDownloader(getPhantomContext());
+        final ImageDownloader downloader = new ImageDownloader(getContext());
         downloader.setTextureFormat(Texture.Format.RGBA8);
 
         mImageDownloadListener = new PointCloudImageDownloadListener();

@@ -47,8 +47,8 @@ import com.facebook.react.uimanager.UIBlock;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.module.annotations.ReactModule;
 import com.TobyX.core.Vector;
-import com.TobyX.core.MediaRecorder;
-import com.TobyX.core.MediaRecorder.Error;
+import com.TobyX.core.PhantomMediaRecorder;
+import com.TobyX.core.PhantomMediaRecorder.Error;
 import com.TobyX.core.ViewARCore;
 import com.TobyX.bridge.component.VRTARSceneNavigator;
 
@@ -87,14 +87,14 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final MediaRecorder recorder = scene.getARView().getRecorder();
+                final PhantomMediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     reactErrorDelegate.invoke(UNSUPPORTED_PLATFORM_ERROR);
                     return;
                 }
 
                 // Construct an error listener callback that may be triggered during recording.
-                final MediaRecorder.RecordingErrorListener ErrorDelegate = new MediaRecorder.RecordingErrorListener() {
+                final PhantomMediaRecorder.RecordingErrorListener ErrorDelegate = new PhantomMediaRecorder.RecordingErrorListener() {
                     @Override
                     public void onRecordingFailed(Error error) {
                         reactErrorDelegate.invoke(error.toInt());
@@ -126,7 +126,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final MediaRecorder recorder = scene.getARView().getRecorder();
+                final PhantomMediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     WritableMap returnMap = Arguments.createMap();
                     returnMap.putBoolean(RECORDING_SUCCESS_KEY, false);
@@ -137,8 +137,8 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 }
 
                 // Construct a completion delegate callback to be notified of the result of the recording.
-                final MediaRecorder.VideoRecordingFinishListener completionCallback =
-                        new MediaRecorder.VideoRecordingFinishListener() {
+                final PhantomMediaRecorder.VideoRecordingFinishListener completionCallback =
+                        new PhantomMediaRecorder.VideoRecordingFinishListener() {
                     @Override
                     public void onError(Error error) {
                         WritableMap returnMap = Arguments.createMap();
@@ -184,7 +184,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 VRTARSceneNavigator scene = (VRTARSceneNavigator) sceneView;
 
                 // Grab the recorder from the ar scene view
-                final MediaRecorder recorder = scene.getARView().getRecorder();
+                final PhantomMediaRecorder recorder = scene.getARView().getRecorder();
                 if (recorder == null){
                     WritableMap returnMap = Arguments.createMap();
                     returnMap.putBoolean(RECORDING_SUCCESS_KEY, false);
@@ -195,7 +195,7 @@ public class ARSceneNavigatorModule extends ReactContextBaseJavaModule {
                 }
 
                 // Construct a completion delegate callback to be notified of sceenshot results.
-                final MediaRecorder.ScreenshotFinishListener callback = new MediaRecorder.ScreenshotFinishListener() {
+                final PhantomMediaRecorder.ScreenshotFinishListener callback = new PhantomMediaRecorder.ScreenshotFinishListener() {
                     @Override
                     public void onError(Error error) {
                         WritableMap returnMap = Arguments.createMap();

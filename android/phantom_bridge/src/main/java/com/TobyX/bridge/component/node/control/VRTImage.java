@@ -192,7 +192,7 @@ public class VRTImage extends VRTControl {
     }
 
     public void updateImage() {
-        final ImageDownloader downloader = new ImageDownloader(getPhantomContext());
+        final ImageDownloader downloader = new ImageDownloader(getContext());
         downloader.setTextureFormat(mFormat);
 
         // If an image isn't already set, then first fetch the placeholder (which should be on disk)

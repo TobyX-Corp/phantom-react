@@ -158,7 +158,7 @@ public class VRT3DSceneNavigator extends FrameLayout {
     /**
      * Context passed around to views to get render specific information.
      */
-    private Context mContext;
+    private PhantomContext mContext;
 
     protected final ReactContext mReactContext;
 

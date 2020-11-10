@@ -99,8 +99,8 @@ public class VRT3DSceneNavigatorManager extends VRTViewGroupManager<VRT3DSceneNa
     }
 
     @ReactProp(name = "hasOnExitPhantomCallback", defaultBoolean = false)
-    public void setHasOnExitPhantomCallback(VRT3DSceneNavigator navigator, boolean hasOnExitPhantomCallback) {
-        navigator.setHasOnExitPhantomCallback(hasOnExitPhantomCallback);
+    public void setHasOnExitCallback(VRT3DSceneNavigator navigator, boolean hasOnExitCallback) {
+        navigator.setHasOnExitCallback(hasOnExitCallback);
     }
 
     @Override

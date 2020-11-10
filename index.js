@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016-present, Viro Media, Inc.
+ * Copyright (c) 2020-present, TobyX Corp.
  * All rights reserved.
  *
  */

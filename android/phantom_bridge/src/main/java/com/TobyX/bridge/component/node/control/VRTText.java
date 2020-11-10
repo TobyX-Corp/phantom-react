@@ -180,7 +180,7 @@ public class VRTText extends VRTControl {
         }
 
         // Create text
-        mNativeText = new Text.TextBuilder().PhantomContext(mContext)
+        mNativeText = new Text.TextBuilder().phantomContext(mContext)
                 .textString(mText)
                 .fontFamilyName(mFontFamilyName)
                 .fontSize(mSize)
