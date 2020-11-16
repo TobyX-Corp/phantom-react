@@ -11,7 +11,8 @@
     "preset": "react-native"
   },
   "peerDependencies": {
-    "react": "16.11.0"
+    "react": "16.11.0",
+    "react-native": "0.62.2"
   },
   "files": [
     "components",
@@ -25,8 +26,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "prop-types": "^15.5.10",
-    "react-native": "0.62.2"
+    "prop-types": "^15.5.10"
   },
   "repository": {
     "type": "git",
