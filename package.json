@@ -10,10 +10,7 @@
   "jest": {
     "preset": "react-native"
   },
-  "peerDependencies": {
-    "react": "16.11.0",
-    "react-native": "0.62.2"
-  },
+  "peerDependencies": {},
   "files": [
     "components",
     "android/phantom_react",
@@ -26,7 +23,9 @@
     "LICENSE"
   ],
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react": "16.11.0",
+    "react-native": "0.62.2"
   },
   "repository": {
     "type": "git",
