@@ -33,7 +33,7 @@ const PhantomReact = {
   get FlexView() { return require('./components/FlexView'); },
   get Utils() { return require('./components/Utilities/Utils'); },
   get Props() { return require('./components/Utilities/Props'); },
-  get Text() { return require('./components/Text'); },
+  get PhantomText() { return require('./components/PhantomText'); },
   get Geometry() { return require('./components/Geometry'); },
   get Surface() { return require('./components/Surface'); },
   get Quad() { return require('./components/Quad'); },

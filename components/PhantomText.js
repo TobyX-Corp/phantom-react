@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * @providesModule Text
+ * @providesModule PhantomText
  * @flow
  */
 'use strict';
@@ -26,9 +26,9 @@ var TextStylePropTypes = require('./Styles/TextPropTypes');
 var stylePropType = StyleSheetPropType(TextStylePropTypes);
 
 /**
- * Used to render a Text
+ * Used to render a PhantomText
  */
-var Text = createReactClass({
+var PhantomText = createReactClass({
   propTypes: {
     ...View.propTypes,
     position: PropTypes.arrayOf(PropTypes.number),
@@ -223,7 +223,7 @@ var Text = createReactClass({
   },
 
   render: function() {
-    checkMisnamedProps("Text", this.props);
+    checkMisnamedProps("PhantomText", this.props);
 
     // Since materials and transformBehaviors can be either a string or an array, convert the string to a 1-element array.
     let materials = typeof this.props.materials === 'string' ? new Array(this.props.materials) : this.props.materials;
@@ -288,7 +288,7 @@ var Text = createReactClass({
 
 var VRTText = requireNativeComponent(
   'VRTText',
-  Text, {
+  PhantomText, {
     nativeOnly: {
                 scale:[1,1,1],
                 scalePivot:[0,0,0],
@@ -320,4 +320,4 @@ var VRTText = requireNativeComponent(
       }
 });
 
-module.exports = Text;
+module.exports = PhantomText;
