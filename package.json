@@ -26,11 +26,12 @@
   ],
   "dependencies": {
     "prop-types": "^15.5.10",
-    "react-native": "0.62.2"
+    "react-native": "0.62.2",
+    "rn-hardware-info": "^0.1.2"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/TobyX-Corp/phantom-react"
+    "type": "git",
+    "url": "https://github.com/TobyX-Corp/phantom-react"
   },
   "homepage": "https://github.com/TobyX-Corp/phantom-react"
 }
