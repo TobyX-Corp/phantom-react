@@ -73,7 +73,7 @@ var PortalScene = createReactClass({
       PropTypes.func
     ]),
 
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
     passable: PropTypes.bool,
   },

@@ -109,7 +109,7 @@ var VRTCamera = requireNativeComponent(
       canFuse: true,
       onFuse:true,
       timeToFuse:true,
-      Tag: true,
+      tag: true,
       scalePivot: true,
       rotationPivot: true,
       canCollide:true,

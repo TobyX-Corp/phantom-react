@@ -147,7 +147,7 @@ var Object3D = createReactClass({
                  target: PropTypes.string,
                  weight: PropTypes.number
     })),
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -240,7 +240,7 @@ var Object3D = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.Tag,
+      this.props.onCollision(event.nativeEvent.tag,
         event.nativeEvent.collidedPoint, event.nativeEvent.collidedNormal);
     }
   },

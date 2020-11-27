@@ -110,7 +110,7 @@ var Spinner = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 

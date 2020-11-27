@@ -112,7 +112,7 @@ var Polygon = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -200,7 +200,7 @@ var Polygon = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },

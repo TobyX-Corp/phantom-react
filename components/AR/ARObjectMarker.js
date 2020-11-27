@@ -54,7 +54,7 @@ var ARObjectMarker = createReactClass({
       PropTypes.func
     ]),
     onCollision: PropTypes.func,
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onAnchorFound: PropTypes.func,
     onAnchorUpdated: PropTypes.func,
     onAnchorRemoved: PropTypes.func,
@@ -113,7 +113,7 @@ var ARObjectMarker = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },

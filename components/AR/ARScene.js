@@ -227,12 +227,12 @@ var ARScene = createReactClass({
     this.props.onAnchorRemoved && this.props.onAnchorRemoved(event.nativeEvent.anchor);
   },
 
-  async findCollisionsWithRayAsync(from, to, closest, Tag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, Tag);
+  async findCollisionsWithRayAsync(from, to, closest, tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithRayAsync(findNodeHandle(this), from, to, closest, tag);
   },
 
-  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, Tag) {
-    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, Tag);
+  async findCollisionsWithShapeAsync(from, to, shapeString, shapeParam, tag) {
+    return await NativeModules.VRTSceneModule.findCollisionsWithShapeAsync(findNodeHandle(this), from, to, shapeString, shapeParam, tag);
   },
 
   async performARHitTestWithRay(ray) {

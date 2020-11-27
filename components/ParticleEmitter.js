@@ -37,7 +37,7 @@ var ParticleEmitter = createReactClass({
     onTransformUpdate: PropTypes.func,
     renderingOrder: PropTypes.number,
     visible: PropTypes.bool,
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     transformBehaviors: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.string),
       PropTypes.string

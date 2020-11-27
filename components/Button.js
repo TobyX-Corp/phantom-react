@@ -168,7 +168,7 @@ var BTN_TYPE_CLICKED = 'clicked';
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
 
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
 
@@ -258,7 +258,7 @@ var BTN_TYPE_CLICKED = 'clicked';
             onPinch={this.props.onPinch}
             onRotate={this.props.onRotate}
             onCollision={this.props.onCollision}
-            Tag={this.props.Tag}
+            tag={this.props.tag}
             onFuse={this.props.onFuse}
             animation={this.props.animation}
             onAnimationStart={this._onAnimationStart}

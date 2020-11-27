@@ -66,7 +66,7 @@ var ARPlaneSelector = createReactClass({
       PropTypes.func
     ]),
     onCollision: PropTypes.func,
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onAnchorFound: PropTypes.func,
     onAnchorUpdated: PropTypes.func,
     onAnchorRemoved: PropTypes.func,

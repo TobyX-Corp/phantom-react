@@ -158,7 +158,7 @@ var AnimatedImage = createReactClass({
       torque: PropTypes.arrayOf(PropTypes.number)
     }),
     renderingOrder: PropTypes.number,
-    Tag: PropTypes.string,
+    tag: PropTypes.string,
     onCollision: PropTypes.func,
   },
   _onLoadStart: function(event: Event) {
@@ -257,7 +257,7 @@ var AnimatedImage = createReactClass({
 
   _onCollision: function(event: Event){
     if (this.props.onCollision){
-      this.props.onCollision(event.nativeEvent.Tag, event.nativeEvent.collidedPoint,
+      this.props.onCollision(event.nativeEvent.tag, event.nativeEvent.collidedPoint,
                                                            event.nativeEvent.collidedNormal);
     }
   },
