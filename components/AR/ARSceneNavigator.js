@@ -71,8 +71,8 @@ var ARSceneNavigator = createReactClass({
   sceneNavigator: (undefined: ?Object),
   getDefaultProps: function() {
     return {
-      // Make sure AppProps aren't null to save us having to always check
-      AppProps: {},
+      // Make sure appProps aren't null to save us having to always check
+      appProps: {},
     };
   },
 
@@ -480,14 +480,14 @@ var ARSceneNavigator = createReactClass({
     var items = this._renderSceneStackItems();
 
     // update the arSceneNavigator with the latest given props on every render
-    this.arSceneNavigator.AppProps = this.props.AppProps;
-    this.sceneNavigator.AppProps = this.props.AppProps;
+    this.arSceneNavigator.appProps = this.props.appProps;
+    this.sceneNavigator.appProps = this.props.appProps;
 
     // If the user simply passes us the props from the root React component,
     // then we'll have an extra 'rootTag' key which React automatically includes
     // so remove it.
-    delete this.arSceneNavigator.AppProps.rootTag;
-    delete this.sceneNavigator.AppProps.rootTag;
+    delete this.arSceneNavigator.appProps.rootTag;
+    delete this.sceneNavigator.appProps.rootTag;
 
     return (
       <VRTARSceneNavigator

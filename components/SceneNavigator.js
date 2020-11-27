@@ -70,8 +70,8 @@ var SceneNavigator = createReactClass({
 
   getDefaultProps: function() {
     return {
-      // Make sure AppProps aren't null to save us having to always check
-      AppProps: {},
+      // Make sure appProps aren't null to save us having to always check
+      appProps: {},
       vrModeEnabled: true,
     };
   },
@@ -420,11 +420,11 @@ var SceneNavigator = createReactClass({
     var items = this._renderSceneStackItems();
 
     // update the sceneNavigator with the latest given props on every render
-    this.sceneNavigator.AppProps = this.props.AppProps;
+    this.sceneNavigator.appProps = this.props.appProps;
     // If the user simply passes us the props from the root React component,
     // then we'll have an extra 'rootTag' key which React automatically includes
     // so remove it.
-    delete this.sceneNavigator.AppProps.rootTag;
+    delete this.sceneNavigator.appProps.rootTag;
 
     return (
       <VRTSceneNavigator
