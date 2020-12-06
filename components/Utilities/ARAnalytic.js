@@ -4,8 +4,8 @@ import RnHardwareInfo from 'rn-hardware-info';
 
 // initialize
 const MaxSize = 10;
-const CpuWeight = 30;
-const RamWeight = 30;
+const CpuWeight = 50;
+const RamWeight = 50;
 // total score calculation
 //  CPU + RAM + Battery Temp + Network speed
 const Total = 0;
@@ -75,7 +75,7 @@ let ramScaling;
 let ramStdv;
 let ramScore;
 
-const ARAnalytic = () => {
+function ARAnalytic() {
   const [cpu_freq, setCpuFreq] = useState('0');
   const [ram_usg, setMemUsg] = useState('0');
   const [up_spd, setUpSpd] = useState('0');
