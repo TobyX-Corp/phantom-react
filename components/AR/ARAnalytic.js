@@ -183,4 +183,4 @@ const styles = StyleSheet.create({
     marginLeft: 50,
   },
 });
-export default ARAnalytic;
+module.exports =  ARAnalytic;
