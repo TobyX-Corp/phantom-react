@@ -151,7 +151,7 @@ function ARAnalytic() {
           }
         });
       }
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [cpu_freq]);
   // const update_device_info = () => {
