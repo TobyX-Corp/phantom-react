@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import RnHardwareInfo from 'rn-hardware-info';
 
+if(Platform.OS === 'ios'){ 
+	console.log('The Platform is IOS');
+}
 // initialize
 const MaxSize = 10;
 const CpuWeight = 50;
