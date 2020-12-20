@@ -9,12 +9,12 @@ if(Platform.OS === 'ios'){
 const MaxSize = 10;
 const CpuWeight = 50;
 const RamWeight = 50;
-const Threshold = 47.5
+const Threshold = 47.5;
 // total score calculation
 //  CPU + RAM + Battery Temp + Network speed
-const thresholdQ = []
-let counter = 0
-let off = false
+let thresholdQ = [];
+let counter = 0;
+let off = false;
 // average calculation
 const Average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 // stdv calculation
