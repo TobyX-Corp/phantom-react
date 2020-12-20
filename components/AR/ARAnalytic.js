@@ -207,7 +207,9 @@
 // });
 // module.exports =  ARAnalytic;
 
-
+import React, {useState, useEffect} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import RnHardwareInfo from 'rn-hardware-info';
 
 // initialize
 const MaxSize = 10;
@@ -307,6 +309,7 @@ function ARAnalytic() {
 
   useEffect(() => {
     const interval = setInterval(() => {
+
       if (RnHardwareInfo != null) {
 
         if(Platform.OS === 'ios'){
@@ -380,51 +383,41 @@ function ARAnalytic() {
               // setUpSpd(usage.upload_speed);
             }
           });
-          
         }
-        else if(Platform.OS === 'android'){ 
-          RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
 
-            if (ramQueue.length >= MaxSize) {
-              ramStdv = stdv(ramQueue);
-              if (ramStdv > 4) {
-                normedRam = Normalization(ramQueue);
-                ramAvg = Average(normedRam.q);
-                normedNewRamData = normedRam.q[9];
-                ramScaling = ScalingFactor(normedNewRamData, ramAvg);
-                ramScore = normedNewRamData * ramScaling * RamWeight;
-              } else {
-                ramAvg = Average(ramQueue);
-                ramScore = ramAvg * 0.01 * RamWeight;
-              }
-//              console.log('Regular data', ramQueue);
-//              console.log('Normalized data', normedRam);
-//              console.log('Average: ', ramAvg);
-//              console.log('Standard Deviation: ', ramStdv);
-//              console.log('New Data: ', ramQueue[9]);
-//              console.log('Current Normed Data: ', normedNewRamData);
-//              console.log('Current Scaling Factor: ', ramScaling);
-//              console.log('Current Score: ', ramScore);
-              ramQueue.shift();
-              ramQueue.push(ram_cb);
-            } else {
-              ramQueue.push(ram_cb);
-            }
+        if(Platform.OS === 'android'){
+            RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
 
-            setMemUsg(ramScore);
-            
-        });
+                if (ramQueue.length >= MaxSize) {
+                  ramStdv = stdv(ramQueue);
+                  if (ramStdv > 4) {
+                    normedRam = Normalization(ramQueue);
+                    ramAvg = Average(normedRam.q);
+                    normedNewRamData = normedRam.q[9];
+                    ramScaling = ScalingFactor(normedNewRamData, ramAvg);
+                    ramScore = normedNewRamData * ramScaling * RamWeight;
+                  } else {
+                    ramAvg = Average(ramQueue);
+                    ramScore = ramAvg * 0.01 * RamWeight;
+                  }
+                  ramQueue.shift();
+                  ramQueue.push(ram_cb);
+                } else {
+                  ramQueue.push(ram_cb);
+                }
+                    setMemUsg(ramScore);
+                });
 
-        RnHardwareInfo.getBatteryTemperature((temp_cb) => {
-          setTemp(temp_cb);
-        });
+            RnHardwareInfo.getBatteryTemperature((temp_cb) => {
+              setTemp(temp_cb);
+            });
 
-        setCpuFreq('N/A');
-        setDownSpd('N/A');
-        setUpSpd('N/A');
-      }
+            setCpuFreq('N/A');
+            setDownSpd('N/A');
+            setUpSpd('N/A');
+        }
         
-      }
+       }
     }, 5000);
     return () => clearInterval(interval);
   }, [cpu_freq]);
