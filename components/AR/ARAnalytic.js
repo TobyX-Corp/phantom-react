@@ -2,7 +2,7 @@
 // import {Platform, StyleSheet, Text, View} from 'react-native';
 // import RnHardwareInfo from 'rn-hardware-info';
 
-// if(Platform.OS === 'ios'){ 
+// if(Platform.OS === 'ios'){
 // 	console.log('The Platform is IOS');
 // }
 // // initialize
@@ -207,9 +207,9 @@
 // });
 // module.exports =  ARAnalytic;
 
-import React, {useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import RnHardwareInfo from 'rn-hardware-info';
+import React, { useState, useEffect } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import RnHardwareInfo from "rn-hardware-info";
 
 // initialize
 const MaxSize = 10;
@@ -221,7 +221,8 @@ const Threshold = 47.5;
 let thresholdQ = [];
 let off = false;
 // average calculation
-const Average = list => list.reduce((prev, curr) => prev + curr) / list.length;
+const Average = (list) =>
+  list.reduce((prev, curr) => prev + curr) / list.length;
 // stdv calculation
 function stdv([...data]) {
   let mean = Average(data),
@@ -237,7 +238,7 @@ function Timer(data) {
     thresholdQ = [];
     off = true;
   }
-  if (data < Threshold){
+  if (data < Threshold) {
     thresholdQ = [];
   } else {
     thresholdQ.push(data);
@@ -280,7 +281,7 @@ function Normalization(queue) {
     var norm = (queue[i] - min) / (max - min);
     newQueue.push(norm);
   }
-  return {q: newQueue, max: max, min: min};
+  return { q: newQueue, max: max, min: min };
 }
 
 const cpuQueue = [];
@@ -290,7 +291,7 @@ let normedNewCpuData;
 let cpuScaling;
 let cpuStdv;
 let cpuScore;
-let result
+let result;
 
 const ramQueue = [];
 let normedRam;
@@ -301,23 +302,21 @@ let ramStdv;
 let ramScore;
 
 function ARAnalytic() {
-  const [cpu_freq, setCpuFreq] = useState('0');
-  const [ram_usg, setMemUsg] = useState('0');
-  const [temperature, setTemp] = useState('0');
-  const [up_spd, setUpSpd] = useState('0');
-  const [down_spd, setDownSpd] = useState('0');
+  const [cpu_freq, setCpuFreq] = useState("0");
+  const [ram_usg, setMemUsg] = useState("0");
+  const [temperature, setTemp] = useState("0");
+  const [up_spd, setUpSpd] = useState("0");
+  const [down_spd, setDownSpd] = useState("0");
 
   useEffect(() => {
     const interval = setInterval(() => {
-
       if (RnHardwareInfo != null) {
-
-        if(Platform.OS === 'ios'){
+        if (Platform.OS === "ios") {
           RnHardwareInfo.getAppUsage((error, usage) => {
             if (error) {
               console.log(error);
             } else {
-              console.log('get app usage');
+              console.log("get app usage");
               console.log(usage);
               if (cpuQueue.length >= MaxSize) {
                 cpuStdv = stdv(cpuQueue);
@@ -330,24 +329,24 @@ function ARAnalytic() {
                 } else {
                   cpuAvg = Average(cpuQueue);
                   cpuScore = cpuAvg * 0.01 * CpuWeight;
-                  result = Timer(50);
+                  result = Timer(cpuScore);
                 }
-                // console.log('Regular data', cpuQueue);
-                // console.log('Normalized data', normedCpu);
-                // console.log('Average: ', cpuAvg);
-                // console.log('Standard Deviation: ', cpuStdv);
-                // console.log('New Data: ', cpuQueue[9]);
-                // console.log('Current Normed Data: ', normedNewCpuData);
-                // console.log('Current Scaling Factor: ', cpuScaling);
-                // console.log('Current Score: ', cpuScore);
-                console.log('off condition: ', result);
-                console.log('Current threshold queue: ', thresholdQ);
+                console.log("Regular data", cpuQueue);
+                console.log("Normalized data", normedCpu);
+                console.log("Average: ", cpuAvg);
+                console.log("Standard Deviation: ", cpuStdv);
+                console.log("New Data: ", cpuQueue[9]);
+                console.log("Current Normed Data: ", normedNewCpuData);
+                console.log("Current Scaling Factor: ", cpuScaling);
+                console.log("Current Score: ", cpuScore);
+                console.log("off condition: ", result);
+                console.log("Current threshold queue: ", thresholdQ);
                 cpuQueue.shift();
                 cpuQueue.push(usage.cpu_usage);
               } else {
                 cpuQueue.push(usage.cpu_usage);
               }
-  
+
               if (ramQueue.length >= MaxSize) {
                 ramStdv = stdv(ramQueue);
                 if (ramStdv > 4) {
@@ -360,14 +359,14 @@ function ARAnalytic() {
                   ramAvg = Average(ramQueue);
                   ramScore = ramAvg * 0.01 * RamWeight;
                 }
-                // console.log('Regular data', ramQueue);
-                // console.log('Normalized data', normedRam);
-                // console.log('Average: ', ramAvg);
-                // console.log('Standard Deviation: ', ramStdv);
-                // console.log('New Data: ', ramQueue[9]);
-                // console.log('Current Normed Data: ', normedNewRamData);
-                // console.log('Current Scaling Factor: ', ramScaling);
-                // console.log('Current Score: ', ramScore);
+                console.log("Regular data", ramQueue);
+                console.log("Normalized data", normedRam);
+                console.log("Average: ", ramAvg);
+                console.log("Standard Deviation: ", ramStdv);
+                console.log("New Data: ", ramQueue[9]);
+                console.log("Current Normed Data: ", normedNewRamData);
+                console.log("Current Scaling Factor: ", ramScaling);
+                console.log("Current Score: ", ramScore);
                 ramQueue.shift();
                 ramQueue.push(usage.memory_usage);
               } else {
@@ -376,7 +375,7 @@ function ARAnalytic() {
               // setCpuFreq(cpu_freq => [...cpu_freq, usage.cpu_usage]);
               setCpuFreq(cpuScore);
               setMemUsg(ramScore);
-              setTemp('N/A');
+              setTemp("N/A");
               setDownSpd(usage.download_speed);
               setUpSpd(usage.upload_speed);
               // setDownSpd(usage.download_speed);
@@ -385,39 +384,37 @@ function ARAnalytic() {
           });
         }
 
-        if(Platform.OS === 'android'){
-            RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
+        if (Platform.OS === "android") {
+          RnHardwareInfo.getDeviceMemInfo((ram_cb) => {
+            if (ramQueue.length >= MaxSize) {
+              ramStdv = stdv(ramQueue);
+              if (ramStdv > 4) {
+                normedRam = Normalization(ramQueue);
+                ramAvg = Average(normedRam.q);
+                normedNewRamData = normedRam.q[9];
+                ramScaling = ScalingFactor(normedNewRamData, ramAvg);
+                ramScore = normedNewRamData * ramScaling * RamWeight;
+              } else {
+                ramAvg = Average(ramQueue);
+                ramScore = ramAvg * 0.01 * RamWeight;
+              }
+              ramQueue.shift();
+              ramQueue.push(ram_cb);
+            } else {
+              ramQueue.push(ram_cb);
+            }
+            setMemUsg(ramScore);
+          });
 
-                if (ramQueue.length >= MaxSize) {
-                  ramStdv = stdv(ramQueue);
-                  if (ramStdv > 4) {
-                    normedRam = Normalization(ramQueue);
-                    ramAvg = Average(normedRam.q);
-                    normedNewRamData = normedRam.q[9];
-                    ramScaling = ScalingFactor(normedNewRamData, ramAvg);
-                    ramScore = normedNewRamData * ramScaling * RamWeight;
-                  } else {
-                    ramAvg = Average(ramQueue);
-                    ramScore = ramAvg * 0.01 * RamWeight;
-                  }
-                  ramQueue.shift();
-                  ramQueue.push(ram_cb);
-                } else {
-                  ramQueue.push(ram_cb);
-                }
-                    setMemUsg(ramScore);
-                });
+          RnHardwareInfo.getBatteryTemperature((temp_cb) => {
+            setTemp(temp_cb);
+          });
 
-            RnHardwareInfo.getBatteryTemperature((temp_cb) => {
-              setTemp(temp_cb);
-            });
-
-            setCpuFreq('N/A');
-            setDownSpd('N/A');
-            setUpSpd('N/A');
+          setCpuFreq("N/A");
+          setDownSpd("N/A");
+          setUpSpd("N/A");
         }
-        
-       }
+      }
     }, 5000);
     return () => clearInterval(interval);
   }, [cpu_freq]);
@@ -434,19 +431,19 @@ function ARAnalytic() {
       </TouchableOpacity> */}
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
   },
   button: {
-    backgroundColor: '#4ba37b',
+    backgroundColor: "#4ba37b",
     width: 200,
     borderRadius: 50,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 50,
     marginLeft: 50,
   },
 });
-module.exports =  ARAnalytic;
+module.exports = ARAnalytic;

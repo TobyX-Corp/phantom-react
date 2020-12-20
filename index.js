@@ -60,7 +60,7 @@ const ReactPhantom = {
   get ARImageMarker() { return require('./components/AR/ARImageMarker'); },
   get ARObjectMarker() { return require('./components/AR/ARObjectMarker'); },
   get ARCamera() { return require('./components/AR/ARCamera'); },
-  get ARAnalytic() {return require('./components/AR/ARAnalytic.js');}
+  get ARAnalytic() {return require('./components/AR/ARAnalytic');}
 }
 
 module.exports = ReactPhantom;
