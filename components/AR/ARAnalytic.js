@@ -88,6 +88,7 @@ let normedNewCpuData;
 let cpuScaling;
 let cpuStdv;
 let cpuScore;
+let result
 
 const ramQueue = [];
 let normedRam;
@@ -123,7 +124,7 @@ function ARAnalytic() {
               } else {
                 cpuAvg = Average(cpuQueue);
                 cpuScore = cpuAvg * 0.01 * CpuWeight;
-                let result = Timer(cpuScore);
+                result = Timer(cpuScore);
               }
               // console.log('Regular data', cpuQueue);
               // console.log('Normalized data', normedCpu);
