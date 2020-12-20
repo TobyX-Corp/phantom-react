@@ -9,9 +9,12 @@ if(Platform.OS === 'ios'){
 const MaxSize = 10;
 const CpuWeight = 50;
 const RamWeight = 50;
+const Threshold = 47.5
 // total score calculation
 //  CPU + RAM + Battery Temp + Network speed
-const Total = 0;
+const thresholdQ = []
+let counter = 0
+let off = false
 // average calculation
 const Average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 // stdv calculation
@@ -22,6 +25,22 @@ function stdv([...data]) {
     total += (data[i] - mean) ** 2;
   }
   return Math.sqrt(total / data.length);
+}
+// timer
+function Timer(data) {
+  counter++;
+  if (thresholdQ.length >= 60) {
+    off = true;
+  }
+  if (counter >= 60) {
+    off = false;
+  }
+  if (data < Threshold){
+    thresholdQ = [];
+  } else {
+    thresholdQ.push(data);
+  }
+  return off;
 }
 // scaling calculation
 function ScalingFactor(data, avg) {
@@ -103,16 +122,19 @@ function ARAnalytic() {
                 cpuScore = normedNewCpuData * cpuScaling * CpuWeight;
               } else {
                 cpuAvg = Average(cpuQueue);
-                cpuScore = cpuAvg * 0.01 * CpuWeight;
+                cpuScore = cpuAvg * 0.01 * CpuWeight; 
               }
-              console.log('Regular data', cpuQueue);
-              console.log('Normalized data', normedCpu);
-              console.log('Average: ', cpuAvg);
-              console.log('Standard Deviation: ', cpuStdv);
-              console.log('New Data: ', cpuQueue[9]);
-              console.log('Current Normed Data: ', normedNewCpuData);
-              console.log('Current Scaling Factor: ', cpuScaling);
-              console.log('Current Score: ', cpuScore);
+              // console.log('Regular data', cpuQueue);
+              // console.log('Normalized data', normedCpu);
+              // console.log('Average: ', cpuAvg);
+              // console.log('Standard Deviation: ', cpuStdv);
+              // console.log('New Data: ', cpuQueue[9]);
+              // console.log('Current Normed Data: ', normedNewCpuData);
+              // console.log('Current Scaling Factor: ', cpuScaling);
+              // console.log('Current Score: ', cpuScore);
+              console.log('off condition: ', Timer(cpuScore));
+              console.log('counter: ', counter);
+              console.log('Current threshold queue: ', thresholdQ);
               cpuQueue.shift();
               cpuQueue.push(usage.cpu_usage);
             } else {
@@ -131,14 +153,14 @@ function ARAnalytic() {
                 ramAvg = Average(ramQueue);
                 ramScore = ramAvg * 0.01 * RamWeight;
               }
-              console.log('Regular data', ramQueue);
-              console.log('Normalized data', normedRam);
-              console.log('Average: ', ramAvg);
-              console.log('Standard Deviation: ', ramStdv);
-              console.log('New Data: ', ramQueue[9]);
-              console.log('Current Normed Data: ', normedNewRamData);
-              console.log('Current Scaling Factor: ', ramScaling);
-              console.log('Current Score: ', ramScore);
+              // console.log('Regular data', ramQueue);
+              // console.log('Normalized data', normedRam);
+              // console.log('Average: ', ramAvg);
+              // console.log('Standard Deviation: ', ramStdv);
+              // console.log('New Data: ', ramQueue[9]);
+              // console.log('Current Normed Data: ', normedNewRamData);
+              // console.log('Current Scaling Factor: ', ramScaling);
+              // console.log('Current Score: ', ramScore);
               ramQueue.shift();
               ramQueue.push(usage.memory_usage);
             } else {
