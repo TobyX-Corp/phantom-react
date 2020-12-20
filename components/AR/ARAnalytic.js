@@ -122,7 +122,8 @@ function ARAnalytic() {
                 cpuScore = normedNewCpuData * cpuScaling * CpuWeight;
               } else {
                 cpuAvg = Average(cpuQueue);
-                cpuScore = cpuAvg * 0.01 * CpuWeight; 
+                cpuScore = cpuAvg * 0.01 * CpuWeight;
+                let result = Timer(cpuScore);
               }
               // console.log('Regular data', cpuQueue);
               // console.log('Normalized data', normedCpu);
@@ -132,7 +133,7 @@ function ARAnalytic() {
               // console.log('Current Normed Data: ', normedNewCpuData);
               // console.log('Current Scaling Factor: ', cpuScaling);
               // console.log('Current Score: ', cpuScore);
-              console.log('off condition: ', Timer(cpuScore));
+              console.log('off condition: ', result);
               console.log('counter: ', counter);
               console.log('Current threshold queue: ', thresholdQ);
               cpuQueue.shift();
