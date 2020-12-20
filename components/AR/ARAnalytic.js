@@ -13,7 +13,6 @@ const Threshold = 47.5;
 // total score calculation
 //  CPU + RAM + Battery Temp + Network speed
 let thresholdQ = [];
-let counter = 0;
 let off = false;
 // average calculation
 const Average = list => list.reduce((prev, curr) => prev + curr) / list.length;
@@ -28,12 +27,9 @@ function stdv([...data]) {
 }
 // timer
 function Timer(data) {
-  counter++;
   if (thresholdQ.length >= 60) {
+    thresholdQ = [];
     off = true;
-  }
-  if (counter >= 60) {
-    off = false;
   }
   if (data < Threshold){
     thresholdQ = [];
@@ -124,7 +120,7 @@ function ARAnalytic() {
               } else {
                 cpuAvg = Average(cpuQueue);
                 cpuScore = cpuAvg * 0.01 * CpuWeight;
-                result = Timer(cpuScore);
+                result = Timer(50);
               }
               // console.log('Regular data', cpuQueue);
               // console.log('Normalized data', normedCpu);
