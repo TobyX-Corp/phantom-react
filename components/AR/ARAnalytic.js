@@ -131,7 +131,6 @@ function ARAnalytic() {
               // console.log('Current Scaling Factor: ', cpuScaling);
               // console.log('Current Score: ', cpuScore);
               console.log('off condition: ', result);
-              console.log('counter: ', counter);
               console.log('Current threshold queue: ', thresholdQ);
               cpuQueue.shift();
               cpuQueue.push(usage.cpu_usage);
