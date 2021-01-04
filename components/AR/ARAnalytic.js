@@ -125,10 +125,13 @@ function ARAnalytic(props) {
                   normedNewCpuData = normedCpu.q[9];
                   cpuScaling = ScalingFactor(normedNewCpuData, cpuAvg);
                   cpuScore = normedNewCpuData * cpuScaling * CpuWeight;
+                  if (cpuScore > 60) {
+                    result = true;
+                  }
                 } else {
                   cpuAvg = Average(cpuQueue);
                   cpuScore = cpuAvg * 0.01 * CpuWeight;
-                  result = Timer(50);
+                  result = Timer(cpuScore);
                 }
                 // console.log('Regular data', cpuQueue);
                 // console.log('Normalized data', normedCpu);
@@ -154,9 +157,15 @@ function ARAnalytic(props) {
                   normedNewRamData = normedRam.q[9];
                   ramScaling = ScalingFactor(normedNewRamData, ramAvg);
                   ramScore = normedNewRamData * ramScaling * RamWeight;
+                  if (ramScore > 60) {
+                    result = true;
+                  }
                 } else {
                   ramAvg = Average(ramQueue);
                   ramScore = ramAvg * 0.01 * RamWeight;
+                  if (ramScore >= 50) {
+                    result = true;
+                  }
                 }
                 // console.log('Regular data', ramQueue);
                 // console.log('Normalized data', normedRam);
@@ -179,6 +188,13 @@ function ARAnalytic(props) {
               setUpSpd(usage.upload_speed);
               // setDownSpd(usage.download_speed);
               // setUpSpd(usage.upload_speed);
+              if (result == true) {
+                setARSwitch(true);
+              }
+              else {
+                setARSwitch(false);
+              }
+              off = false;
             }
           });
         }
