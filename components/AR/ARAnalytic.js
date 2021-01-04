@@ -125,7 +125,7 @@ function ARAnalytic(props) {
                   normedNewCpuData = normedCpu.q[9];
                   cpuScaling = ScalingFactor(normedNewCpuData, cpuAvg);
                   cpuScore = normedNewCpuData * cpuScaling * CpuWeight;
-                  if (cpuScore > 60) {
+                  if (cpuScore > 57.5) {
                     result = true;
                   }
                 } else {
@@ -157,7 +157,7 @@ function ARAnalytic(props) {
                   normedNewRamData = normedRam.q[9];
                   ramScaling = ScalingFactor(normedNewRamData, ramAvg);
                   ramScore = normedNewRamData * ramScaling * RamWeight;
-                  if (ramScore > 60) {
+                  if (ramScore > 57.5) {
                     result = true;
                   }
                 } else {
