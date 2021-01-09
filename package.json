@@ -1,7 +1,7 @@
 {
   "name": "phantom-react",
   "main": "index.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "scripts": {
     "start": "echo 'I dont think you meant to run npm start here.'",
