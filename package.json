@@ -10,9 +10,6 @@
   "jest": {
     "preset": "react-native"
   },
-  "peerDependencies": {
-    "react": "16.11.0"
-  },
   "files": [
     "components",
     "android/react_viro",
@@ -26,6 +23,7 @@
   ],
   "dependencies": {
     "prop-types": "^15.5.10",
+    "react": "16.13.1",
     "react-native": "0.63.4"
   },
   "repository": {
