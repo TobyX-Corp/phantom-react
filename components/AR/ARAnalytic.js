@@ -229,7 +229,7 @@ function ARAnalytic(props) {
             setCpuFreq('N/A');
             setDownSpd('N/A');
             setUpSpd('N/A');
-            if(ram_usg > 50 || temperature > 60){
+            if(ram_usg > 50 || temperature > 25){
               setARSwitch(true);
             }
             else{
