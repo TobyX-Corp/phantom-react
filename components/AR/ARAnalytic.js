@@ -245,8 +245,8 @@ function ARAnalytic(props) {
   return (
     <View style={styles.container}>
       <Text> CPU Score: {cpu_freq}</Text>
-      <Text> RAM Score: {ram_usg} </Text>
-      <Text> Temperature: {temperature} </Text>
+      <Text> RAM Score: {ramScore} </Text>
+      <Text> Temperature Score: {temp_cb} </Text>
       <Text> Download Speed: {down_spd} </Text>
       <Text> Upload Speed: {up_spd} </Text>
       {onSwitch()}
