@@ -229,7 +229,9 @@ function ARAnalytic(props) {
             setCpuFreq('N/A');
             setDownSpd('N/A');
             setUpSpd('N/A');
-            if (ram_usg > 50 || parseFloat(temperature.split(' ')[0]) > 25) {
+            console.log(ram_usg);
+            console.log(temperature);
+            if (ram_usg > 5 || parseFloat(temperature.split(' ')[0]) > 25) {
               setARSwitch(true);
             }
             else{
