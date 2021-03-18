@@ -102,7 +102,7 @@ function ARAnalytic(props) {
   const [AR_switch, setARSwitch] = useState(false);
 
   const onSwitch = (event: Event) =>{
-    AR_switch && props.onTrigger();
+    AR_switch && props.onSwitch();
   }
 
   useEffect(() => {
