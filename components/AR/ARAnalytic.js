@@ -125,7 +125,7 @@ function ARAnalytic(props) {
                   normedNewCpuData = normedCpu.q[9];
                   cpuScaling = ScalingFactor(normedNewCpuData, cpuAvg);
                   cpuScore = normedNewCpuData * cpuScaling * CpuWeight;
-                  if (cpuScore > 57.5) {
+                  if (cpuScore > 40) {
                     result = true;
                   }
                 } else {
@@ -157,13 +157,13 @@ function ARAnalytic(props) {
                   normedNewRamData = normedRam.q[9];
                   ramScaling = ScalingFactor(normedNewRamData, ramAvg);
                   ramScore = normedNewRamData * ramScaling * RamWeight;
-                  if (ramScore > 57.5) {
+                  if (ramScore > 40) {
                     result = true;
                   }
                 } else {
                   ramAvg = Average(ramQueue);
                   ramScore = ramAvg * 0.01 * RamWeight;
-                  if (ramScore >= 50) {
+                  if (ramScore >= 40) {
                     result = true;
                   }
                 }
@@ -266,6 +266,7 @@ ARAnalytic.propTypes = {
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
+    backgroundColor: 'white',
   },
   button: {
     backgroundColor: '#4ba37b',
